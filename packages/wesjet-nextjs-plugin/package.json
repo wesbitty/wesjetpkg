@@ -41,7 +41,6 @@
   },
   "files": [
     "./dist/**/*.{cjs,js,ts,map}",
-    "./src",
     "LICENSE",
     "./package.json"
   ],
