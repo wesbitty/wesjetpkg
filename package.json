@@ -13,7 +13,7 @@
     "prepack": "npm run prepack -w wesjet-nextjs-plugin",
     "lint": "npm run format:prettier && npm run format:eslint",
     "build": "tsc -b tsconfig.build.json",
-    "rm": "bash -c 'rm -rf packages/*/dist packages/*/.wesjet'",
+    "rm": "bash -c 'rm -rf packages/@wesjet/*/dist packages/*/dist packages/*/.wesjet'",
     "check:prettier": "prettier -c packages",
     "check:eslint": "eslint packages --ext .ts --max-warnings=0",
     "format:prettier": "prettier -w packages",

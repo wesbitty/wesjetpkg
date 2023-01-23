@@ -38,7 +38,8 @@
   },
   "files": [
     "./dist/**/*.{js,ts,map}",
-    "./src",
+    "node.js",
+    "LICENSE",
     "./package.json"
   ],
   "scripts": {

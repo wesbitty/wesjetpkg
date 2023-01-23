@@ -6,7 +6,6 @@
   "types": "./dist/index.d.ts",
   "files": [
     "./dist/**/*.{js,ts,map}",
-    "./src",
     "./package.json"
   ],
   "scripts": {
