@@ -65,14 +65,12 @@ const documentOrObjectDefToStackbitYamlModel = ({
   const ext = def.extensions.stackbit;
   const fields =
     def._tag === "DocumentTypeDef"
-      ? def.fieldDefs
-          .filter(not(isContentMarkdownFieldDef))
-          .map((fieldDef) =>
-            fieldDefToStackbitField({
-              fieldDef,
-              fieldExtension: ext?.fields?.[fieldDef.name],
-            })
-          )
+      ? def.fieldDefs.filter(not(isContentMarkdownFieldDef)).map((fieldDef) =>
+          fieldDefToStackbitField({
+            fieldDef,
+            fieldExtension: ext?.fields?.[fieldDef.name],
+          })
+        )
       : def.fieldDefs.map((fieldDef) =>
           fieldDefToStackbitField({
             fieldDef,

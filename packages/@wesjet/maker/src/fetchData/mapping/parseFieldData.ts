@@ -37,7 +37,7 @@ const codecMap = {
 };
 
 export type ParsedFieldData<TFieldType extends core.FieldDefType> = zod.infer<
-  typeof codecMap[TFieldType]
+  (typeof codecMap)[TFieldType]
 >;
 
 export const parseFieldData = <TFieldType extends core.FieldDefType>({
