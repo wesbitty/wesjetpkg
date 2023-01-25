@@ -15,10 +15,10 @@
   "dependencies": {
     "@wesjet/core": "^0.0.8",
     "@wesjet/utils": "^0.0.8",
-    "clipanion": "^3.2.0-rc.13",
+    "clipanion": "^3.2.0-rc.14",
     "typanion": "^3.12.1"
   },
   "devDependencies": {
-    "@types/node": "^18.11.9"
+    "@types/node": "^18.11.18"
   }
 }

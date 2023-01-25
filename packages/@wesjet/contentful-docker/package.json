@@ -12,7 +12,7 @@
     "test": "echo No tests yet"
   },
   "devDependencies": {
-    "@types/node": "^18.7.15"
+    "@types/node": "^18.11.18"
   },
   "dependencies": {
     "@wesjet/core": "^0.0.8",
