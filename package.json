@@ -1,5 +1,5 @@
 {
-  "name": "wesjetpkg",
+  "name": "@wesbitty/wesjet",
   "description": "Incremental Bundler, Transform & Validate content and build system optimized for JavaScript and TypeScript",
   "version": "0.0.0",
   "license": "MIT",
