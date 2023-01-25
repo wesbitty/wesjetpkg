@@ -1,26 +1,26 @@
-import type * as core from "@wesjet/core";
-import type { Thunk } from "@wesjet/utils";
+import type * as core from '@wesjet/core'
+import type { Thunk } from '@wesjet/utils'
 
-import type { ComputedField } from "./computed-field.js";
-import type { FieldDef, FieldDefWithName } from "./field.js";
+import type { ComputedField } from './computed-field.js'
+import type { FieldDef, FieldDefWithName } from './field.js'
 
-export * from "./field.js";
+export * from './field.js'
 
 export type SchemaDef = {
-  documentTypeDefs: DocumentTypeDef[];
-};
+  documentTypeDefs: DocumentTypeDef[]
+}
 
-export type DocumentContentType = "markdown" | "mdx" | "data";
+export type DocumentContentType = 'markdown' | 'mdx' | 'data'
 
 export type TypeExtensions<DefName extends string = string> = {
-  stackbit?: core.StackbitExtension.TypeExtension<DefName>;
-};
+  stackbit?: core.StackbitExtension.TypeExtension<DefName>
+}
 
-export type FieldDefs = Record<string, FieldDef> | FieldDefWithName[];
+export type FieldDefs = Record<string, FieldDef> | FieldDefWithName[]
 
 export type DocumentTypeDef<DefName extends string = string> = {
-  name: DefName;
-  description?: string;
+  name: DefName
+  description?: string
 
   /**
    * The field definitions can either be provided as an object with the field names as keys or
@@ -29,53 +29,47 @@ export type DocumentTypeDef<DefName extends string = string> = {
    *
    * @default []
    */
-  fields?: FieldDefs;
+  fields?: FieldDefs
 
-  computedFields?: ComputedFields<DefName>;
+  computedFields?: ComputedFields<DefName>
 
   /** Path is relative to the `contentDirPath` config */
-  filePathPattern?: string; // | ((doc: Document) => string)
+  filePathPattern?: string // | ((doc: Document) => string)
 
   /**
    * Default is `markdown`
    *
    * Choose `data` e.g. for a `.json` or `.yaml` file
    */
-  contentType?: DocumentContentType;
+  contentType?: DocumentContentType
 
-  isSingleton?: boolean;
+  isSingleton?: boolean
 
-  extensions?: TypeExtensions<DefName>;
-};
+  extensions?: TypeExtensions<DefName>
+}
 
-export type ComputedFields<DefName extends string = string> = Record<
-  string,
-  ComputedField<DefName>
->;
+export type ComputedFields<DefName extends string = string> = Record<string, ComputedField<DefName>>
 
 export type NestedTypeDef<DefName extends string = string> = {
   // type: 'NestedTypeDef'
-  name: DefName;
-  description?: string;
+  name: DefName
+  description?: string
   /** @default [] */
-  fields?: FieldDefs;
-  extensions?: TypeExtensions<DefName>;
-};
+  fields?: FieldDefs
+  extensions?: TypeExtensions<DefName>
+}
 
-export const isNestedTypeDef = (
-  _: NestedTypeDef | NestedUnnamedTypeDef
-): _ is NestedTypeDef => _.hasOwnProperty("name");
+export const isNestedTypeDef = (_: NestedTypeDef | NestedUnnamedTypeDef): _ is NestedTypeDef => _.hasOwnProperty('name')
 
 export type NestedUnnamedTypeDef = {
   // type: 'NestedUnnamedTypeDef'
   /** @default [] */
-  fields?: FieldDefs;
-  extensions?: TypeExtensions;
-};
+  fields?: FieldDefs
+  extensions?: TypeExtensions
+}
 
-export const isNestedUnnamedTypeDef = (
-  _: NestedTypeDef | NestedUnnamedTypeDef
-): _ is NestedUnnamedTypeDef => !_.hasOwnProperty("name");
+export const isNestedUnnamedTypeDef = (_: NestedTypeDef | NestedUnnamedTypeDef): _ is NestedUnnamedTypeDef =>
+  !_.hasOwnProperty('name')
 
 // export type FieldType =
 //   | 'string'
@@ -89,34 +83,36 @@ export const isNestedUnnamedTypeDef = (
 //   | 'reference'
 
 export type NestedType<DefName extends string = string> = {
-  type: "nested";
-  def: Thunk<NestedTypeDef<DefName> | NestedUnnamedTypeDef>;
-};
+  type: 'nested'
+  def: Thunk<NestedTypeDef<DefName> | NestedUnnamedTypeDef>
+}
 
-export type DocumentType<DefName extends string = string> = {
-  type: "document";
-  def: Thunk<DocumentTypeDef<DefName>>;
-};
+export type DocumentType<DefName extends string = string> = { type: 'document'; def: Thunk<DocumentTypeDef<DefName>> }
 
-// `<any>` cast here is needed here to flip variance (see https://github.com/wsj-jet/wesjet/issues/33)
-export type DocumentTypes =
-  | DocumentType<any>[]
-  | Record<string, DocumentType<any>>;
+// `<any>` cast here is needed here to flip variance (see https://github.com/wesbitty/wesjet/issue/)
+export type DocumentTypes = DocumentType<any>[] | Record<string, DocumentType<any>>
 
 export const defineNestedType = <DefName extends string>(
-  def: Thunk<NestedTypeDef<DefName> | NestedUnnamedTypeDef>
+  def: Thunk<NestedTypeDef<DefName> | NestedUnnamedTypeDef>,
   // NOTE we're not using the generic `DefName` here because it causes problems with when using the defined document type
 ): NestedType => ({
-  type: "nested",
+  type: 'nested',
   def,
-});
+})
 
 export const defineDocumentType = <DefName extends string>(
-  def: Thunk<DocumentTypeDef<DefName>>
+  def: Thunk<DocumentTypeDef<DefName>>,
   // NOTE we're not using the generic `DefName` here because it causes problems with when using the defined document type
 ): DocumentType => ({
-  type: "document",
+  type: 'document',
   def,
-});
+})
 
-// export const defineSchema = (_: SchemaDef): SchemaDef => _
+export const defineFields = <TFieldDefs extends FieldDefs>(fields: TFieldDefs): TFieldDefs => fields
+
+export const defineComputedFields = <
+  TDefName extends string,
+  TComputedFields extends ComputedFields<TDefName> = ComputedFields<TDefName>,
+>(
+  computedFields: TComputedFields,
+): TComputedFields => computedFields

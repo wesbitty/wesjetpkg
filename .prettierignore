@@ -1,0 +1,14 @@
+node_modules
+target/
+**/.wesjet/*
+package-lock.json
+
+.direnv
+**/.nyc_output/*
+!tap-snapshots/dist/*
+**/dist/*
+**/out/*
+.tmp*
+/tmp
+**/*.tsbuildinfo/*
+/result

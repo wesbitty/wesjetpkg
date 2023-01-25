@@ -7,9 +7,5 @@
     "tsBuildInfoFile": "./dist/.tsbuildinfo.json"
   },
   "include": ["./src"],
-  "references": [
-    { "path": "../utils" },
-    { "path": "../maker" },
-    { "path": "../core" }
-  ]
+  "references": [{ "path": "../utils" }, { "path": "../maker" }, { "path": "../core" }]
 }

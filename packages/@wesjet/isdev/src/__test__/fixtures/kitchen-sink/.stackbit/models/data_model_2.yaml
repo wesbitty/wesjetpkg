@@ -1,7 +1,7 @@
 name: data_model_2
 type: data
 labelField: string_field
-filePath: "{slug}.md"
+filePath: '{slug}.md'
 fields:
   - type: string
     name: string_field

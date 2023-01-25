@@ -1,7 +1,7 @@
 name: page_model_1
 type: page
-urlPath: "/{slug}"
-filePath: "{slug}.md"
+urlPath: '/{slug}'
+filePath: '{slug}.md'
 hideContent: true
 fields:
   - type: string

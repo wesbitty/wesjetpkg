@@ -1,38 +1,31 @@
-import type * as core from "@wesjet/core";
-import { unknownToAbsolutePosixFilePath } from "@wesjet/utils";
-import { expect, test } from "vitest";
+import type * as core from '@wesjet/core'
+import { unknownToAbsolutePosixFilePath } from '@wesjet/utils'
+import { expect, test } from 'vitest'
 
-import { testOnly_aggregateFetchDataErrors as aggregateFetchDataErrors } from "../../errors/aggregate.js";
-import type { Flags } from "../../types.js";
-import {
-  makeErrors,
-  makeSchemaDef,
-  makeSchemaWithSingletonDef,
-} from "./utils.js";
+import { testOnly_aggregateFetchDataErrors as aggregateFetchDataErrors } from '../../errors/aggregate.js'
+import type { Flags } from '../../types.js'
+import { makeErrors, makeSchemaDef, makeSchemaWithSingletonDef } from './utils.js'
 
-const typeFieldName = "type";
-const bodyFieldName = "body";
+const typeFieldName = 'type'
+const bodyFieldName = 'body'
 const options: core.PluginOptions = {
   markdown: undefined,
   mdx: undefined,
   date: undefined,
   fieldOptions: { typeFieldName, bodyFieldName },
   disableImportAliasWarning: false,
-};
+}
 const flags: Flags = {
-  onExtraFieldData: "warn",
-  onMissingOrIncompatibleData: "skip-warn",
-  onUnknownDocuments: "skip-warn",
-};
-const schemaDef = makeSchemaDef();
-const contentDirPath = unknownToAbsolutePosixFilePath(
-  "./content",
-  unknownToAbsolutePosixFilePath(process.cwd())
-);
+  onExtraFieldData: 'warn',
+  onMissingOrIncompatibleData: 'skip-warn',
+  onUnknownDocuments: 'skip-warn',
+}
+const schemaDef = makeSchemaDef()
+const contentDirPath = unknownToAbsolutePosixFilePath('./content', unknownToAbsolutePosixFilePath(process.cwd()))
 
 // TODO improve Vitest inline snapshots once fixed https://github.com/vitest-dev/vitest/issues/856
 
-test("CouldNotDetermineDocumentTypeError: should print 4 errors", async () => {
+test('CouldNotDetermineDocumentTypeError: should print 4 errors', async () => {
   const errorString = aggregateFetchDataErrors({
     errors: makeErrors({ CouldNotDetermineDocumentTypeError: 4 }, schemaDef),
     options,
@@ -40,7 +33,7 @@ test("CouldNotDetermineDocumentTypeError: should print 4 errors", async () => {
     schemaDef,
     contentDirPath,
     documentCount: 42,
-  });
+  })
 
   expect(errorString).toMatchInlineSnapshot(
     `
@@ -56,11 +49,11 @@ test("CouldNotDetermineDocumentTypeError: should print 4 errors", async () => {
          • docs/card_table.md
          
     "
-  `
-  );
-});
+  `,
+  )
+})
 
-test("CouldNotDetermineDocumentTypeError: should print 24 errors - truncated", async () => {
+test('CouldNotDetermineDocumentTypeError: should print 24 errors - truncated', async () => {
   const errorString = aggregateFetchDataErrors({
     errors: makeErrors({ CouldNotDetermineDocumentTypeError: 24 }, schemaDef),
     options,
@@ -68,7 +61,7 @@ test("CouldNotDetermineDocumentTypeError: should print 24 errors - truncated", a
     schemaDef,
     contentDirPath,
     documentCount: 81,
-  });
+  })
 
   expect(errorString).toMatchInlineSnapshot(
     `
@@ -101,11 +94,11 @@ test("CouldNotDetermineDocumentTypeError: should print 24 errors - truncated", a
          • ... 4 more documents (Use the --verbose CLI option to show all documents)
          
     "
-  `
-  );
-});
+  `,
+  )
+})
 
-test("CouldNotDetermineDocumentTypeError: should print 24 errors - full", async () => {
+test('CouldNotDetermineDocumentTypeError: should print 24 errors - full', async () => {
   const errorString = aggregateFetchDataErrors({
     errors: makeErrors({ CouldNotDetermineDocumentTypeError: 24 }, schemaDef),
     options,
@@ -114,7 +107,7 @@ test("CouldNotDetermineDocumentTypeError: should print 24 errors - full", async 
     contentDirPath,
     documentCount: 81,
     verbose: true,
-  });
+  })
 
   expect(errorString).toMatchInlineSnapshot(
     `
@@ -150,25 +143,25 @@ test("CouldNotDetermineDocumentTypeError: should print 24 errors - full", async 
          • docs/front_line.md
          
     "
-  `
-  );
-});
+  `,
+  )
+})
 
-test("CouldNotDetermineDocumentTypeError: should ignore the errors", async () => {
+test('CouldNotDetermineDocumentTypeError: should ignore the errors', async () => {
   const errorString = aggregateFetchDataErrors({
     errors: makeErrors({ CouldNotDetermineDocumentTypeError: 24 }, schemaDef),
     options,
-    flags: { ...flags, onUnknownDocuments: "skip-ignore" },
+    flags: { ...flags, onUnknownDocuments: 'skip-ignore' },
     schemaDef,
     contentDirPath,
     documentCount: 81,
     verbose: true,
-  });
+  })
 
-  expect(errorString).toBeNull();
-});
+  expect(errorString).toBeNull()
+})
 
-test("MissingRequiredFieldsError: should print 4 warnings", async () => {
+test('MissingRequiredFieldsError: should print 4 warnings', async () => {
   const errorString = aggregateFetchDataErrors({
     errors: makeErrors({ MissingRequiredFieldsError: 4 }, schemaDef),
     options,
@@ -176,7 +169,7 @@ test("MissingRequiredFieldsError: should print 4 warnings", async () => {
     schemaDef,
     contentDirPath,
     documentCount: 42,
-  });
+  })
 
   expect(errorString).toMatchInlineSnapshot(
     `
@@ -194,12 +187,12 @@ test("MissingRequiredFieldsError: should print 4 warnings", async () => {
            • someField: string
          
     "
-  `
-  );
-});
+  `,
+  )
+})
 
-test("MissingRequiredFieldsError: should fail because of singleton", async () => {
-  const schemaDef = makeSchemaWithSingletonDef();
+test('MissingRequiredFieldsError: should fail because of singleton', async () => {
+  const schemaDef = makeSchemaWithSingletonDef()
   const errorString = aggregateFetchDataErrors({
     errors: makeErrors({ MissingRequiredFieldsError: 4 }, schemaDef),
     options,
@@ -207,7 +200,7 @@ test("MissingRequiredFieldsError: should fail because of singleton", async () =>
     schemaDef,
     contentDirPath,
     documentCount: 42,
-  });
+  })
 
   expect(errorString).toMatchInlineSnapshot(
     `
@@ -225,11 +218,11 @@ test("MissingRequiredFieldsError: should fail because of singleton", async () =>
            • someField: string
          
     "
-  `
-  );
-});
+  `,
+  )
+})
 
-test("ExtraFieldDataError: should print warning", async () => {
+test('ExtraFieldDataError: should print warning', async () => {
   const errorString = aggregateFetchDataErrors({
     errors: makeErrors({ ExtraFieldDataError: 2 }, schemaDef),
     options,
@@ -237,7 +230,7 @@ test("ExtraFieldDataError: should print warning", async () => {
     schemaDef,
     contentDirPath,
     documentCount: 42,
-  });
+  })
 
   expect(errorString).toMatchInlineSnapshot(
     `
@@ -251,19 +244,19 @@ test("ExtraFieldDataError: should print warning", async () => {
            • someOtherKey: 42 
          
     "
-  `
-  );
-});
+  `,
+  )
+})
 
-test("ExtraFieldDataError: should print error", async () => {
+test('ExtraFieldDataError: should print error', async () => {
   const errorString = aggregateFetchDataErrors({
     errors: makeErrors({ ExtraFieldDataError: 2 }, schemaDef),
     options,
-    flags: { ...flags, onExtraFieldData: "fail" },
+    flags: { ...flags, onExtraFieldData: 'fail' },
     schemaDef,
     contentDirPath,
     documentCount: 42,
-  });
+  })
 
   expect(errorString).toMatchInlineSnapshot(
     `
@@ -277,11 +270,11 @@ test("ExtraFieldDataError: should print error", async () => {
            • someOtherKey: 42 
          
     "
-  `
-  );
-});
+  `,
+  )
+})
 
-test("MissingRequiredFieldsError: should print 24 errors - truncated", async () => {
+test('MissingRequiredFieldsError: should print 24 errors - truncated', async () => {
   const errorString = aggregateFetchDataErrors({
     errors: makeErrors({ MissingRequiredFieldsError: 24 }, schemaDef),
     options,
@@ -289,7 +282,7 @@ test("MissingRequiredFieldsError: should print 24 errors - truncated", async () 
     schemaDef,
     contentDirPath,
     documentCount: 81,
-  });
+  })
 
   expect(errorString).toMatchInlineSnapshot(
     `
@@ -340,22 +333,19 @@ test("MissingRequiredFieldsError: should print 24 errors - truncated", async () 
          • ... 4 more documents (Use the --verbose CLI option to show all documents)
          
     "
-  `
-  );
-});
+  `,
+  )
+})
 
-test("mix of different errors: some", async () => {
+test('mix of different errors: some', async () => {
   const errorString = aggregateFetchDataErrors({
-    errors: makeErrors(
-      { CouldNotDetermineDocumentTypeError: 4, NoSuchDocumentTypeError: 2 },
-      schemaDef
-    ),
+    errors: makeErrors({ CouldNotDetermineDocumentTypeError: 4, NoSuchDocumentTypeError: 2 }, schemaDef),
     options,
     flags,
     schemaDef,
     contentDirPath,
     documentCount: 42,
-  });
+  })
 
   expect(errorString).toMatchInlineSnapshot(
     `
@@ -378,11 +368,11 @@ test("mix of different errors: some", async () => {
          • docs/withdrawal_buckinghamshire.md (Used type name: \\"TypeB\\")
          
     "
-  `
-  );
-});
+  `,
+  )
+})
 
-test("mix of different errors: with extra field data", async () => {
+test('mix of different errors: with extra field data', async () => {
   const errorString = aggregateFetchDataErrors({
     errors: makeErrors(
       {
@@ -390,14 +380,14 @@ test("mix of different errors: with extra field data", async () => {
         NoSuchDocumentTypeError: 2,
         ExtraFieldDataError: 1,
       },
-      schemaDef
+      schemaDef,
     ),
     options,
     flags,
     schemaDef,
     contentDirPath,
     documentCount: 42,
-  });
+  })
 
   expect(errorString).toMatchInlineSnapshot(
     `
@@ -425,11 +415,11 @@ test("mix of different errors: with extra field data", async () => {
            • someKey: \\"someVal\\" 
          
     "
-  `
-  );
-});
+  `,
+  )
+})
 
-test("mix of different errors: other", async () => {
+test('mix of different errors: other', async () => {
   const errorString = aggregateFetchDataErrors({
     errors: makeErrors(
       {
@@ -439,14 +429,14 @@ test("mix of different errors: other", async () => {
         UnexpectedError: 2,
         MissingRequiredFieldsError: 3,
       },
-      schemaDef
+      schemaDef,
     ),
     options,
     flags,
     schemaDef,
     contentDirPath,
     documentCount: 42,
-  });
+  })
 
   expect(errorString).toMatchInlineSnapshot(
     `
@@ -487,6 +477,6 @@ test("mix of different errors: other", async () => {
            • someField: string
          
     "
-  `
-  );
-});
+  `,
+  )
+})

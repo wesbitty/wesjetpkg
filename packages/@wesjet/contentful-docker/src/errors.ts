@@ -1,8 +1,8 @@
-import { errorToString } from "@wesjet/utils";
-import { Tagged } from "@wesjet/utils/effect";
+import { errorToString } from '@wesjet/utils'
+import { Tagged } from '@wesjet/utils/effect'
 
-export class UnknownContentfulError extends Tagged("UnknownContentfulError")<{
-  readonly error: unknown;
+export class UnknownContentfulError extends Tagged('UnknownContentfulError')<{
+  readonly error: unknown
 }> {
-  toString = () => `UnknownContentfulError: ${errorToString(this.error)}`;
+  toString = () => `UnknownContentfulError: ${errorToString(this.error)}`
 }
