@@ -1,6 +1,6 @@
 {
-  "name": "@wesjet/isdev",
-  "version": "0.0.9",
+  "name": "@wesjet/stackbit",
+  "version": "0.0.17",
   "type": "module",
   "exports": {
     ".": {
@@ -27,9 +27,9 @@
   },
   "dependencies": {
     "@stackbit/sdk": "~0.2.38",
-    "@wesjet/core": "^0.0.9",
-    "@wesjet/maker": "^0.0.9",
-    "@wesjet/utils": "^0.0.9"
+    "@wesjet/core": "^0.0.17",
+    "@wesjet/maker": "^0.0.17",
+    "@wesjet/utils": "^0.0.17"
   },
   "devDependencies": {
     "vite": "^3.1.0",

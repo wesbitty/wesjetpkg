@@ -33,12 +33,12 @@ export const runWesjetBuild = async ({ configPath }: NextPluginOptions) => {
     core.getConfig({ configPath }),
     T.chain((config) => core.generateDotpkg({ config, verbose: false })),
     T.tap(core.logGenerateInfo),
-    OT.withSpan('wesjet-nextjs-plugin:runWesjetBuild'),
+    OT.withSpan('next-config-wesjet:runWesjetBuild'),
     runMain,
   )
 }
 
 const runMain = core.runMain({
-  tracingServiceName: 'wesjet-nextjs-plugin',
+  tracingServiceName: 'next-config-wesjet',
   verbose: process.env.CL_DEBUG !== undefined,
 })

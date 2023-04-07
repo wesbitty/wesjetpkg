@@ -1,5 +1,14 @@
 # @wesjet/maker
 
+## 0.0.17
+
+### Patch Changes
+
+- Wesjet Api
+- Updated dependencies
+  - @wesjet/utils@0.0.17
+  - @wesjet/core@0.0.17
+
 ## 0.0.9
 
 ### Patch Changes

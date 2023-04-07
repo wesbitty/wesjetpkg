@@ -9,7 +9,7 @@
   },
   "scripts": {
     "postinstall": "ts-patch install && ts-patch --persist && npm run postinstall -w wesjet",
-    "prepack": "npm run prepack -w wesjet-nextjs-plugin",
+    "prepack": "npm run prepack -w next-config-wesjet",
     "lint": "npm run format:prettier && npm run format:eslint",
     "build": "tsc -b tsconfig.build.json",
     "rm": "bash -c 'rm -rf packages/@wesjet/*/dist packages/*/dist packages/*/.wesjet'",
@@ -17,7 +17,7 @@
     "check:eslint": "eslint packages --ext .ts --max-warnings=0",
     "format:prettier": "prettier -w packages",
     "format:eslint": "eslint packages --ext .ts --fix",
-    "all": "npm i && npm run lint && npm run build && npm -w wesjet-nextjs-plugin run prepack"
+    "all": "npm i && npm run lint && npm run build && npm -w next-config-wesjet run prepack"
   },
   "author": "Wesbitty, Inc",
   "keywords": [
@@ -54,8 +54,8 @@
     "esbuild": "0.17.0",
     "wesjet": "*",
     "@wesjet/*": "*",
-    "wesjet-simple-import-hooks": "*",
-    "wesjet-nextjs-plugin": "*",
+    "stackbit-config-wesjet": "*",
+    "next-config-wesjet": "*",
     "rxjs": "^7.1.0"
   }
 }

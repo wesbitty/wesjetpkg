@@ -34,7 +34,7 @@ export type WesjetOverrideNestedType = {
  * ```ts
  * // wesjet.config.ts
  * import { makeSource } from 'wesjet/maker'
- * import { loadStackbitConfigAsDocumentTypes } from '@wesjet/isdev'
+ * import { loadStackbitConfigAsDocumentTypes } from '@wesjet/stackbit'
  *
  * // Looks for `stackbit.yaml` in the current directory
  * export default loadStackbitConfigAsDocumentTypes().then((documentTypes) => {
@@ -60,7 +60,7 @@ export const loadStackbitConfigAsDocumentTypes = <TDocumentTypeNames extends cor
  * ```ts
  * // wesjet.config.ts
  * import { makeSource } from 'wesjet/maker'
- * import { stackbitConfigToDocumentTypes } from '@wesjet/contentful-docker'
+ * import { stackbitConfigToDocumentTypes } from '@wesjet/contentful'
  * import stackbitConfig from './stackbit.config.js'
  *
  * const documentTypes = stackbitConfigToDocumentTypes(stackbitConfig)

@@ -1,6 +1,6 @@
 {
   "name": "wesjet",
-  "version": "0.0.9",
+  "version": "0.0.17",
   "license": "MIT",
   "author": "Wesbitty, Inc",
   "homepage": "https://github.com/wesbitty/wesjet",
@@ -63,7 +63,6 @@
   "files": [
     "./bin/cli.cjs",
     "./dist/**/*.{js,ts,map}",
-    "CHANGELOG.md",
     "README.md",
     "LICENSE",
     "./package.json"
@@ -73,11 +72,11 @@
     "_bundle-cli": "esbuild ./dist/cli/index.js --bundle --platform=node --format=esm --external:esbuild --external:@esbuild-plugins/node-resolve --outfile=dist/cli/bundle.js --main-fields=module,main --metafile=meta.json --banner:js=\"import { createRequire as topLevelCreateRequire } from 'module'; const require = topLevelCreateRequire(import.meta.url); const __dirname = '__SET_BY_ESBUILD__';\""
   },
   "dependencies": {
-    "@wesjet/cli": "^0.0.9",
-    "@wesjet/client": "^0.0.9",
-    "@wesjet/core": "^0.0.9",
-    "@wesjet/maker": "^0.0.9",
-    "@wesjet/utils": "^0.0.9"
+    "@wesjet/cli": "^0.0.17",
+    "@wesjet/client": "^0.0.17",
+    "@wesjet/core": "^0.0.17",
+    "@wesjet/maker": "^0.0.17",
+    "@wesjet/utils": "^0.0.17"
   },
   "devDependencies": {
     "typescript": "^4.9.4"

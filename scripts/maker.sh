@@ -10,7 +10,7 @@ echo "Creating a new project using create-wesjet-starter"
 npx create-wesjet-starter wesjet-starter
 cd wesjet-starter
 
-npm add -D tailwindcss postcss autoprefixer date-fns wesjet wesjet-nextjs-plugin
+npm add -D tailwindcss postcss autoprefixer date-fns wesjet next-config-wesjet
 echo "Added tailwindcss, postcss and autoprefixer as a devDependency"
 npx tailwindcss init -p
 

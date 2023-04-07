@@ -41,7 +41,7 @@ export const renderTypes = ({
   const importsForRawTypes = pattern
     .match(generationOptions.sourcePluginType)
     .with('local', () => `import * as Local from 'wesjet/maker'`)
-    .with('wesjet', () => `import * as Wesjet from '@wesjet/contentful-docker'`)
+    .with('wesjet', () => `import * as Wesjet from '@wesjet/contentful'`)
     .otherwise(() => ``)
 
   const documentTypeNames = documentTypes.map(prop('typeName'))

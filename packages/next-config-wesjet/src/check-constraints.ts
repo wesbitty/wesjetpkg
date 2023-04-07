@@ -27,13 +27,13 @@ const checkNodeVersion = () => {
 
 const checkWesjetVersionsMatch = () => {
   const wesjetVersion = getPackageVersion('wesjet')
-  const nextWesjetVersion = getPackageVersion('wesjet-nextjs-plugin')
+  const nextWesjetVersion = getPackageVersion('next-config-wesjet')
 
   if (wesjetVersion !== nextWesjetVersion) {
     throw new Error(
       `\
-The versions of "wesjet" and "wesjet-nextjs-plugin" need to be identical in your "package.json".
-Currently used versions: wesjet: "${wesjetVersion}", wesjet-nextjs-plugin: "${nextWesjetVersion}"`,
+The versions of "wesjet" and "next-config-wesjet" need to be identical in your "package.json".
+Currently used versions: wesjet: "${wesjetVersion}", next-config-wesjet: "${nextWesjetVersion}"`,
     )
   }
 }

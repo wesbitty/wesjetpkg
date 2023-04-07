@@ -14,7 +14,7 @@ import { convertSchema } from './convert.js'
 import { toYamlString } from './utils.js'
 
 const defaultStackbitYamlPath = () => `${path.join(process.cwd())}/stackbit.yaml`
-const defaultTransformPath = () => `${path.join(process.cwd())}/wesjet-simple-import-hooks.js`
+const defaultTransformPath = () => `${path.join(process.cwd())}/stackbit-config-wesjet.js`
 
 export class DefaultCommand extends Command {
   configPath = Option.String('-c,--config', 'wesjet.config.ts', {
@@ -38,7 +38,7 @@ export class DefaultCommand extends Command {
     try {
       await pipe(
         this.executeSafe(),
-        provideJaegerTracing('wesjet-simple-import-hooks'),
+        provideJaegerTracing('stackbit-config-wesjet'),
         T.tapCause((cause) => T.die(pretty(cause))),
         provideCwd,
         provideConsole,
