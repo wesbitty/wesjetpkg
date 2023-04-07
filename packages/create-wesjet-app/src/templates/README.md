@@ -1,0 +1,1 @@
+# Wesjet Templates Directory

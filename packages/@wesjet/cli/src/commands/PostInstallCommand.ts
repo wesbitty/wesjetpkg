@@ -15,7 +15,7 @@ export class PostInstallCommand extends BaseCommand {
       T.gen(function* ($) {
         const artifactsDirPath = yield* $(core.ArtifactsDir.mkdir)
 
-        yield* $(generateTypes({ artifactsDirPath, moduleName: 'jetpack', configPath }))
+        yield* $(generateTypes({ artifactsDirPath, moduleName: 'static', configPath }))
 
         yield* $(addToplevelDotpkgToGitignore())
       }),

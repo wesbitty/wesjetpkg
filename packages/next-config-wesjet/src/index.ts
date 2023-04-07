@@ -14,7 +14,8 @@ export const createWesjetPlugin =
   (nextConfig: Partial<NextConfig> = {}): Partial<NextConfig> => {
     // could be either `next dev` or just `next`
     const isNextDev =
-      process.argv.includes('dev') || process.argv.some((_) => _.endsWith('bin/next') || _.endsWith('bin\\next'))
+      process.argv.includes('dev') ||
+      process.argv.some((_) => _.endsWith('bin/next') || _.endsWith('bin\\next'))
     const isBuild = process.argv.includes('build')
 
     const { configPath } = pluginOptions
@@ -65,4 +66,4 @@ export const createWesjetPlugin =
     }
   }
 
-export const withWesjet = createWesjetPlugin(defaultPluginOptions)
+export const wesjetConfig = createWesjetPlugin(defaultPluginOptions)

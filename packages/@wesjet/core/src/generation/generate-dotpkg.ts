@@ -44,7 +44,7 @@ export type GenerateInfo = {
 }
 
 export const logGenerateInfo = (info: GenerateInfo): T.Effect<HasConsole, never, void> =>
-  T.log(`Compiled ${info.documentCount} Files into Wesjet Output`)
+  T.log(`wesjet: compile ${info.documentCount} files successfully.`)
 
 export const generateDotpkg = ({
   config,
@@ -73,7 +73,11 @@ export const generateDotpkgStream = ({
   config: Config
   verbose: boolean
   isDev: boolean
-}): S.Stream<OT.HasTracer & HasClock & HasCwd & HasConsole, never, E.Either<GenerateDotpkgError, GenerateInfo>> => {
+}): S.Stream<
+  OT.HasTracer & HasClock & HasCwd & HasConsole,
+  never,
+  E.Either<GenerateDotpkgError, GenerateInfo>
+> => {
   const writtenFilesCache = {}
   const generationOptions = {
     sourcePluginType: config.source.type,
@@ -161,26 +165,40 @@ const writeFilesForCache = ({
       const documentDefs = Object.values(schemaDef.documentTypeDefMap)
 
       const [nodeVersionMajor, nodeVersionMinor] = yield* $(
-        T.succeedWith(() => process.versions.node.split('.').map((_) => parseInt(_, 10)) as [number, number, number]),
+        T.succeedWith(
+          () =>
+            process.versions.node.split('.').map((_) => parseInt(_, 10)) as [
+              number,
+              number,
+              number,
+            ],
+        ),
       )
 
       // NOTE Type assert statements for `.json` files are neccessary from Node v16.14 onwards
-      const needsJsonAssertStatement = nodeVersionMajor > 16 || (nodeVersionMajor === 16 && nodeVersionMinor >= 14)
+      const needsJsonAssertStatement =
+        nodeVersionMajor > 16 || (nodeVersionMajor === 16 && nodeVersionMinor >= 14)
       const assertStatement = needsJsonAssertStatement ? ` assert { type: 'json' }` : ''
 
       const typeNameField = generationOptions.options.fieldOptions.typeFieldName
       const dataBarrelFiles = documentDefs.map((docDef) => ({
         content: makeDataExportFile({
           docDef,
-          documentIds: allDocuments.filter((_) => _[typeNameField] === docDef.name).map((_) => _._id),
+          documentIds: allDocuments
+            .filter((_) => _[typeNameField] === docDef.name)
+            .map((_) => _._id),
           assertStatement,
         }),
-        filePath: withPrefix('jetpack', docDef.name, `_index.mjs`),
+        filePath: withPrefix('static', docDef.name, `_index.mjs`),
       }))
 
       const individualDataJsonFiles = allCacheItems.map(({ document, documentHash }) => ({
         content: JSON.stringify(document, null, 2),
-        filePath: withPrefix('jetpack', document[typeNameField], `${idToFileName(document._id)}.json`),
+        filePath: withPrefix(
+          'static',
+          document[typeNameField],
+          `${idToFileName(document._id)}.json`,
+        ),
         documentHash,
       }))
 
@@ -192,14 +210,14 @@ const writeFilesForCache = ({
 
           return {
             content: JSON.stringify(jsonData, null, 2),
-            filePath: withPrefix('jetpack', documentDef.name, `_index.json`),
+            filePath: withPrefix('static', documentDef.name, `_index.json`),
             documentHash: documents.map((_) => _.documentHash).join(''),
           }
         }),
       )
 
-      const dataDirPaths = documentDefs.map((_) => withPrefix('jetpack', _.name))
-      yield* $(T.forEachPar_([withPrefix('jetpack'), ...dataDirPaths], fs.mkdirp))
+      const dataDirPaths = documentDefs.map((_) => withPrefix('static', _.name))
+      yield* $(T.forEachPar_([withPrefix('static'), ...dataDirPaths], fs.mkdirp))
 
       const writeFile = writeFileWithWrittenFilesCache({ writtenFilesCache })
 
@@ -210,17 +228,17 @@ const writeFilesForCache = ({
             content: makePackageJson(schemaDef.hash),
           }),
           writeFile({
-            filePath: withPrefix('jetpack', 'types.d.ts'),
+            filePath: withPrefix('static', 'types.d.ts'),
             content: renderTypes({ schemaDef, generationOptions }),
             rmBeforeWrite: true,
           }),
           writeFile({
-            filePath: withPrefix('jetpack', 'index.d.ts'),
+            filePath: withPrefix('static', 'index.d.ts'),
             content: makeDataTypes({ schemaDef }),
             rmBeforeWrite: true,
           }),
           writeFile({
-            filePath: withPrefix('jetpack', 'index.mjs'),
+            filePath: withPrefix('static', 'index.mjs'),
             content: makeIndexMjs({ schemaDef, assertStatement, isDev }),
           }),
           ...dataBarrelFiles.map(writeFile),
@@ -242,18 +260,18 @@ const writeFilesForCache = ({
 const makePackageJson = (schemaHash: string): string => {
   const packageJson: PackageJson & { typesVersions: any } = {
     // TODO: generating application schema hash
-    name: `wesjet/${schemaHash}`,
+    name: `${schemaHash}`,
     description: 'This package is automatically compiled by wesjet during (production) build',
     // Get Wesjet version and schema hash
-    version: `0.0.9-${schemaHash}`,
+    version: `0.0.18-${schemaHash}`,
     exports: {
-      './jetpack': {
-        import: './jetpack/index.mjs',
+      './static': {
+        import: './static/index.mjs',
       },
     },
     typesVersions: {
       '*': {
-        jetpack: ['./jetpack'],
+        static: ['./static'],
       },
     },
   }
@@ -283,7 +301,8 @@ const writeFileWithWrittenFilesCache =
   }) =>
     T.gen(function* ($) {
       // TODO also consider schema hash
-      const fileIsUpToDate = documentHash !== undefined && writtenFilesCache[filePath] === documentHash
+      const fileIsUpToDate =
+        documentHash !== undefined && writtenFilesCache[filePath] === documentHash
       if (!rmBeforeWrite && fileIsUpToDate) {
         return
       }
@@ -312,7 +331,9 @@ const makeDataExportFile = ({
     const documentId = documentIds[0]!
     return `\
 // ${autogeneratedNote}
-export { default as ${dataVariableName} } from './${idToFileName(documentId)}.json'${assertStatement}
+export { default as ${dataVariableName} } from './${idToFileName(
+      documentId,
+    )}.json'${assertStatement}
 `
   }
 
@@ -346,7 +367,8 @@ const makeIndexMjs = ({
     dataVariableName: getDataVariableName({ docDef }),
   }))
 
-  const constExports = 'export { ' + dataVariableNames.map((_) => _.dataVariableName).join(', ') + ' }'
+  const constExports =
+    'export { ' + dataVariableNames.map((_) => _.dataVariableName).join(', ') + ' }'
 
   const constImportsForAllDocuments = dataVariableNames
     .map(({ documentDefName, dataVariableName }) =>
@@ -357,7 +379,9 @@ const makeIndexMjs = ({
     .join('\n')
 
   const allDocuments = dataVariableNames
-    .map(({ isSingleton, dataVariableName }) => (isSingleton ? dataVariableName : `...${dataVariableName}`))
+    .map(({ isSingleton, dataVariableName }) =>
+      isSingleton ? dataVariableName : `...${dataVariableName}`,
+    )
     .join(', ')
 
   return `\
@@ -410,7 +434,8 @@ const getDataVariableName = ({ docDef }: { docDef: DocumentTypeDef }): string =>
   }
 }
 
-const idToFileName = (id: string): string => leftPadWithUnderscoreIfStartsWithNumber(id).replace(/\//g, '__')
+const idToFileName = (id: string): string =>
+  leftPadWithUnderscoreIfStartsWithNumber(id).replace(/\//g, '__')
 
 const leftPadWithUnderscoreIfStartsWithNumber = (str: string): string => {
   if (/^[0-9]/.test(str)) {

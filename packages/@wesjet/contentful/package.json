@@ -1,6 +1,6 @@
 {
   "name": "@wesjet/contentful",
-  "version": "0.0.17",
+  "version": "0.0.17-automated",
   "type": "module",
   "exports": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -15,8 +15,8 @@
     "@types/node": "^18.11.18"
   },
   "dependencies": {
-    "@wesjet/core": "^0.0.17",
-    "@wesjet/utils": "^0.0.17",
+    "@wesjet/core": "^0.0.17-automated",
+    "@wesjet/utils": "^0.0.17-automated",
     "contentful-management": "7.22.4"
   }
 }

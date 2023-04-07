@@ -25,7 +25,7 @@ export const validateTsconfig = pipe(
 
     const warningMessage = (msg: string) =>
       T.log(`\
-wesjet (Warning): Importing from \`wesjet\/jetpack\` might not work.
+wesjet (Warning): Importing from \`wesjet\/static\` might not work.
 ${msg}
 
 For more information see https://www.wesbitty.com/docs/getting-started
@@ -41,19 +41,25 @@ To disable this warning you can set \`disableImportAliasWarning: true\` in your 
     const { config, fileName } = tsconfigOption.value
 
     if (config.compilerOptions?.baseUrl === undefined) {
-      yield* $(warningMessage(`Config option \`compilerOptions.baseUrl\` not found in "${fileName}".`))
+      yield* $(
+        warningMessage(`Config option \`compilerOptions.baseUrl\` not found in "${fileName}".`),
+      )
       return
     }
 
     if (config.compilerOptions?.paths === undefined) {
-      yield* $(warningMessage(`Config option \`compilerOptions.paths\` not found in "${fileName}".`))
+      yield* $(
+        warningMessage(`Config option \`compilerOptions.paths\` not found in "${fileName}".`),
+      )
       return
     }
 
     const paths = Object.values(config.compilerOptions.paths).flat() as string[]
-    if (!paths.some((_) => _.includes('./.wesjet/jetpack'))) {
+    if (!paths.some((_) => _.includes('./.wesjet/static'))) {
       yield* $(
-        warningMessage(`No path alias found for "wesjet/jetpack" via \`compilerOptions.paths\` in "${fileName}".`),
+        warningMessage(
+          `No path alias found for "wesjet/static" via \`compilerOptions.paths\` in "${fileName}".`,
+        ),
       )
     }
   }),

@@ -14,7 +14,9 @@ export const runMain =
     pipe(
       T.gen(function* ($) {
         if (process.platform === 'win32') {
-          yield* $(T.log('Warning: wesjet output(.wesjet/jetpack) might not work as expected on windows'))
+          yield* $(
+            T.log('Warning: wesjet output(.wesjet/static) might not work as expected on windows'),
+          )
         }
 
         const result = yield* $(pipe(eff, provideTracing(tracingServiceName), provideCwd, T.result))
@@ -33,7 +35,10 @@ https://github.com/wesbitty/wesjet/issues`),
 
           // If failure was a managed error and no `--verbose` flag was provided, print the error message
           if (errorWasManaged && !verbose) {
-            if (!core.isSourceFetchDataError(failOrCause.left) || !failOrCause.left.alreadyHandled) {
+            if (
+              !core.isSourceFetchDataError(failOrCause.left) ||
+              !failOrCause.left.alreadyHandled
+            ) {
               yield* $(T.log(failOrCause.left))
             }
           }

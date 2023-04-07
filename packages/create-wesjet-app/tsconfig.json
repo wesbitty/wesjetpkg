@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "outDir": "./lib/",
+    "strict": true,
+    "noImplicitAny": false,
+    "module": "CommonJS",
+    "target": "ES2019",
+    "jsx": "react-jsx",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "Node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true
+  }
+}

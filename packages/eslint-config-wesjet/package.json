@@ -1,0 +1,37 @@
+{
+  "name": "eslint-config-wesjet",
+  "version": "0.0.14",
+  "license": "MIT",
+  "main": "./src/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "Wesjet Eslint Configuration Parser",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wesbitty/wesjet.git"
+  },
+  "keywords": [
+    "eslint",
+    "eslint plugin",
+    "parser"
+  ],
+  "author": "Wesbitty Inc",
+  "bugs": {
+    "url": "https://github.com/wesbitty/wesjet/issues"
+  },
+  "homepage": "https://github.com/wesbitty/wesjet#readme",
+  "devDependencies": {
+    "@types/prettier": "^2.7.2",
+    "@typescript-eslint/eslint-plugin": "^5.51.0",
+    "@typescript-eslint/parser": "^5.51.0",
+    "eslint": "^8.34.0",
+    "eslint-config-next": "latest",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-config-turbo": "latest",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "prettier": "^2.8.4"
+  }
+}

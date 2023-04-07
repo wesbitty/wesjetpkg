@@ -9,10 +9,12 @@
   },
   "scripts": {
     "postinstall": "ts-patch install && ts-patch --persist && npm run postinstall -w wesjet",
+    "prepare": "husky install",
     "prepack": "npm run prepack -w next-config-wesjet",
     "lint": "npm run format:prettier && npm run format:eslint",
     "build": "tsc -b tsconfig.build.json",
-    "rm": "bash -c 'rm -rf packages/@wesjet/*/dist packages/*/dist packages/*/.wesjet'",
+    "pre-commit": "npx lint-staged",
+    "clean": "bash -c 'rm -rf packages/@wesjet/*/dist packages/*/dist packages/*/.wesjet'",
     "check:prettier": "prettier -c packages",
     "check:eslint": "eslint packages --ext .ts --max-warnings=0",
     "format:prettier": "prettier -w packages",
@@ -41,6 +43,9 @@
     "eslint-plugin-import": "^2.27.4",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-simple-import-sort": "^8.0.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.0",
+    "pre-commit": "^1.2.2",
     "prettier": "^2.8.3",
     "ts-patch": "^2.1.0",
     "typescript": "^4.9.4"
@@ -48,6 +53,7 @@
   "workspaces": [
     "packages/@wesjet/*",
     "packages/*",
+    "examples/*",
     "tests"
   ],
   "resolutions": {

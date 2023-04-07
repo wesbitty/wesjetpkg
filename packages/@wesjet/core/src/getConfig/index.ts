@@ -101,8 +101,13 @@ const resolveConfigPath = ({
       return path.join(cwd, configPath)
     }
 
-    const defaultFilePaths = [path.join(cwd, 'wesjet.config.ts'), path.join(cwd, 'wesjet.config.js')]
-    const foundDefaultFiles = yield* $(pipe(defaultFilePaths, T.forEachPar(fs.fileOrDirExists), T.map(Chunk.toArray)))
+    const defaultFilePaths = [
+      path.join(cwd, 'wesjet.config.ts'),
+      path.join(cwd, 'wesjet.config.js'),
+    ]
+    const foundDefaultFiles = yield* $(
+      pipe(defaultFilePaths, T.forEachPar(fs.fileOrDirExists), T.map(Chunk.toArray)),
+    )
     const foundDefaultFile = defaultFilePaths[foundDefaultFiles.findIndex((_) => _)]
     if (foundDefaultFile) {
       return foundDefaultFile
@@ -125,7 +130,11 @@ const getConfigFromResult = ({
   result: esbuild.BuildResult
   /** configPath only needed for error message */
   configPath: string
-}): T.Effect<OT.HasTracer & HasCwd, never, E.Either<ConfigReadError | ConfigNoDefaultExportError, Config>> =>
+}): T.Effect<
+  OT.HasTracer & HasCwd,
+  never,
+  E.Either<ConfigReadError | ConfigNoDefaultExportError, Config>
+> =>
   pipe(
     T.gen(function* ($) {
       const unknownWarnings = result.warnings.filter(
@@ -172,7 +181,8 @@ const getConfigFromResult = ({
       // NOTES:
       // 1) `?x=` suffix needed in case of re-loading when watching the config file for changes
       // 2) `file://` prefix is needed for Windows to work properly
-      const importFresh = async (modulePath: string) => import(`file://${modulePath}?x=${new Date()}`)
+      const importFresh = async (modulePath: string) =>
+        import(`file://${modulePath}?x=${new Date()}`)
 
       const exports = yield* $(
         pipe(
@@ -221,7 +231,7 @@ const getConfigFromResult = ({
 const wesjetGenPlugin = (): esbuild.Plugin => ({
   name: 'wesjet-gen',
   setup(build) {
-    build.onResolve({ filter: /wesjet\/jetpack/ }, (args) => ({
+    build.onResolve({ filter: /wesjet\/static/ }, (args) => ({
       path: args.path,
       namespace: 'wesjet-gen',
     }))

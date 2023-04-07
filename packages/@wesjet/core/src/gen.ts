@@ -12,7 +12,9 @@ export type GetDocumentTypeMapGen<TDocument extends Document> = WesjetGen extend
 export type GetDocumentTypeGen<
   Name extends string,
   TDocument extends Document,
-> = Name extends keyof GetDocumentTypeMapGen<TDocument> ? GetDocumentTypeMapGen<TDocument>[Name] : Document
+> = Name extends keyof GetDocumentTypeMapGen<TDocument>
+  ? GetDocumentTypeMapGen<TDocument>[Name]
+  : Document
 
 export type GetDocumentTypesGen = WesjetGen extends { documentTypes: infer T } ? T : Document
 
@@ -22,7 +24,9 @@ export type GetDocumentTypeNamesGen = WesjetGen extends {
   ? T
   : string
 
-export type GetNestedTypeMapGen = WesjetGen extends { objectTypeMap: infer T } ? T : Record<string, NestedDocument>
+export type GetNestedTypeMapGen = WesjetGen extends { objectTypeMap: infer T }
+  ? T
+  : Record<string, NestedDocument>
 export type GetNestedTypeGen<Name extends string> = Name extends keyof GetNestedTypeMapGen
   ? GetNestedTypeMapGen[Name]
   : NestedDocument
@@ -41,7 +45,7 @@ export type GetFieldNamesForDefinitionGen<DefName extends string> =
     : keyof GetNestedTypeGen<DefName>
 
 declare global {
-  // NOTE will be extended via `$YOUR_PROJECT/.wesjet/jetpack/types.d.ts`
+  // NOTE will be extended via `$YOUR_PROJECT/.wesjet/static/types.d.ts`
   interface WesjetGen {
     // documentTypes: DocumentTypes
     // documentTypeMap: DocumentTypeMap

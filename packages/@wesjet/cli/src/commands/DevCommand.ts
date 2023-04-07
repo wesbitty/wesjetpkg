@@ -23,7 +23,9 @@ export class DevCommand extends BaseCommand {
     pipe(
       S.fromEffect(this.clearCacheIfNeeded()),
       S.chain(() => core.getConfigWatch({ configPath: this.configPath })),
-      S.tapSkipFirstRight(() => T.log(`wesjet config change detected. Updating type definitions and data...`)),
+      S.tapSkipFirstRight(() =>
+        T.log(`wesjet: change's detected, Updating type definitions and data...`),
+      ),
       S.tapRight((config) =>
         config.source.options.disableImportAliasWarning ? T.unit : T.fork(core.validateTsconfig),
       ),
