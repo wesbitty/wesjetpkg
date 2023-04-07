@@ -1,6 +1,6 @@
 import type { PackageManager } from '../helpers/get-pkg-manager'
 
-export type TemplateType = 'default' | 'app' | 'default-tw' | 'app-tw'
+export type TemplateType = 'default' | 'default-tw'
 export type TemplateMode = 'javascript' | 'typescript'
 
 export interface GetTemplateFileArgs {
@@ -19,6 +19,5 @@ export interface InstallTemplateArgs {
   mode: TemplateMode
   eslint: boolean
   tailwind: boolean
-  srcDir: boolean
   importAlias: string
 }
