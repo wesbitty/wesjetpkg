@@ -34,7 +34,6 @@ export const installTemplate = async ({
   mode,
   tailwind,
   eslint,
-  srcDir,
   importAlias,
 }: InstallTemplateArgs) => {
   console.log(chalk.bold(`Using ${packageManager}.`))
