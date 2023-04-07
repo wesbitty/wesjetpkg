@@ -1,39 +1,19 @@
 #!/usr/bin/env node
 /* eslint-disable import/no-extraneous-dependencies */
 import chalk from 'chalk'
-import ciInfo from 'ci-info'
 import Commander from 'commander'
-import Conf from 'conf'
-import fs from 'fs'
 import path from 'path'
 import prompts from 'prompts'
 import checkForUpdate from 'update-check'
-
-import pkg from '../package.json'
+import { createApp, DownloadError } from './create-app'
 import { getPkgManager } from './helpers/get-pkg-manager'
-import { isFolderEmpty } from './helpers/is-folder-empty'
 import { validateNpmName } from './helpers/validate-pkg'
-import { createApp, DownloadError } from './utils/create'
+import packageJson from '../package.json'
 
 let projectPath = ''
 
-const handleSigTerm = () => process.exit(0)
-
-process.on('SIGINT', handleSigTerm)
-process.on('SIGTERM', handleSigTerm)
-
-const onPromptState = (state: any) => {
-  if (state.aborted) {
-    // If we don't re-enable the terminal cursor before exiting
-    // the program, the cursor will remain hidden
-    process.stdout.write('\x1B[?25h')
-    process.stdout.write('\n')
-    process.exit(1)
-  }
-}
-
-const program = new Commander.Command(pkg.name)
-  .version(pkg.version)
+const program = new Commander.Command(packageJson.name)
+  .version(packageJson.version)
   .arguments('<project-directory>')
   .usage(`${chalk.green('<project-directory>')} [options]`)
   .action((name) => {
@@ -42,89 +22,53 @@ const program = new Commander.Command(pkg.name)
   .option(
     '--ts, --typescript',
     `
-  Initialize as a TypeScript project. (default)
-`,
-  )
-  .option(
-    '--js, --javascript',
-    `
-  Initialize as a JavaScript project.
-`,
-  )
-  .option(
-    '--tailwind',
-    `
-  Initialize with Tailwind CSS config. (default)
-`,
-  )
-  .option(
-    '--eslint',
-    `
-  Initialize with eslint config.
-`,
-  )
-  .option(
-    '--import-alias <alias-to-configure>',
-    `
-  Specify import alias to use (default "~/*").
+
+  Initialize as a TypeScript project.
 `,
   )
   .option(
     '--use-npm',
     `
+
   Explicitly tell the CLI to bootstrap the app using npm
 `,
   )
   .option(
     '--use-pnpm',
     `
+
   Explicitly tell the CLI to bootstrap the app using pnpm
 `,
   )
   .option(
     '-e, --example [name]|[github-url]',
     `
+
   An example to bootstrap the app with. You can use an example name
-  from the official Wesjet repo or a GitHub URL. The URL can use
+  from the official Next.js repo or a GitHub URL. The URL can use
   any branch and/or subdirectory
 `,
   )
   .option(
     '--example-path <path-to-example>',
     `
+
   In a rare case, your GitHub URL might contain a branch name with
   a slash (e.g. bug/fix-1) and the path to the example (e.g. foo/bar).
   In this case, you must specify the path to the example separately:
   --example-path foo/bar
 `,
   )
-  .option(
-    '--reset-preferences',
-    `
-  Explicitly tell the CLI to reset any stored preferences
-`,
-  )
   .allowUnknownOption()
   .parse(process.argv)
 
-const packageManager = !!program.useNpm ? 'npm' : !!program.usePnpm ? 'pnpm' : getPkgManager()
-
 async function run(): Promise<void> {
-  const conf = new Conf({ projectName: 'create-wesjet-app' })
-
-  if (program.resetPreferences) {
-    conf.clear()
-    console.log(`Preferences reset successfully`)
-    return
-  }
-
   if (typeof projectPath === 'string') {
     projectPath = projectPath.trim()
   }
 
   if (!projectPath) {
     const res = await prompts({
-      onState: onPromptState,
       type: 'text',
       name: 'path',
       message: 'What is your project named?',
@@ -144,13 +88,14 @@ async function run(): Promise<void> {
   }
 
   if (!projectPath) {
-    console.log(
-      '\nPlease specify the project directory:\n' +
-        `  ${chalk.cyan(program.name())} ${chalk.green('<project-directory>')}\n` +
-        'For example:\n' +
-        `  ${chalk.cyan(program.name())} ${chalk.green('my-wesjet-app')}\n\n` +
-        `Run ${chalk.cyan(`${program.name()} --help`)} to see all options.`,
-    )
+    console.log()
+    console.log('Please specify the project directory:')
+    console.log(`  ${chalk.cyan(program.name())} ${chalk.green('<project-directory>')}`)
+    console.log()
+    console.log('For example:')
+    console.log(`  ${chalk.cyan(program.name())} ${chalk.green('my-next-app')}`)
+    console.log()
+    console.log(`Run ${chalk.cyan(`${program.name()} --help`)} to see all options.`)
     process.exit(1)
   }
 
@@ -174,127 +119,9 @@ async function run(): Promise<void> {
     process.exit(1)
   }
 
-  /**
-   * Verify the project dir is empty or doesn't exist
-   */
-  const root = path.resolve(resolvedProjectPath)
-  const appName = path.basename(root)
-  const folderExists = fs.existsSync(root)
-
-  if (folderExists && !isFolderEmpty(root, appName)) {
-    process.exit(1)
-  }
+  const packageManager = !!program.useNpm ? 'npm' : !!program.usePnpm ? 'pnpm' : getPkgManager()
 
   const example = typeof program.example === 'string' && program.example.trim()
-  const preferences = (conf.get('preferences') || {}) as Record<string, boolean | string>
-  /**
-   * If the user does not provide the necessary flags, prompt them for whether
-   * to use TS or JS.
-   */
-  if (!example) {
-    const defaults: typeof preferences = {
-      typescript: true,
-      eslint: true,
-      tailwind: true,
-      importAlias: '~/*',
-    }
-    const getPrefOrDefault = (field: string) => preferences[field] ?? defaults[field]
-
-    if (!program.typescript && !program.javascript) {
-      if (ciInfo.isCI) {
-        // default to JavaScript in CI as we can't prompt to
-        // prevent breaking setup flows
-        program.typescript = false
-        program.javascript = true
-      } else {
-        const styledTypeScript = chalk.hex('#007acc')('TypeScript')
-        const { typescript } = await prompts(
-          {
-            type: 'toggle',
-            name: 'typescript',
-            message: `Would you like to use ${styledTypeScript} with this project?`,
-            initial: getPrefOrDefault('typescript'),
-            active: 'Yes',
-            inactive: 'No',
-          },
-          {
-            /**
-             * User inputs Ctrl+C or Ctrl+D to exit the prompt. We should close the
-             * process and not write to the file system.
-             */
-            onCancel: () => {
-              console.error('Exiting.')
-              process.exit(1)
-            },
-          },
-        )
-        /**
-         * Depending on the prompt response, set the appropriate program flags.
-         */
-        program.typescript = Boolean(typescript)
-        program.javascript = !Boolean(typescript)
-        preferences.typescript = Boolean(typescript)
-      }
-    }
-
-    if (!process.argv.includes('--eslint') && !process.argv.includes('--no-eslint')) {
-      if (ciInfo.isCI) {
-        program.eslint = true
-      } else {
-        const styledEslint = chalk.hex('#007acc')('ESLint')
-        const { eslint } = await prompts({
-          onState: onPromptState,
-          type: 'toggle',
-          name: 'eslint',
-          message: `Would you like to use ${styledEslint} with this project?`,
-          initial: getPrefOrDefault('eslint'),
-          active: 'Yes',
-          inactive: 'No',
-        })
-        program.eslint = Boolean(eslint)
-        preferences.eslint = Boolean(eslint)
-      }
-    }
-
-    if (!process.argv.includes('--tailwind') && !process.argv.includes('--no-tailwind')) {
-      if (ciInfo.isCI) {
-        program.tailwind = false
-      } else {
-        const tw = chalk.hex('#007acc')('Tailwind CSS')
-        const { tailwind } = await prompts({
-          onState: onPromptState,
-          type: 'toggle',
-          name: 'tailwind',
-          message: `Would you like to use ${tw} with this project?`,
-          initial: getPrefOrDefault('tailwind'),
-          active: 'Yes',
-          inactive: 'No',
-        })
-        program.tailwind = Boolean(tailwind)
-        preferences.tailwind = Boolean(tailwind)
-      }
-    }
-
-    if (typeof program.importAlias !== 'string' || !program.importAlias.length) {
-      if (ciInfo.isCI) {
-        program.importAlias = '~/*'
-      } else {
-        const styledImportAlias = chalk.hex('#007acc')('import alias')
-        const { importAlias } = await prompts({
-          onState: onPromptState,
-          type: 'text',
-          name: 'importAlias',
-          message: `What ${styledImportAlias} would you like configured?`,
-          initial: getPrefOrDefault('importAlias'),
-          validate: (value) =>
-            /.+\/\*/.test(value) ? true : 'Import alias must follow the pattern <prefix>/*',
-        })
-        program.importAlias = importAlias
-        preferences.importAlias = importAlias
-      }
-    }
-  }
-
   try {
     await createApp({
       appPath: resolvedProjectPath,
@@ -302,11 +129,6 @@ async function run(): Promise<void> {
       example: example && example !== 'default' ? example : undefined,
       examplePath: program.examplePath,
       typescript: program.typescript,
-      tailwind: program.tailwind,
-      eslint: program.eslint,
-      experimentalApp: program.experimentalApp,
-      srcDir: program.srcDir,
-      importAlias: program.importAlias,
     })
   } catch (reason) {
     if (!(reason instanceof DownloadError)) {
@@ -314,7 +136,6 @@ async function run(): Promise<void> {
     }
 
     const res = await prompts({
-      onState: onPromptState,
       type: 'confirm',
       name: 'builtin',
       message:
@@ -330,36 +151,29 @@ async function run(): Promise<void> {
       appPath: resolvedProjectPath,
       packageManager,
       typescript: program.typescript,
-      eslint: program.eslint,
-      tailwind: program.tailwind,
-      experimentalApp: program.experimentalApp,
-      srcDir: program.srcDir,
-      importAlias: program.importAlias,
     })
   }
-  conf.set('preferences', preferences)
 }
 
-const update = checkForUpdate(pkg).catch(() => null)
+const update = checkForUpdate(packageJson).catch(() => null)
 
 async function notifyUpdate(): Promise<void> {
   try {
     const res = await update
     if (res?.latest) {
-      const updateMessage =
-        packageManager === 'yarn'
-          ? 'yarn global add create-wesjet-app'
-          : packageManager === 'pnpm'
-          ? 'pnpm add -g create-wesjet-app'
-          : 'npm i -g create-wesjet-app'
+      const pkgManager = getPkgManager()
 
+      console.log()
+      console.log(chalk.yellow.bold('A new version of `create-wesjet-app` is available!'))
       console.log(
-        chalk.yellow.bold('A new version of `create-wesjet-app` is available!') +
-          '\n' +
-          'You can update by running: ' +
-          chalk.cyan(updateMessage) +
-          '\n',
+        'You can update by running: ' +
+          chalk.cyan(
+            pkgManager === 'yarn'
+              ? 'yarn global add create-wesjet-app'
+              : `${pkgManager} install --global create-wesjet-app`,
+          ),
       )
+      console.log()
     }
     process.exit()
   } catch {
@@ -375,7 +189,8 @@ run()
     if (reason.command) {
       console.log(`  ${chalk.cyan(reason.command)} has failed.`)
     } else {
-      console.log(chalk.red('Unexpected error. Please report it as a bug:') + '\n', reason)
+      console.log(chalk.red('Unexpected error. Please report it as a bug:'))
+      console.log(reason)
     }
     console.log()
 
