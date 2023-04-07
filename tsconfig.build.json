@@ -3,12 +3,8 @@
   "compilerOptions": {},
   "include": [],
   "references": [
-    { "path": "./packages/@wesjet/cli" },
     { "path": "./packages/@wesjet/core" },
-    { "path": "./packages/@wesjet/contentful" },
     { "path": "./packages/@wesjet/maker" },
-    { "path": "./packages/@wesjet/sanity-store" },
-    { "path": "./packages/@wesjet/stackbit" },
     { "path": "./packages/@wesjet/utils" },
     { "path": "./packages/wesjet" },
     { "path": "./packages/stackbit-config-wesjet" },

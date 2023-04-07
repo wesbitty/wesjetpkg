@@ -227,7 +227,11 @@ const sanityFieldToCoreFieldDef =
       case 'boolean':
       case 'number':
       case 'text': {
-        type FieldDef = core.MarkdownFieldDef | core.BooleanFieldDef | core.NumberFieldDef | core.StringFieldDef
+        type FieldDef =
+          | core.MarkdownFieldDef
+          | core.BooleanFieldDef
+          | core.NumberFieldDef
+          | core.StringFieldDef
         const type = pattern
           .match(field.type)
           .when(
@@ -293,7 +297,9 @@ const sanityArrayOfToCoreFieldListDefItem =
 const sanitizeString = (_: string): string => _.replace(/\./g, '_')
 
 /** Sanitizes the schema definition (e.g. replace "." with "_" in type names) */
-const sanitizeDef = <TypeDef extends core.NestedTypeDef | core.DocumentTypeDef>(def: TypeDef): TypeDef => {
+const sanitizeDef = <TypeDef extends core.NestedTypeDef | core.DocumentTypeDef>(
+  def: TypeDef,
+): TypeDef => {
   def.name = sanitizeString(def.name)
   def.fieldDefs.forEach((fieldDef) => {
     fieldDef.name = sanitizeString(fieldDef.name)

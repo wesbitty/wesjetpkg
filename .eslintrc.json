@@ -12,7 +12,7 @@
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint", "simple-import-sort", "import"],
   "rules": {
-    "simple-import-sort/imports": "error",
+    "simple-import-sort/imports": "off",
     "simple-import-sort/exports": "error",
     "import/no-duplicates": "warn",
     // "func-style": ["warn", "expression"],

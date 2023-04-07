@@ -104,7 +104,7 @@ export async function downloadAndExtractExample(root: string, name: string) {
     throw new Error('This is an internal example for testing the CLI.')
   }
 
-  const tempFile = await downloadTar('https://codeload.github.com/wesbitty/wesjet/tar.gz/canary')
+  const tempFile = await downloadTar('https://codeload.github.com/wesbitty/wesjet/tar.gz/automated')
 
   await tar.x({
     file: tempFile,

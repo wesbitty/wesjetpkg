@@ -34,8 +34,10 @@ export const provideSchema = ({
 
       // ;(await import('fs')).writeFileSync('.tmp.contentTypes.json', JSON.stringify(contentTypes, null, 2))
 
-      const [documentContentTypes, objectContentTypes] = partition(contentTypes, (_): _ is Contentful.ContentType =>
-        isDocument({ schemaOverrides, contentTypeId: _.sys.id }),
+      const [documentContentTypes, objectContentTypes] = partition(
+        contentTypes,
+        (_): _ is Contentful.ContentType =>
+          isDocument({ schemaOverrides, contentTypeId: _.sys.id }),
       )
 
       const documentTypeDefs = documentContentTypes.map((contentType) =>
@@ -45,7 +47,9 @@ export const provideSchema = ({
         (acc, documentDef) => ({ ...acc, [documentDef.name]: documentDef }),
         {},
       )
-      const nestedTypeDefs = objectContentTypes.map((contentType) => toNestedTypeDef({ contentType, schemaOverrides }))
+      const nestedTypeDefs = objectContentTypes.map((contentType) =>
+        toNestedTypeDef({ contentType, schemaOverrides }),
+      )
       const nestedTypeDefMap = nestedTypeDefs.reduce(
         (acc, documentDef) => ({ ...acc, [documentDef.name]: documentDef }),
         {},
@@ -213,7 +217,11 @@ const toFieldDef = ({
           }
         }
       } else {
-        if (field.items.validations && field.items.validations.length > 0 && field.items.validations[0]!.in) {
+        if (
+          field.items.validations &&
+          field.items.validations.length > 0 &&
+          field.items.validations[0]!.in
+        ) {
           return {
             ...fieldBase,
             type: 'enum',

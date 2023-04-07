@@ -65,7 +65,10 @@ export const guards = {
 // }
 
 type AllPropertyNames<X> = keyof UnionToIntersection<X>
-function hasField<T extends {}, P extends AllPropertyNames<T>>(_: T, property: P): _ is T & Record<P, any> {
+function hasField<T extends {}, P extends AllPropertyNames<T>>(
+  _: T,
+  property: P,
+): _ is T & Record<P, any> {
   return _.hasOwnProperty(property)
 }
 
@@ -86,4 +89,6 @@ function hasField<T extends {}, P extends AllPropertyNames<T>>(_: T, property: P
 //     : UnionToIntersection<T>[K] | undefined
 // }
 
-type UnionToIntersection<T> = (T extends any ? (x: T) => any : never) extends (x: infer R) => any ? R : never
+type UnionToIntersection<T> = (T extends any ? (x: T) => any : never) extends (x: infer R) => any
+  ? R
+  : never

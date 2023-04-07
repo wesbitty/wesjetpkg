@@ -7,7 +7,10 @@ import type { PartialDeep } from '@wesjet/utils'
 import { mergeDeep, not, partition, pick } from '@wesjet/utils'
 
 import type { SharedCtx } from './mapping.js'
-import { stackbitDocumentLikeModelToDocumentType, stackbitObjectModelToDocumentType } from './mapping.js'
+import {
+  stackbitDocumentLikeModelToDocumentType,
+  stackbitObjectModelToDocumentType,
+} from './mapping.js'
 
 /** NOTE Overrides are currently not validated - use carefully */
 export type WesjetOverrideArgs<TDocumentTypeNames extends string> = {
@@ -42,7 +45,9 @@ export type WesjetOverrideNestedType = {
  * })
  * ```
  */
-export const loadStackbitConfigAsDocumentTypes = <TDocumentTypeNames extends core.GetDocumentTypeNamesGen>(
+export const loadStackbitConfigAsDocumentTypes = <
+  TDocumentTypeNames extends core.GetDocumentTypeNamesGen,
+>(
   options: { dirPath: string } = { dirPath: '' },
   overrideArgs: WesjetOverrideArgs<TDocumentTypeNames> = { documentTypes: {}, nestedTypes: {} },
 ): Promise<SourceFiles.DocumentType[]> =>
@@ -68,7 +73,9 @@ export const loadStackbitConfigAsDocumentTypes = <TDocumentTypeNames extends cor
  * export default makeSource({ contentDirPath: '[blog]', documentTypes })
  * ```
  */
-export const stackbitConfigToDocumentTypes = <TDocumentTypeNames extends core.GetDocumentTypeNamesGen>(
+export const stackbitConfigToDocumentTypes = <
+  TDocumentTypeNames extends core.GetDocumentTypeNamesGen,
+>(
   stackbitConfig: Stackbit.Config,
   overrideArgs: WesjetOverrideArgs<TDocumentTypeNames> = { documentTypes: {}, nestedTypes: {} },
 ): SourceFiles.DocumentType[] => {
@@ -87,7 +94,9 @@ export const stackbitConfigToDocumentTypes = <TDocumentTypeNames extends core.Ge
     const nestedType = stackbitObjectModelToDocumentType(ctx)(model)
     ctx.nestedTypeMap[model.name] = nestedType
 
-    const nestedOverride = (overrideArgs.nestedTypes as any)?.[model.name] as WesjetOverrideNestedType | undefined
+    const nestedOverride = (overrideArgs.nestedTypes as any)?.[model.name] as
+      | WesjetOverrideNestedType
+      | undefined
     const fields = nestedType.def().fields
     if (nestedOverride?.fields && fields) {
       for (const [fieldName, { type }] of Object.entries(nestedOverride.fields)) {
@@ -111,7 +120,10 @@ export const stackbitConfigToDocumentTypes = <TDocumentTypeNames extends core.Ge
     const documentOverride = (overrideArgs.documentTypes as any)?.[documentTypeName] as
       | WesjetOverrideDocumentType<string>
       | undefined
-    if (documentOverride?.filePathPattern !== undefined || documentOverride?.computedFields !== undefined) {
+    if (
+      documentOverride?.filePathPattern !== undefined ||
+      documentOverride?.computedFields !== undefined
+    ) {
       patchDocumentType(documentType, pick(documentOverride, ['filePathPattern', 'computedFields']))
     }
 
@@ -142,7 +154,10 @@ const patchDocumentType = (
   documentType.def = defineDocumentType(() => mergeDeep({ ...previousDef, ...patch })).def
 }
 
-const patchNestedType = (nestedType: SourceFiles.NestedType, patch: PartialDeep<SourceFiles.NestedTypeDef>): void => {
+const patchNestedType = (
+  nestedType: SourceFiles.NestedType,
+  patch: PartialDeep<SourceFiles.NestedTypeDef>,
+): void => {
   const previousDef = nestedType.def()
   nestedType.def = defineNestedType(() => mergeDeep({ ...previousDef, ...patch })).def
 }

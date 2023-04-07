@@ -1,5 +1,21 @@
 # @wesjet/core
 
+## 0.0.19
+
+### Patch Changes
+
+- Wesjet
+- Updated dependencies
+  - @wesjet/utils@0.0.19
+
+## 0.0.18
+
+### Patch Changes
+
+- Automated
+- Updated dependencies
+  - @wesjet/utils@0.0.18
+
 ## 0.0.17
 
 ### Patch Changes

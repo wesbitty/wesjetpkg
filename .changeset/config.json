@@ -7,5 +7,5 @@
   "access": "public",
   "baseBranch": "changelog/v17",
   "updateInternalDependencies": "patch",
-  "ignore": ["blog-starter", "tests"]
+  "ignore": ["tests"]
 }

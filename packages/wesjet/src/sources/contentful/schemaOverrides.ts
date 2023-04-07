@@ -56,9 +56,10 @@ export const normalizeSchemaOverrides = ({
   const contentfulContentTypeIds = contentTypes.map((_) => _.sys.id)
 
   // check whether type names were provided that don't exist in Contentful
-  const unknownContentTypeIds = [...overrideDocumentContentTypeIds, ...overrideNestedContentTypeIds].filter(
-    (typeName) => !contentfulContentTypeIds.includes(typeName),
-  )
+  const unknownContentTypeIds = [
+    ...overrideDocumentContentTypeIds,
+    ...overrideNestedContentTypeIds,
+  ].filter((typeName) => !contentfulContentTypeIds.includes(typeName))
   if (unknownContentTypeIds.length > 0) {
     throw new Error(`\
 Unknown Contentful content type id(s) provided: ${unknownContentTypeIds.join(', ')}.
@@ -68,7 +69,10 @@ ${contentfulContentTypeIds.map((_) => `  - ${_}`).join('\n')}
   }
 
   if (schemaOverrides.documentTypes && schemaOverrides.nestedTypes) {
-    const providedContentTypeIds = [...overrideDocumentContentTypeIds, ...overrideNestedContentTypeIds]
+    const providedContentTypeIds = [
+      ...overrideDocumentContentTypeIds,
+      ...overrideNestedContentTypeIds,
+    ]
 
     // in case both documentTypes and nestedTypes were provided, make sure no Contentful content type was forgotten
     const forgottenContentTypeIds = contentfulContentTypeIds.filter(
@@ -132,10 +136,14 @@ const normalizeInputTypeValues = (types: Input.TypeOverrideValues): Normalized.T
   return normalizeInputTypeOverrideMap(types)
 }
 
-const normalizeInputTypeOverrideMap = (mapping: Input.TypeOverrideMap): Normalized.TypeOverrideMap =>
+const normalizeInputTypeOverrideMap = (
+  mapping: Input.TypeOverrideMap,
+): Normalized.TypeOverrideMap =>
   mapObjectValues(mapping, (_key, item) => normalizeInputTypeOverrideItem(item))
 
-const normalizeInputTypeOverrideItem = (item: Input.TypeOverrideItem | string): Normalized.TypeOverrideItem => {
+const normalizeInputTypeOverrideItem = (
+  item: Input.TypeOverrideItem | string,
+): Normalized.TypeOverrideItem => {
   if (typeof item === 'string') {
     return { isSingleton: false, fields: {}, defName: item }
   }
@@ -146,7 +154,9 @@ const normalizeInputTypeOverrideItem = (item: Input.TypeOverrideItem | string): 
   return { isSingleton, fields, defName: item.defName }
 }
 
-const normalizeInputFieldOverrideMap = (map: Input.FieldOverrideMap): Normalized.FieldOverrideMap => {
+const normalizeInputFieldOverrideMap = (
+  map: Input.FieldOverrideMap,
+): Normalized.FieldOverrideMap => {
   return mapObjectValues(
     map,
     (fieldName, item) =>

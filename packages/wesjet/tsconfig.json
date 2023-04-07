@@ -9,12 +9,6 @@
   "include": ["./src"],
   "references": [
     {
-      "path": "../@wesjet/cli"
-    },
-    {
-      "path": "../@wesjet/client"
-    },
-    {
       "path": "../@wesjet/maker"
     },
     {

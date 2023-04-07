@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-wesjet",
-  "version": "0.0.14",
+  "version": "0.0.19",
   "license": "MIT",
   "main": "./src/index.js",
   "publishConfig": {

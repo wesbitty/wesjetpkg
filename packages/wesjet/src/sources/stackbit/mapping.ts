@@ -13,7 +13,9 @@ export type SharedCtx = {
 
 export const stackbitDocumentLikeModelToDocumentType =
   (ctx: SharedCtx) =>
-  (stackbitModel: Stackbit.PageModel | Stackbit.DataModel | Stackbit.ConfigModel): SourceFiles.DocumentType => {
+  (
+    stackbitModel: Stackbit.PageModel | Stackbit.DataModel | Stackbit.ConfigModel,
+  ): SourceFiles.DocumentType => {
     return SourceFiles.defineDocumentType(() => ({
       name: stackbitModel.name,
       description: stackbitModel.description,
@@ -179,7 +181,9 @@ const stackbitListItemToListFieldDef =
       case 'reference':
         return firstArrayItemIfOne(
           stackbitListItem.models.map((modelName) =>
-            identity<SourceFiles.ListFieldDefItem.ItemDocumentReference>(ctx.documentTypeMap[modelName]!),
+            identity<SourceFiles.ListFieldDefItem.ItemDocumentReference>(
+              ctx.documentTypeMap[modelName]!,
+            ),
           ),
         )
       case 'model':
@@ -228,11 +232,14 @@ const stackbitListItemToListFieldDef =
     }
   }
 
-const mapStackbitEnumOption = (option: Stackbit.FieldEnumOptionValue | Stackbit.FieldEnumOptionObject): string => {
+const mapStackbitEnumOption = (
+  option: Stackbit.FieldEnumOptionValue | Stackbit.FieldEnumOptionObject,
+): string => {
   if (typeof option === 'string' || typeof option === 'number') {
     return option.toString()
   }
   return option.value.toString()
 }
 
-const firstArrayItemIfOne = <T>(array: readonly T[]): T | readonly T[] => (array.length === 1 ? array[0]! : array)
+const firstArrayItemIfOne = <T>(array: readonly T[]): T | readonly T[] =>
+  array.length === 1 ? array[0]! : array

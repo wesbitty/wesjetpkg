@@ -1,6 +1,6 @@
 {
   "name": "@wesjet/core",
-  "version": "0.0.17-automated",
+  "version": "0.0.19",
   "type": "module",
   "exports": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -24,7 +24,7 @@
     }
   },
   "dependencies": {
-    "@wesjet/utils": "^0.0.17-automated",
+    "@wesjet/utils": "^0.0.19",
     "camel-case": "^4.1.2",
     "comment-json": "^4.2.3",
     "esbuild": "0.17.x",

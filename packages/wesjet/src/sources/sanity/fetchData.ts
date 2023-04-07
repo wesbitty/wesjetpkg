@@ -18,7 +18,9 @@ export const fetchData = async ({
 
   const imageUrlBuilder = SantityImageUrlBuilder(client)
 
-  const { _updatedAt }: { _updatedAt: string } = await client.fetch('*[] | order(_updatedAt desc) [0]{_updatedAt}')
+  const { _updatedAt }: { _updatedAt: string } = await client.fetch(
+    '*[] | order(_updatedAt desc) [0]{_updatedAt}',
+  )
   // const lastUpdateInMs = new Date(_updatedAt).getTime()
 
   // if (force || previousCache === undefined || lastUpdateInMs > previousCache.lastUpdateInMs) {
@@ -58,7 +60,9 @@ const makeDocument = ({
   schemaDef: Core.SchemaDef
   imageUrlBuilder: ImageUrlBuilder
 }): Core.Document => {
-  const raw = Object.fromEntries(Object.entries(rawDocumentData).filter(([key]) => key.startsWith('_')))
+  const raw = Object.fromEntries(
+    Object.entries(rawDocumentData).filter(([key]) => key.startsWith('_')),
+  )
   const doc: Core.Document = {
     _typeName: documentTypeDef.name,
     _id: rawDocumentData._id,
@@ -91,7 +95,9 @@ const makeNestedDocument = ({
   schemaDef: Core.SchemaDef
   imageUrlBuilder: ImageUrlBuilder
 }): Core.NestedDocument => {
-  const raw = Object.fromEntries(Object.entries(rawObjectData).filter(([key]) => key.startsWith('_')))
+  const raw = Object.fromEntries(
+    Object.entries(rawObjectData).filter(([key]) => key.startsWith('_')),
+  )
   const obj: Core.NestedDocument = { _typeName: typeName, _raw: raw }
 
   fieldDefs.forEach((fieldDef) => {

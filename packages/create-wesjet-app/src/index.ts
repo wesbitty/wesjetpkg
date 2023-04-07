@@ -64,18 +64,6 @@ const program = new Commander.Command(pkg.name)
 `,
   )
   .option(
-    '--experimental-app',
-    `
-  Initialize as a \`app/\` directory project.
-`,
-  )
-  .option(
-    '--src-dir',
-    `
-  Initialize inside a \`src/\` directory.
-`,
-  )
-  .option(
     '--import-alias <alias-to-configure>',
     `
   Specify import alias to use (default "~/*").
@@ -97,7 +85,7 @@ const program = new Commander.Command(pkg.name)
     '-e, --example [name]|[github-url]',
     `
   An example to bootstrap the app with. You can use an example name
-  from the official Next.js repo or a GitHub URL. The URL can use
+  from the official Wesjet repo or a GitHub URL. The URL can use
   any branch and/or subdirectory
 `,
   )

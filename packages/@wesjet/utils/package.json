@@ -1,6 +1,6 @@
 {
   "name": "@wesjet/utils",
-  "version": "0.0.17-automated",
+  "version": "0.0.19",
   "type": "module",
   "exports": {
     "./package.json": {

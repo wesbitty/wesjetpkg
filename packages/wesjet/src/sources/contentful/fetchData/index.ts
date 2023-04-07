@@ -68,13 +68,16 @@ export const fetchAllDocuments = ({
       }: {
         entry: Contentful.Entry
         documentTypeDef: core.DocumentTypeDef
-      }) => schemaOverrides.documentTypes[entry.sys.contentType.sys.id]?.defName === documentTypeDef.name
+      }) =>
+        schemaOverrides.documentTypes[entry.sys.contentType.sys.id]?.defName ===
+        documentTypeDef.name
 
-      const documentEntriesWithDocumentTypeDef = Object.values(schemaDef.documentTypeDefMap).flatMap(
-        (documentTypeDef) =>
-          allEntries
-            .filter((entry) => isEntryADocument({ entry, documentTypeDef }))
-            .map((documentEntry) => ({ documentEntry, documentTypeDef })),
+      const documentEntriesWithDocumentTypeDef = Object.values(
+        schemaDef.documentTypeDefMap,
+      ).flatMap((documentTypeDef) =>
+        allEntries
+          .filter((entry) => isEntryADocument({ entry, documentTypeDef }))
+          .map((documentEntry) => ({ documentEntry, documentTypeDef })),
       )
 
       const concurrencyLimit = os.cpus().length
@@ -122,7 +125,9 @@ const getAllEntries = (
       const chunkSize = 500
 
       for (let offset = 0; offset <= total; offset += chunkSize) {
-        const result = yield* $(environmentGetEntries({ limit: chunkSize, skip: offset, environment }))
+        const result = yield* $(
+          environmentGetEntries({ limit: chunkSize, skip: offset, environment }),
+        )
 
         entries.push(...result.items)
       }
@@ -142,7 +147,9 @@ const getAllAssets = (
       const chunkSize = 500
 
       for (let offset = 0; offset <= total; offset += chunkSize) {
-        const result = yield* $(environmentGetAssets({ limit: chunkSize, skip: offset, environment }))
+        const result = yield* $(
+          environmentGetAssets({ limit: chunkSize, skip: offset, environment }),
+        )
 
         entries.push(...result.items)
       }

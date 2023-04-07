@@ -3,7 +3,7 @@ target/
 **/.wesjet/*
 
 package-lock.json
-
+examples/*
 .direnv
 **/.nyc_output/*
 !tap-snapshots/dist/*

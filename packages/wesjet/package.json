@@ -1,6 +1,6 @@
 {
   "name": "wesjet",
-  "version": "0.0.17-automated",
+  "version": "0.0.19",
   "license": "MIT",
   "author": "Wesbitty, Inc",
   "homepage": "https://github.com/wesbitty/wesjet",
@@ -31,7 +31,7 @@
       "import": "./dist/utils/node/index.js"
     },
     "./core": {
-      "import": "./dist/core/index.js"
+      "import": "./dist/core.js"
     }
   },
   "_typesVersions": "Not needed anymore once this issue is closed https://github.com/microsoft/TypeScript/issues/33079",
@@ -63,6 +63,7 @@
   "files": [
     "./bin/cli.cjs",
     "./dist/**/*.{js,ts,map}",
+    "index.d.ts",
     "README.md",
     "LICENSE",
     "./package.json"
@@ -71,14 +72,32 @@
     "postinstall": "node ./bin/cli.cjs postinstall",
     "_bundle-cli": "esbuild ./dist/cli/index.js --bundle --platform=node --format=esm --external:esbuild --external:@esbuild-plugins/node-resolve --outfile=dist/cli/bundle.js --main-fields=module,main --metafile=meta.json --banner:js=\"import { createRequire as topLevelCreateRequire } from 'module'; const require = topLevelCreateRequire(import.meta.url); const __dirname = '__SET_BY_ESBUILD__';\""
   },
+  "peerDependencies": {
+    "@stackbit/sdk": "^0.2.39"
+  },
+  "peerDependenciesMeta": {
+    "@stackbit/sdk": {
+      "optional": true
+    }
+  },
   "dependencies": {
-    "@wesjet/cli": "^0.0.17-automated",
-    "@wesjet/client": "^0.0.17-automated",
-    "@wesjet/core": "^0.0.17-automated",
-    "@wesjet/maker": "^0.0.17-automated",
-    "@wesjet/utils": "^0.0.17-automated"
+    "@sanity/client": "^2.10.5",
+    "@sanity/core": "^2.10.5",
+    "@sanity/image-url": "^0.140.22",
+    "@sanity/schema": "^2.10.0",
+    "@stackbit/sdk": "^0.2.39",
+    "@wesjet/core": "^0.0.19",
+    "@wesjet/maker": "^0.0.19",
+    "@wesjet/utils": "^0.0.19",
+    "clipanion": "^3.2.0-rc.14",
+    "contentful-management": "^7.22.4",
+    "rxjs": "^7.1.0",
+    "typanion": "^3.12.1"
   },
   "devDependencies": {
-    "typescript": "^4.9.4"
+    "@types/node": "^18.11.18",
+    "typescript": "^4.9.4",
+    "vite": "^3.1.0",
+    "vitest": "^0.23.1"
   }
 }
