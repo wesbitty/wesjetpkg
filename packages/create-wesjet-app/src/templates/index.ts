@@ -20,7 +20,7 @@ export const getTemplateFile = ({ template, mode, file }: GetTemplateFileArgs): 
   return path.join(__dirname, template, mode, file)
 }
 
-export const SRC_DIR_NAMES = ['app', 'pages', 'styles']
+export const SRC_DIR_NAMES = ['pages', 'styles']
 
 /**
  * Install a Next.js internal template to a given `root` directory.
@@ -73,7 +73,7 @@ export const installTemplate = async ({
   await fs.promises.writeFile(
     tsconfigFile,
     (await fs.promises.readFile(tsconfigFile, 'utf8'))
-      .replace(`"~/*": ["./*"]`, srcDir ? `"~/*": ["./src/*"]` : `"~/*": ["./*"]`)
+      .replace(`"~/*": ["./*"]`)
       .replace(`"~/*":`, `"${importAlias}":`),
   )
 
@@ -99,39 +99,6 @@ export const installTemplate = async ({
       }),
     )
   }
-
-  if (srcDir) {
-    await fs.promises.mkdir(path.join(root, 'src'), { recursive: true })
-    await Promise.all(
-      SRC_DIR_NAMES.map(async (file) => {
-        await fs.promises
-          .rename(path.join(root, file), path.join(root, 'src', file))
-          .catch((err) => {
-            if (err.code !== 'ENOENT') {
-              throw err
-            }
-          })
-      }),
-    )
-
-    const isAppTemplate = template.startsWith('app')
-
-    // Change the `Get started by editing pages/index` / `app/page` to include `src`
-    const indexPageFile = path.join(
-      'src',
-      isAppTemplate ? 'app' : 'pages',
-      `${isAppTemplate ? 'page' : 'index'}.${mode === 'typescript' ? 'tsx' : 'js'}`,
-    )
-
-    await fs.promises.writeFile(
-      indexPageFile,
-      (
-        await fs.promises.readFile(indexPageFile, 'utf8')
-      ).replace(
-        isAppTemplate ? 'app/page' : 'pages/index',
-        isAppTemplate ? 'src/app/page' : 'src/pages/index',
-      ),
-    )
 
     if (tailwind) {
       const tailwindConfigFile = path.join(root, 'tailwind.config.js')
