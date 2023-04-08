@@ -54,8 +54,10 @@ typings/
 # Optional npm cache directory
 .npm
 
-# Wesjet output
+# wesjet cache / build output
 .wesjet
+**/target/*
+**/dist/*
 
 # Optional eslint cache
 .eslintcache
@@ -76,7 +78,7 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
+.env.local
 .env.test
 
 # parcel-bundler cache (https://parceljs.org/)
@@ -84,10 +86,6 @@ typings/
 
 # Next.js build output
 .next
-
-# Nuxt.js build / generate output
-.nuxt
-dist
 
 # Gatsby files
 .cache/
