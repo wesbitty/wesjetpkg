@@ -1,15 +1,13 @@
 <p align="center">
-  <a href="https://nextjs.org">
+  <a href="https://wesbitty.org/product/wesjet">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="https://res.cloudinary.com/wesbitty/image/upload/v1681349717/brand/logo.png">
-      <img src="https://res.cloudinary.com/wesbitty/image/upload/v1681349717/brand/logo.png" height="128">
+      <img src="https://res.cloudinary.com/wesbitty/image/upload/v1681349717/brand/logo.png" height="120">
     </picture>
     <h1 align="center">Wesjet</h1>
   </a>
-</p>
-
-
 <p align="center">Transforms & Validates Content, build system optimized for JavaScript and TypeScript in application's pages</p>
+</h2>
 
 <br/>
 
