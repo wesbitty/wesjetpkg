@@ -2,10 +2,14 @@
   "$schema": "https://json.schemastore.org/swcrc",
   "jsc": {
     "parser": {
-      "syntax": "typescript"
+      "syntax": "typescript",
+    "decorators": true,
+    "dynamicImport": true
     }
   },
   "module": {
     "type": "commonjs"
-  }
+  },
+  "minify": true,
+  "sourceMaps": true
 }
