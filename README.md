@@ -1,8 +1,8 @@
 <p align="center">
   <a href="https://nextjs.org">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://assets.vercel.com/image/upload/v1662130559/nextjs/Icon_dark_background.png">
-      <img src="https://wesbitty.org/brand/logo.png" height="128">
+      <source media="(prefers-color-scheme: dark)" srcset="https://res.cloudinary.com/wesbitty/image/upload/v1681349717/brand/logo.png">
+      <img src="https://res.cloudinary.com/wesbitty/image/upload/v1681349717/brand/logo.png" height="128">
     </picture>
     <h1 align="center">Wesjet</h1>
   </a>
