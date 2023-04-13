@@ -1,11 +1,13 @@
 <p align="center">
-<a href="https://wesbitty.com/">
+  <a href="https://nextjs.org">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://avatars.githubusercontent.com/u/115786374?v=4">
-      <img src="https://avatars.githubusercontent.com/u/115786374?v=4" alt="Wesbitty" width="150" />
-    </picture> 
+      <source media="(prefers-color-scheme: dark)" srcset="https://assets.vercel.com/image/upload/v1662130559/nextjs/Icon_dark_background.png">
+      <img src="https://wesbitty.org/brand/logo.png" height="128">
+    </picture>
+    <h1 align="center">Wesjet</h1>
   </a>
 </p>
+
 
 <p align="center">Transforms & Validates Content, build system optimized for JavaScript and TypeScript in application's pages</p>
 
