@@ -19,7 +19,6 @@
 <a href="#backers"><img src="https://opencollective.com/wesbitty/backers/badge.svg?style=for-the-badge&logo=Wesbitty&logoColor=ffffff&color=66BF3C" alt="Backers on Open Collective" /></a>
 </p>
 
-
 ## Features
 
 - Incremental bundler
