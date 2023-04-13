@@ -1,7 +1,6 @@
 {
-  "extends": "../../wesjet.json",
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    // needed for Next.js imports
     "allowSyntheticDefaultImports": true,
     "module": "ES2020",
     "rootDir": "./src",
