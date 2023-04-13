@@ -7,7 +7,10 @@ import { OT, pipe, provideConsole, T } from '@wesjet/utils/effect'
 import { describe, expect, test } from 'vitest'
 
 import { provideDocumentContext } from '../fetchData/DocumentContext.js'
-import { getFlattenedPath, testOnly_getDataForFieldDef as getDataForFieldDef } from '../fetchData/mapping/index.js'
+import {
+  getFlattenedPath,
+  testOnly_getDataForFieldDef as getDataForFieldDef,
+} from '../fetchData/mapping/index.js'
 
 test('getFlattenedPath', () => {
   expect(getFlattenedPath('some/path/doc.md')).toBe('some/path/doc')
@@ -55,7 +58,10 @@ describe('getDataForFieldDef', () => {
           ...options,
         },
       }),
-      provideTestDocumentContext({ relativeFilePath: __unusedValue, documentTypeDefName: __unusedValue }),
+      provideTestDocumentContext({
+        relativeFilePath: __unusedValue,
+        documentTypeDefName: __unusedValue,
+      }),
       OT.withSpan('testValue'),
       runPromise,
     )
@@ -63,15 +69,24 @@ describe('getDataForFieldDef', () => {
     expect(transformedData).toBe(expectedValue)
   }
 
-  test('only year', () => testValue({ type: 'date', rawFieldData: '2023', expectedValue: '2023-01-01T00:00:00.000Z' }))
+  test('only year', () =>
+    testValue({ type: 'date', rawFieldData: '2023', expectedValue: '2023-01-01T00:00:00.000Z' }))
 
   test('null', () => testValue({ type: 'date', rawFieldData: null, expectedValue: null }))
 
   test('date with slash separators', () =>
-    testValue({ type: 'date', rawFieldData: '2023/01/01', expectedValue: '2023-01-01T00:00:00.000Z' }))
+    testValue({
+      type: 'date',
+      rawFieldData: '2023/01/01',
+      expectedValue: '2023-01-01T00:00:00.000Z',
+    }))
 
   test('date with dash separators', () =>
-    testValue({ type: 'date', rawFieldData: '2023-01-01', expectedValue: '2023-01-01T00:00:00.000Z' }))
+    testValue({
+      type: 'date',
+      rawFieldData: '2023-01-01',
+      expectedValue: '2023-01-01T00:00:00.000Z',
+    }))
 
   test('with timezone option but date str without tz', () =>
     testValue({
@@ -117,7 +132,9 @@ test('getDataForFieldDef error', async () => {
           isRootDocument: true,
           coreSchemaDef: {
             hash: '',
-            documentTypeDefMap: { Post: { name: 'Post', _tag: 'DocumentTypeDef', ...__unusedValue } },
+            documentTypeDefMap: {
+              Post: { name: 'Post', _tag: 'DocumentTypeDef', ...__unusedValue },
+            },
             nestedTypeDefMap: {},
           },
           contentDirPath: __unusedValue,
@@ -139,7 +156,10 @@ test('getDataForFieldDef error', async () => {
             ...options,
           },
         }),
-        provideTestDocumentContext({ relativeFilePath: documentFilePath, documentTypeDefName: 'Post' }),
+        provideTestDocumentContext({
+          relativeFilePath: documentFilePath,
+          documentTypeDefName: 'Post',
+        }),
         T.either,
       ),
     )

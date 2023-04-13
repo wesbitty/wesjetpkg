@@ -94,9 +94,9 @@ export const makeSource: core.MakeSourcePlugin<Args> = async (args) => {
     onMissingOrIncompatibleData,
   }
 
-  const documentTypeDefs = (Array.isArray(documentTypes) ? documentTypes : Object.values(documentTypes)).map((_) =>
-    _.def(),
-  )
+  const documentTypeDefs = (
+    Array.isArray(documentTypes) ? documentTypes : Object.values(documentTypes)
+  ).map((_) => _.def())
 
   return {
     type: 'local',
@@ -134,4 +134,11 @@ export const makeSource: core.MakeSourcePlugin<Args> = async (args) => {
   }
 }
 
-export const contentDirExcludeDefault = ['node_modules', '.git', '.yarn', '.cache', '.next', '.wesjet']
+export const contentDirExcludeDefault = [
+  'node_modules',
+  '.git',
+  '.yarn',
+  '.cache',
+  '.next',
+  '.wesjet',
+]

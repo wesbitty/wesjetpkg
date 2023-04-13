@@ -45,14 +45,22 @@ export const validateDocumentData = ({
 > =>
   pipe(
     T.gen(function* ($) {
-      const documentDefName = getDocumentDefName({ rawContent, filePathPatternMap, relativeFilePath, options })
+      const documentDefName = getDocumentDefName({
+        rawContent,
+        filePathPatternMap,
+        relativeFilePath,
+        options,
+      })
 
       yield* $(OT.addAttribute('documentDefName', documentDefName!))
 
       if (documentDefName === undefined) {
         const typeFieldName = options.fieldOptions.typeFieldName
         return These.fail(
-          new FetchDataError.CouldNotDetermineDocumentTypeError({ documentFilePath: relativeFilePath, typeFieldName }),
+          new FetchDataError.CouldNotDetermineDocumentTypeError({
+            documentFilePath: relativeFilePath,
+            typeFieldName,
+          }),
         )
       }
 
@@ -68,7 +76,10 @@ export const validateDocumentData = ({
       }
 
       const contentType = contentTypeMap[documentTypeDef.name]!
-      const mismatchError = validateContentTypeMatchesFileExtension({ contentType, relativeFilePath })
+      const mismatchError = validateContentTypeMatchesFileExtension({
+        contentType,
+        relativeFilePath,
+      })
       if (mismatchError) return These.fail(mismatchError)
 
       yield* $(DocumentTypeMapState.update((_) => _.add(documentDefName, relativeFilePath)))
@@ -340,13 +351,18 @@ const validateContentTypeMatchesFileExtension = ({
 
   const validMarkdownExtensions = ['md', 'mdx']
   const isInvalidMarkdownOrMdx =
-    (contentType === 'markdown' || contentType === 'mdx') && validMarkdownExtensions.includes(extension) === false
+    (contentType === 'markdown' || contentType === 'mdx') &&
+    validMarkdownExtensions.includes(extension) === false
 
   const validDataExtensions = ['json', 'yaml', 'yml']
   const isInvalidData = contentType === 'data' && validDataExtensions.includes(extension) === false
 
   if (isInvalidMarkdownOrMdx || isInvalidData) {
-    return new FetchDataError.FileExtensionMismatch({ contentType, extension, filePath: relativeFilePath })
+    return new FetchDataError.FileExtensionMismatch({
+      contentType,
+      extension,
+      filePath: relativeFilePath,
+    })
   }
 
   return undefined

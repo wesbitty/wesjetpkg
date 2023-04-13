@@ -36,7 +36,9 @@ const codecMap = {
   reference_polymorphic: zod.string(),
 }
 
-export type ParsedFieldData<TFieldType extends core.FieldDefType> = zod.infer<(typeof codecMap)[TFieldType]>
+export type ParsedFieldData<TFieldType extends core.FieldDefType> = zod.infer<
+  (typeof codecMap)[TFieldType]
+>
 
 export const parseFieldData = <TFieldType extends core.FieldDefType>({
   rawData,
@@ -47,12 +49,18 @@ export const parseFieldData = <TFieldType extends core.FieldDefType>({
   fieldType: TFieldType
   /** Only needed for error handling */
   fieldName: string
-}): T.Effect<HasDocumentContext, FetchDataError.IncompatibleFieldDataError, ParsedFieldData<TFieldType>> => {
+}): T.Effect<
+  HasDocumentContext,
+  FetchDataError.IncompatibleFieldDataError,
+  ParsedFieldData<TFieldType>
+> => {
   const result = codecMap[fieldType].safeParse(rawData)
 
   if (result.success) {
     return T.succeed(result.data)
   } else {
-    return FetchDataError.IncompatibleFieldDataError.fail({ incompatibleFieldData: [[fieldName, rawData]] })
+    return FetchDataError.IncompatibleFieldDataError.fail({
+      incompatibleFieldData: [[fieldName, rawData]],
+    })
   }
 }

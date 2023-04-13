@@ -27,7 +27,11 @@ export const makeCoreSchema = ({
       )
 
       if (fieldDefs.some((_) => _.name === options.fieldOptions.bodyFieldName)) {
-        yield* $(T.fail(new DuplicateBodyFieldError({ bodyFieldName: options.fieldOptions.bodyFieldName })))
+        yield* $(
+          T.fail(
+            new DuplicateBodyFieldError({ bodyFieldName: options.fieldOptions.bodyFieldName }),
+          ),
+        )
       }
 
       // add default body markdown field if not explicitly provided
@@ -54,14 +58,14 @@ export const makeCoreSchema = ({
         })
       }
 
-      const computedFields = Object.entries(documentDef.computedFields ?? {}).map<core.ComputedField>(
-        ([name, computedField]) => ({
-          ...utils.pick(computedField, ['description', 'type'], false),
-          name,
-          // NOTE we need to flip the variance here (casting a core.Document to a LocalDocument)
-          resolve: computedField.resolve as core.ComputedFieldResolver,
-        }),
-      )
+      const computedFields = Object.entries(
+        documentDef.computedFields ?? {},
+      ).map<core.ComputedField>(([name, computedField]) => ({
+        ...utils.pick(computedField, ['description', 'type'], false),
+        name,
+        // NOTE we need to flip the variance here (casting a core.Document to a LocalDocument)
+        resolve: computedField.resolve as core.ComputedFieldResolver,
+      }))
 
       const coreDocumentDef: core.DocumentTypeDef = {
         _tag: 'DocumentTypeDef',
@@ -189,7 +193,11 @@ const fieldDefEntryToCoreFieldDef = (
         fieldDefEntryToCoreFieldDef(_, fieldOptions),
       )
       const extensions = nestedTypeDef.extensions ?? {}
-      const typeDef: core.NestedUnnamedTypeDef = { _tag: 'NestedUnnamedTypeDef', fieldDefs, extensions }
+      const typeDef: core.NestedUnnamedTypeDef = {
+        _tag: 'NestedUnnamedTypeDef',
+        fieldDefs,
+        extensions,
+      }
       return identity<core.NestedUnnamedFieldDef>({
         ...baseFields,
         type: 'nested_unnamed',
@@ -270,7 +278,11 @@ const fieldListItemsToCoreFieldListDefItems = (
         fieldDefEntryToCoreFieldDef(_, fieldOptions),
       )
       const extensions = nestedTypeDef.extensions ?? {}
-      const typeDef: core.NestedUnnamedTypeDef = { _tag: 'NestedUnnamedTypeDef', fieldDefs, extensions }
+      const typeDef: core.NestedUnnamedTypeDef = {
+        _tag: 'NestedUnnamedTypeDef',
+        fieldDefs,
+        extensions,
+      }
       return { type: 'nested_unnamed', typeDef }
     case 'document':
       return {
@@ -283,7 +295,9 @@ const fieldListItemsToCoreFieldListDefItems = (
   }
 }
 
-const collectNestedDefs = (documentDefs: LocalSchema.DocumentTypeDef[]): LocalSchema.NestedTypeDef[] => {
+const collectNestedDefs = (
+  documentDefs: LocalSchema.DocumentTypeDef[],
+): LocalSchema.NestedTypeDef[] => {
   const objectDefMap: { [objectDefName: string]: LocalSchema.NestedTypeDef } = {}
 
   const traverseNestedDef = (objectDef: LocalSchema.NestedTypeDef) => {

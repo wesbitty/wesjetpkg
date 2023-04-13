@@ -14,7 +14,9 @@ export namespace StackbitExtension {
   /** Extends a document or object defintion with Stackbit specific properties */
   export type TypeExtension<DefName extends string = string> = {
     fieldGroups?: FieldGroup[]
-    fields?: Partial<Record<KnownFieldNames<DefName>, FieldExtension>> | Record<string, FieldExtension>
+    fields?:
+      | Partial<Record<KnownFieldNames<DefName>, FieldExtension>>
+      | Record<string, FieldExtension>
     /** the name of the field that will be used as a title of an object */
     labelField?: string
     label?: string

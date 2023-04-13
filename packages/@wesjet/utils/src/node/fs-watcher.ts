@@ -46,7 +46,12 @@ export class DirectoryRemoved {
   constructor(public path: UnknownFilePath, public stats: O.Option<fs.Stats>) {}
 }
 
-export type FileSystemEvent = FileAdded | FileRemoved | FileChanged | DirectoryAdded | DirectoryRemoved
+export type FileSystemEvent =
+  | FileAdded
+  | FileRemoved
+  | FileChanged
+  | DirectoryAdded
+  | DirectoryRemoved
 
 export const FileWatcherTypeId = Symbol()
 export type FileWatcherTypeId = typeof FileWatcherTypeId
@@ -60,7 +65,11 @@ abstract class FileWatcherInternal extends FileWatcher {
 
   abstract shutdown(): T.UIO<void>
 
-  abstract subscribe(): M.Managed<unknown, never, S.Stream<unknown, never, E.Either<FileWatcherError, FileSystemEvent>>>
+  abstract subscribe(): M.Managed<
+    unknown,
+    never,
+    S.Stream<unknown, never, E.Either<FileWatcherError, FileSystemEvent>>
+  >
 
   abstract add(paths: readonly string[]): T.UIO<void>
 
@@ -128,7 +137,12 @@ class ConcreteFileWatcher extends FileWatcherInternal {
       T.chain((_) =>
         T.succeedWith(() => {
           _.on('error', (error) => {
-            T.run(H.publish_(this.fsEventsHub, Ex.succeed(E.left(new FileWatcherError({ origin: O.some(error) })))))
+            T.run(
+              H.publish_(
+                this.fsEventsHub,
+                Ex.succeed(E.left(new FileWatcherError({ origin: O.some(error) }))),
+              ),
+            )
           })
           _.on('all', (eventName, path, stats) => {
             switch (eventName) {
@@ -136,7 +150,9 @@ class ConcreteFileWatcher extends FileWatcherInternal {
                 T.run(
                   H.publish_(
                     this.fsEventsHub,
-                    Ex.succeed(E.right(new FileAdded(unknownFilePath(path), O.fromNullable(stats)))),
+                    Ex.succeed(
+                      E.right(new FileAdded(unknownFilePath(path), O.fromNullable(stats))),
+                    ),
                   ),
                 )
                 break
@@ -144,7 +160,9 @@ class ConcreteFileWatcher extends FileWatcherInternal {
                 T.run(
                   H.publish_(
                     this.fsEventsHub,
-                    Ex.succeed(E.right(new FileRemoved(unknownFilePath(path), O.fromNullable(stats)))),
+                    Ex.succeed(
+                      E.right(new FileRemoved(unknownFilePath(path), O.fromNullable(stats))),
+                    ),
                   ),
                 )
                 break
@@ -152,7 +170,9 @@ class ConcreteFileWatcher extends FileWatcherInternal {
                 T.run(
                   H.publish_(
                     this.fsEventsHub,
-                    Ex.succeed(E.right(new FileChanged(unknownFilePath(path), O.fromNullable(stats)))),
+                    Ex.succeed(
+                      E.right(new FileChanged(unknownFilePath(path), O.fromNullable(stats))),
+                    ),
                   ),
                 )
                 break
@@ -160,7 +180,9 @@ class ConcreteFileWatcher extends FileWatcherInternal {
                 T.run(
                   H.publish_(
                     this.fsEventsHub,
-                    Ex.succeed(E.right(new DirectoryAdded(unknownFilePath(path), O.fromNullable(stats)))),
+                    Ex.succeed(
+                      E.right(new DirectoryAdded(unknownFilePath(path), O.fromNullable(stats))),
+                    ),
                   ),
                 )
                 break
@@ -168,7 +190,9 @@ class ConcreteFileWatcher extends FileWatcherInternal {
                 T.run(
                   H.publish_(
                     this.fsEventsHub,
-                    Ex.succeed(E.right(new DirectoryRemoved(unknownFilePath(path), O.fromNullable(stats)))),
+                    Ex.succeed(
+                      E.right(new DirectoryRemoved(unknownFilePath(path), O.fromNullable(stats))),
+                    ),
                   ),
                 )
                 break
@@ -179,7 +203,11 @@ class ConcreteFileWatcher extends FileWatcherInternal {
     )
   }
 
-  subscribe(): M.Managed<unknown, never, S.Stream<unknown, never, E.Either<FileWatcherError, FileSystemEvent>>> {
+  subscribe(): M.Managed<
+    unknown,
+    never,
+    S.Stream<unknown, never, E.Either<FileWatcherError, FileSystemEvent>>
+  > {
     return pipe(
       H.subscribe(this.fsEventsHub),
       M.chain((_) => M.ensuringFirst_(M.succeed(S.fromQueue()(_)), Q.shutdown(_))),
@@ -192,7 +220,10 @@ function concrete(fileWatcher: FileWatcher): asserts fileWatcher is ConcreteFile
   //
 }
 
-export function makeUnsafe(paths: readonly string[] | string, options?: Chokidar.WatchOptions): FileWatcher {
+export function makeUnsafe(
+  paths: readonly string[] | string,
+  options?: Chokidar.WatchOptions,
+): FileWatcher {
   const instance = Ref.unsafeMakeRef<Chokidar.FSWatcher>(Chokidar.watch(paths, options))
   const hub = H.unsafeMakeUnbounded<Ex.Exit<never, E.Either<FileWatcherError, FileSystemEvent>>>()
 
@@ -253,7 +284,11 @@ export const makeAndSubscribe = (
 
 export function subscribe(
   self: FileWatcher,
-): M.Managed<unknown, never, S.Stream<unknown, never, E.Either<FileWatcherError, FileSystemEvent>>> {
+): M.Managed<
+  unknown,
+  never,
+  S.Stream<unknown, never, E.Either<FileWatcherError, FileSystemEvent>>
+> {
   concrete(self)
 
   return self.subscribe()

@@ -48,7 +48,11 @@ const getImageFieldData = ({
   contentDirPath: utils.AbsolutePosixFilePath
   fieldDef: core.FieldDef
   imagePath: string
-}): T.Effect<OT.HasTracer & core.HasCwd & HasDocumentContext, FetchDataError.ImageError, core.ImageFieldData> =>
+}): T.Effect<
+  OT.HasTracer & core.HasCwd & HasDocumentContext,
+  FetchDataError.ImageError,
+  core.ImageFieldData
+> =>
   pipe(
     T.gen(function* ($) {
       const cwd = yield* $(core.getCwd)
@@ -57,7 +61,10 @@ const getImageFieldData = ({
 
       const filePath = utils.filePathJoin(documentDirPath, imagePath)
       const absoluteFilePath = utils.filePathJoin(contentDirPath, documentDirPath, imagePath)
-      const relativeFilePath = utils.relative(utils.filePathJoin(contentDirPath, documentDirPath), absoluteFilePath)
+      const relativeFilePath = utils.relative(
+        utils.filePathJoin(contentDirPath, documentDirPath),
+        absoluteFilePath,
+      )
 
       const fileBuffer = yield* $(fs.readFileBuffer(absoluteFilePath))
 
@@ -165,7 +172,11 @@ const processImageWithSharp = (fileBuffer: Buffer) =>
 
       const metadata = yield* $(T.tryPromise(() => sharpImage.metadata()))
 
-      if (metadata.width === undefined || metadata.height === undefined || metadata.format === undefined) {
+      if (
+        metadata.width === undefined ||
+        metadata.height === undefined ||
+        metadata.format === undefined
+      ) {
         return yield* $(T.fail(new Error('Could not determine image dimensions')))
       }
 

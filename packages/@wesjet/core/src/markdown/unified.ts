@@ -7,6 +7,7 @@ import type { RawDocumentData } from '../data-types.js'
  *
  * wesjet uses this plugin by default.
  */
-export const addRawDocumentToVFile = (rawDocumentData: RawDocumentData) => (): unified.Transformer => (_, vfile) => {
-  Object.assign(vfile.data, { rawDocumentData })
-}
+export const addRawDocumentToVFile =
+  (rawDocumentData: RawDocumentData) => (): unified.Transformer => (_, vfile) => {
+    Object.assign(vfile.data, { rawDocumentData })
+  }

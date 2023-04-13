@@ -75,7 +75,13 @@ declare module 'imagescript' {
 
     private __crop__(x: number, y: number, width: number, height: number): Image
 
-    drawBox(x: number, y: number, width: number, height: number, color: number | colorFunction): Image
+    drawBox(
+      x: number,
+      y: number,
+      width: number,
+      height: number,
+      color: number | colorFunction,
+    ): Image
 
     private __fast_box__(x: number, y: number, width: number, height: number, color: number): Image
 
@@ -179,7 +185,11 @@ declare module 'imagescript' {
       disposalMode?: typeof Frame.DISPOSAL_KEEP | string,
     ): Frame
 
-    resize(width: number, height: number, mode?: typeof Image.RESIZE_NEAREST_NEIGHBOR | string): Image
+    resize(
+      width: number,
+      height: number,
+      mode?: typeof Image.RESIZE_NEAREST_NEIGHBOR | string,
+    ): Image
   }
 
   export class GIF extends Array {
@@ -201,7 +211,11 @@ declare module 'imagescript' {
 
     static async decode(data: Buffer | Uint8Array, onlyExtractFirstFrame?: boolean): Promise<GIF>
 
-    resize(width: number, height: number, mode?: typeof Image.RESIZE_NEAREST_NEIGHBOR | string): void
+    resize(
+      width: number,
+      height: number,
+      mode?: typeof Image.RESIZE_NEAREST_NEIGHBOR | string,
+    ): void
   }
 
   export class TextLayout {
@@ -227,7 +241,10 @@ declare module 'imagescript' {
     static isGIF(view: DataView): boolean
   }
 
-  export function decode(data: Uint8Array | Buffer, onlyExtractFirstFrame?: boolean): Promise<GIF | Image>
+  export function decode(
+    data: Uint8Array | Buffer,
+    onlyExtractFirstFrame?: boolean,
+  ): Promise<GIF | Image>
 
   type colorFunction = (x: number, y: number) => number
 

@@ -13,7 +13,13 @@ import { makeAndProvideDocumentContext } from './DocumentContext.js'
 import type { HasDocumentTypeMapState } from './DocumentTypeMap.js'
 import { DocumentTypeMapState } from './DocumentTypeMap.js'
 import { makeDocument } from './mapping/index.js'
-import type { RawContent, RawContentJSON, RawContentMarkdown, RawContentMDX, RawContentYAML } from './types.js'
+import type {
+  RawContent,
+  RawContentJSON,
+  RawContentMarkdown,
+  RawContentMDX,
+  RawContentYAML,
+} from './types.js'
 import { validateDocumentData } from './validateDocumentData.js'
 
 export const makeCacheItemFromFilePath = ({
@@ -56,7 +62,9 @@ export const makeCacheItemFromFilePath = ({
         previousCache.cacheItemsMap[relativeFilePath]!.hasWarnings === false
       ) {
         const cacheItem = previousCache.cacheItemsMap[relativeFilePath]!
-        yield* $(DocumentTypeMapState.update((_) => _.add(cacheItem.documentTypeName, relativeFilePath)))
+        yield* $(
+          DocumentTypeMapState.update((_) => _.add(cacheItem.documentTypeName, relativeFilePath)),
+        )
 
         return These.succeed(cacheItem)
       }

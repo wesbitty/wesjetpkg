@@ -62,7 +62,9 @@ export const makeSchemaWithSingletonDef = (): core.SchemaDef => {
 }
 
 const generateFakeFilePath = (extension = 'md'): RelativePosixFilePath =>
-  singleItem(path.join('docs', faker.system.commonFileName(extension))).map(unknownToRelativePosixFilePath).item
+  singleItem(path.join('docs', faker.system.commonFileName(extension))).map(
+    unknownToRelativePosixFilePath,
+  ).item
 
 export const makeErrors = (
   countRecord: Partial<Record<FetchDataError.FetchDataError['_tag'], number>>,

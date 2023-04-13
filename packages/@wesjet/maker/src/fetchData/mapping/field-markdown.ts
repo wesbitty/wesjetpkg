@@ -14,7 +14,11 @@ export const makeMarkdownField = ({
   mdString: string
   options: core.PluginOptions
   isDocumentBodyField: boolean
-}): T.Effect<HasDocumentContext & OT.HasTracer & HasConsole, core.UnexpectedMarkdownError, core.Markdown> =>
+}): T.Effect<
+  HasDocumentContext & OT.HasTracer & HasConsole,
+  core.UnexpectedMarkdownError,
+  core.Markdown
+> =>
   T.gen(function* ($) {
     // const isDocumentBodyField = fieldDef.name === options.fieldOptions.bodyFieldName
     const rawDocumentData = yield* $(getFromDocumentContext('rawDocumentData'))
@@ -22,7 +26,8 @@ export const makeMarkdownField = ({
     // TODO we should come up with a better way to do this
     if (isDocumentBodyField) {
       const rawContent = yield* $(getFromDocumentContext('rawContent'))
-      if (rawContent.kind !== 'markdown' && rawContent.kind !== 'mdx') return utils.assertNever(rawContent)
+      if (rawContent.kind !== 'markdown' && rawContent.kind !== 'mdx')
+        return utils.assertNever(rawContent)
 
       const html = yield* $(
         core.markdownToHtml({
@@ -33,7 +38,9 @@ export const makeMarkdownField = ({
       )
       return { raw: mdString, html }
     } else {
-      const html = yield* $(core.markdownToHtml({ mdString: mdString, options: options?.markdown, rawDocumentData }))
+      const html = yield* $(
+        core.markdownToHtml({ mdString: mdString, options: options?.markdown, rawDocumentData }),
+      )
       return { raw: mdString, html }
     }
   })

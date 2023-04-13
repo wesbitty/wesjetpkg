@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "target": "ES2019",
+    "allowSyntheticDefaultImports": true
+  },
+  "include": ["lib/**/*"],
+  "exclude": ["node_modules"]
+}

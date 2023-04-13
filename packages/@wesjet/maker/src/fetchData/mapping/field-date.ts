@@ -36,6 +36,8 @@ export const makeDateField = ({
       }
     }),
     T.catchAll(() =>
-      FetchDataError.IncompatibleFieldDataError.fail({ incompatibleFieldData: [[fieldName, dateString]] }),
+      FetchDataError.IncompatibleFieldDataError.fail({
+        incompatibleFieldData: [[fieldName, dateString]],
+      }),
     ),
   )

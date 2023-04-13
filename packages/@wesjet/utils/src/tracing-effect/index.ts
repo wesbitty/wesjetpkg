@@ -3,7 +3,10 @@ import type { Clock } from '@effect-ts/core/Effect/Clock'
 import type * as L from '@effect-ts/core/Effect/Layer'
 import type { Has } from '@effect-ts/core/Has'
 import * as OT from '@effect-ts/otel'
-import { LiveSimpleProcessor, makeOTLPTraceExporterConfigLayer } from '@effect-ts/otel-exporter-trace-otlp-grpc'
+import {
+  LiveSimpleProcessor,
+  makeOTLPTraceExporterConfigLayer,
+} from '@effect-ts/otel-exporter-trace-otlp-grpc'
 import * as OTNode from '@effect-ts/otel-sdk-trace-node'
 import { Resource } from '@opentelemetry/resources'
 import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions'
@@ -21,10 +24,15 @@ const makeNodeTracingProvider = (serviceName: string) =>
 
 const CollectorConfig = makeOTLPTraceExporterConfigLayer({})
 
-const makeJaegerNodeTracingLayer = (serviceName: string): L.Layer<Has<Clock>, never, OT.HasTracer> =>
-  CollectorConfig['>+>'](OT.LiveTracer['<<<'](makeNodeTracingProvider(serviceName)['>+>'](LiveSimpleProcessor)))
+const makeJaegerNodeTracingLayer = (
+  serviceName: string,
+): L.Layer<Has<Clock>, never, OT.HasTracer> =>
+  CollectorConfig['>+>'](
+    OT.LiveTracer['<<<'](makeNodeTracingProvider(serviceName)['>+>'](LiveSimpleProcessor)),
+  )
 
-export const provideJaegerTracing = (serviceName: string) => T.provideSomeLayer(makeJaegerNodeTracingLayer(serviceName))
+export const provideJaegerTracing = (serviceName: string) =>
+  T.provideSomeLayer(makeJaegerNodeTracingLayer(serviceName))
 
 // Only use Otel tracing if explicitly enabled via env var
 export const provideTracing = (tracingServiceName: string) =>

@@ -76,7 +76,9 @@ export type MDXOptions = {
   resolveCwd?: 'relative' | 'contentDirPath'
 } & Omit<mdxBundler.BundleMDXOptions<any>, 'mdxOptions'>
 
-export type MDXBundlerMapOptions = (options: mdxEsbuild.ProcessorOptions) => mdxEsbuild.ProcessorOptions
+export type MDXBundlerMapOptions = (
+  options: mdxEsbuild.ProcessorOptions,
+) => mdxEsbuild.ProcessorOptions
 
 export type DateOptions = {
   /**
@@ -153,7 +155,10 @@ export const processArgs = async <TArgs extends PartialArgs>(
 ): Promise<{
   extensions: PluginExtensions
   options: PluginOptions
-  restArgs: Omit<TArgs, 'extensions' | 'fieldOptions' | 'markdown' | 'mdx' | 'date' | 'disableImportAliasWarning'>
+  restArgs: Omit<
+    TArgs,
+    'extensions' | 'fieldOptions' | 'markdown' | 'mdx' | 'date' | 'disableImportAliasWarning'
+  >
 }> => {
   const { extensions, fieldOptions, markdown, mdx, date, disableImportAliasWarning, ...restArgs } =
     typeof argsOrArgsThunk === 'function' ? await argsOrArgsThunk() : argsOrArgsThunk

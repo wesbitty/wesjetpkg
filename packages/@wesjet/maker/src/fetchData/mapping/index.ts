@@ -165,7 +165,11 @@ const getDataForFieldDef = ({
   options: core.PluginOptions
   documentFilePath: RelativePosixFilePath
   contentDirPath: AbsolutePosixFilePath
-}): T.Effect<OT.HasTracer & HasConsole & HasDocumentContext & core.HasCwd, MakeDocumentInternalError, any> =>
+}): T.Effect<
+  OT.HasTracer & HasConsole & HasDocumentContext & core.HasCwd,
+  MakeDocumentInternalError,
+  any
+> =>
   T.gen(function* ($) {
     if ((rawFieldData === undefined || rawFieldData === null) && fieldDef.default !== undefined) {
       rawFieldData = fieldDef.default
@@ -282,7 +286,8 @@ const getDataForFieldDef = ({
         return yield* $(makeDateField({ dateString, fieldName: fieldDef.name, options }))
       case 'markdown': {
         const mdString = yield* $(parseFieldDataEff('markdown'))
-        const isDocumentBodyField = isRootDocument && fieldDef.name === options.fieldOptions.bodyFieldName
+        const isDocumentBodyField =
+          isRootDocument && fieldDef.name === options.fieldOptions.bodyFieldName
         return yield* $(makeMarkdownField({ mdString, options, isDocumentBodyField }))
       }
       case 'mdx': {
@@ -319,7 +324,11 @@ const getDataForListItem = ({
   options: core.PluginOptions
   documentFilePath: RelativePosixFilePath
   contentDirPath: AbsolutePosixFilePath
-}): T.Effect<OT.HasTracer & HasConsole & HasDocumentContext & core.HasCwd, MakeDocumentInternalError, any> =>
+}): T.Effect<
+  OT.HasTracer & HasConsole & HasDocumentContext & core.HasCwd,
+  MakeDocumentInternalError,
+  any
+> =>
   T.gen(function* ($) {
     const parseFieldDataEff = <TFieldType extends core.FieldDefType>(fieldType: TFieldType) =>
       parseFieldData({
