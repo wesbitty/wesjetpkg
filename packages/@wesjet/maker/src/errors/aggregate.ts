@@ -150,7 +150,13 @@ const aggregateFetchDataErrors = ({
   return asciiTree.toString()
 }
 
-const shouldPrintSkipMessage = ({ error, flags }: { error: FetchDataError.FetchDataError; flags: Flags }): boolean => {
+const shouldPrintSkipMessage = ({
+  error,
+  flags,
+}: {
+  error: FetchDataError.FetchDataError
+  flags: Flags
+}): boolean => {
   if (
     error.category === 'MissingOrIncompatibleData' &&
     flags.onMissingOrIncompatibleData === 'skip-warn' &&
@@ -181,7 +187,10 @@ const failOrSkip = ({
     return 'fail'
   }
 
-  if (errors.some((_) => _.category === 'MissingOrIncompatibleData') && flags.onMissingOrIncompatibleData === 'fail') {
+  if (
+    errors.some((_) => _.category === 'MissingOrIncompatibleData') &&
+    flags.onMissingOrIncompatibleData === 'fail'
+  ) {
     return 'fail'
   }
 
@@ -210,6 +219,10 @@ const filterIgnoredErrorsByFlags = ({
   errors.filter((e) => {
     if (e.category === 'ExtraFieldData' && flags.onExtraFieldData === 'ignore') return false
     if (e.category === 'UnknownDocument' && flags.onUnknownDocuments === 'skip-ignore') return false
-    if (e.category === 'MissingOrIncompatibleData' && flags.onMissingOrIncompatibleData === 'skip-ignore') return false
+    if (
+      e.category === 'MissingOrIncompatibleData' &&
+      flags.onMissingOrIncompatibleData === 'skip-ignore'
+    )
+      return false
     return true
   })

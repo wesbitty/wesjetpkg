@@ -1,7 +1,7 @@
 node_modules
 target/
 **/.wesjet/*
-
+packages/create-wesjet-app/src/templates/*
 package-lock.json
 examples/*
 .direnv
@@ -9,6 +9,7 @@ examples/*
 !tap-snapshots/dist/*
 **/dist/*
 out
+**/__test__/*
 .tmp*
 /tmp
 **/*.tsbuildinfo/*

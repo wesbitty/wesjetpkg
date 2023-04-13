@@ -9,11 +9,9 @@ const MIN_NODE_VERSION_MAJOR = 14
 const MIN_NODE_VERSION_MINOR = 18
 
 const checkNodeVersion = () => {
-  const [nodeVersionMajor, nodeVersionMinor] = process.versions.node.split('.').map((_) => parseInt(_, 10)) as [
-    number,
-    number,
-    number,
-  ]
+  const [nodeVersionMajor, nodeVersionMinor] = process.versions.node
+    .split('.')
+    .map((_) => parseInt(_, 10)) as [number, number, number]
 
   if (
     nodeVersionMajor < MIN_NODE_VERSION_MAJOR ||
@@ -40,4 +38,5 @@ Currently used versions: wesjet: "${wesjetVersion}", next-config-wesjet: "${next
 
 const require = createRequire(import.meta.url)
 
-const getPackageVersion = (packageName: string): string => require(`${packageName}/package.json`).version
+const getPackageVersion = (packageName: string): string =>
+  require(`${packageName}/package.json`).version

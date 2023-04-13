@@ -1,4 +1,9 @@
-import type { DateOptions, MarkdownOptions, MarkdownUnifiedBuilderCallback, MDXOptions } from '@wesjet/core'
+import type {
+  DateOptions,
+  MarkdownOptions,
+  MarkdownUnifiedBuilderCallback,
+  MDXOptions,
+} from '@wesjet/core'
 
 import type { DocumentContentType } from './schema/defs/index.js'
 

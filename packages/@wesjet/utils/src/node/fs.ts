@@ -40,7 +40,9 @@ export const stat = (filePath: string): T.Effect<unknown, FileNotFoundError | St
   )
 }
 
-export const readFile = (filePath: string): T.Effect<OT.HasTracer, ReadFileError | FileNotFoundError, string> =>
+export const readFile = (
+  filePath: string,
+): T.Effect<OT.HasTracer, ReadFileError | FileNotFoundError, string> =>
   OT.withSpan('readFile', { attributes: { filePath } })(
     T.tryCatchPromise(
       () => fs.readFile(filePath, 'utf8'),
@@ -54,7 +56,9 @@ export const readFile = (filePath: string): T.Effect<OT.HasTracer, ReadFileError
     ),
   )
 
-export const readFileBuffer = (filePath: string): T.Effect<OT.HasTracer, ReadFileError | FileNotFoundError, Buffer> =>
+export const readFileBuffer = (
+  filePath: string,
+): T.Effect<OT.HasTracer, ReadFileError | FileNotFoundError, Buffer> =>
   OT.withSpan('readFileBuffer', { attributes: { filePath } })(
     T.tryCatchPromise(
       () => fs.readFile(filePath),
@@ -90,7 +94,10 @@ export const readFileJsonIfExists = <T extends JsonValue = JsonValue>(
     T.catchTag('node.fs.FileNotFoundError', (e) => T.die(e)),
   )
 
-export const writeFile = (filePath: string, content: string): T.Effect<OT.HasTracer, WriteFileError, void> =>
+export const writeFile = (
+  filePath: string,
+  content: string,
+): T.Effect<OT.HasTracer, WriteFileError, void> =>
   OT.withSpan('writeFile', { attributes: { filePath } })(
     T.tryCatchPromise(
       () => fs.writeFile(filePath, content, 'utf8'),
@@ -121,7 +128,10 @@ export const mkdirp = <T extends string>(dirPath: T): T.Effect<OT.HasTracer, Mkd
     ),
   )
 
-export function rm(path: string, params: { force: true; recursive?: boolean }): T.Effect<OT.HasTracer, RmError, void>
+export function rm(
+  path: string,
+  params: { force: true; recursive?: boolean },
+): T.Effect<OT.HasTracer, RmError, void>
 export function rm(
   path: string,
   params?: { force?: false; recursive?: boolean },

@@ -25,7 +25,8 @@ export const makeMdxField = ({
     // TODO we should come up with a better way to do this
     if (isBodyField) {
       const rawContent = yield* $(getFromDocumentContext('rawContent'))
-      if (rawContent.kind !== 'mdx' && rawContent.kind !== 'markdown') return utils.assertNever(rawContent)
+      if (rawContent.kind !== 'mdx' && rawContent.kind !== 'markdown')
+        return utils.assertNever(rawContent)
 
       const code = yield* $(
         core.bundleMDX({

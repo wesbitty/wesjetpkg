@@ -40,7 +40,13 @@ export const Page = defineDocumentType(() => ({
   },
   extensions: {
     stackbit: {
-      match: ['about.md', 'privacy-policy.md', 'signup.md', 'style-guide.md', 'terms-of-service.md'],
+      match: [
+        'about.md',
+        'privacy-policy.md',
+        'signup.md',
+        'style-guide.md',
+        'terms-of-service.md',
+      ],
     },
   },
 }))

@@ -66,7 +66,10 @@ export namespace DataCache {
   }): T.Effect<
     OT.HasTracer & HasCwd,
     never,
-    E.Either<fs.WriteFileError | fs.MkdirError | fs.JsonStringifyError | GetWesjetVersionError, void>
+    E.Either<
+      fs.WriteFileError | fs.MkdirError | fs.JsonStringifyError | GetWesjetVersionError,
+      void
+    >
   > =>
     pipe(
       T.gen(function* ($) {

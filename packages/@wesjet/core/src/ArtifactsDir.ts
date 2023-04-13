@@ -13,22 +13,32 @@ export namespace ArtifactsDir {
   export const getDirPath = ({ cwd }: { cwd: AbsolutePosixFilePath }): AbsolutePosixFilePath =>
     filePathJoin(cwd, '.wesjet' as AbsolutePosixFilePath)
 
-  export const mkdir: T.Effect<OT.HasTracer & HasCwd, fs.MkdirError, AbsolutePosixFilePath> = T.gen(function* ($) {
-    const cwd = yield* $(getCwd)
-    const dirPath = getDirPath({ cwd })
+  export const mkdir: T.Effect<OT.HasTracer & HasCwd, fs.MkdirError, AbsolutePosixFilePath> = T.gen(
+    function* ($) {
+      const cwd = yield* $(getCwd)
+      const dirPath = getDirPath({ cwd })
 
-    yield* $(fs.mkdirp(dirPath))
+      yield* $(fs.mkdirp(dirPath))
 
-    return dirPath
-  })
+      return dirPath
+    },
+  )
 
-  export const getCacheDirPath: T.Effect<OT.HasTracer & HasCwd, GetWesjetVersionError, AbsolutePosixFilePath> = pipe(
+  export const getCacheDirPath: T.Effect<
+    OT.HasTracer & HasCwd,
+    GetWesjetVersionError,
+    AbsolutePosixFilePath
+  > = pipe(
     T.struct({
       wesjetVersion: getWesjetVersion(),
       cwd: getCwd,
     }),
     T.map(({ wesjetVersion, cwd }) =>
-      filePathJoin(getDirPath({ cwd }), 'cache' as RelativePosixFilePath, `v${wesjetVersion}` as RelativePosixFilePath),
+      filePathJoin(
+        getDirPath({ cwd }),
+        'cache' as RelativePosixFilePath,
+        `v${wesjetVersion}` as RelativePosixFilePath,
+      ),
     ),
   )
 

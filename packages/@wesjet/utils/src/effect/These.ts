@@ -30,7 +30,8 @@ export function fail<E>(e: E) {
   return new These<E, never>(E.left(e))
 }
 
-export const isNonFailure = <E, A>(self: These<E, A>): self is These<never, A> => E.isRight(self.either)
+export const isNonFailure = <E, A>(self: These<E, A>): self is These<never, A> =>
+  E.isRight(self.either)
 
 export function foldM_<E, A, E1, A1, E2, A2, E3, A3>(
   self: These<E, A>,
@@ -41,7 +42,8 @@ export function foldM_<E, A, E1, A1, E2, A2, E3, A3>(
   return new These(
     E.fold_(
       self.either,
-      (x): E.Either<E1 | E2 | E3, Tp.Tuple<[A1 | A2 | A3, O.Option<E1 | E2 | E3>]>> => onFail(x).either,
+      (x): E.Either<E1 | E2 | E3, Tp.Tuple<[A1 | A2 | A3, O.Option<E1 | E2 | E3>]>> =>
+        onFail(x).either,
       ({ tuple: [result, warnings] }) =>
         warnings._tag === 'None' ? onSuccess(result).either : onBoth(result, warnings.value).either,
     ),
@@ -53,7 +55,8 @@ export function foldM<E, A, E1, A1, E2, A2, E3, A3>(
   onBoth: (a: A, e: E) => These<E2, A2>,
   onFail: (e: E) => These<E3, A3>,
 ) {
-  return (self: These<E, A>): These<E1 | E2 | E3, A1 | A2 | A3> => foldM_(self, onSuccess, onBoth, onFail)
+  return (self: These<E, A>): These<E1 | E2 | E3, A1 | A2 | A3> =>
+    foldM_(self, onSuccess, onBoth, onFail)
 }
 
 export function map_<E, A0, A>(self: These<E, A0>, f: (a: A0) => A) {
@@ -82,7 +85,10 @@ export function mapError<E0, E>(f: (a: E0) => E): <A>(self: These<E0, A>) => The
   return (self) => mapError_(self, f)
 }
 
-export function chain_<E0, A0, E, A>(self: These<E0, A0>, f: (a: A0, w: O.Option<E0>) => These<E, A>) {
+export function chain_<E0, A0, E, A>(
+  self: These<E0, A0>,
+  f: (a: A0, w: O.Option<E0>) => These<E, A>,
+) {
   return foldM_(
     self,
     (a) => f(a, O.none),
@@ -104,11 +110,15 @@ export const errorOrWaning = <E, A>(self: These<E, A>): O.Option<E> => {
 }
 
 /** Unpacks the provided `These` into a new `Effect` with errors as `E` and values as value/warning tuple */
-export const toEffect = <E, A>(self: These<E, A>): T.Effect<unknown, E, Tp.Tuple<[A, O.Option<E>]>> => {
+export const toEffect = <E, A>(
+  self: These<E, A>,
+): T.Effect<unknown, E, Tp.Tuple<[A, O.Option<E>]>> => {
   return pipe(result(self), E.fold(T.fail, T.succeed))
 }
 
-export const effectUnwrapValue = <T, E1, E2, A>(effect: T.Effect<T, E1, These<E2, A>>): T.Effect<T, E1 | E2, A> => {
+export const effectUnwrapValue = <T, E1, E2, A>(
+  effect: T.Effect<T, E1, These<E2, A>>,
+): T.Effect<T, E1 | E2, A> => {
   return pipe(
     effect,
     T.chain((these) => E.fold_(these.either, T.fail, ({ tuple: [a] }) => T.succeed(a))),
@@ -167,7 +177,9 @@ export const effectThese = <T, E1, E2, A>(
 }
 
 /** Casts warnings to errors (and ignores the value in the warning case) */
-export const effectToEither = <R, E1, E2, A>(effect: T.Effect<R, E1, These<E2, A>>): T.Effect<R, E1, E.Either<E2, A>> =>
+export const effectToEither = <R, E1, E2, A>(
+  effect: T.Effect<R, E1, These<E2, A>>,
+): T.Effect<R, E1, E.Either<E2, A>> =>
   pipe(
     effect,
     T.map((these) =>

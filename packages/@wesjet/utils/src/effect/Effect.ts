@@ -30,13 +30,17 @@ export const rightOrFail = <R, E1, EE1, A>(
     ),
   )
 
-export const tryPromiseOrDie = <A>(promise: () => Promise<A>) => pipe(T.tryPromise(promise), T.orDie)
+export const tryPromiseOrDie = <A>(promise: () => Promise<A>) =>
+  pipe(T.tryPromise(promise), T.orDie)
 
 export const sync = <A>(fn: () => A): T.Effect<unknown, never, A> => T.succeedWith(fn)
 
 export const eitherMap =
   <A1, A2>(mapRight: (a1: A1) => A2) =>
-  <R, E1, EE1>(effect: T.Effect<R, E1, E.Either<EE1, A1>>, __trace?: string): T.Effect<R, E1, E.Either<EE1, A2>> =>
+  <R, E1, EE1>(
+    effect: T.Effect<R, E1, E.Either<EE1, A1>>,
+    __trace?: string,
+  ): T.Effect<R, E1, E.Either<EE1, A2>> =>
     T.map_(effect, E.map(mapRight))
 
 export const chainMergeObject =
@@ -50,7 +54,10 @@ export const chainMergeObject =
     )
 
 export const forEachParDict =
-  <A, R, E, B>(args: { mapKey: (a: A) => T.Effect<R, E, string>; mapValue: (a: A) => T.Effect<R, E, B> }) =>
+  <A, R, E, B>(args: {
+    mapKey: (a: A) => T.Effect<R, E, string>
+    mapValue: (a: A) => T.Effect<R, E, B>
+  }) =>
   (as: Iterable<A>): T.Effect<R, E, Record<string, B>> =>
     forEachParDict_(as, args)
 

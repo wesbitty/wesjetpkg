@@ -71,7 +71,8 @@ export const errorToString = (error: any) => {
   return JSON.stringify({ ...error, stack }, null, 2)
 }
 
-export const capitalizeFirstLetter = (str: string): string => str.charAt(0).toUpperCase() + str.slice(1)
+export const capitalizeFirstLetter = (str: string): string =>
+  str.charAt(0).toUpperCase() + str.slice(1)
 
 /**
  * Use this to make assertion at end of if-else chain that all members of a

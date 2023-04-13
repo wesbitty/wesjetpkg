@@ -180,7 +180,8 @@ export type NestedUnnamedFieldDef = FieldDefBase & {
   typeDef: NestedUnnamedTypeDef
 }
 
-export const isNestedUnnamedFieldDef = (_: FieldDef): _ is NestedUnnamedFieldDef => _.type === 'nested_unnamed'
+export const isNestedUnnamedFieldDef = (_: FieldDef): _ is NestedUnnamedFieldDef =>
+  _.type === 'nested_unnamed'
 
 export type ReferenceFieldDef = FieldDefBase & {
   type: 'reference'

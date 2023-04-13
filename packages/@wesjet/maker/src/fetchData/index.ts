@@ -32,7 +32,11 @@ export const fetchData = ({
   contentDirInclude: readonly RelativePosixFilePath[]
   contentDirExclude: readonly RelativePosixFilePath[]
   verbose: boolean
-}): S.Stream<OT.HasTracer & HasCwd & HasConsole, never, E.Either<core.SourceFetchDataError, core.DataCache.Cache>> => {
+}): S.Stream<
+  OT.HasTracer & HasCwd & HasConsole,
+  never,
+  E.Either<core.SourceFetchDataError, core.DataCache.Cache>
+> => {
   const filePathPatternMap = makefilePathPatternMap(documentTypeDefs)
   const contentTypeMap = makeContentTypeMap(documentTypeDefs)
 
@@ -66,7 +70,8 @@ export const fetchData = ({
         S.tapRight((e) =>
           T.succeedWith(
             () =>
-              (e._tag === 'updated' || e._tag === 'deleted') && console.log(`\nFile ${e._tag}: ${e.relativeFilePath}`),
+              (e._tag === 'updated' || e._tag === 'deleted') &&
+              console.log(`\nFile ${e._tag}: ${e.relativeFilePath}`),
           ),
         ),
         S.startWithRight(initEvent),
@@ -128,7 +133,9 @@ export const fetchData = ({
   )
 }
 
-const makefilePathPatternMap = (documentTypeDefs: LocalSchema.DocumentTypeDef[]): FilePathPatternMap =>
+const makefilePathPatternMap = (
+  documentTypeDefs: LocalSchema.DocumentTypeDef[],
+): FilePathPatternMap =>
   Object.fromEntries(
     documentTypeDefs
       .filter((_) => _.filePathPattern)
@@ -139,7 +146,9 @@ export const testOnly_makefilePathPatternMap = makefilePathPatternMap
 
 const makeContentTypeMap = (documentTypeDefs: LocalSchema.DocumentTypeDef[]): ContentTypeMap =>
   Object.fromEntries(
-    documentTypeDefs.filter((_) => _.filePathPattern).map((documentDef) => [documentDef.name, documentDef.contentType]),
+    documentTypeDefs
+      .filter((_) => _.filePathPattern)
+      .map((documentDef) => [documentDef.name, documentDef.contentType]),
   )
 
 export const testOnly_makeContentTypeMap = makeContentTypeMap
@@ -162,7 +171,11 @@ const updateCacheEntry = ({
   coreSchemaDef: core.SchemaDef
   options: core.PluginOptions
   contentTypeMap: ContentTypeMap
-}): T.Effect<OT.HasTracer & HasConsole & HasCwd, core.HandledFetchDataError, core.DataCache.Cache> =>
+}): T.Effect<
+  OT.HasTracer & HasConsole & HasCwd,
+  core.HandledFetchDataError,
+  core.DataCache.Cache
+> =>
   T.gen(function* ($) {
     yield* $(
       pipe(
@@ -220,7 +233,10 @@ const chokidarAllEventToCustomUpdateEvent = (event: FSWatch.FileSystemEvent): Cu
   }
 }
 
-type CustomUpdateEvent = CustomUpdateEventFileUpdated | CustomUpdateEventFileDeleted | CustomUpdateEventInit
+type CustomUpdateEvent =
+  | CustomUpdateEventFileUpdated
+  | CustomUpdateEventFileDeleted
+  | CustomUpdateEventInit
 
 type CustomUpdateEventFileUpdated = {
   readonly _tag: 'updated'
@@ -238,14 +254,24 @@ type CustomUpdateEventInit = {
 
 // TODO come up with better implementation for this that has correct and incremental caching behavior
 // TODO make this work for deep nested references
-const embedReferences = ({ cache, coreSchemaDef }: { cache: core.DataCache.Cache; coreSchemaDef: core.SchemaDef }) => {
+const embedReferences = ({
+  cache,
+  coreSchemaDef,
+}: {
+  cache: core.DataCache.Cache
+  coreSchemaDef: core.SchemaDef
+}) => {
   const documentDefs = Object.values(coreSchemaDef.documentTypeDefMap)
   const nestedDefs = Object.values(coreSchemaDef.nestedTypeDefMap)
   const defs = [...documentDefs, ...nestedDefs]
-  const defsWithEmbeddedRefs = defs.filter((_) => _.fieldDefs.some((_) => core.isReferenceField(_) && _.embedDocument))
+  const defsWithEmbeddedRefs = defs.filter((_) =>
+    _.fieldDefs.some((_) => core.isReferenceField(_) && _.embedDocument),
+  )
 
   const defsWithEmbeddedListRefs = defs.filter((_) =>
-    _.fieldDefs.some((_) => core.isListFieldDef(_) && _.of.type === 'reference' && _.of.embedDocument),
+    _.fieldDefs.some(
+      (_) => core.isListFieldDef(_) && _.of.type === 'reference' && _.of.embedDocument,
+    ),
   )
 
   const defNameSetWithEmbeddedRefs = new Set([
@@ -259,7 +285,9 @@ const embedReferences = ({ cache, coreSchemaDef }: { cache: core.DataCache.Cache
       if (!defNameSetWithEmbeddedRefs.has(cacheItem.documentTypeName)) continue
 
       const documentDef = coreSchemaDef.documentTypeDefMap[cacheItem.documentTypeName]!
-      const fieldDefsWithEmbeddedRefs = documentDef.fieldDefs.filter((_) => core.isReferenceField(_) && _.embedDocument)
+      const fieldDefsWithEmbeddedRefs = documentDef.fieldDefs.filter(
+        (_) => core.isReferenceField(_) && _.embedDocument,
+      )
       for (const fieldDef of fieldDefsWithEmbeddedRefs) {
         const referenceId = cacheItem.document[fieldDef.name]
         if (referenceId === undefined || referenceId === null) continue
@@ -278,9 +306,13 @@ const embedReferences = ({ cache, coreSchemaDef }: { cache: core.DataCache.Cache
       // console.log({ listFieldDefs })
 
       for (const listFieldDef of listFieldDefs) {
-        if (core.ListFieldDefItem.isDefItemReference(listFieldDef.of) && listFieldDef.of.embedDocument) {
+        if (
+          core.ListFieldDefItem.isDefItemReference(listFieldDef.of) &&
+          listFieldDef.of.embedDocument
+        ) {
           const listValues = cacheItem.document[listFieldDef.name]
-          if (listValues === undefined || listValues === null || !Array.isArray(listValues)) continue
+          if (listValues === undefined || listValues === null || !Array.isArray(listValues))
+            continue
 
           for (const [index, listValue] of listValues.entries()) {
             const referenceAlreadyEmbedded = typeof listValue !== 'string'

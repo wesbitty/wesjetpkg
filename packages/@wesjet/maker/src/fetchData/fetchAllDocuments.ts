@@ -76,7 +76,9 @@ export const fetchAllDocuments = ({
         ),
       )
 
-      const singletonDataErrors = yield* $(validateSingletonDocuments({ coreSchemaDef, filePathPatternMap }))
+      const singletonDataErrors = yield* $(
+        validateSingletonDocuments({ coreSchemaDef, filePathPatternMap }),
+      )
 
       yield* $(
         FetchDataError.handleErrors({
@@ -172,4 +174,8 @@ const validateSingletonDocuments = ({
   })
 
 const invertRecord = (record: Record<string, string>): Record<string, string> =>
-  pipe(Object.entries(record), (entries) => entries.map(([key, value]) => [value, key]), Object.fromEntries)
+  pipe(
+    Object.entries(record),
+    (entries) => entries.map(([key, value]) => [value, key]),
+    Object.fromEntries,
+  )

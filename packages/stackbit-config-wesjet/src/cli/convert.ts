@@ -13,15 +13,20 @@ export const convertSchema = (
   const [pageDocumentDefs, dataDocumentDefs] = utils.partition(
     documentTypeDefs,
     (_): _ is core.DocumentTypeDef =>
-      _.fieldDefs.some((_) => _.name === urlPathFieldName) || _.computedFields.some((_) => _.name === urlPathFieldName),
+      _.fieldDefs.some((_) => _.name === urlPathFieldName) ||
+      _.computedFields.some((_) => _.name === urlPathFieldName),
   )
   const pagesDir = extensions.stackbit?.pagesDir
   const dataDir = extensions.stackbit?.dataDir
 
   const models = Object.fromEntries(
     [
-      ...pageDocumentDefs.map((def) => documentOrObjectDefToStackbitYamlModel({ def, type: 'page', urlPathFieldName })),
-      ...dataDocumentDefs.map((def) => documentOrObjectDefToStackbitYamlModel({ def, type: 'data', urlPathFieldName })),
+      ...pageDocumentDefs.map((def) =>
+        documentOrObjectDefToStackbitYamlModel({ def, type: 'page', urlPathFieldName }),
+      ),
+      ...dataDocumentDefs.map((def) =>
+        documentOrObjectDefToStackbitYamlModel({ def, type: 'data', urlPathFieldName }),
+      ),
       ...Object.values(nestedTypeDefMap).map((def) =>
         documentOrObjectDefToStackbitYamlModel({ def, type: 'object', urlPathFieldName }),
       ),
@@ -44,7 +49,9 @@ const documentOrObjectDefToStackbitYamlModel = ({
     def._tag === 'DocumentTypeDef'
       ? def.fieldDefs
           .filter(not(isContentMarkdownFieldDef))
-          .map((fieldDef) => fieldDefToStackbitField({ fieldDef, fieldExtension: ext?.fields?.[fieldDef.name] }))
+          .map((fieldDef) =>
+            fieldDefToStackbitField({ fieldDef, fieldExtension: ext?.fields?.[fieldDef.name] }),
+          )
       : def.fieldDefs.map((fieldDef) =>
           fieldDefToStackbitField({ fieldDef, fieldExtension: ext?.fields?.[fieldDef.name] }),
         )
@@ -141,10 +148,14 @@ const fieldDefToStackbitField = ({
 const listFieldDefToStackbitFieldListItems = (
   fieldDef: core.ListFieldDef | core.ListPolymorphicFieldDef,
 ): Stackbit.FieldListItems => {
-  const getModelName = (item: core.ListFieldDefItem.ItemNested | core.ListFieldDefItem.ItemDocumentReference) =>
-    item.type === 'reference' ? item.documentTypeName : item.nestedTypeName
+  const getModelName = (
+    item: core.ListFieldDefItem.ItemNested | core.ListFieldDefItem.ItemDocumentReference,
+  ) => (item.type === 'reference' ? item.documentTypeName : item.nestedTypeName)
 
-  if (fieldDef.type === 'list' && (fieldDef.of.type === 'reference' || fieldDef.of.type === 'nested')) {
+  if (
+    fieldDef.type === 'list' &&
+    (fieldDef.of.type === 'reference' || fieldDef.of.type === 'nested')
+  ) {
     return {
       type: 'model',
       models: [getModelName(fieldDef.of)],

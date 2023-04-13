@@ -59,7 +59,8 @@ export type NestedTypeDef<DefName extends string = string> = {
   extensions?: TypeExtensions<DefName>
 }
 
-export const isNestedTypeDef = (_: NestedTypeDef | NestedUnnamedTypeDef): _ is NestedTypeDef => _.hasOwnProperty('name')
+export const isNestedTypeDef = (_: NestedTypeDef | NestedUnnamedTypeDef): _ is NestedTypeDef =>
+  _.hasOwnProperty('name')
 
 export type NestedUnnamedTypeDef = {
   // type: 'NestedUnnamedTypeDef'
@@ -68,8 +69,9 @@ export type NestedUnnamedTypeDef = {
   extensions?: TypeExtensions
 }
 
-export const isNestedUnnamedTypeDef = (_: NestedTypeDef | NestedUnnamedTypeDef): _ is NestedUnnamedTypeDef =>
-  !_.hasOwnProperty('name')
+export const isNestedUnnamedTypeDef = (
+  _: NestedTypeDef | NestedUnnamedTypeDef,
+): _ is NestedUnnamedTypeDef => !_.hasOwnProperty('name')
 
 // export type FieldType =
 //   | 'string'
@@ -87,7 +89,10 @@ export type NestedType<DefName extends string = string> = {
   def: Thunk<NestedTypeDef<DefName> | NestedUnnamedTypeDef>
 }
 
-export type DocumentType<DefName extends string = string> = { type: 'document'; def: Thunk<DocumentTypeDef<DefName>> }
+export type DocumentType<DefName extends string = string> = {
+  type: 'document'
+  def: Thunk<DocumentTypeDef<DefName>>
+}
 
 // `<any>` cast here is needed here to flip variance (see https://github.com/wesbitty/wesjet/issue/)
 export type DocumentTypes = DocumentType<any>[] | Record<string, DocumentType<any>>

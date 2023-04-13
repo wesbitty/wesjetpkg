@@ -29,6 +29,8 @@ export class DocumentTypeMap extends Tagged('@local/DocumentTypeMap')<{
  */
 export const DocumentTypeMapState = State.State<DocumentTypeMap>(DocumentTypeMap._tag)
 
-export const provideDocumentTypeMapState = T.provideSomeLayer(DocumentTypeMapState.Live(DocumentTypeMap.init()))
+export const provideDocumentTypeMapState = T.provideSomeLayer(
+  DocumentTypeMapState.Live(DocumentTypeMap.init()),
+)
 
 export type HasDocumentTypeMapState = Has<State.State<DocumentTypeMap>>

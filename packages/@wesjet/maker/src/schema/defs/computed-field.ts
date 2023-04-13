@@ -14,8 +14,9 @@ type ComputedFieldResolver<DocumentTypeName extends string> = (
   _: GetDocumentTypeGen<DocumentTypeName>,
 ) => any | Promise<any>
 
-type GetDocumentTypeGen<Name extends string> = Name extends keyof GetDocumentTypeMapGen<LocalDocument>
-  ? GetDocumentTypeMapGen<LocalDocument>[Name]
-  : LocalDocument
+type GetDocumentTypeGen<Name extends string> =
+  Name extends keyof GetDocumentTypeMapGen<LocalDocument>
+    ? GetDocumentTypeMapGen<LocalDocument>[Name]
+    : LocalDocument
 
 // type GetDocumentTypeGen<Name extends string> = GetDocumentTypeMapGen<LocalDocument>[Name]

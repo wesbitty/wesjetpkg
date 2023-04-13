@@ -39,9 +39,11 @@ export const bundleMDX = ({
         // TODO don't use `process.cwd()` but instead `HasCwd`
         path.isAbsolute(contentDirPath) ? contentDirPath : path.join(process.cwd(), contentDirPath)
 
-      const getRelativeCwd = () => path.join(getCwdFromContentDirPath(), path.dirname(rawDocumentData.flattenedPath))
+      const getRelativeCwd = () =>
+        path.join(getCwdFromContentDirPath(), path.dirname(rawDocumentData.flattenedPath))
 
-      const getCwd = () => (resolveCwd === 'contentDirPath' ? getCwdFromContentDirPath() : getRelativeCwd())
+      const getCwd = () =>
+        resolveCwd === 'contentDirPath' ? getCwdFromContentDirPath() : getRelativeCwd()
 
       // TODO when fixed https://github.com/kentcdodds/mdx-bundler/pull/206
       if (process.env.NODE_ENV === undefined) {
@@ -64,7 +66,9 @@ export const bundleMDX = ({
         ...restOptions,
       }
 
-      const res = yield* $(T.tryPromise(() => mdxBundler.bundleMDX({ source: mdxString, ...mdxOptions })))
+      const res = yield* $(
+        T.tryPromise(() => mdxBundler.bundleMDX({ source: mdxString, ...mdxOptions })),
+      )
 
       if (res.errors.length > 0) {
         return yield* $(T.fail(res.errors))

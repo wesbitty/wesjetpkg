@@ -137,9 +137,9 @@ export namespace FetchDataError {
       `Error for ${errorCount} image fields.${skippingMessage}`
 
     renderLine = () =>
-      `"${this.documentFilePath}" with field "${this.fieldDef.name}: ${this.imagePath}" failed with ${errorToString(
-        this.error,
-      )}`
+      `"${this.documentFilePath}" with field "${this.fieldDef.name}: ${
+        this.imagePath
+      }" failed with ${errorToString(this.error)}`
   }
 
   export class ComputedValueError
@@ -194,7 +194,9 @@ export namespace FetchDataError {
         .with('data', () => ['json', 'yaml', 'yml'])
         .exhaustive()
 
-      return `"${this.filePath}" ends with "${this.extension}" but expected to be one of "${expectedFileExtensions.join(
+      return `"${this.filePath}" ends with "${
+        this.extension
+      }" but expected to be one of "${expectedFileExtensions.join(
         ', ',
       )}" as defined \`contentType\` is "${this.contentType}"`
     }

@@ -59,7 +59,8 @@ export interface ListPolymorphicFieldDef extends FieldDefBase {
   typeField?: string
 }
 
-export const isListFieldDef = (_: FieldDef): _ is ListFieldDef => _.type === 'list' && !Array.isArray(_.of)
+export const isListFieldDef = (_: FieldDef): _ is ListFieldDef =>
+  _.type === 'list' && !Array.isArray(_.of)
 export const isListPolymorphicFieldDef = (_: FieldDef): _ is ListPolymorphicFieldDef =>
   _.type === 'list' && Array.isArray(_.of)
 
@@ -152,7 +153,8 @@ export type NestedFieldDef = FieldDefBase & {
   default?: any
 }
 
-export const isNestedFieldDef = (_: FieldDef): _ is NestedFieldDef => _.type === 'nested' && !Array.isArray(_.of)
+export const isNestedFieldDef = (_: FieldDef): _ is NestedFieldDef =>
+  _.type === 'nested' && !Array.isArray(_.of)
 
 export type NestedPolymorphicFieldDef = FieldDefBase & {
   type: 'nested'

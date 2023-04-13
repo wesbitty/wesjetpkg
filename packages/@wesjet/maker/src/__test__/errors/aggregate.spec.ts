@@ -21,7 +21,10 @@ const flags: Flags = {
   onUnknownDocuments: 'skip-warn',
 }
 const schemaDef = makeSchemaDef()
-const contentDirPath = unknownToAbsolutePosixFilePath('./content', unknownToAbsolutePosixFilePath(process.cwd()))
+const contentDirPath = unknownToAbsolutePosixFilePath(
+  './content',
+  unknownToAbsolutePosixFilePath(process.cwd()),
+)
 
 // TODO improve Vitest inline snapshots once fixed https://github.com/vitest-dev/vitest/issues/856
 
@@ -339,7 +342,10 @@ test('MissingRequiredFieldsError: should print 24 errors - truncated', async () 
 
 test('mix of different errors: some', async () => {
   const errorString = aggregateFetchDataErrors({
-    errors: makeErrors({ CouldNotDetermineDocumentTypeError: 4, NoSuchDocumentTypeError: 2 }, schemaDef),
+    errors: makeErrors(
+      { CouldNotDetermineDocumentTypeError: 4, NoSuchDocumentTypeError: 2 },
+      schemaDef,
+    ),
     options,
     flags,
     schemaDef,
