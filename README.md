@@ -19,18 +19,6 @@
 <a href="#backers"><img src="https://opencollective.com/wesbitty/backers/badge.svg?style=for-the-badge&logo=Wesbitty&logoColor=ffffff&color=66BF3C" alt="Backers on Open Collective" /></a>
 </p>
 
-## Table of contents
-
-- 🚀 [Getting Started](#getting-started)
-- 📒 [Features](#features)
-- 👥 [Community & Support](#community)
-- 👨‍💻 [Security](#security)
-- 🚇 [Wesjet SDK User's](#who-is-using-wesjet)
-- :memo: [License](#license)
-
-## Getting Started
-
-Visit [Wesbitty Inc](https://wesbitty.com/docs/wesjet/getting-started) to learn more about [Wesjet](https://github.com/wesbitty/wesjet) and to get started.
 
 ## Features
 
@@ -39,26 +27,34 @@ Visit [Wesbitty Inc](https://wesbitty.com/docs/wesjet/getting-started) to learn 
 - Powerful schema DSL to design your content model (validates your content and compiles types)
 - Compile TypeScript types based on your content model automatically (e.g. frontmatter or CMS schema)
 
+## Getting Started
+
+Visit <a aria-label="wesjet learn" href="https://wesbitty.org/product/wesjet">https://wesbitty.org/product/wesjet</a> to get started with Wesjet.
+
+## Documentation
+
+Visit [https://wesbitty.org/product/wesjet/docs](https://wesbitty.org/product/wesjet/docs) to view the full documentation.
+
 ## Community
 
-The Wesjet community can be found on [GitHub Discussions](https://github.com/wesbitty/wesbitty/discussions/3), where you can ask questions, voice ideas, and share your projects.
+The Wesjet community can be found on [GitHub Discussions](https://github.com/wesbitty/wesjet/discussions), where you can ask questions, voice ideas, and share your projects.
 
-To chat with other community members, you can join the [wesjet Discord](https://discord.com)
+To chat with other community members you can join the [Wesjet Discord](https://wesbitty.org/discord).
 
-Our [Code of Conduct](https://github.com/wesbitty/wesjet/master/blob/code_of_conduct.md) applies to all wesjet community channels.
+Our [Code of Conduct](https://github.com/wesbitty/wesjet/blob/automated/CODE_OF_CONDUCT.md) applies to all Wesjet community channels.
 
-Report bugs and errors you encounter using wesjet on [Wesjet Issues Forum](https://github.com/wesbitty/wesjet/issues).
+## Contributing
+
+Please see our [contributing.md](/contributing.md).
 
 ## Who is using Wesjet?
 
-- [Wesbitty Inc](https://wesbitty.com)
+- [Wesbitty Inc](https://wesbitty.org)
 
 Are you using Wesjet? please add your page (and repo) to the end of the list via a PR. 🙏
 
 ## Security
 
-If you believe you have found a security vulnerability in Wesjet, we encourage you to responsibly disclose this and not open a public issue. We will investigate all legitimate reports. Email `security@wesbitty.com` to disclose any security vulnerabilities
+If you believe you have found a security vulnerability in Wesjet, we encourage you to responsibly disclose this and not open a public issue. We will investigate all legitimate reports. Email `security@wesbitty.org` to disclose any security vulnerabilities.
 
-## License
-
-[MIT](https://github.com/wesbitty/wesjet/blob/master/LICENSE)
+https://wesbitty.org/security
