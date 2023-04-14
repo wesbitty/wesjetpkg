@@ -31,8 +31,12 @@ coverage
 # Bower dependency directory (https://bower.io/)
 bower_components
 
+# Changeset
 .changeset
 CHANGELOG.md
+
+# Gitpod
+.gitpod.yml
 
 # node-waf configuration
 .lock-wscript

@@ -1,8 +1,8 @@
 import * as core from '@wesjet/core'
-import type { HashError } from '@wesjet/utils'
-import { casesHandled, hashObject } from '@wesjet/utils'
-import type { HasConsole, OT } from '@wesjet/utils/effect'
-import { T } from '@wesjet/utils/effect'
+import type { HashError } from '@wesjet/function.js'
+import { casesHandled, hashObject } from '@wesjet/function.js'
+import type { HasConsole, OT } from '@wesjet/function.js/effect'
+import { T } from '@wesjet/function.js/effect'
 
 import type * as SchemaOverrides from '../schemaOverrides.js'
 import type { Contentful } from '../types.js'

@@ -1,6 +1,6 @@
 import type * as mdxEsbuild from '@mdx-js/esbuild/lib'
-import type { Thunk } from '@wesjet/utils'
-import type { E, HasClock, HasConsole, OT, S, T } from '@wesjet/utils/effect'
+import type { Thunk } from '@wesjet/function.js'
+import type { E, HasClock, HasConsole, OT, S, T } from '@wesjet/function.js/effect'
 import type * as mdxBundler from 'mdx-bundler/dist/types'
 import type { LiteralUnion } from 'type-fest'
 import type * as unified from 'unified'

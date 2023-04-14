@@ -1,4 +1,4 @@
-import { mapObjectValues } from '@wesjet/utils'
+import { mapObjectValues } from '@wesjet/function.js'
 
 import type { Contentful } from './types.js'
 

@@ -2424,7 +2424,7 @@ exports[`azimuth schema 1`] = `
 
 exports[`azimuth schema 2`] = `
 "stackbitVersion: ~0.3.0
-nodeVersion: \\">=12\\"
+nodeVersion: \\">=14.18\\"
 models:
   Blog:
     label: Blog
@@ -4217,7 +4217,7 @@ exports[`blog schema 1`] = `
 
 exports[`blog schema 2`] = `
 "stackbitVersion: ~0.3.0
-nodeVersion: \\">=12\\"
+nodeVersion: \\">=14.18\\"
 models:
   Post:
     label: Post

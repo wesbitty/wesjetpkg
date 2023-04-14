@@ -1,10 +1,10 @@
-import '@wesjet/utils/effect/Tracing/Enable'
+import '@wesjet/function.js/effect/Tracing/Enable'
 
 import process from 'node:process'
 
-import { provideDummyTracing } from '@wesjet/utils'
-import { pipe, T } from '@wesjet/utils/effect'
-import { getWesjetVersion } from '@wesjet/utils/node'
+import { provideDummyTracing } from '@wesjet/function.js'
+import { pipe, T } from '@wesjet/function.js/effect'
+import { getWesjetVersion } from '@wesjet/function.js/node'
 import { Builtins, Cli } from 'clipanion'
 
 import { BuildCommand } from './commands/BuildCommand.js'
@@ -18,7 +18,7 @@ export const run = async () => {
   const wesjetVersion = await pipe(getWesjetVersion(), provideDummyTracing, T.runPromise)
 
   const cli = new Cli({
-    binaryLabel: `wesjet CLI`,
+    binaryLabel: `Wesjet CLI`,
     binaryName: process.env['CL_DEBUG'] ? `${node} ${app}` : 'wesjet',
     binaryVersion: wesjetVersion,
   })

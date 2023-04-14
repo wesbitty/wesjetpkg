@@ -1,4 +1,4 @@
-import { OT, pipe, T } from '@wesjet/utils/effect'
+import { OT, pipe, T } from '@wesjet/function.js/effect'
 import { createClient } from 'contentful-management'
 
 import { UnknownContentfulError } from './errors.js'

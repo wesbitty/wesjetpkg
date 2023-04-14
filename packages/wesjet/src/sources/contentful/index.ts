@@ -1,6 +1,6 @@
 import type * as core from '@wesjet/core'
 import { processArgs } from '@wesjet/core'
-import { pipe, S, SC, T } from '@wesjet/utils/effect'
+import { pipe, S, SC, T } from '@wesjet/function.js/effect'
 
 import { fetchAllDocuments } from './fetchData/index.js'
 import { provideSchema } from './provideSchema.js'

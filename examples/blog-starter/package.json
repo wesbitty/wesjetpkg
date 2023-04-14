@@ -13,10 +13,9 @@
     "@types/react": "18.0.33",
     "@types/react-dom": "18.0.11",
     "next": "13.3.0",
-    "next-config-wesjet": "^0.0.19",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "typescript": "5.0.3",
-    "wesjet": "^0.0.19"
+    "wesjet": "^0.0.20"
   }
 }

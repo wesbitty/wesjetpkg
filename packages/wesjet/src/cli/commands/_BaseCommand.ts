@@ -1,8 +1,8 @@
 import type { HasCwd } from '@wesjet/core'
 import * as core from '@wesjet/core'
-import type { HasClock, HasConsole, OT } from '@wesjet/utils/effect'
-import { pipe, T } from '@wesjet/utils/effect'
-import { fs } from '@wesjet/utils/node'
+import type { HasClock, HasConsole, OT } from '@wesjet/function.js/effect'
+import { pipe, T } from '@wesjet/function.js/effect'
+import { fs } from '@wesjet/function.js/node'
 import { Command, Option } from 'clipanion'
 import * as t from 'typanion'
 
@@ -27,7 +27,7 @@ export abstract class BaseCommand extends Command {
     pipe(
       this.executeSafe(),
       core.runMain({
-        tracingServiceName: 'wesjet-cli',
+        tracingServiceName: 'wesjet/cli',
         verbose: this.verbose || process.env.CL_DEBUG !== undefined,
       }),
     )

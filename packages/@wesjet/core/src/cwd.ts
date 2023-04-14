@@ -1,6 +1,6 @@
-import { unknownToAbsolutePosixFilePath } from '@wesjet/utils'
-import type { Has } from '@wesjet/utils/effect'
-import { T, tag } from '@wesjet/utils/effect'
+import { unknownToAbsolutePosixFilePath } from '@wesjet/function.js'
+import type { Has } from '@wesjet/function.js/effect'
+import { T, tag } from '@wesjet/function.js/effect'
 
 const CwdSymbol = Symbol()
 

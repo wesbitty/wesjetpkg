@@ -1,5 +1,5 @@
 import * as core from '@wesjet/core'
-import { OT, pipe, T } from '@wesjet/utils/effect'
+import { OT, pipe, T } from '@wesjet/function.js/effect'
 import type { Usage } from 'clipanion'
 
 import { BaseCommand } from './_BaseCommand.js'
@@ -27,6 +27,6 @@ export class BuildCommand extends BaseCommand {
       ),
       T.chain((config) => core.generateDotpkg({ config, verbose: this.verbose })),
       T.tap(core.logGenerateInfo),
-      OT.withSpan('@wesjet/cli/commands/BuildCommand:executeSafe'),
+      OT.withSpan('wesjet/cli/commands/BuildCommand:executeSafe'),
     )
 }

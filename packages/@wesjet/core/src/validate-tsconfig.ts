@@ -1,9 +1,9 @@
 import path from 'node:path'
 
-import type { AbsolutePosixFilePath } from '@wesjet/utils'
-import { filePathJoin } from '@wesjet/utils'
-import { Chunk, O, OT, pipe, T, Tagged } from '@wesjet/utils/effect'
-import { fs } from '@wesjet/utils/node'
+import type { AbsolutePosixFilePath } from '@wesjet/function.js'
+import { filePathJoin } from '@wesjet/function.js'
+import { Chunk, O, OT, pipe, T, Tagged } from '@wesjet/function.js/effect'
+import { fs } from '@wesjet/function.js/node'
 import { parse as parseJsonc } from 'comment-json'
 
 import { getCwd } from './cwd.js'

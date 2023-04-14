@@ -1,7 +1,7 @@
-import { defineDocumentType } from 'wesjet/maker'
+import { defineDocumentType } from 'wesjet/dist/preset'
 
-import { SEO } from '../nested/SEO.js'
-import { urlFromFilePath } from '../utils.js'
+import { SEO } from '../nested/SEO'
+import { urlFromFilePath } from '../utils'
 
 export const Blog = defineDocumentType(() => ({
   name: 'Blog',

@@ -1,5 +1,5 @@
-import { errorToString } from '@wesjet/utils'
-import { E, Ex, H, M, O, OT, pipe, Q, Ref, S, T, Tagged } from '@wesjet/utils/effect'
+import { errorToString } from '@wesjet/function.js'
+import { E, Ex, H, M, O, OT, pipe, Q, Ref, S, T, Tagged } from '@wesjet/function.js/effect'
 import * as esbuild from 'esbuild'
 
 export const EsbuildWatcherTypeId = Symbol()

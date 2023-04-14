@@ -1,9 +1,9 @@
 import * as path from 'node:path'
 
-import type { E } from '@wesjet/utils/effect'
-import { Array, Chunk, O, OT, pipe, S, T } from '@wesjet/utils/effect'
-import type { GetWesjetVersionError } from '@wesjet/utils/node'
-import { fs } from '@wesjet/utils/node'
+import type { E } from '@wesjet/function.js/effect'
+import { Array, Chunk, O, OT, pipe, S, T } from '@wesjet/function.js/effect'
+import type { GetWesjetVersionError } from '@wesjet/function.js/node'
+import { fs } from '@wesjet/function.js/node'
 
 import type { HasCwd } from '../cwd.js'
 import { getCwd } from '../cwd.js'
