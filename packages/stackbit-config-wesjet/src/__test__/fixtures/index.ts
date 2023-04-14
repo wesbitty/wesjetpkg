@@ -1,7 +1,7 @@
-import { provideJaegerTracing } from '@wesjet/utils'
-import { pipe, provideConsole, T } from '@wesjet/utils/effect'
-import type { DocumentType } from 'wesjet/dist/maker'
-import { makeSource } from 'wesjet/dist/maker'
+import { provideJaegerTracing } from '@wesjet/function.js'
+import { pipe, provideConsole, T } from '@wesjet/function.js/effect'
+import type { DocumentType } from 'wesjet/dist/preset.js'
+import { makeSource } from 'wesjet/dist/preset.js'
 
 import * as azimuth from './azimuth-schema/index.js'
 import * as blog from './blog-schema/index.js'
@@ -15,7 +15,7 @@ const makeSchema = (documentTypes: Record<string, DocumentType<any>>) =>
   pipe(
     T.tryPromise(() => makeSource({ documentTypes, contentDirPath: '' })),
     T.chain((source) => source.provideSchema(esbuildHash)),
-    provideJaegerTracing('wesjet-cli'),
+    provideJaegerTracing('wesjet/cli'),
     provideConsole,
     T.runPromise,
   )

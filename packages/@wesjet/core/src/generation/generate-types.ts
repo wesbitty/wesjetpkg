@@ -1,4 +1,4 @@
-import { casesHandled, pattern } from '@wesjet/utils'
+import { casesHandled, pattern } from '@wesjet/function.js'
 
 import type { SourcePluginType } from '../plugin.js'
 import type {

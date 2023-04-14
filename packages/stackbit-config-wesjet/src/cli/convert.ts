@@ -1,7 +1,7 @@
 import type * as Stackbit from '@stackbit/sdk'
 import type * as StackbitTypes from '@stackbit/types'
 import type * as core from '@wesjet/core'
-import * as utils from '@wesjet/utils'
+import * as utils from '@wesjet/function.js'
 
 export const convertSchema = (
   { documentTypeDefMap, nestedTypeDefMap }: core.SchemaDef,

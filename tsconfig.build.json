@@ -4,8 +4,8 @@
   "include": [],
   "references": [
     { "path": "./packages/@wesjet/core" },
-    { "path": "./packages/@wesjet/maker" },
-    { "path": "./packages/@wesjet/utils" },
+    { "path": "./packages/@wesjet/preset" },
+    { "path": "./packages/@wesjet/function" },
     { "path": "./packages/wesjet" },
     { "path": "./packages/stackbit-config-wesjet" }
   ]

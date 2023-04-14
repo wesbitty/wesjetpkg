@@ -1,4 +1,4 @@
-import { defineDocumentType } from 'wesjet/dist/maker'
+import { defineDocumentType } from 'wesjet/dist/preset'
 
 export const Person = defineDocumentType(() => ({
   name: 'Person',

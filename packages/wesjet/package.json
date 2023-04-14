@@ -15,17 +15,14 @@
   },
   "exports": {
     "./package.json": "./package.json",
-    "./maker": {
-      "import": "./dist/maker.js"
+    "./preset": {
+      "import": "./dist/preset.js"
     },
     "./client": {
       "import": "./dist/client/index.js"
     },
-    "./utils": {
-      "import": "./dist/utils/index.js"
-    },
-    "./utils/node": {
-      "import": "./dist/utils/node/index.js"
+    "./function": {
+      "import": "./dist/function/index.js"
     },
     "./core": {
       "import": "./dist/core.js"
@@ -41,17 +38,14 @@
       "package.json": [
         "./package.json"
       ],
-      "maker": [
-        "./dist/maker"
+      "preset": [
+        "./dist/preset"
       ],
       "client": [
         "./dist/client"
       ],
-      "utils": [
-        "./dist/utils"
-      ],
-      "utils/node": [
-        "./dist/utils/node"
+      "function": [
+        "./dist/function"
       ],
       "core": [
         "./dist/core"
@@ -66,8 +60,8 @@
     "dist",
     "core.js",
     "core.d.ts",
-    "maker.js",
-    "maker.d.ts",
+    "preset.js",
+    "preset.d.ts",
     "client.js",
     "client.d.ts",
     "index.d.ts",
@@ -100,8 +94,8 @@
     "@sanity/schema": "^2.10.0",
     "@stackbit/sdk": "^0.2.39",
     "@wesjet/core": "^0.0.20",
-    "@wesjet/maker": "^0.0.20",
-    "@wesjet/utils": "^0.0.20",
+    "@wesjet/preset": "^0.0.20",
+    "@wesjet/function.js": "^0.0.20",
     "clipanion": "^3.2.0-rc.14",
     "contentful-management": "^7.22.4",
     "rxjs": "^7.1.0",

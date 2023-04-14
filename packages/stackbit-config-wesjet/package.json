@@ -19,7 +19,7 @@
   "dependencies": {
     "@stackbit/sdk": "^0.3.13",
     "@wesjet/core": "^0.0.20",
-    "@wesjet/utils": "^0.0.20",
+    "@wesjet/function.js": "^0.0.20",
     "clipanion": "^3.2.0-rc.14",
     "typanion": "3.12.1",
     "yaml": "^1.10.2"

@@ -1,8 +1,8 @@
 import * as core from '@wesjet/core'
 import { SourceProvideSchemaError } from '@wesjet/core'
-import * as utils from '@wesjet/utils'
-import { casesHandled, partition } from '@wesjet/utils'
-import { OT, pipe, T } from '@wesjet/utils/effect'
+import * as utils from '@wesjet/function.js'
+import { casesHandled, partition } from '@wesjet/function.js'
+import { OT, pipe, T } from '@wesjet/function.js/effect'
 
 import { environmentGetContentTypes, getEnvironment } from './contentful.js'
 import type * as SchemaOverrides from './schemaOverrides.js'

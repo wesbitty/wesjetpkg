@@ -1,4 +1,4 @@
-import { defineDocumentType } from 'wesjet/dist/maker'
+import { defineDocumentType } from 'wesjet/dist/preset'
 
 import { SEO } from '../nested/SEO'
 import { urlFromFilePath } from '../utils'

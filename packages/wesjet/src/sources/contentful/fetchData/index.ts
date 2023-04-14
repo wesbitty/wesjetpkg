@@ -1,9 +1,9 @@
 import * as os from 'node:os'
 
 import * as core from '@wesjet/core'
-import type { HasConsole } from '@wesjet/utils/effect'
-import { Chunk, OT, pipe, T } from '@wesjet/utils/effect'
-import { fs } from '@wesjet/utils/node'
+import type { HasConsole } from '@wesjet/function.js/effect'
+import { Chunk, OT, pipe, T } from '@wesjet/function.js/effect'
+import { fs } from '@wesjet/function.js/node'
 
 import {
   environmentGetAssets,

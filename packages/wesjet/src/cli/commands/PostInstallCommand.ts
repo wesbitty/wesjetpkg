@@ -1,8 +1,8 @@
 import * as path from 'node:path'
 
 import * as core from '@wesjet/core'
-import { OT, pipe, T } from '@wesjet/utils/effect'
-import { fs } from '@wesjet/utils/node'
+import { OT, pipe, T } from '@wesjet/function.js/effect'
+import { fs } from '@wesjet/function.js/node'
 
 import { BaseCommand } from './_BaseCommand.js'
 
@@ -19,7 +19,7 @@ export class PostInstallCommand extends BaseCommand {
 
         yield* $(addToplevelDotpkgToGitignore())
       }),
-      OT.withSpan('@wesjet/cli/commands/PostInstallCommand:executeSafe', {
+      OT.withSpan('wesjet/cli/commands/PostInstallCommand:executeSafe', {
         attributes: { cwd: process.cwd() },
       }),
     )
@@ -78,7 +78,7 @@ const generateTypes = ({
   })
 
 const moduleStubFileIndexDts = `\
-// THIS FILE IS COMPILED BY WESJET AUTOMATICALLY | DO NOT EDIT.
+// This file IS COMPILED BY WESJET AUTOMATICALLY | DO NOT EDIT.
 // THIS IS A PLACEHOLDER UNTIL \`wesjet build\` HAS BEEN RUN.
 
 export {}

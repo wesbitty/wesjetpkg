@@ -1,8 +1,8 @@
-import '@wesjet/utils/effect/Tracing/Enable'
+import '@wesjet/function.js/effect/Tracing/Enable'
 
 import * as core from '@wesjet/core'
-import { errorToString } from '@wesjet/utils'
-import { E, OT, pipe, S, T } from '@wesjet/utils/effect'
+import { errorToString } from '@wesjet/function.js'
+import { E, OT, pipe, S, T } from '@wesjet/function.js/effect'
 
 export type NextPluginOptions = {
   configPath?: string | undefined

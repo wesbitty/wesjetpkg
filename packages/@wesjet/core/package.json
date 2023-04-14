@@ -24,7 +24,7 @@
     }
   },
   "dependencies": {
-    "@wesjet/utils": "^0.0.20",
+    "@wesjet/function.js": "^0.0.20",
     "camel-case": "^4.1.2",
     "comment-json": "^4.2.3",
     "esbuild": "0.17.x",

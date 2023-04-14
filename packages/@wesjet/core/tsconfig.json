@@ -7,5 +7,5 @@
     "tsBuildInfoFile": "./dist/.tsbuildinfo.json"
   },
   "include": ["./src"],
-  "references": [{ "path": "../utils" }]
+  "references": [{ "path": "../function" }]
 }

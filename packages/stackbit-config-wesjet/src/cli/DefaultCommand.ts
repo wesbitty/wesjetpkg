@@ -3,9 +3,9 @@ import * as path from 'node:path'
 
 import type { HasCwd } from '@wesjet/core'
 import { getConfig, provideCwd } from '@wesjet/core'
-import { provideJaegerTracing, recRemoveUndefinedValues } from '@wesjet/utils'
-import type { HasConsole } from '@wesjet/utils/effect'
-import { OT, pipe, pretty, provideConsole, T } from '@wesjet/utils/effect'
+import { provideJaegerTracing, recRemoveUndefinedValues } from '@wesjet/function.js'
+import type { HasConsole } from '@wesjet/function.js/effect'
+import { OT, pipe, pretty, provideConsole, T } from '@wesjet/function.js/effect'
 import { Command, Option } from 'clipanion'
 import * as t from 'typanion'
 

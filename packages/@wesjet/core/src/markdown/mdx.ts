@@ -1,7 +1,7 @@
 import * as path from 'node:path'
 
-import { errorToString } from '@wesjet/utils'
-import { OT, pipe, T, Tagged } from '@wesjet/utils/effect'
+import { errorToString } from '@wesjet/function.js'
+import { OT, pipe, T, Tagged } from '@wesjet/function.js/effect'
 import * as mdxBundler from 'mdx-bundler'
 import type { BundleMDXOptions } from 'mdx-bundler/dist/types'
 

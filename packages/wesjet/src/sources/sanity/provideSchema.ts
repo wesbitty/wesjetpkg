@@ -1,7 +1,7 @@
 const getSanitySchema = require('@sanity/core/lib/actions/graphql/getSanitySchema')
 import type Schema from '@sanity/schema'
 import * as core from '@wesjet/core'
-import { pattern, pick } from '@wesjet/utils'
+import { pattern, pick } from '@wesjet/function.js'
 
 import type * as Sanity from './sanity-types'
 

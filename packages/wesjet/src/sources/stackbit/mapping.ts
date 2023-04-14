@@ -1,7 +1,7 @@
 import type * as Stackbit from '@stackbit/sdk'
-import * as SourceFiles from '@wesjet/maker'
-import { casesHandled, isReadonlyArray, notImplemented, pick } from '@wesjet/utils'
-import { identity } from '@wesjet/utils/effect'
+import * as SourceFiles from '@wesjet/preset'
+import { casesHandled, isReadonlyArray, notImplemented, pick } from '@wesjet/function.js'
+import { identity } from '@wesjet/function.js/effect'
 
 type DocumentTypeMap = Record<string, SourceFiles.DocumentType>
 type NestedTypeMap = Record<string, SourceFiles.NestedType>
