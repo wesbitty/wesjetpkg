@@ -1,36 +1,31 @@
 {
-  "name": "@wesbitty/wesjet",
-  "description": "Incremental Bundler, Transform & Validate content and build system optimized for JavaScript and TypeScript",
-  "version": "0.0.0",
   "license": "MIT",
+  "version": "0.0.0",
   "private": true,
   "engines": {
     "node": "^12.22.0 || ^14.17.0 || >=16.0.0"
   },
-  "scripts": {
-    "postinstall": "ts-patch install && ts-patch --persist && npm run postinstall -w wesjet",
-    "prepare": "husky install",
-    "prepack": "npm run prepack -w next-config-wesjet",
-    "lint": "npm run format:prettier && npm run format:eslint",
-    "build": "npm run clean && tsc -b tsconfig.build.json",
-    "pre-commit": "npx lint-staged",
-    "clean": "bash -c 'rm -rf packages/@wesjet/*/dist packages/*/dist packages/*/.wesjet'",
-    "check:prettier": "prettier -c packages",
-    "check:eslint": "eslint packages --ext .ts --max-warnings=0",
-    "format:prettier": "prettier -w packages",
-    "format:eslint": "eslint packages --ext .ts --fix",
-    "all": "npm i && npm run lint && npm run build && npm -w next-config-wesjet run prepack"
-  },
-  "author": "Wesbitty, Inc",
   "keywords": [
     "Wesjet",
     "Bundler",
     "Typescript",
     "Maker"
   ],
+  "author": "Wesbitty, Inc",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wesbitty/wesjet"
+  },
+  "scripts": {
+    "postinstall": "ts-patch install -s",
+    "prepare": "husky install",
+    "pre-commit": "npx lint-staged",
+    "build": "npm run clean && tsc -b tsconfig.build.json",
+    "check-prettier": "prettier -c packages",
+    "check-eslint": "eslint packages --ext .ts --max-warnings=0",
+    "format-prettier": "prettier -w packages",
+    "eslint-fix": "eslint packages --ext .ts --fix",
+    "clean": "rimraf packages/*/dist packages/@wesjet/*/dist packages/*/.wesjet"
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.1",
@@ -49,6 +44,7 @@
     "eslint-plugin-import": "^2.27.4",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-simple-import-sort": "^8.0.0",
+    "eslint-plugin-wesjet": "^0.0.20",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.0",
     "npm-run-all": "^4.1.5",
