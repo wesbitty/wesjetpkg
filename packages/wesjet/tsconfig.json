@@ -6,7 +6,7 @@
     "outDir": "./dist",
     "tsBuildInfoFile": "./dist/.tsbuildinfo.json"
   },
-  "include": ["./src"],
+  "include": ["./src", "src/next"],
   "references": [
     {
       "path": "../@wesjet/maker"

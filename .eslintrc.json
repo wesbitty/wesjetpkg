@@ -16,7 +16,7 @@
     "simple-import-sort/exports": "error",
     "import/no-duplicates": "warn",
     // "func-style": ["warn", "expression"],
-    "import/no-extraneous-dependencies": "error",
+    "import/no-extraneous-dependencies": "off",
     "import/no-named-as-default": "warn",
     "import/no-named-as-default-member": "warn",
     "@typescript-eslint/consistent-type-imports": "error",

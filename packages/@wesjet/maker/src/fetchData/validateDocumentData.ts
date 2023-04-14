@@ -5,12 +5,12 @@ import { O, OT, pipe, T, These } from '@wesjet/utils/effect'
 import { fs } from '@wesjet/utils/node'
 import micromatch from 'micromatch'
 
-import { FetchDataError } from '../errors/index.js'
-import type { DocumentContentType, FilePathPatternMap } from '../index.js'
-import type { ContentTypeMap } from '../types.js'
-import type { HasDocumentTypeMapState } from './DocumentTypeMap.js'
-import { DocumentTypeMapState } from './DocumentTypeMap.js'
-import type { RawContent } from './types.js'
+import { FetchDataError } from '../errors'
+import type { DocumentContentType, FilePathPatternMap } from '../index'
+import type { ContentTypeMap } from '../types'
+import type { HasDocumentTypeMapState } from './DocumentTypeMap'
+import { DocumentTypeMapState } from './DocumentTypeMap'
+import type { RawContent } from './types'
 
 type ValidateDocumentDataError =
   | FetchDataError.CouldNotDetermineDocumentTypeError

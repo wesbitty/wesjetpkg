@@ -33,7 +33,7 @@ export class DefaultCommand extends Command {
     validator: t.isString(),
   })
 
-  // TODO refactor similar to `@wesjet/cli`
+  // TODO refactor similar to `wesjet/cli`
   async execute() {
     try {
       await pipe(

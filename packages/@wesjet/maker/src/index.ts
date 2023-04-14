@@ -3,13 +3,13 @@ import { processArgs, SourceProvideSchemaError } from '@wesjet/core'
 import { unknownToAbsolutePosixFilePath, unknownToRelativePosixFilePath } from '@wesjet/utils'
 import { pipe, S, T } from '@wesjet/utils/effect'
 
-import { fetchData } from './fetchData/index.js'
-import type * as LocalSchema from './schema/defs/index.js'
-import { makeCoreSchema } from './schema/provideSchema.js'
-import type { Flags, PluginOptions } from './types.js'
+import { fetchData } from './fetchData'
+import type * as LocalSchema from './schema/defs'
+import { makeCoreSchema } from './schema/provideSchema'
+import type { Flags, PluginOptions } from './types'
 
-export * from './schema/defs/index.js'
-export * from './types.js'
+export * from './schema/defs'
+export * from './types'
 
 export type Args = {
   documentTypes: LocalSchema.DocumentTypes

@@ -33,7 +33,7 @@ export const convertSchema = (
     ].map(({ model, name }) => [name, model]),
   )
 
-  return { stackbitVersion: '~0.3.0', nodeVersion: '>=12', models, pagesDir, dataDir }
+  return { stackbitVersion: '~0.3.0', nodeVersion: '>=14.18', models, pagesDir, dataDir }
 }
 
 const documentOrObjectDefToStackbitYamlModel = ({

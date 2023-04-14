@@ -1,4 +1,4 @@
-import { defineNestedType } from 'wesjet/maker'
+import { defineNestedType } from 'wesjet/dist/maker'
 
 export const FormField = defineNestedType(() => ({
   name: 'FormField',

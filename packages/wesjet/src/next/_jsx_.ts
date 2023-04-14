@@ -1,15 +1,18 @@
 import type { NextConfig } from 'next'
 
-import { checkConstraints } from './check-constraints.js'
-import { type NextPluginOptions, runWesjetBuild, runWesjetDev } from './plugin.js'
+import type { NextPluginOptions } from './validate/plugin'
+
+export * from './lib/mdx'
+export * from './lib/reload'
 
 export type { NextConfig }
 
 let devServerStarted = false
 
-export const defaultPluginOptions: NextPluginOptions = {}
+const defaultPluginOptions: NextPluginOptions = {}
+module.exports.defaultPluginOptions = defaultPluginOptions
 
-export const createWesjetPlugin =
+module.exports.createWesjetPlugin =
   (pluginOptions: NextPluginOptions = defaultPluginOptions) =>
   (nextConfig: Partial<NextConfig> = {}): Partial<NextConfig> => {
     // could be either `next dev` or just `next`
@@ -18,20 +21,23 @@ export const createWesjetPlugin =
       process.argv.some((_) => _.endsWith('bin/next') || _.endsWith('bin\\next'))
     const isBuild = process.argv.includes('build')
 
-    const { configPath } = pluginOptions
-
     return {
       ...nextConfig,
       // Since Next.js doesn't provide some kind of real "plugin system" we're (ab)using the `redirects` option here
       // in order to hook into and block the `next build` and initial `next dev` run.
       redirects: async () => {
+        // TODO move to post-install?
+        const { checkConstraints } = await import('./validate/check-constraints')
+        checkConstraints()
+
+        // NOTE since next.config.js doesn't support ESM yet, this "CJS -> ESM bridge" is needed
+        const { runWesjetBuild, runWesjetDev } = await import('./validate/plugin')
         if (isBuild) {
-          checkConstraints()
-          await runWesjetBuild({ configPath })
+          await runWesjetBuild(pluginOptions)
         } else if (isNextDev && !devServerStarted) {
           devServerStarted = true
           // TODO also block here until first wesjet run is complete
-          runWesjetDev({ configPath })
+          runWesjetDev(pluginOptions)
         }
 
         return nextConfig.redirects?.() ?? []
@@ -47,8 +53,6 @@ export const createWesjetPlugin =
           ignored: ['**/node_modules/!(.wesjet)/**/*'],
         }
 
-        // NOTE workaround for https://github.com/vercel/next.js/issues/17806#issuecomment-913437792
-        // https://github.com/wesbitty/wesjet/issues/121
         config.module.rules.push({
           test: /\.m?js$/,
           type: 'javascript/auto',
@@ -66,4 +70,4 @@ export const createWesjetPlugin =
     }
   }
 
-export const wesjetConfig = createWesjetPlugin(defaultPluginOptions)
+module.exports.wesjetConfig = module.exports.createWesjetPlugin(defaultPluginOptions)
