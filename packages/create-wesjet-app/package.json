@@ -1,13 +1,23 @@
 {
   "name": "create-wesjet-app",
+  "keywords": [
+    "react"
+  ],
   "version": "0.0.20",
+  "homepage": "https://wesbitty.org/product/wesjet",
+  "bugs": "https://github.com/wesbitty/wesjet/issues",
   "license": "MIT",
-  "bin": {
-    "create-wesjet-app": "./dist/index.js"
-  },
   "files": [
     "dist"
   ],
+  "bin": {
+    "create-wesjet-app": "./dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wesbitty/wesjet.git",
+    "directory": "packages/create-wesjet-app"
+  },
   "scripts": {
     "build-swc": "swc src/index.ts -d dist",
     "build": "ncc build ./src/index.ts -o ./dist/ --minify --no-cache --no-source-map-register",
