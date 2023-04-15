@@ -1,19 +1,14 @@
 {
   "name": "stackbit-config-wesjet",
   "description": "wesjet stackbit library",
-  "version": "0.0.20",
-  "license": "MIT",
   "keywords": [
     "stackbit",
     "wesjet"
   ],
+  "version": "0.0.20",
+  "license": "MIT",
   "homepage": "https://wesbitty.org/product/wesjet",
   "bugs": "https://github.com/wesbitty/wesjet/issues",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/wesbitty/wesjet",
-    "directory": "packages/stackbit-config-wesjet"
-  },
   "files": [
     "dist",
     "./dist/!(__test__)/**/*.{js,ts,map}",
@@ -24,6 +19,11 @@
   "type": "module",
   "exports": "./dist/lib/index.js",
   "types": "./dist/lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wesbitty/wesjet",
+    "directory": "packages/stackbit-config-wesjet"
+  },
   "scripts": {
     "#postinstall": "node ./bin/install-cmd.cjs postinstall",
     "test": "FORCE_COLOR=1 vitest"
