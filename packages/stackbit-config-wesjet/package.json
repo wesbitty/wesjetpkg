@@ -1,7 +1,12 @@
 {
   "name": "stackbit-config-wesjet",
+  "description": "wesjet stackbit library",
   "version": "0.0.20",
   "license": "MIT",
+  "keywords": [
+    "stackbit",
+    "wesjet"
+  ],
   "homepage": "https://wesbitty.org/product/wesjet",
   "bugs": "https://github.com/wesbitty/wesjet/issues",
   "repository": {
