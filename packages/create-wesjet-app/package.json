@@ -2,12 +2,12 @@
   "name": "create-wesjet-app",
   "description": "user's guide to create a wesjet app",
   "keywords": [
-    "react"
+    "wesjet"
   ],
   "version": "0.0.20",
+  "license": "MIT",
   "homepage": "https://wesbitty.org/product/wesjet",
   "bugs": "https://github.com/wesbitty/wesjet/issues",
-  "license": "MIT",
   "files": [
     "dist"
   ],

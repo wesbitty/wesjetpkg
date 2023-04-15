@@ -1,17 +1,24 @@
 {
   "name": "eslint-plugin-wesjet",
   "description": "wesjet eslint plugin for code scanning",
+  "version": "0.0.20",
+  "license": "MIT",
   "keywords": [
     "eslint",
     "wesjet"
   ],
-  "version": "0.0.20",
-  "license": "MIT",
   "files": [
     "dist",
     "README.md"
   ],
-  "author": "DimejiSR",
+  "author": "dimejiSR <Wesbitty Inc>",
+  "homepage": "https://wesbitty.org/product/wesjet",
+  "bugs": "https://github.com/wesbitty/wesjet/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wesbitty/wesjet.git",
+    "directory": "packages/eslint-plugin-wesjet"
+  },
   "main": "./dist/index.js",
   "exports": "./dist/index.js",
   "scripts": {

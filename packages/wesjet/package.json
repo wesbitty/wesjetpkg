@@ -1,11 +1,11 @@
 {
   "name": "wesjet",
   "description": "Wesjet is a JavaScript library to transform and validate content for building user interfaces.",
+  "version": "0.0.20",
+  "license": "MIT",
   "keywords": [
     "wesjet"
   ],
-  "version": "0.0.20",
-  "license": "MIT",
   "bin": "./bin/install-cmd.cjs",
   "type": "module",
   "engines": {
@@ -15,7 +15,7 @@
   "bugs": "https://github.com/wesbitty/wesjet/issues",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wesbitty/wesjet",
+    "url": "git+https://github.com/wesbitty/wesjet.git",
     "directory": "packages/wesjet"
   },
   "files": [
@@ -53,7 +53,7 @@
       "require": "./dist/next/_jsx_.cjs"
     }
   },
- "typesVersions": {
+  "typesVersions": {
     "*": {
       "package.json": [
         "./package.json"
@@ -77,7 +77,7 @@
   },
   "scripts": {
     "postinstall": "node ./bin/install-cmd.cjs postinstall",
-    "prepack": "sed '/^import /d' dist/next/_jsx_.js > dist/next/_jsx_.cjs; cp src/next/lib/jsx-runtime.cjs dist/next/lib/jsx-runtime.
+    "prepack": "sed '/^import /d' dist/next/_jsx_.js > dist/next/_jsx_.cjs; cp src/next/lib/jsx-runtime.cjs dist/next/lib/jsx-runtime.cjs"
   },
   "peerDependencies": {
     "@stackbit/sdk": "^0.2.39",
