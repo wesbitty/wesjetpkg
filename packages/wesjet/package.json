@@ -1,59 +1,22 @@
 {
   "name": "wesjet",
+  "description": "Wesjet is a JavaScript library to transform and validate content for building user interfaces.",
+  "keywords": [
+    "wesjet"
+  ],
   "version": "0.0.20",
   "license": "MIT",
-  "author": "Wesbitty, Inc",
-  "homepage": "https://github.com/wesbitty/wesjet",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/wesbitty/wesjet"
-  },
   "bin": "./bin/install-cmd.cjs",
   "type": "module",
   "engines": {
     "node": ">=14.18"
   },
-  "exports": {
-    "./package.json": "./package.json",
-    "./preset": {
-      "import": "./dist/preset.js"
-    },
-    "./client": {
-      "import": "./dist/client/index.js"
-    },
-    "./function": {
-      "import": "./dist/function/index.js"
-    },
-    "./core": {
-      "import": "./dist/core.js"
-    },
-    "./next": {
-      "import": "./dist/next/index.js",
-      "require": "./dist/next/_jsx_.cjs"
-    }
-  },
-  "_typesVersions": "Not needed anymore once this issue is closed https://github.com/microsoft/TypeScript/issues/33079",
-  "typesVersions": {
-    "*": {
-      "package.json": [
-        "./package.json"
-      ],
-      "preset": [
-        "./dist/preset"
-      ],
-      "client": [
-        "./dist/client"
-      ],
-      "function": [
-        "./dist/function"
-      ],
-      "core": [
-        "./dist/core"
-      ],
-      "next": [
-        "./dist/next"
-      ]
-    }
+  "homepage": "https://wesbitty.org/product/wesjet",
+  "bugs": "https://github.com/wesbitty/wesjet/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wesbitty/wesjet",
+    "directory": "packages/wesjet"
   },
   "files": [
     "bin",
@@ -71,10 +34,50 @@
     "LICENSE",
     "package.json"
   ],
+  "exports": {
+    "./package.json": "./package.json",
+    "./client": {
+      "import": "./dist/client/index.js"
+    },
+    "./core": {
+      "import": "./dist/core.js"
+    },
+    "./function": {
+      "import": "./dist/function/index.js"
+    },
+    "./preset": {
+      "import": "./dist/preset.js"
+    },
+    "./next": {
+      "import": "./dist/next/index.js",
+      "require": "./dist/next/_jsx_.cjs"
+    }
+  },
+ "typesVersions": {
+    "*": {
+      "package.json": [
+        "./package.json"
+      ],
+      "client": [
+        "./dist/client"
+      ],
+      "core": [
+        "./dist/core"
+      ],
+      "function": [
+        "./dist/function"
+      ],
+      "preset": [
+        "./dist/preset"
+      ],
+      "next": [
+        "./dist/next"
+      ]
+    }
+  },
   "scripts": {
     "postinstall": "node ./bin/install-cmd.cjs postinstall",
-    "prepack": "sed '/^import /d' dist/next/_jsx_.js > dist/next/_jsx_.cjs; cp src/next/lib/jsx-runtime.cjs dist/next/lib/jsx-runtime.cjs",
-    "_bundle-cli": "esbuild ./dist/cli/index.js --bundle --platform=node --format=esm --external:esbuild --external:@esbuild-plugins/node-resolve --outfile=dist/cli/bundle.js --main-fields=module,main --metafile=meta.json --banner:js=\"import { createRequire as topLevelCreateRequire } from 'module'; const require = topLevelCreateRequire(import.meta.url); const __dirname = '__SET_BY_ESBUILD__';\""
+    "prepack": "sed '/^import /d' dist/next/_jsx_.js > dist/next/_jsx_.cjs; cp src/next/lib/jsx-runtime.cjs dist/next/lib/jsx-runtime.
   },
   "peerDependencies": {
     "@stackbit/sdk": "^0.2.39",
