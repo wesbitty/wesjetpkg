@@ -1,15 +1,24 @@
 {
   "name": "@wesjet/core",
-  "version": "0.0.20",
-  "type": "module",
-  "exports": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "./dist/**/*.{js,ts,map}",
-    "./package.json"
+  "description": "wesjet package for users outside of the browser",
+  "keywords": [
+    "wesjet"
   ],
-  "scripts": {
-    "test": "echo No tests yet"
+  "version": "0.0.20",
+  "license": "MIT",
+  "homepage": "https://wesbitty.org/product/wesjet",
+  "bugs": "https://github.com/wesbitty/wesjet/issues",
+  "files": [
+    "dist",
+    "package.json"
+  ],
+  "type": "module",
+  "types": "./dist/index.d.ts",
+  "exports": "./dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wesbitty/wesjet",
+    "directory": "packages/@wesjet/core"
   },
   "peerDependencies": {
     "esbuild": "^0.17.x",
