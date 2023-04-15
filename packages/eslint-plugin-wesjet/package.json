@@ -1,26 +1,26 @@
 {
   "name": "eslint-plugin-wesjet",
-  "version": "0.0.20",
-  "description": "Wesjet Linting and Formatting plugin",
+  "description": "wesjet eslint plugin for code scanning",
   "keywords": [
     "eslint",
-    "eslintplugin",
-    "eslint-plugin"
+    "wesjet"
   ],
-  "author": "DimejiSR",
+  "version": "0.0.20",
+  "license": "MIT",
   "main": "./dist/index.js",
   "exports": "./dist/index.js",
   "files": [
     "dist",
     "README.md"
   ],
+  "author": "DimejiSR",
   "scripts": {
     "build": "swc lib -d dist",
     "lint": "npm-run-all \"lint:*\"",
-    "lint:eslint-docs": "npm-run-all \"update:eslint-docs -- --check\"",
-    "lint:ts": "eslint .",
+    "lint-eslint-doc": "npm-run-all \"update-gen-doc -- --check\"",
+    "lint-ts": "eslint .",
     "test": "mocha tests --recursive",
-    "gen-doc": "eslint-doc-generator"
+    "update-gen-doc": "eslint-doc-generator"
   },
   "dependencies": {
     "glob": "^10.0.0",
