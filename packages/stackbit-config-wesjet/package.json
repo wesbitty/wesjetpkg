@@ -7,7 +7,7 @@
   "bugs": "https://github.com/wesbitty/wesjet/issues",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wesbitty/wesjet",
+    "url": "git+https://github.com/wesbitty/wesjet.git",
     "directory": "packages/stackbit-config-wesjet"
   },
   "keywords": [
