@@ -1,4 +1,4 @@
-import { defineDocumentType, defineNestedType } from 'wesjet/maker'
+import { defineDocumentType, defineNestedType } from 'wesjet/dist/preset.js'
 
 import { Action } from '../nested/Action.js'
 import { FormField } from '../nested/FormField.js'
@@ -68,7 +68,8 @@ const Header = defineNestedType(() => ({
   fields: {
     logo_img: {
       type: 'string',
-      description: 'The logo image displayed in the header (if no logo added, the site title is displayed instead)',
+      description:
+        'The logo image displayed in the header (if no logo added, the site title is displayed instead)',
     },
     logo_img_alt: {
       type: 'string',

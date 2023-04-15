@@ -1,5 +1,5 @@
-import { errorToString } from '@wesjet/utils'
-import { E, Ex, H, M, O, OT, pipe, Q, Ref, S, T, Tagged } from '@wesjet/utils/effect'
+import { errorToString } from '@wesjet/function.js'
+import { E, Ex, H, M, O, OT, pipe, Q, Ref, S, T, Tagged } from '@wesjet/function.js/effect'
 import * as esbuild from 'esbuild'
 
 export const EsbuildWatcherTypeId = Symbol()
@@ -14,7 +14,9 @@ export type Plugin = esbuild.Plugin
 
 export type EsbuildError = UnknownEsbuildError | KnownEsbuildError
 
-export class UnknownEsbuildError extends Tagged('UnknownEsbuildError')<{ readonly error: unknown }> {
+export class UnknownEsbuildError extends Tagged('UnknownEsbuildError')<{
+  readonly error: unknown
+}> {
   toString = () => `UnknownEsbuildError: ${errorToString(this.error)}`
 }
 
@@ -61,14 +63,19 @@ class ConcreteEsbuildWatcher implements EsbuildWatcher {
             let isFirstBuild = false
 
             build.onEnd((result) => {
-              runtime.runFiber(OT.addEvent('esbuild-build-result', { result: JSON.stringify(result) }))
+              runtime.runFiber(
+                OT.addEvent('esbuild-build-result', { result: JSON.stringify(result) }),
+              )
 
               if (isFirstBuild) {
                 isFirstBuild = false
               } else {
                 if (result.errors.length > 0) {
                   runtime.runFiber(
-                    H.publish_(fsEventsHub, Ex.succeed(E.left(new KnownEsbuildError({ error: result.errors })))),
+                    H.publish_(
+                      fsEventsHub,
+                      Ex.succeed(E.left(new KnownEsbuildError({ error: result.errors }))),
+                    ),
                   )
                 } else {
                   runtime.runFiber(H.publish_(fsEventsHub, Ex.succeed(E.right(result!))))
@@ -112,25 +119,37 @@ class ConcreteEsbuildWatcher implements EsbuildWatcher {
         )
       })
     }),
-    OT.withSpan('esbuild:start', { attributes: { buildOptions: JSON.stringify(this.buildOptions) } }),
+    OT.withSpan('esbuild:start', {
+      attributes: { buildOptions: JSON.stringify(this.buildOptions) },
+    }),
     T.catchAll((error) => H.publish_(this.fsEventsHub, Ex.succeed(E.left(error)))),
   )
 
-  subscribe: M.Managed<unknown, never, S.Stream<unknown, never, E.Either<EsbuildError, esbuild.BuildResult>>> = pipe(
+  subscribe: M.Managed<
+    unknown,
+    never,
+    S.Stream<unknown, never, E.Either<EsbuildError, esbuild.BuildResult>>
+  > = pipe(
     H.subscribe(this.fsEventsHub),
     M.chain((_) => M.ensuringFirst_(M.succeed(S.fromQueue()(_)), Q.shutdown(_))),
     M.map(S.flattenExit),
   )
 }
 
-function concrete(esbuildWatcher: EsbuildWatcher): asserts esbuildWatcher is ConcreteEsbuildWatcher {
+function concrete(
+  esbuildWatcher: EsbuildWatcher,
+): asserts esbuildWatcher is ConcreteEsbuildWatcher {
   //
 }
 
-export const make = (buildOptions: esbuild.BuildOptions): T.Effect<unknown, never, EsbuildWatcher> =>
+export const make = (
+  buildOptions: esbuild.BuildOptions,
+): T.Effect<unknown, never, EsbuildWatcher> =>
   T.gen(function* ($) {
     const initialBuildResult = yield* $(Ref.makeRef<O.Option<esbuild.BuildResult>>(O.none))
-    const hub = yield* $(H.makeUnbounded<Ex.Exit<never, E.Either<EsbuildError, esbuild.BuildResult>>>())
+    const hub = yield* $(
+      H.makeUnbounded<Ex.Exit<never, E.Either<EsbuildError, esbuild.BuildResult>>>(),
+    )
     const buildContext = yield* $(Ref.makeRef<O.Option<esbuild.BuildContext>>(O.none))
 
     return new ConcreteEsbuildWatcher(initialBuildResult, buildContext, buildOptions, hub)
@@ -138,7 +157,11 @@ export const make = (buildOptions: esbuild.BuildOptions): T.Effect<unknown, neve
 
 export const subscribe = (
   self: EsbuildWatcher,
-): M.Managed<unknown, never, S.Stream<unknown, never, E.Either<EsbuildError, esbuild.BuildResult>>> => {
+): M.Managed<
+  unknown,
+  never,
+  S.Stream<unknown, never, E.Either<EsbuildError, esbuild.BuildResult>>
+> => {
   concrete(self)
 
   return self.subscribe
@@ -157,7 +180,11 @@ const start = (self: EsbuildWatcher): T.Effect<OT.HasTracer, never, void> => {
 
 export const makeAndSubscribeManaged = (
   buildOptions: esbuild.BuildOptions,
-): M.Managed<OT.HasTracer, never, S.Stream<unknown, never, E.Either<EsbuildError, esbuild.BuildResult>>> =>
+): M.Managed<
+  OT.HasTracer,
+  never,
+  S.Stream<unknown, never, E.Either<EsbuildError, esbuild.BuildResult>>
+> =>
   pipe(
     M.make_(make(buildOptions), shutdown),
     M.chain((esbuildWatcher) =>

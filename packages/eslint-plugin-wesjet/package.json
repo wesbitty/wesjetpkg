@@ -1,0 +1,45 @@
+{
+  "name": "eslint-plugin-wesjet",
+  "description": "wesjet eslint plugin for code scanning",
+  "version": "0.0.20",
+  "license": "MIT",
+  "keywords": [
+    "eslint",
+    "wesjet"
+  ],
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "author": "dimejiSR <Wesbitty Inc>",
+  "homepage": "https://wesbitty.org/product/wesjet",
+  "bugs": "https://github.com/wesbitty/wesjet/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wesbitty/wesjet.git",
+    "directory": "packages/eslint-plugin-wesjet"
+  },
+  "main": "./dist/index.js",
+  "exports": "./dist/index.js",
+  "scripts": {
+    "build": "swc lib -d dist",
+    "lint": "npm-run-all \"lint:*\"",
+    "lint-eslint-doc": "npm-run-all \"update-gen-doc -- --check\"",
+    "lint-ts": "eslint .",
+    "test": "mocha tests --recursive",
+    "update-gen-doc": "eslint-doc-generator"
+  },
+  "dependencies": {
+    "glob": "^10.0.0",
+    "requireindex": "^1.2.0"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "eslint": "^7.24.0",
+    "eslint-doc-generator": "^1.0.0",
+    "eslint-plugin-eslint-plugin": "^5.0.0",
+    "eslint-plugin-node": "^11.1.0",
+    "mocha": "^10.0.0",
+    "npm-run-all": "^4.1.5"
+  }
+}

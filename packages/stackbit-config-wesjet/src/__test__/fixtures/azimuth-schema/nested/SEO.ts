@@ -1,4 +1,4 @@
-import { defineNestedType } from 'wesjet/maker'
+import { defineNestedType } from 'wesjet/dist/preset'
 
 export const SEO = defineNestedType(() => ({
   name: 'SEO',
@@ -16,7 +16,16 @@ export const SEO = defineNestedType(() => ({
       description: 'The items that go into the <meta name="robots"> tag',
       of: {
         type: 'enum',
-        options: ['all', 'index', 'follow', 'noindex', 'nofollow', 'noimageindex', 'notranslate', 'none'],
+        options: [
+          'all',
+          'index',
+          'follow',
+          'noindex',
+          'nofollow',
+          'noimageindex',
+          'notranslate',
+          'none',
+        ],
       },
     },
     extra: {

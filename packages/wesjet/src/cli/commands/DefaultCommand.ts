@@ -1,4 +1,4 @@
-import { OT, pipe, T } from '@wesjet/utils/effect'
+import { OT, pipe, T } from '@wesjet/function.js/effect'
 import { Command } from 'clipanion'
 
 import { BaseCommand } from './_BaseCommand.js'
@@ -9,7 +9,7 @@ export class DefaultCommand extends BaseCommand {
   executeSafe = () =>
     pipe(
       T.succeedWith(() => console.log(this.cli.usage())),
-      OT.withSpan('@wesjet/cli/commands/DefaultCommand:executeSafe', {
+      OT.withSpan('wesjet/cli/commands/DefaultCommand:executeSafe', {
         attributes: { cwd: process.cwd() },
       }),
     )

@@ -6,13 +6,13 @@
     "outDir": "./dist",
     "tsBuildInfoFile": "./dist/.tsbuildinfo.json"
   },
-  "include": ["./src"],
+  "include": ["./src", "src/next"],
   "references": [
     {
-      "path": "../@wesjet/maker"
+      "path": "../@wesjet/preset"
     },
     {
-      "path": "../@wesjet/utils"
+      "path": "../@wesjet/function"
     },
     {
       "path": "../@wesjet/core"

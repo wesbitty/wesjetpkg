@@ -1,4 +1,4 @@
-import { defineDocumentType } from 'wesjet/maker'
+import { defineDocumentType } from 'wesjet/dist/preset.js'
 
 import { SEO } from '../nested/SEO.js'
 import { urlFromFilePath } from '../utils.js'
@@ -40,7 +40,13 @@ export const Page = defineDocumentType(() => ({
   },
   extensions: {
     stackbit: {
-      match: ['about.md', 'privacy-policy.md', 'signup.md', 'style-guide.md', 'terms-of-service.md'],
+      match: [
+        'about.md',
+        'privacy-policy.md',
+        'signup.md',
+        'style-guide.md',
+        'terms-of-service.md',
+      ],
     },
   },
 }))

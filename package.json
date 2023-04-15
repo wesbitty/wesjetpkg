@@ -3,28 +3,35 @@
   "version": "0.0.0",
   "private": true,
   "engines": {
-    "node": "^12.22.0 || ^14.17.0 || >=16.0.0"
+    "node": "^12.22.0 || ^14.18 || >=16.0.0"
   },
+  "workspaces": [
+    "packages/@wesjet/*",
+    "packages/*",
+    "tests"
+  ],
   "keywords": [
-    "Wesjet",
-    "Bundler",
-    "Typescript",
-    "Maker"
+    "wesjet",
+    "bundler",
+    "javascript",
+    "typescript",
+    "transform",
+    "validate"
   ],
   "author": "Wesbitty, Inc",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wesbitty/wesjet"
+    "url": "git+https://github.com/wesbitty/wesjet.git"
   },
   "scripts": {
     "postinstall": "ts-patch install -s",
     "prepare": "husky install",
-    "pre-commit": "npx lint-staged",
-    "build": "npm run clean && tsc -b tsconfig.build.json",
-    "check-prettier": "prettier -c packages",
-    "check-eslint": "eslint packages --ext .ts --max-warnings=0",
-    "format-prettier": "prettier -w packages",
-    "eslint-fix": "eslint packages --ext .ts --fix",
+    "pre-commit": "lint-staged",
+    "build": "npm run clean && tsc -b tsconfig.pkg.json",
+    "check-prettier": "prettier --check .",
+    "check-eslint": "eslint . --ext .ts --max-warnings=0",
+    "format-prettier": "prettier --write .",
+    "eslint-fix": "eslint . --ext .ts --fix",
     "clean": "rimraf packages/*/dist packages/@wesjet/*/dist packages/*/.wesjet"
   },
   "devDependencies": {
@@ -54,17 +61,8 @@
     "ts-patch": "^2.1.0",
     "typescript": "^4.9.4"
   },
-  "workspaces": [
-    "packages/@wesjet/*",
-    "packages/*",
-    "tests"
-  ],
   "resolutions": {
     "esbuild": "0.17.0",
-    "wesjet": "*",
-    "@wesjet/*": "*",
-    "stackbit-config-wesjet": "*",
-    "next-config-wesjet": "*",
     "rxjs": "^7.1.0"
   }
 }

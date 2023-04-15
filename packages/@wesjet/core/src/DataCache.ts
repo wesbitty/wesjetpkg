@@ -1,9 +1,9 @@
 import * as path from 'node:path'
 
-import type { E } from '@wesjet/utils/effect'
-import { OT, pipe, T } from '@wesjet/utils/effect'
-import type { GetWesjetVersionError } from '@wesjet/utils/node'
-import { fs } from '@wesjet/utils/node'
+import type { E } from '@wesjet/function.js/effect'
+import { OT, pipe, T } from '@wesjet/function.js/effect'
+import type { GetWesjetVersionError } from '@wesjet/function.js/node'
+import { fs } from '@wesjet/function.js/node'
 
 import { ArtifactsDir } from './ArtifactsDir.js'
 import type { HasCwd } from './cwd.js'
@@ -66,7 +66,10 @@ export namespace DataCache {
   }): T.Effect<
     OT.HasTracer & HasCwd,
     never,
-    E.Either<fs.WriteFileError | fs.MkdirError | fs.JsonStringifyError | GetWesjetVersionError, void>
+    E.Either<
+      fs.WriteFileError | fs.MkdirError | fs.JsonStringifyError | GetWesjetVersionError,
+      void
+    >
   > =>
     pipe(
       T.gen(function* ($) {

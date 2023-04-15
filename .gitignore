@@ -12,7 +12,6 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 # Runtime data
 pids
 *.pid
-.gitpod.yml
 *.seed
 *.pid.lock
 
@@ -32,8 +31,12 @@ coverage
 # Bower dependency directory (https://bower.io/)
 bower_components
 
+# Changeset
 .changeset
 CHANGELOG.md
+
+# Gitpod
+.gitpod.yml
 
 # node-waf configuration
 .lock-wscript

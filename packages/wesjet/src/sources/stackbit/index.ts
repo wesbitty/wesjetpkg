@@ -1,10 +1,10 @@
 import * as Stackbit from '@stackbit/sdk'
 import { validateAndNormalizeConfig } from '@stackbit/sdk/dist/config/config-loader.js'
 import type * as core from '@wesjet/core'
-import type * as SourceFiles from '@wesjet/maker'
-import { defineDocumentType, defineNestedType } from '@wesjet/maker'
-import type { PartialDeep } from '@wesjet/utils'
-import { mergeDeep, not, partition, pick } from '@wesjet/utils'
+import type * as SourceFiles from '@wesjet/preset'
+import { defineDocumentType, defineNestedType } from '@wesjet/preset'
+import type { PartialDeep } from '@wesjet/function.js'
+import { mergeDeep, not, partition, pick } from '@wesjet/function.js'
 
 import type { SharedCtx } from './mapping.js'
 import {

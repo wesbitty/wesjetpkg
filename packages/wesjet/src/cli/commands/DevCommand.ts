@@ -1,6 +1,6 @@
 import * as core from '@wesjet/core'
-import { errorToString } from '@wesjet/utils'
-import { E, pipe, S, T } from '@wesjet/utils/effect'
+import { errorToString } from '@wesjet/function.js'
+import { E, pipe, S, T } from '@wesjet/function.js/effect'
 import type { Usage } from 'clipanion'
 
 import { BaseCommand } from './_BaseCommand.js'

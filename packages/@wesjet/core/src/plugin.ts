@@ -1,6 +1,6 @@
 import type * as mdxEsbuild from '@mdx-js/esbuild/lib'
-import type { Thunk } from '@wesjet/utils'
-import type { E, HasClock, HasConsole, OT, S, T } from '@wesjet/utils/effect'
+import type { Thunk } from '@wesjet/function.js'
+import type { E, HasClock, HasConsole, OT, S, T } from '@wesjet/function.js/effect'
 import type * as mdxBundler from 'mdx-bundler/dist/types'
 import type { LiteralUnion } from 'type-fest'
 import type * as unified from 'unified'
@@ -76,7 +76,9 @@ export type MDXOptions = {
   resolveCwd?: 'relative' | 'contentDirPath'
 } & Omit<mdxBundler.BundleMDXOptions<any>, 'mdxOptions'>
 
-export type MDXBundlerMapOptions = (options: mdxEsbuild.ProcessorOptions) => mdxEsbuild.ProcessorOptions
+export type MDXBundlerMapOptions = (
+  options: mdxEsbuild.ProcessorOptions,
+) => mdxEsbuild.ProcessorOptions
 
 export type DateOptions = {
   /**
@@ -153,7 +155,10 @@ export const processArgs = async <TArgs extends PartialArgs>(
 ): Promise<{
   extensions: PluginExtensions
   options: PluginOptions
-  restArgs: Omit<TArgs, 'extensions' | 'fieldOptions' | 'markdown' | 'mdx' | 'date' | 'disableImportAliasWarning'>
+  restArgs: Omit<
+    TArgs,
+    'extensions' | 'fieldOptions' | 'markdown' | 'mdx' | 'date' | 'disableImportAliasWarning'
+  >
 }> => {
   const { extensions, fieldOptions, markdown, mdx, date, disableImportAliasWarning, ...restArgs } =
     typeof argsOrArgsThunk === 'function' ? await argsOrArgsThunk() : argsOrArgsThunk

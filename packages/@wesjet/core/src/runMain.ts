@@ -3,10 +3,10 @@ import * as os from 'node:os'
 import type { HasCwd } from '@wesjet/core'
 import { provideCwd } from '@wesjet/core'
 import * as core from '@wesjet/core'
-import { DummyTracing, provideTracing } from '@wesjet/utils'
-import type { HasClock, HasConsole, OT } from '@wesjet/utils/effect'
-import { Cause, pipe, pretty, provideConsole, T } from '@wesjet/utils/effect'
-import { getWesjetVersion } from '@wesjet/utils/node'
+import { DummyTracing, provideTracing } from '@wesjet/function.js'
+import type { HasClock, HasConsole, OT } from '@wesjet/function.js/effect'
+import { Cause, pipe, pretty, provideConsole, T } from '@wesjet/function.js/effect'
+import { getWesjetVersion } from '@wesjet/function.js/node'
 
 export const runMain =
   ({ tracingServiceName, verbose }: { tracingServiceName: string; verbose: boolean }) =>
