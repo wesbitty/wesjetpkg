@@ -7,13 +7,13 @@
   ],
   "version": "0.0.20",
   "license": "MIT",
-  "main": "./dist/index.js",
-  "exports": "./dist/index.js",
   "files": [
     "dist",
     "README.md"
   ],
   "author": "DimejiSR",
+  "main": "./dist/index.js",
+  "exports": "./dist/index.js",
   "scripts": {
     "build": "swc lib -d dist",
     "lint": "npm-run-all \"lint:*\"",
