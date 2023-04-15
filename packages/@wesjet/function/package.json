@@ -1,6 +1,26 @@
 {
   "name": "@wesjet/function.js",
+  "description": "wesjet javascript library",
   "version": "0.0.20",
+  "license": "MIT",
+  "homepage": "https://wesbitty.org/product/wesjet",
+  "bugs": "https://github.com/wesbitty/wesjet/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wesbitty/wesjet",
+    "directory": "packages/@wesjet/function"
+  },
+  "keywords": [
+    "wesjet",
+    "function.js",
+    "javascript"
+  ],
+  "files": [
+    "./dist/**/*.{js,ts,map}",
+    "node.js",
+    "LICENSE",
+    "./package.json"
+  ],
   "type": "module",
   "exports": {
     "./package.json": {
@@ -36,15 +56,8 @@
       ]
     }
   },
-  "files": [
-    "./dist/**/*.{js,ts,map}",
-    "node.js",
-    "LICENSE",
-    "./package.json"
-  ],
   "scripts": {
-    "tmp": "env",
-    "test": "echo No tests yet"
+    "tmp": "env"
   },
   "peerDependenciesMeta": {
     "@effect-ts/core": {
