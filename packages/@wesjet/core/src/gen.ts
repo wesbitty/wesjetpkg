@@ -7,8 +7,8 @@
  * @dimejiSR
  */
 
-import type { Document, NestedDocument } from './data-types'
-import type { DataCache } from './DataCache'
+import type { Document, NestedDocument } from './data-types.js'
+import type { DataCache } from './DataCache.js'
 
 // export type WesjetTypesGenerated = WesjetGen extends { documentTypeMap: any, objectTypeMap: any } ? true : false
 

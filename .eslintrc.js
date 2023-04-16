@@ -10,8 +10,6 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint', 'simple-import-sort', 'import'],
   rules: {
-    'react/jsx-uses-react': 'off',
-    'react/react-in-jsx-scope': 'off',
     'simple-import-sort/imports': 'off',
     'simple-import-sort/exports': 'error',
     'import/no-duplicates': 'warn',

@@ -1,4 +1,4 @@
-import type { DocumentType, NestedType } from './index'
+import type { DocumentType, NestedType } from './index.js'
 
 export type FieldDefType = FieldDef['type']
 

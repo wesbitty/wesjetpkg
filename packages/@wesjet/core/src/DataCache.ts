@@ -4,8 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @dimejiSR
- */
+ **/
 
 import * as path from 'node:path'
 
@@ -14,9 +13,9 @@ import { OT, pipe, T } from '@wesjet/function.js/effect'
 import type { GetWesjetVersionError } from '@wesjet/function.js/node'
 import { fs } from '@wesjet/function.js/node'
 
-import { ArtifactsDir } from './ArtifactsDir'
-import type { HasCwd } from './cwd'
-import type { Document } from './data-types'
+import { ArtifactsDir } from './ArtifactsDir.js'
+import type { HasCwd } from './cwd.js'
+import type { Document } from './data-types.js'
 
 export namespace DataCache {
   export type Cache = {

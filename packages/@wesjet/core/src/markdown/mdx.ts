@@ -14,9 +14,9 @@ import { OT, pipe, T, Tagged } from '@wesjet/function.js/effect'
 import * as mdxBundler from 'mdx-bundler'
 import type { BundleMDXOptions } from 'mdx-bundler/dist/types'
 
-import type { RawDocumentData } from '../data-types'
-import type { MDXOptions } from '../plugin'
-import { addRawDocumentToVFile } from './unified'
+import type { RawDocumentData } from '../data-types.js'
+import type { MDXOptions } from '../plugin.js'
+import { addRawDocumentToVFile } from './unified.js'
 
 export const bundleMDX = ({
   mdxString,

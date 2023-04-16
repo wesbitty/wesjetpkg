@@ -7,8 +7,8 @@
  * @dimejiSR
  */
 
-export * from './omit'
-export * from './pick'
+export * from './omit.js'
+export * from './pick.js'
 
 type ValueOfRecord<R extends Record<any, any>> = R extends Record<any, infer V> ? V : never
 

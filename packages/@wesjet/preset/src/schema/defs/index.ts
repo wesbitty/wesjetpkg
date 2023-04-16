@@ -1,10 +1,10 @@
 import type * as core from '@wesjet/core'
 import type { Thunk } from '@wesjet/function.js'
 
-import type { ComputedField } from './computed-field'
-import type { FieldDef, FieldDefWithName } from './field'
+import type { ComputedField } from './computed-field.js'
+import type { FieldDef, FieldDefWithName } from './field.js'
 
-export * from './field'
+export * from './field.js'
 
 export type SchemaDef = {
   documentTypeDefs: DocumentTypeDef[]

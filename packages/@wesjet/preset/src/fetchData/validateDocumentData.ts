@@ -14,7 +14,7 @@ import { O, OT, pipe, T, These } from '@wesjet/function.js/effect'
 import { fs } from '@wesjet/function.js/node'
 import micromatch from 'micromatch'
 
-import { FetchDataError } from '../errors'
+import { FetchDataError } from '../errors/index.js'
 import type { DocumentContentType, FilePathPatternMap } from '../index'
 import type { ContentTypeMap } from '../types'
 import type { HasDocumentTypeMapState } from './DocumentTypeMap'

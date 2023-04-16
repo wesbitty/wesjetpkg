@@ -9,7 +9,7 @@
 
 import { Array, pipe } from '@effect-ts/core'
 
-import * as O from './Option'
+import * as O from './Option.js'
 
 export * from '@effect-ts/core/Collections/Immutable/Array'
 

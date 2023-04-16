@@ -14,7 +14,7 @@ import type {
   MDXOptions,
 } from '@wesjet/core'
 
-import type { DocumentContentType } from './schema/defs'
+import type { DocumentContentType } from './schema/defs/index.js'
 
 type DocumentDefName = string
 type FilePathPattern = string

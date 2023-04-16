@@ -2,9 +2,9 @@ import * as core from '@wesjet/core'
 import * as utils from '@wesjet/function.js'
 import { identity, T } from '@wesjet/function.js/effect'
 
-import type { SchemaError } from '../errors'
-import { DuplicateBodyFieldError } from '../errors'
-import * as LocalSchema from './defs'
+import type { SchemaError } from '../errors/index.js'
+import { DuplicateBodyFieldError } from '../errors/index.js'
+import * as LocalSchema from './defs/index.js'
 
 export const makeCoreSchema = ({
   documentTypeDefs,

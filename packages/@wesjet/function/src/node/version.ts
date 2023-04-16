@@ -10,9 +10,9 @@
 import * as path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-import type { OT } from '../effect'
-import { pipe, T } from '../effect'
-import * as fs from './fs'
+import type { OT } from '../effect/index.js'
+import { pipe, T } from '../effect/index.js'
+import * as fs from './fs.js'
 
 // TODO do this at compile time as this takes 10ms every time
 // use static import once JSON modules are no longer experimental

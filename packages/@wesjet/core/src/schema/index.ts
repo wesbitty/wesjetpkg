@@ -7,12 +7,12 @@
  * @dimejiSR
  */
 
-import type { Document } from '../data-types'
-import type { FieldDef, FieldDefType } from './field'
-import type { StackbitExtension } from './stackbit-extension'
-export * from './field'
-export * from './stackbit-extension'
-export * from './validate'
+import type { Document } from '../data-types.js'
+import type { FieldDef, FieldDefType } from './field.js'
+import type { StackbitExtension } from './stackbit-extension.js'
+export * from './field.js'
+export * from './stackbit-extension.js'
+export * from './validate.js'
 
 export type TypeDefExtensions = {
   stackbit?: StackbitExtension.TypeExtension

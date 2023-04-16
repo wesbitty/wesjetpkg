@@ -14,13 +14,13 @@ import { Array, Chunk, O, OT, pipe, S, T } from '@wesjet/function.js/effect'
 import type { GetWesjetVersionError } from '@wesjet/function.js/node'
 import { fs } from '@wesjet/function.js/node'
 
-import type { HasCwd } from '../cwd'
-import { getCwd } from '../cwd'
-import type { EsbuildBinNotFoundError } from '../errors'
-import { ConfigNoDefaultExportError, ConfigReadError, NoConfigFoundError } from '../errors'
-import { ArtifactsDir } from '../index'
-import type { SourcePlugin } from '../plugin'
-import * as esbuild from './esbuild'
+import type { HasCwd } from '../cwd.js'
+import { getCwd } from '../cwd.js'
+import type { EsbuildBinNotFoundError } from '../errors.js'
+import { ConfigNoDefaultExportError, ConfigReadError, NoConfigFoundError } from '../errors.js'
+import { ArtifactsDir } from '../index.js'
+import type { SourcePlugin } from '../plugin.js'
+import * as esbuild from './esbuild.js'
 
 type GetConfigError =
   | esbuild.EsbuildError

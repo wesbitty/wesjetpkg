@@ -7,6 +7,6 @@
  * @dimejiSR
  */
 
-export * as fs from './fs'
-export * as FSWatch from './fs-watcher'
-export * from './version'
+export * as fs from './fs.js'
+export * as FSWatch from './fs-watcher.js'
+export * from './version.js'

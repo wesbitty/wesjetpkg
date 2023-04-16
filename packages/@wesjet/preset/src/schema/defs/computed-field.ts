@@ -1,7 +1,7 @@
 import type { GetDocumentTypeMapGen } from '@wesjet/core'
 
-import type { LocalDocument } from '../../types'
-import type { FieldDefType } from './index'
+import type { LocalDocument } from '../../types.js'
+import type { FieldDefType } from './index.js'
 
 export type ComputedField<DocumentTypeName extends string = string> = {
   description?: string

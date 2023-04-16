@@ -15,7 +15,7 @@ import { Chunk, O, OT, pipe, T, Tagged } from '@wesjet/function.js/effect'
 import { fs } from '@wesjet/function.js/node'
 import { parse as parseJsonc } from 'comment-json'
 
-import { getCwd } from './cwd'
+import { getCwd } from './cwd.js'
 
 export const validateTsconfig = pipe(
   T.gen(function* ($) {

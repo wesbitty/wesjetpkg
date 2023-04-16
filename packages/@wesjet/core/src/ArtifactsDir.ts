@@ -14,8 +14,8 @@ import { pipe, T } from '@wesjet/function.js/effect'
 import type { GetWesjetVersionError } from '@wesjet/function.js/node'
 import { fs, getWesjetVersion } from '@wesjet/function.js/node'
 
-import type { HasCwd } from './cwd'
-import { getCwd } from './cwd'
+import type { HasCwd } from './cwd.js'
+import { getCwd } from './cwd.js'
 // import utilsPkg from '@wesjet/function.js/package.json'
 
 export namespace ArtifactsDir {

@@ -15,8 +15,8 @@ import { Tagged } from '@effect-ts/core/Case'
 import * as OT from '@effect-ts/otel'
 import type { JsonValue } from 'type-fest'
 
-import { T } from '../effect'
-import { errorToString } from '../index'
+import { T } from '../effect/index.js'
+import { errorToString } from '../index.js'
 
 export const fileOrDirExists = (pathLike: string): T.Effect<OT.HasTracer, StatError, boolean> => {
   return pipe(

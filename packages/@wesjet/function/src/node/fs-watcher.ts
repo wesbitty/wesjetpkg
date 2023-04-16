@@ -21,9 +21,9 @@ import { pipe } from '@effect-ts/core/Function'
 import * as O from '@effect-ts/core/Option'
 import * as Chokidar from 'chokidar'
 
-import { Tagged } from '../effect'
-import type { UnknownFilePath } from '../file-paths'
-import { unknownFilePath } from '../file-paths'
+import { Tagged } from '../effect/index.js'
+import type { UnknownFilePath } from '../file-paths.js'
+import { unknownFilePath } from '../file-paths.js'
 
 export class FileAdded {
   readonly _tag = 'FileAdded'
