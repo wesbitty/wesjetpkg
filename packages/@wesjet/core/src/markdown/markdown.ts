@@ -1,3 +1,12 @@
+/**
+ * Copyright (c) Wesbitty, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @dimejiSR
+ */
+
 import { errorToString } from '@wesjet/function.js'
 import type { HasConsole } from '@wesjet/function.js/effect'
 import { OT, pipe, T, Tagged } from '@wesjet/function.js/effect'
@@ -7,9 +16,9 @@ import remarkParse from 'remark-parse'
 import remark2rehype from 'remark-rehype'
 import { unified } from 'unified'
 
-import type { RawDocumentData } from '../data-types.js'
-import type { MarkdownOptions, MarkdownUnifiedBuilderCallback } from '../plugin.js'
-import { addRawDocumentToVFile } from './unified.js'
+import type { RawDocumentData } from '../data-types'
+import type { MarkdownOptions, MarkdownUnifiedBuilderCallback } from '../plugin'
+import { addRawDocumentToVFile } from './unified'
 
 export const markdownToHtml = ({
   mdString,

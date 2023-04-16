@@ -1,9 +1,18 @@
-import type { Document } from '../data-types.js'
-import type { FieldDef, FieldDefType } from './field.js'
-import type { StackbitExtension } from './stackbit-extension.js'
-export * from './field.js'
-export * from './stackbit-extension.js'
-export * from './validate.js'
+/**
+ * Copyright (c) Wesbitty, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @dimejiSR
+ */
+
+import type { Document } from '../data-types'
+import type { FieldDef, FieldDefType } from './field'
+import type { StackbitExtension } from './stackbit-extension'
+export * from './field'
+export * from './stackbit-extension'
+export * from './validate'
 
 export type TypeDefExtensions = {
   stackbit?: StackbitExtension.TypeExtension

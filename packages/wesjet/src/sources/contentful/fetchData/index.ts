@@ -1,3 +1,12 @@
+/**
+ * Copyright (c) Wesbitty, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @dimejiSR
+ */
+
 import * as os from 'node:os'
 
 import * as core from '@wesjet/core'
@@ -96,7 +105,7 @@ export const fetchAllDocuments = ({
               options,
             }),
           ),
-          OT.withSpan('@wesjet/source-wesjet/fetchData:makeCacheItems', {
+          OT.withSpan('wesjet/source-wesjet/fetchData:makeCacheItems', {
             attributes: { count: documentEntriesWithDocumentTypeDef.length },
           }),
         ),
@@ -106,7 +115,7 @@ export const fetchAllDocuments = ({
 
       return { cacheItemsMap }
     }),
-    OT.withSpan('@wesjet/source-wesjet/fetchData:fetchAllDocuments', {
+    OT.withSpan('wesjet/source-wesjet/fetchData:fetchAllDocuments', {
       attributes: {
         schemaDef: JSON.stringify(schemaDef),
         schemaOverrides_: JSON.stringify(schemaOverrides_),
@@ -134,7 +143,7 @@ const getAllEntries = (
 
       return entries
     }),
-    OT.withSpan('@wesjet/source-wesjet/fetchData:getAllEntries'),
+    OT.withSpan('wesjet/source-wesjet/fetchData:getAllEntries'),
   )
 
 const getAllAssets = (
@@ -156,5 +165,5 @@ const getAllAssets = (
 
       return entries
     }),
-    OT.withSpan('@wesjet/source-wesjet/fetchData:getAllAssets'),
+    OT.withSpan('wesjet/source-wesjet/fetchData:getAllAssets'),
   )

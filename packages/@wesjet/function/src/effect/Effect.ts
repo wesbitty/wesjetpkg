@@ -1,9 +1,18 @@
+/**
+ * Copyright (c) Wesbitty, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @dimejiSR
+ */
+
 // ets_tracing: off
 
 import { Chunk, Effect as T, Either as E, pipe } from '@effect-ts/core'
 import * as Tuple from '@effect-ts/core/Collections/Immutable/Tuple'
 
-import { ConsoleService } from './ConsoleService.js'
+import { ConsoleService } from './ConsoleService'
 
 export * from '@effect-ts/core/Effect'
 export type { _A as OutputOf } from '@effect-ts/core/Utils'

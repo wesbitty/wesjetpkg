@@ -17,7 +17,6 @@
   "files": [
     "dist",
     "./dist/!(__test__)/**/*.{js,ts,map}",
-    "LICENSE",
     "package.json"
   ],
   "bin": "./bin/install-cmd.cjs",

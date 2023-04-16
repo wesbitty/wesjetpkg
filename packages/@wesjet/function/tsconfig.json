@@ -1,13 +1,11 @@
 {
   "extends": "../../../tsconfig.json",
   "compilerOptions": {
-    // Needed for `inflection`
     "allowSyntheticDefaultImports": true,
     "module": "ES2020",
     "rootDir": "./src",
     "outDir": "./dist",
     "tsBuildInfoFile": "./dist/.tsbuildinfo.json"
   },
-  "include": ["./src"],
-  "references": []
+  "include": ["./src"]
 }
