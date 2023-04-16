@@ -1,3 +1,12 @@
+/**
+ * Copyright (c) Wesbitty, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @dimejiSR
+ */
+
 import * as core from '@wesjet/core'
 import { SourceProvideSchemaError } from '@wesjet/core'
 import * as utils from '@wesjet/function.js'
@@ -68,7 +77,7 @@ export const provideSchema = ({
 
       return coreSchemaDef
     }),
-    OT.withSpan('@wesjet/source-wesjet/fetchData:provideSchema', {
+    OT.withSpan('wesjet/source-wesjet/fetchData:provideSchema', {
       attributes: { spaceId, environmentId },
     }),
     T.mapError((error) => new SourceProvideSchemaError({ error })),

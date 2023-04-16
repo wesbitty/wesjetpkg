@@ -1,3 +1,12 @@
+/**
+ * Copyright (c) Wesbitty, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @dimejiSR
+ */
+
 import * as path from 'node:path'
 
 import { errorToString } from '@wesjet/function.js'
@@ -5,9 +14,9 @@ import { OT, pipe, T, Tagged } from '@wesjet/function.js/effect'
 import * as mdxBundler from 'mdx-bundler'
 import type { BundleMDXOptions } from 'mdx-bundler/dist/types'
 
-import type { RawDocumentData } from '../data-types.js'
-import type { MDXOptions } from '../plugin.js'
-import { addRawDocumentToVFile } from './unified.js'
+import type { RawDocumentData } from '../data-types'
+import type { MDXOptions } from '../plugin'
+import { addRawDocumentToVFile } from './unified'
 
 export const bundleMDX = ({
   mdxString,

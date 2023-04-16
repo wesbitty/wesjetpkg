@@ -1,3 +1,12 @@
+/**
+ * Copyright (c) Wesbitty, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @dimejiSR
+ */
+
 import * as os from 'node:os'
 
 import type * as core from '@wesjet/core'
@@ -97,7 +106,7 @@ export const fetchAllDocuments = ({
       return { cacheItemsMap }
     }),
     provideDocumentTypeMapState,
-    OT.withSpan('@wesjet/source-local/fetchData:fetchAllDocuments', {
+    OT.withSpan('wesjet/source-local/fetchData:fetchAllDocuments', {
       attributes: { contentDirPath },
     }),
   )
@@ -135,7 +144,7 @@ const getAllRelativeFilePaths = ({
       (error) => new fs.UnknownFSError({ error }),
     ),
     T.map((_) => _.map(relativePosixFilePath)),
-    OT.withSpan('@wesjet/source-local/fetchData:getAllRelativeFilePaths'),
+    OT.withSpan('wesjet/source-local/fetchData:getAllRelativeFilePaths'),
   )
 }
 

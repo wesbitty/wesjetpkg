@@ -7,7 +7,7 @@
   "bugs": "https://github.com/wesbitty/wesjet/issues",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wesbitty/wesjet",
+    "url": "git+https://github.com/wesbitty/wesjet.git",
     "directory": "packages/@wesjet/function"
   },
   "keywords": [
@@ -16,10 +16,9 @@
     "javascript"
   ],
   "files": [
-    "./dist/**/*.{js,ts,map}",
+    "dist",
     "node.js",
-    "LICENSE",
-    "./package.json"
+    "package.json"
   ],
   "type": "module",
   "exports": {

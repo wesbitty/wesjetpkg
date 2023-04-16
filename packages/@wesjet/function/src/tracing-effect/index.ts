@@ -1,3 +1,12 @@
+/**
+ * Copyright (c) Wesbitty, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @dimejiSR
+ */
+
 import * as T from '@effect-ts/core/Effect'
 import type { Clock } from '@effect-ts/core/Effect/Clock'
 import type * as L from '@effect-ts/core/Effect/Layer'

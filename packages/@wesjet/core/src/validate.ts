@@ -1,3 +1,12 @@
+/**
+ * Copyright (c) Wesbitty, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @dimejiSR
+ */
+
 import path from 'node:path'
 
 import type { AbsolutePosixFilePath } from '@wesjet/function.js'
@@ -6,7 +15,7 @@ import { Chunk, O, OT, pipe, T, Tagged } from '@wesjet/function.js/effect'
 import { fs } from '@wesjet/function.js/node'
 import { parse as parseJsonc } from 'comment-json'
 
-import { getCwd } from './cwd.js'
+import { getCwd } from './cwd'
 
 export const validateTsconfig = pipe(
   T.gen(function* ($) {
@@ -28,8 +37,8 @@ export const validateTsconfig = pipe(
 wesjet (Warning): Importing from \`wesjet\/static\` might not work.
 ${msg}
 
-For more information see https://www.wesbitty.com/docs/getting-started
-To disable this warning you can set \`disableImportAliasWarning: true\` in your wesjet config.
+For more information see https://www.wesbitty.org/product/wesjet
+To disable this warning you can set \`disableImportAliasWarning: true\` in your wesjet configuration preset.
 `)
 
     if (O.isNone(tsconfigOption)) {
@@ -79,7 +88,7 @@ const tryParseFile = (filePath: AbsolutePosixFilePath) =>
     T.tapError((error) =>
       T.succeedWith(() => {
         if (error._tag === 'InvalidTsconfigError' || error._tag === 'node.fs.ReadFileError') {
-          console.log(`wesjet: Invalid jsconfig/tsconfig file found: ${filePath}`)
+          console.log(`wesjet: invalid jsconfig/tsconfig file found: ${filePath}`)
         }
       }),
     ),

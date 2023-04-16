@@ -1,4 +1,13 @@
-import type { DocumentTypeDef, NestedTypeDef, SchemaDef } from './index.js'
+/**
+ * Copyright (c) Wesbitty, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @dimejiSR
+ */
+
+import type { DocumentTypeDef, NestedTypeDef, SchemaDef } from './index'
 
 export const validateSchema = (schema: SchemaDef): void => {
   Object.values(schema.documentTypeDefMap).forEach((def) => validateDocumentOrObjectDef({ def }))

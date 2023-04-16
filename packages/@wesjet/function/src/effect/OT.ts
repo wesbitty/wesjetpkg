@@ -1,3 +1,12 @@
+/**
+ * Copyright (c) Wesbitty, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @dimejiSR
+ */
+
 import { Effect as T, Managed as M, Option as O, pipe } from '@effect-ts/core'
 import { pretty } from '@effect-ts/core/Effect/Cause/Pretty'
 import * as S from '@effect-ts/core/Effect/Experimental/Stream'

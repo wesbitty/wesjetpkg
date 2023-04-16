@@ -1,3 +1,12 @@
+/**
+ * Copyright (c) Wesbitty, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @dimejiSR
+ */
+
 import { errorToString } from '@wesjet/function.js'
 import { E, Ex, H, M, O, OT, pipe, Q, Ref, S, T, Tagged } from '@wesjet/function.js/effect'
 import * as esbuild from 'esbuild'

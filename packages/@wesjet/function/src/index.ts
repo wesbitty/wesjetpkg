@@ -1,14 +1,22 @@
+/**
+ * Copyright (c) Wesbitty, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @dimejiSR
+ */
 import { type Temporal, toTemporalInstant } from '@js-temporal/polyfill'
-export * as base64 from './base64.js'
-export * from './file-paths.js'
-export * from './guards.js'
-export * from './hash.js'
-export * from './object/index.js'
-export * from './promise.js'
-export * from './single-item.js'
-export * from './string.js'
-export * from './tracing.js'
-export * from './tracing-effect/index.js'
+export * as base64 from './base64'
+export * from './file-paths'
+export * from './guards'
+export * from './hash'
+export * from './object'
+export * from './promise'
+export * from './single-item'
+export * from './string'
+export * from './tracing'
+export * from './tracing-effect'
 export { Temporal } from '@js-temporal/polyfill'
 export { AsciiTree } from 'oo-ascii-tree'
 export * as pattern from 'ts-pattern'

@@ -1,3 +1,12 @@
+/**
+ * Copyright (c) Wesbitty, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @dimejiSR
+ */
+
 import type { RelativePosixFilePath } from '@wesjet/function.js'
 import type { Has } from '@wesjet/function.js/effect'
 import { HashMap, O, pipe, State, T, Tagged } from '@wesjet/function.js/effect'
