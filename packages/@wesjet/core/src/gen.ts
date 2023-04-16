@@ -1,5 +1,14 @@
-import type { Document, NestedDocument } from './data-types.js'
-import type { DataCache } from './DataCache.js'
+/**
+ * Copyright (c) Wesbitty, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @dimejiSR
+ */
+
+import type { Document, NestedDocument } from './data-types'
+import type { DataCache } from './DataCache'
 
 // export type WesjetTypesGenerated = WesjetGen extends { documentTypeMap: any, objectTypeMap: any } ? true : false
 

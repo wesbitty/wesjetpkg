@@ -1,3 +1,12 @@
+/**
+ * Copyright (c) Wesbitty, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @dimejiSR
+ */
+
 import { OT, pipe, T } from '@wesjet/function.js/effect'
 import { createClient } from 'contentful-management'
 
@@ -12,7 +21,7 @@ export const environmentGetContentTypes = (
       () => environment.getContentTypes().then((_) => _.items),
       (error) => new UnknownContentfulError({ error }),
     ),
-    OT.withSpan('@wesjet/source-wesjet/contentful:environmentGetContentTypes'),
+    OT.withSpan('wesjet/source-wesjet/contentful:environmentGetContentTypes'),
   )
 
 export const environmentGetEntries = ({
@@ -29,7 +38,7 @@ export const environmentGetEntries = ({
       () => environment.getEntries({ limit, skip }),
       (error) => new UnknownContentfulError({ error }),
     ),
-    OT.withSpan('@wesjet/source-wesjet/contentful:environmentGetEntries'),
+    OT.withSpan('wesjet/source-wesjet/contentful:environmentGetEntries'),
   )
 
 export const environmentGetAssets = ({
@@ -46,7 +55,7 @@ export const environmentGetAssets = ({
       () => environment.getAssets({ limit, skip }),
       (error) => new UnknownContentfulError({ error }),
     ),
-    OT.withSpan('@wesjet/source-wesjet/contentful:environmentGetAssets'),
+    OT.withSpan('wesjet/source-wesjet/contentful:environmentGetAssets'),
   )
 
 export const getEnvironment = ({
@@ -62,7 +71,7 @@ export const getEnvironment = ({
   return pipe(
     T.tryPromise(() => client.getSpace(spaceId)),
     T.chain((space) => T.tryPromise(() => space.getEnvironment(environmentId))),
-    OT.withSpan('@wesjet/source-wesjet/contentful:getEnvironment'),
+    OT.withSpan('wesjet/source-wesjet/contentful:getEnvironment'),
     T.mapError((error) => new UnknownContentfulError({ error })),
   )
 }

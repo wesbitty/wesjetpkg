@@ -1,3 +1,12 @@
+/**
+ * Copyright (c) Wesbitty, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @dimejiSR
+ */
+
 import type { Stats } from 'node:fs'
 import { promises as fs } from 'node:fs'
 
@@ -6,8 +15,8 @@ import { Tagged } from '@effect-ts/core/Case'
 import * as OT from '@effect-ts/otel'
 import type { JsonValue } from 'type-fest'
 
-import { T } from '../effect/index.js'
-import { errorToString } from '../index.js'
+import { T } from '../effect'
+import { errorToString } from '../index'
 
 export const fileOrDirExists = (pathLike: string): T.Effect<OT.HasTracer, StatError, boolean> => {
   return pipe(

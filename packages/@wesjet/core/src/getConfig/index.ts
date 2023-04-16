@@ -1,3 +1,12 @@
+/**
+ * Copyright (c) Wesbitty, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @dimejiSR
+ */
+
 import * as path from 'node:path'
 
 import type { E } from '@wesjet/function.js/effect'
@@ -5,13 +14,13 @@ import { Array, Chunk, O, OT, pipe, S, T } from '@wesjet/function.js/effect'
 import type { GetWesjetVersionError } from '@wesjet/function.js/node'
 import { fs } from '@wesjet/function.js/node'
 
-import type { HasCwd } from '../cwd.js'
-import { getCwd } from '../cwd.js'
-import type { EsbuildBinNotFoundError } from '../errors.js'
-import { ConfigNoDefaultExportError, ConfigReadError, NoConfigFoundError } from '../errors.js'
-import { ArtifactsDir } from '../index.js'
-import type { SourcePlugin } from '../plugin.js'
-import * as esbuild from './esbuild.js'
+import type { HasCwd } from '../cwd'
+import { getCwd } from '../cwd'
+import type { EsbuildBinNotFoundError } from '../errors'
+import { ConfigNoDefaultExportError, ConfigReadError, NoConfigFoundError } from '../errors'
+import { ArtifactsDir } from '../index'
+import type { SourcePlugin } from '../plugin'
+import * as esbuild from './esbuild'
 
 type GetConfigError =
   | esbuild.EsbuildError
@@ -69,7 +78,7 @@ export const getConfigWatch = ({
           outfile: outfilePath,
           sourcemap: true,
           platform: 'node',
-          target: 'es2020',
+          target: 'ES2020',
           format: 'esm',
           // needed in case models are co-located with React components
           jsx: 'transform',

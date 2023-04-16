@@ -1,3 +1,12 @@
+/**
+ * Copyright (c) Wesbitty, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @dimejiSR
+ */
+
 // NOTE sanity currently doesn't provide ESM exports, thus the require syntax is needed
 const SantityImageUrlBuilder = require('@sanity/image-url')
 // import SantityImageUrlBuilder from '@sanity/image-url'

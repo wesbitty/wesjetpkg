@@ -1,3 +1,12 @@
+/**
+ * Copyright (c) Wesbitty, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @dimejiSR
+ */
+
 import type fs from 'node:fs'
 
 import * as T from '@effect-ts/core/Effect'
@@ -12,9 +21,9 @@ import { pipe } from '@effect-ts/core/Function'
 import * as O from '@effect-ts/core/Option'
 import * as Chokidar from 'chokidar'
 
-import { Tagged } from '../effect/index.js'
-import type { UnknownFilePath } from '../file-paths.js'
-import { unknownFilePath } from '../file-paths.js'
+import { Tagged } from '../effect'
+import type { UnknownFilePath } from '../file-paths'
+import { unknownFilePath } from '../file-paths'
 
 export class FileAdded {
   readonly _tag = 'FileAdded'

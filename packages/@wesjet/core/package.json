@@ -9,8 +9,7 @@
   "homepage": "https://wesbitty.org/product/wesjet",
   "bugs": "https://github.com/wesbitty/wesjet/issues",
   "files": [
-    "dist",
-    "package.json"
+    "dist"
   ],
   "type": "module",
   "types": "./dist/index.d.ts",

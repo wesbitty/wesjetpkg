@@ -1,3 +1,12 @@
+/**
+ * Copyright (c) Wesbitty, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @dimejiSR
+ */
+
 import { pipe } from '@effect-ts/core'
 import * as Chunk from '@effect-ts/core/Collections/Immutable/Chunk'
 import * as Tuple from '@effect-ts/core/Collections/Immutable/Tuple'

@@ -1,3 +1,12 @@
+/**
+ * Copyright (c) Wesbitty, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @dimejiSR
+ */
+
 import type * as core from '@wesjet/core'
 import type { AbsolutePosixFilePath, RelativePosixFilePath } from '@wesjet/function.js'
 import { filePathJoin } from '@wesjet/function.js'
@@ -128,7 +137,7 @@ export const makeCacheItemFromFilePath = ({
         warnings,
       )
     }),
-    OT.withSpan('@wesjet/source-local/fetchData:makeCacheItemFromFilePath', {
+    OT.withSpan('wesjet/source-local/fetchData:makeCacheItemFromFilePath', {
       attributes: { relativeFilePath },
     }),
     T.mapError((error) => {
@@ -228,7 +237,7 @@ const processRawContent = ({
           )
       }
     }),
-    OT.withSpan('@wesjet/source-local/fetchData:getRawContent'),
+    OT.withSpan('wesjet/source-local/fetchData:getRawContent'),
   )
 
 const getComputedValues = ({

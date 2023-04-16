@@ -1,3 +1,12 @@
+/**
+ * Copyright (c) Wesbitty, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @dimejiSR
+ */
+
 import type { MDXComponents } from 'mdx/types'
 // NOTE use ESM/CommonJS compat import here until resolved: https://github.com/facebook/react/issues/11503
 import React from 'react'

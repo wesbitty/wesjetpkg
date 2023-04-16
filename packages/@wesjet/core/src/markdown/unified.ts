@@ -1,6 +1,15 @@
+/**
+ * Copyright (c) Wesbitty, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @dimejiSR
+ */
+
 import type * as unified from 'unified'
 
-import type { RawDocumentData } from '../data-types.js'
+import type { RawDocumentData } from '../data-types'
 
 /**
  * Unified plugin that adds the raw document data to the vfile under `vfile.data.rawDocumentData`

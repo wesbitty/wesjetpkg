@@ -1,3 +1,12 @@
+/**
+ * Copyright (c) Wesbitty, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @dimejiSR
+ */
+
 // ets_tracing: off
 
 // copied from https://github.com/Effect-TS/schema/blob/master/packages/schema/src/These/index.ts
@@ -6,7 +15,7 @@ import { pipe } from '@effect-ts/core'
 import * as Tp from '@effect-ts/core/Collections/Immutable/Tuple'
 import { _A, _E } from '@effect-ts/core/Effect'
 
-import { E, O, T } from './index.js'
+import { E, O, T } from './index'
 
 export class These<E, A> {
   readonly [_E]!: () => E;

@@ -1,3 +1,12 @@
+/**
+ * Copyright (c) Wesbitty, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @dimejiSR
+ */
+
 import * as os from 'node:os'
 
 import type { HasCwd } from '@wesjet/core'
@@ -15,7 +24,7 @@ export const runMain =
       T.gen(function* ($) {
         if (process.platform === 'win32') {
           yield* $(
-            T.log('Warning: wesjet output(.wesjet/static) might not work as expected on windows'),
+            T.log('warning: wesjet output(.wesjet/static) might not work as expected on windows'),
           )
         }
 

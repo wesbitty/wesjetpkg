@@ -1,3 +1,12 @@
+/**
+ * Copyright (c) Wesbitty, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @dimejiSR
+ */
+
 const getSanitySchema = require('@sanity/core/lib/actions/graphql/getSanitySchema')
 import type Schema from '@sanity/schema'
 import * as core from '@wesjet/core'
