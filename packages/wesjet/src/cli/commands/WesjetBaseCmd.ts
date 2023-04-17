@@ -18,25 +18,6 @@ import * as t from 'typanion'
 import { existsSync } from 'fs'
 
 export abstract class BaseCommand extends Command {
-  helpCmd = Option.Boolean('-h,--help', {
-    description: `
-      Compiles the application for production deployment
-
-      Usage
-        $ wesjet build<dir>
-
-      < dir > represents the directory of the Wesjet application.
-
-      If no directory is provided, the current directory will be used.
-
-    Options
-      --profile                 Can be used to enable React Production Profiling
-      --no - lint                 Disable linting
-      --no - mangling             Disable mangling
-      --experimental - app - only   Only build 'app' routes
-    `,
-  })
-
   configPath = Option.String('-c,--config', {
     description: 'Path to the config (default: wesjet.config.ts/js)',
     validator: t.isString(),
