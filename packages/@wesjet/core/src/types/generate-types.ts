@@ -4,7 +4,6 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *
  */
 import { casesHandled, pattern } from '@wesjet/function.js'
 
@@ -54,8 +53,8 @@ export const renderTypes = ({
 
   const importsForRawTypes = pattern
     .match(generationOptions.sourcePluginType)
-    .with('local', () => `import * as Local from 'wesjet/maker'`)
-    .with('wesjet', () => `import * as Wesjet from '@wesjet/contentful'`)
+    .with('local', () => `import * as Local from 'wesjet/preset'`)
+    .with('wesjet', () => `import * as Wesjet from 'wesjet/dist/source/contentful'`)
     .otherwise(() => ``)
 
   const documentTypeNames = documentTypes.map(prop('typeName'))

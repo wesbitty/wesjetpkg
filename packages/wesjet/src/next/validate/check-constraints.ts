@@ -1,9 +1,7 @@
 /**
  * Copyright (c) Wesbitty, Inc.
  *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
+ * This source code is licensed under the MIT license found in the LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -14,8 +12,8 @@ export const checkConstraints = () => {
   checkWesjetVersionsMatch()
 }
 
-const MIN_NODE_VERSION_MAJOR = 14
-const MIN_NODE_VERSION_MINOR = 18
+export const MIN_NODE_VERSION_MAJOR = 14
+export const MIN_NODE_VERSION_MINOR = 18
 
 const checkNodeVersion = () => {
   const [nodeVersionMajor, nodeVersionMinor] = process.versions.node
@@ -27,7 +25,7 @@ const checkNodeVersion = () => {
     (nodeVersionMajor === MIN_NODE_VERSION_MAJOR && nodeVersionMinor < MIN_NODE_VERSION_MINOR)
   ) {
     throw new Error(
-      `wesjet required Node.js version >= ${MIN_NODE_VERSION_MAJOR}.${MIN_NODE_VERSION_MINOR}. (Current version: ${process.versions.node})`,
+      `wesjet required Node.js version >= ${MIN_NODE_VERSION_MAJOR}.${MIN_NODE_VERSION_MINOR}. (current version: ${process.versions.node})`,
     )
   }
 }
@@ -40,7 +38,7 @@ const checkWesjetVersionsMatch = () => {
     throw new Error(
       `\
 The versions of "wesjet" and "eslint-plugin-wesjet" need to be identical in your "package.json".
-Currently used versions: wesjet: "${wesjetVersion}", eslint-plugin-wesjet: "${wesjetEslintVersion}"`,
+currently used versions: wesjet: "${wesjetVersion}", eslint-plugin-wesjet: "${wesjetEslintVersion}"`,
     )
   }
 }

@@ -4,7 +4,6 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *
  */
 
 import { Builtins, Cli } from 'clipanion'
@@ -17,7 +16,7 @@ export const run = async () => {
   const cli = new Cli({
     binaryLabel: `My Application`,
     binaryName: `${node} ${app}`,
-    binaryVersion: `0.0.20`,
+    binaryVersion: `0.0.21`,
   })
 
   cli.register(DefaultCommand)

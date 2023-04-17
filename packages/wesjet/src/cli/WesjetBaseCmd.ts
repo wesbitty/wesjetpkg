@@ -15,7 +15,6 @@ import { pipe, T } from '@wesjet/function.js/effect'
 import { fs } from '@wesjet/function.js/node'
 import { Command, Option } from 'clipanion'
 import * as t from 'typanion'
-import { existsSync } from 'fs'
 
 export abstract class BaseCommand extends Command {
   configPath = Option.String('-c,--config', {

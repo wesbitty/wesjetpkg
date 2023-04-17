@@ -4,16 +4,15 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *
  */
 
 import type { NextConfig } from 'next'
 
-import { checkConstraints } from './validate/check-constraints'
-import { type NextPluginOptions, runWesjetBuild, runWesjetDev } from './validate/plugin'
+import { checkConstraints } from './validate/check-constraints.js'
+import { type NextPluginOptions, runWesjetBuild, runWesjetDev } from './validate/plugin.js'
 
-export * from './lib/mdx'
-export * from './lib/reload'
+export * from './lib/mdx.js'
+export * from './lib/reload.js'
 
 export type { NextConfig }
 

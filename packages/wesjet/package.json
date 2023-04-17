@@ -1,7 +1,7 @@
 {
   "name": "wesjet",
   "description": "Wesjet is a JavaScript library to transform and validate content for building user interfaces.",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "license": "MIT",
   "keywords": [
     "wesjet"
@@ -96,9 +96,9 @@
     "@sanity/image-url": "^0.140.22",
     "@sanity/schema": "^2.10.0",
     "@stackbit/sdk": "^0.2.39",
-    "@wesjet/core": "^0.0.20",
-    "@wesjet/preset": "^0.0.20",
-    "@wesjet/function.js": "^0.0.20",
+    "@wesjet/core": "^0.0.21",
+    "@wesjet/preset": "^0.0.21",
+    "@wesjet/function.js": "^0.0.21",
     "clipanion": "^3.2.0-rc.14",
     "contentful-management": "^7.22.4",
     "rxjs": "^7.1.0",

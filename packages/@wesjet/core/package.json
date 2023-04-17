@@ -4,7 +4,7 @@
   "keywords": [
     "wesjet"
   ],
-  "version": "0.0.20",
+  "version": "0.0.21",
   "license": "MIT",
   "homepage": "https://wesbitty.org/product/wesjet",
   "bugs": "https://github.com/wesbitty/wesjet/issues",
@@ -32,7 +32,7 @@
     }
   },
   "dependencies": {
-    "@wesjet/function.js": "^0.0.20",
+    "@wesjet/function.js": "^0.0.21",
     "camel-case": "^4.1.2",
     "comment-json": "^4.2.3",
     "esbuild": "0.17.x",

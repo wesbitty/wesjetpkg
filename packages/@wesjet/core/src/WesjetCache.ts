@@ -60,7 +60,7 @@ export namespace DataCache {
 
         return cache
       }),
-      OT.withSpan('@wesjet/core/cache:loadPreviousCacheFromDisk', {
+      OT.withSpan('@wesjet/core/WesjetCache:loadPreviousCacheFromDisk', {
         attributes: { schemaHash },
       }),
     )
@@ -89,7 +89,7 @@ export namespace DataCache {
         yield* $(fs.writeFileJson({ filePath, content: cache }))
       }),
       T.either,
-      OT.withSpan('@wesjet/core/cache:writeCacheToDisk', {
+      OT.withSpan('@wesjet/core/WesjetCache:writeCacheToDisk', {
         attributes: { schemaHash },
       }),
     )

@@ -53,7 +53,7 @@ export const getConfig = ({
     S.runCollect,
     T.map(Chunk.unsafeHead),
     T.rightOrFail,
-    OT.withSpan('@wesjet/core/getConfig:getConfig', {
+    OT.withSpan('@wesjet/core/WesjetPackageConfig:getConfig', {
       attributes: { configPath },
     }),
   )

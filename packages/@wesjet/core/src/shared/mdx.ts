@@ -4,7 +4,6 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *
  */
 
 import * as path from 'path'
@@ -87,7 +86,7 @@ export const bundleMDX = ({
     }),
     T.mapError((error) => new UnexpectedMDXError({ error })),
     T.tapError(() => OT.addAttribute('mdxString', mdxString)),
-    OT.withSpan('@wesjet/core/markdown:bundleMDX'),
+    OT.withSpan('@wesjet/core/shared:bundleMDX'),
   )
 
 export class UnexpectedMDXError extends Tagged('UnexpectedMDXError')<{ readonly error: unknown }> {

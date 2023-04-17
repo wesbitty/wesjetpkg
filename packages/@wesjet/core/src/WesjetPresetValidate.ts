@@ -36,7 +36,7 @@ export const validateTsconfig = pipe(
 wesjet (Warning): Importing from \`wesjet\/static\` might not work.
 ${msg}
 
-For more information see https://www.wesbitty.org/product/wesjet
+For more information see https://wesbitty.org/product/wesjet
 To disable this warning you can set \`disableImportAliasWarning: true\` in your wesjet configuration preset.
 `)
 

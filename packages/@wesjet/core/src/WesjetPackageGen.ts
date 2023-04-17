@@ -4,7 +4,6 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *
  */
 
 import type { AbsolutePosixFilePath } from '@wesjet/function.js'
@@ -68,7 +67,7 @@ export const generateDotpkg = ({
     S.runCollect,
     T.map(Chunk.unsafeHead),
     T.rightOrFail,
-    OT.withSpan('@wesjet/core/generation:generateDotpkg', {
+    OT.withSpan('@wesjet/core/WesjetPackageGen', {
       attributes: { verbose },
     }),
   )
@@ -257,7 +256,7 @@ const writeFilesForCache = ({
         ]),
       )
     }),
-    OT.withSpan('@wesjet/core/generation/generate-dotpkg:writeFilesForCache', {
+    OT.withSpan('@wesjet/core/WesjetPackageGen:writeFilesForCache', {
       attributes: {
         targetPath,
         cacheKeys: Object.keys(cache.cacheItemsMap),
@@ -270,9 +269,9 @@ const makePackageJson = (schemaHash: string): string => {
   const packageJson: PackageJson & { typesVersions: any } = {
     // TODO: generating application schema hash
     name: `${schemaHash}`,
-    description: 'This package is automatically compiled by wesjet during (production) build',
-    // Get Wesjet version and schema hash
-    version: `0.0.18-${schemaHash}`,
+    description: 'static directory',
+    // get wesjet version and schema hash
+    version: `0.0.21-${schemaHash}`,
     exports: {
       './static': {
         import: './static/index.mjs',
@@ -398,8 +397,8 @@ const makeIndexMjs = ({
 
 export { isType } from 'wesjet/client'
 
-// NOTE During development wesjet imports from \`.mjs\` files to improve HMR speeds.
-// During (production) builds wesjet it imports from \`.json\` files to improve build performance.
+// NOTE: during (development), wesjet imports from \`.mjs\` files to improve HMR speeds.
+// during (production), wesjet imports from \`.json\` files to improve build performance.
 ${constImportsForAllDocuments}
 
 ${constExports}

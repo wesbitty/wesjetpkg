@@ -4,15 +4,14 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *
  */
 
 import type { Document } from './types/data.js'
 import type { FieldDef, FieldDefType } from './SchemaField.js'
 import type { StackbitExtension } from './shared/stackbit.js'
 export * from './SchemaField.js'
-export * from './shared/stackbit.js'
 export * from './SchemaValidate.js'
+export * from './shared/stackbit.js'
 
 export type TypeDefExtensions = {
   stackbit?: StackbitExtension.TypeExtension

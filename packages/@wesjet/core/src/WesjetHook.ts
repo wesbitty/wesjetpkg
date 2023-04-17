@@ -4,10 +4,9 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *
  */
 
-import * as os from 'node:os'
+import * as os from 'os'
 
 import type { HasCwd } from '@wesjet/core'
 import { provideCwd } from '@wesjet/core'
@@ -62,7 +61,7 @@ https://github.com/wesbitty/wesjet/issues`),
 OS: ${process.platform} ${os.release()} (arch: ${process.arch})
 Process: ${process.argv.join(' ')}
 Node version: ${process.version}
-wesjet version: ${wesjetVersion}
+Wesjet version: ${wesjetVersion}
 `),
             )
           }
