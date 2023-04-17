@@ -18,13 +18,18 @@ export class WesjetBuild extends BaseCommand {
   static paths = [['build']]
 
   static usage: Usage = {
-    description: `validate & transforms your content into static data`,
-    details: `
-      TODO: Longer description 
+    description: `
+      Compiles the application for production deployment
+   
+      Usage
+      $ wesjet build <dir>
+
+      <dir> represents the directory of the Wesjet application.
+      If no directory is provided, the current directory will be used.
     `,
     examples: [
-      [`Simple run`, `$0 build`],
-      [`clear cache before run`, `$0 build --clearCache`],
+      [`Simple run`, `$ wesjet build`],
+      [`clear cache before run`, `$ wesjet build --clearCache`],
     ],
   }
 
