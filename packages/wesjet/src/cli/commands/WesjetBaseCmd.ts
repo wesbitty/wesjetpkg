@@ -1,10 +1,11 @@
+#!/usr/bin / env node
+
 /**
  * Copyright (c) Wesbitty, Inc.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @dimejiSR
  */
 
 import type { HasCwd } from '@wesjet/core'
@@ -14,8 +15,28 @@ import { pipe, T } from '@wesjet/function.js/effect'
 import { fs } from '@wesjet/function.js/node'
 import { Command, Option } from 'clipanion'
 import * as t from 'typanion'
+import { existsSync } from 'fs'
 
 export abstract class BaseCommand extends Command {
+  helpCmd = Option.Boolean('-h,--help', {
+    description: `
+      Compiles the application for production deployment
+
+      Usage
+        $ wesjet build<dir>
+
+      < dir > represents the directory of the Wesjet application.
+
+      If no directory is provided, the current directory will be used.
+
+    Options
+      --profile                 Can be used to enable React Production Profiling
+      --no - lint                 Disable linting
+      --no - mangling             Disable mangling
+      --experimental - app - only   Only build 'app' routes
+    `,
+  })
+
   configPath = Option.String('-c,--config', {
     description: 'Path to the config (default: wesjet.config.ts/js)',
     validator: t.isString(),
@@ -37,7 +58,7 @@ export abstract class BaseCommand extends Command {
       this.executeSafe(),
       core.runMain({
         tracingServiceName: 'wesjet/cli',
-        verbose: this.verbose || process.env.CL_DEBUG !== undefined,
+        verbose: this.verbose || process.env.WESJET_PROCESS_ENV !== undefined,
       }),
     )
 
@@ -49,7 +70,7 @@ export abstract class BaseCommand extends Command {
         const cwd = yield* $(core.getCwd)
         const artifactsDir = core.ArtifactsDir.getDirPath({ cwd })
         yield* $(fs.rm(artifactsDir, { recursive: true, force: true }))
-        yield* $(T.log('Cache cleared successfully'))
+        yield* $(T.log('cache cleared successfully'))
       }
     })
   }

@@ -6,7 +6,7 @@
  *
  **/
 
-import * as path from 'node:path'
+import * as path from 'path'
 
 import type { E } from '@wesjet/function.js/effect'
 import { OT, pipe, T } from '@wesjet/function.js/effect'
@@ -14,7 +14,7 @@ import type { GetWesjetVersionError } from '@wesjet/function.js/node'
 import { fs } from '@wesjet/function.js/node'
 
 import { ArtifactsDir } from './ArtifactsDir.js'
-import type { HasCwd } from './cwd.js'
+import type { HasCwd } from './WesjetCwd.js'
 import type { Document } from './data-types.js'
 
 export namespace DataCache {

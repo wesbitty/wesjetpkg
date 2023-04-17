@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @dimejiSR
+ *
  */
 
 import * as os from 'node:os'
@@ -55,7 +55,7 @@ export const fetchAllDocuments = ({
       const allEntries = yield* $(getAllEntries(environment))
       const allAssets = yield* $(getAllAssets(environment))
 
-      if (process.env['CL_DEBUG']) {
+      if (process.env['WESJET_PROCESS_ENV']) {
         yield* $(OT.addAttribute('schemaOverrides', JSON.stringify(schemaOverrides)))
         yield* $(
           fs.writeFileJson({

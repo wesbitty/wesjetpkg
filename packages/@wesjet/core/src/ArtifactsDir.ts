@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @dimejiSR
+ *
  */
 
 import type { AbsolutePosixFilePath, RelativePosixFilePath } from '@wesjet/function.js'
@@ -14,8 +14,8 @@ import { pipe, T } from '@wesjet/function.js/effect'
 import type { GetWesjetVersionError } from '@wesjet/function.js/node'
 import { fs, getWesjetVersion } from '@wesjet/function.js/node'
 
-import type { HasCwd } from './cwd.js'
-import { getCwd } from './cwd.js'
+import type { HasCwd } from './WesjetCwd.js'
+import { getCwd } from './WesjetCwd.js'
 // import utilsPkg from '@wesjet/function.js/package.json'
 
 export namespace ArtifactsDir {

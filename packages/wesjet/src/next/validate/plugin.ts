@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @dimejiSR
+ *
  */
 
 import '@wesjet/function.js/effect/Tracing/Enable'
@@ -55,5 +55,5 @@ export const runWesjetBuild = async ({ configPath }: NextPluginOptions) => {
 
 const runMain = core.runMain({
   tracingServiceName: 'wesjet/next',
-  verbose: process.env.CL_DEBUG !== undefined,
+  verbose: process.env.WESJET_PROCESS_ENV !== undefined,
 })

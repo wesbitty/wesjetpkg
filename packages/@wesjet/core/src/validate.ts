@@ -4,10 +4,9 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @dimejiSR
  */
 
-import path from 'node:path'
+import path from 'path'
 
 import type { AbsolutePosixFilePath } from '@wesjet/function.js'
 import { filePathJoin } from '@wesjet/function.js'
@@ -15,7 +14,7 @@ import { Chunk, O, OT, pipe, T, Tagged } from '@wesjet/function.js/effect'
 import { fs } from '@wesjet/function.js/node'
 import { parse as parseJsonc } from 'comment-json'
 
-import { getCwd } from './cwd.js'
+import { getCwd } from './WesjetCwd.js'
 
 export const validateTsconfig = pipe(
   T.gen(function* ($) {

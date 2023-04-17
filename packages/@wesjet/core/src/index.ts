@@ -4,11 +4,11 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @dimejiSR
+ *
  */
 
 export * from './ArtifactsDir.js'
-export * from './cwd.js'
+export * from './WesjetCwd.js'
 export * from './data-types.js'
 export * from './DataCache.js'
 export * from './errors.js'

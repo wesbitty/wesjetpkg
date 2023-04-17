@@ -4,11 +4,11 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @dimejiSR
+ *
  */
 
-import type { Stats } from 'node:fs'
-import { promises as fs } from 'node:fs'
+import type { Stats } from 'fs'
+import { promises as fs } from 'fs'
 
 import { pipe } from '@effect-ts/core'
 import { Tagged } from '@effect-ts/core/Case'

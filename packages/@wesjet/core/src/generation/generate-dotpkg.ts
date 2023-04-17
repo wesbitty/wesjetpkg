@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @dimejiSR
+ *
  */
 
 import type { AbsolutePosixFilePath } from '@wesjet/function.js'
@@ -17,7 +17,7 @@ import { camelCase } from 'camel-case'
 import type { PackageJson } from 'type-fest'
 
 import { ArtifactsDir } from '../ArtifactsDir.js'
-import type { HasCwd } from '../cwd.js'
+import type { HasCwd } from '../WesjetCwd.js'
 import type { DataCache } from '../DataCache.js'
 import type { SourceProvideSchemaError } from '../errors.js'
 import type { Config } from '../getConfig/index.js'
@@ -152,7 +152,7 @@ const writeFilesForCache = ({
     T.gen(function* ($) {
       const withPrefix = (...path_: string[]) => filePathJoin(targetPath, ...path_)
 
-      if (process.env['CL_DEBUG']) {
+      if (process.env['WESJET_PROCESS_ENV']) {
         yield* $(fs.mkdirp(withPrefix('cache')))
         yield* $(
           T.collectAllPar([

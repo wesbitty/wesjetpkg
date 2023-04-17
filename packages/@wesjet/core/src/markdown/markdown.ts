@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @dimejiSR
+ *
  */
 
 import { errorToString } from '@wesjet/function.js'
@@ -36,7 +36,7 @@ export const markdownToHtml = ({
       // Use remark to convert markdown into HTML string
       // const processedContent = await remark().use(html).process(matterResult.content)
 
-      if (process.env['CL_FAST_MARKDOWN']) {
+      if (process.env['WESJET_FAST_MARKDOWN']) {
         // NOTE `markdown-wasm` is an optional peer dependency
         return yield* $(
           T.tryPromise(async () => {

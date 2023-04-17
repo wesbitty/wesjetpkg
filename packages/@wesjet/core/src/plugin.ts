@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @dimejiSR
+ *
  */
 
 import type * as mdxEsbuild from '@mdx-js/esbuild/lib'
@@ -14,7 +14,7 @@ import type * as mdxBundler from 'mdx-bundler/dist/types'
 import type { LiteralUnion } from 'type-fest'
 import type * as unified from 'unified'
 
-import type { HasCwd } from './cwd.js'
+import type { HasCwd } from './WesjetCwd.js'
 import type { DataCache } from './DataCache.js'
 import type { SourceFetchDataError, SourceProvideSchemaError } from './errors.js'
 import type { SchemaDef, StackbitExtension } from './schema/index.js'

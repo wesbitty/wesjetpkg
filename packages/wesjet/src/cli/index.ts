@@ -4,22 +4,21 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @dimejiSR
  */
 
 import '@wesjet/function.js/effect/Tracing/Enable'
 
-import process from 'node:process'
+import process from 'process'
 
 import { provideDummyTracing } from '@wesjet/function.js'
 import { pipe, T } from '@wesjet/function.js/effect'
 import { getWesjetVersion } from '@wesjet/function.js/node'
 import { Builtins, Cli } from 'clipanion'
 
-import { BuildCommand } from './commands/BuildCommand.js'
-import { DefaultCommand } from './commands/DefaultCommand.js'
-import { DevCommand } from './commands/DevCommand.js'
-import { PostInstallCommand } from './commands/PostInstallCommand.js'
+import { WesjetBuild } from './commands/WesjetBuild.js'
+import { WesjetDefaultCmd } from './commands/WesjetDefaultCmd.js'
+import { WesjetDev } from './commands/WesjetDev.js'
+import { WesjetInstallNative } from './commands/WesjetInstallNative.js'
 
 export const run = async () => {
   const [node, app, ...args] = process.argv
@@ -28,14 +27,14 @@ export const run = async () => {
 
   const cli = new Cli({
     binaryLabel: `Wesjet CLI`,
-    binaryName: process.env['CL_DEBUG'] ? `${node} ${app}` : 'wesjet',
+    binaryName: process.env['WESJET_PROCESS_ENV'] ? `${node} ${app}` : 'wesjet',
     binaryVersion: wesjetVersion,
   })
 
-  cli.register(DefaultCommand)
-  cli.register(DevCommand)
-  cli.register(BuildCommand)
-  cli.register(PostInstallCommand)
+  cli.register(WesjetDefaultCmd)
+  cli.register(WesjetDev)
+  cli.register(WesjetBuild)
+  cli.register(WesjetInstallNative)
   cli.register(Builtins.HelpCommand)
   cli.register(Builtins.VersionCommand)
 

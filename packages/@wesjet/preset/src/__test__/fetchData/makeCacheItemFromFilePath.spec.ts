@@ -1,4 +1,4 @@
-import path from 'node:path'
+import path from 'path'
 
 import { E } from '@wesjet/function.js/effect'
 import { fileURLToPath } from 'url'

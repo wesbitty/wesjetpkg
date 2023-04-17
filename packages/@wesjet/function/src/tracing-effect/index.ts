@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @dimejiSR
+ *
  */
 
 import * as T from '@effect-ts/core/Effect'
@@ -45,7 +45,9 @@ export const provideJaegerTracing = (serviceName: string) =>
 
 // Only use Otel tracing if explicitly enabled via env var
 export const provideTracing = (tracingServiceName: string) =>
-  process.env.CL_OTEL !== undefined ? provideJaegerTracing(tracingServiceName) : provideDummyTracing
+  process.env.WESJET_OTEL !== undefined
+    ? provideJaegerTracing(tracingServiceName)
+    : provideDummyTracing
 
 //
 // Dummy Tracer

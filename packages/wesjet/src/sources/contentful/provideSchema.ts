@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @dimejiSR
+ *
  */
 
 import * as core from '@wesjet/core'
@@ -67,7 +67,7 @@ export const provideSchema = ({
       const defs = { documentTypeDefMap, nestedTypeDefMap }
       const hash = yield* $(utils.hashObject({ defs, options }))
 
-      // if (process.env['CL_DEBUG']) {
+      // if (process.env['WESJET_PROCESS_ENV']) {
       //   ;(await import('fs')).writeFileSync('.tmp.schema.json', JSON.stringify(defs, null, 2))
       // }
 

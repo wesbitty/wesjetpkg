@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @dimejiSR
+ *
  */
 // Source https://gist.github.com/barbogast/4bea3ad77272fafe0af3d4f70446d037 from May 18, 2020
 // via https://github.com/sanity-io/sanity/issues/1857#issuecomment-630241904

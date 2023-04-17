@@ -4,10 +4,10 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @dimejiSR
+ *
  */
 
-import type fs from 'node:fs'
+import type fs from 'fs'
 
 import * as T from '@effect-ts/core/Effect'
 import * as Ex from '@effect-ts/core/Effect/Exit'

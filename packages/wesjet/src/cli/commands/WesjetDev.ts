@@ -1,10 +1,11 @@
+#!/usr/bin/env node
+
 /**
  * Copyright (c) Wesbitty, Inc.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @dimejiSR
  */
 
 import * as core from '@wesjet/core'
@@ -12,9 +13,9 @@ import { errorToString } from '@wesjet/function.js'
 import { E, pipe, S, T } from '@wesjet/function.js/effect'
 import type { Usage } from 'clipanion'
 
-import { BaseCommand } from './_BaseCommand.js'
+import { BaseCommand } from './WesjetBaseCmd.js'
 
-export class DevCommand extends BaseCommand {
+export class WesjetDev extends BaseCommand {
   static paths = [['dev']]
 
   static usage: Usage = {
@@ -23,8 +24,8 @@ export class DevCommand extends BaseCommand {
       TODO: Longer description 
     `,
     examples: [
-      [`Simple run`, `$0 dev`],
-      [`Clear cache before run`, `$0 dev --clearCache`],
+      [`simple run`, `$0 dev`],
+      [`clear cache before run`, `$0 dev --clearCache`],
     ],
   }
 
@@ -33,7 +34,7 @@ export class DevCommand extends BaseCommand {
       S.fromEffect(this.clearCacheIfNeeded()),
       S.chain(() => core.getConfigWatch({ configPath: this.configPath })),
       S.tapSkipFirstRight(() =>
-        T.log(`wesjet: change's detected, Updating type definitions and data...`),
+        T.log(`wesjet: change's detected, updating type definitions and data...`),
       ),
       S.tapRight((config) =>
         config.source.options.disableImportAliasWarning ? T.unit : T.fork(core.validateTsconfig),

@@ -4,11 +4,11 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @dimejiSR
+ *
  */
 
-import { promises as fs } from 'node:fs'
-import * as path from 'node:path'
+import { promises as fs } from 'fs'
+import * as path from 'path'
 
 import type { HasCwd } from '@wesjet/core'
 import { getConfig, provideCwd } from '@wesjet/core'

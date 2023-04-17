@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @dimejiSR
+ *
  */
 import { type Temporal, toTemporalInstant } from '@js-temporal/polyfill'
 export * as base64 from './base64.js'
@@ -71,7 +71,7 @@ export const not =
     !guard(el)
 
 export const errorToString = (error: any) => {
-  const stack = process.env.CL_DEBUG ? error.stack : undefined
+  const stack = process.env.WESJET_PROCESS_ENV ? error.stack : undefined
   const str = error.toString()
   const stackStr = stack ? `\n${stack}` : ''
   if (str !== '[object Object]') return str + stackStr
