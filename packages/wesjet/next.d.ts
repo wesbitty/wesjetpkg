@@ -7,11 +7,11 @@
  */
 
 import type { NextConfig } from 'next'
-import { type NextPluginOptions } from './dist/next/validate/plugin'
+import { type NextPluginOptions } from './dist/next/validate/plugin.js'
 
-export * from './dist/next/_jsx_'
-export * from './dist/next/lib/mdx'
-export * from './dist/next/lib/reload'
+export * from './dist/next/_jsx_.cjs'
+export * from './dist/next/lib/mdx.js'
+export * from './dist/next/lib/reload.js'
 
 export type { NextConfig }
 
