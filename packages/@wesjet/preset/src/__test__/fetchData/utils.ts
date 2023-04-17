@@ -68,10 +68,10 @@ export const runTest = async ({
     return cache
   })
 
-  return runMain(eff)
+  return WesjetHook(eff)
 }
 
-const runMain = async <E, A>(
+const WesjetHook = async <E, A>(
   eff: T.Effect<OT.HasTracer & HasClock & HasCwd & HasConsole & HasDocumentTypeMapState, E, A>,
 ) => {
   const logMessages: string[] = []

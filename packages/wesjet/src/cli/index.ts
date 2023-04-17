@@ -15,10 +15,10 @@ import { pipe, T } from '@wesjet/function.js/effect'
 import { getWesjetVersion } from '@wesjet/function.js/node'
 import { Builtins, Cli } from 'clipanion'
 
-import { WesjetBuild } from './commands/WesjetBuild.js'
-import { WesjetDefaultCmd } from './commands/WesjetDefaultCmd.js'
-import { WesjetDev } from './commands/WesjetDev.js'
-import { WesjetInstallNative } from './commands/WesjetInstallNative.js'
+import { WesjetBuild } from './WesjetBuild.js'
+import { WesjetDefaultCmd } from './WesjetDefaultCmd.js'
+import { WesjetDev } from './WesjetDev.js'
+import { WesjetInstallNative } from './WesjetInstallNative.js'
 
 export const run = async () => {
   const [node, app, ...args] = process.argv

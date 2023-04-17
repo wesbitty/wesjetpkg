@@ -37,8 +37,9 @@ export abstract class BaseCommand extends Command {
   execute = () =>
     pipe(
       this.executeSafe(),
-      core.runMain({
+      core.WesjetHook({
         tracingServiceName: 'wesjet/cli',
+
         verbose: this.verbose || process.env.WESJET_PROCESS_ENV !== undefined,
       }),
     )
@@ -49,8 +50,11 @@ export abstract class BaseCommand extends Command {
     return T.gen(function* ($) {
       if (clearCache) {
         const cwd = yield* $(core.getCwd)
+
         const artifactsDir = core.ArtifactsDir.getDirPath({ cwd })
+
         yield* $(fs.rm(artifactsDir, { recursive: true, force: true }))
+
         yield* $(T.log('cache cleared successfully'))
       }
     })

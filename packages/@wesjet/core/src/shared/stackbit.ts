@@ -7,7 +7,7 @@
  *
  */
 
-import type { GetFieldNamesForDefinitionGen } from '../gen.js'
+import type { GetFieldNamesForDefinitionGen } from '../CoreGenerator.js'
 
 type KnownFieldNames<DefName extends string> = GetFieldNamesForDefinitionGen<DefName>
 

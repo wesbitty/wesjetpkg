@@ -9,7 +9,7 @@
 
 import type * as unified from 'unified'
 
-import type { RawDocumentData } from '../data-types.js'
+import type { RawDocumentData } from '../types/data.js'
 
 /**
  * Unified plugin that adds the raw document data to the vfile under `vfile.data.rawDocumentData`

@@ -17,7 +17,7 @@ import type { HasClock, HasConsole, OT } from '@wesjet/function.js/effect'
 import { Cause, pipe, pretty, provideConsole, T } from '@wesjet/function.js/effect'
 import { getWesjetVersion } from '@wesjet/function.js/node'
 
-export const runMain =
+export const WesjetHook =
   ({ tracingServiceName, verbose }: { tracingServiceName: string; verbose: boolean }) =>
   (eff: T.Effect<OT.HasTracer & HasClock & HasCwd & HasConsole, unknown, unknown>) =>
     pipe(

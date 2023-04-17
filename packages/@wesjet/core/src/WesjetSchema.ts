@@ -7,12 +7,12 @@
  *
  */
 
-import type { Document } from '../data-types.js'
-import type { FieldDef, FieldDefType } from './field.js'
-import type { StackbitExtension } from './stackbit-extension.js'
-export * from './field.js'
-export * from './stackbit-extension.js'
-export * from './validate.js'
+import type { Document } from './types/data.js'
+import type { FieldDef, FieldDefType } from './SchemaField.js'
+import type { StackbitExtension } from './shared/stackbit.js'
+export * from './SchemaField.js'
+export * from './shared/stackbit.js'
+export * from './SchemaValidate.js'
 
 export type TypeDefExtensions = {
   stackbit?: StackbitExtension.TypeExtension

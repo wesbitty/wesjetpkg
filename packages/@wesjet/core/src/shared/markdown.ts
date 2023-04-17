@@ -16,8 +16,8 @@ import remarkParse from 'remark-parse'
 import remark2rehype from 'remark-rehype'
 import { unified } from 'unified'
 
-import type { RawDocumentData } from '../data-types.js'
-import type { MarkdownOptions, MarkdownUnifiedBuilderCallback } from '../plugin.js'
+import type { RawDocumentData } from '../types/data.js'
+import type { MarkdownOptions, MarkdownUnifiedBuilderCallback } from '../WesjetPlugin.js'
 import { addRawDocumentToVFile } from './unified.js'
 
 export const markdownToHtml = ({

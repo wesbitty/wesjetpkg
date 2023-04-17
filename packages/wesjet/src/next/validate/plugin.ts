@@ -36,7 +36,7 @@ export const runWesjetDev = async ({ configPath }: NextPluginOptions) => {
     ),
     S.tap(E.fold((error) => T.log(errorToString(error)), core.logGenerateInfo)),
     S.runDrain,
-    runMain,
+    WesjetHook,
   )
 }
 
@@ -49,11 +49,11 @@ export const runWesjetBuild = async ({ configPath }: NextPluginOptions) => {
     T.chain((config) => core.generateDotpkg({ config, verbose: false })),
     T.tap(core.logGenerateInfo),
     OT.withSpan('wesjet/next:runWesjetBuild'),
-    runMain,
+    WesjetHook,
   )
 }
 
-const runMain = core.runMain({
+const WesjetHook = core.WesjetHook({
   tracingServiceName: 'wesjet/next',
   verbose: process.env.WESJET_PROCESS_ENV !== undefined,
 })

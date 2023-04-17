@@ -4,31 +4,12 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *
  */
 
 import type { Document, GetDocumentTypeMapGen, GetDocumentTypeNamesGen } from '@wesjet/core'
 
-// type Guards = {
-//   isType: TypeGuards
-//   hasAllFields: typeof hasAllFields
-//   allFields: typeof allFields
-//   hasField: typeof hasField
-// }
-
-// type TypeGuards = { [K in keyof GetDocumentTypeMapGen]: (_: any) => _ is GetDocumentTypeMapGen[K] }
-
-// const isType: TypeGuards = new Proxy(
-//   {},
-//   {
-//     get: (_target, prop) => {
-//       return (_: any) => _?.__meta?.typeName === prop
-//     },
-//   },
-// )
-
-// const is_ = <P extends GetTypeNamesGen | GetTypeNamesGen[]>(_: any, typeName: P): P extends any[] ? _ is GetTypeMapGen[P] : _ is any => {
 type TypeNameOneOrMany = GetDocumentTypeNamesGen | GetDocumentTypeNamesGen[]
+
 type TypeForTypeNameOneOrMany<N extends TypeNameOneOrMany> = N extends GetDocumentTypeNamesGen
   ? GetDocumentTypeMapGen<Document>[N]
   : N extends GetDocumentTypeNamesGen[]
@@ -36,7 +17,9 @@ type TypeForTypeNameOneOrMany<N extends TypeNameOneOrMany> = N extends GetDocume
   : never
 
 function is<N extends TypeNameOneOrMany>(typeName: N, _: any): _ is TypeForTypeNameOneOrMany<N>
+
 function is<N extends TypeNameOneOrMany>(typeName: N): (_: any) => _ is TypeForTypeNameOneOrMany<N>
+
 function is<N extends TypeNameOneOrMany>(typeName: N, _?: any): any {
   if (_) {
     if (Array.isArray(typeName)) {
@@ -54,24 +37,8 @@ export const isType = is
 
 export const guards = {
   is,
-  // isType,
-  // hasAllFields,
-  // allFields,
   hasField,
-  // withField,
 }
-
-// function hasAllFields<T>(_: T): _ is T & FlattenUnion<T> {
-//   return true
-// }
-
-// function allFields<T>(
-//   _: T,
-// ): undefined extends T
-//   ? Partial<UnionToIntersection<Exclude<T, undefined>>> | undefined
-//   : Partial<UnionToIntersection<T>> {
-//   return _ as any
-// }
 
 type AllPropertyNames<X> = keyof UnionToIntersection<X>
 function hasField<T extends {}, P extends AllPropertyNames<T>>(

@@ -26,7 +26,11 @@ export class WesjetBuild extends BaseCommand {
 
       <dir> represents the directory of the Wesjet application.
       If no directory is provided, the current directory will be used.
+
+    Option
+    -h, --help       Display this message
     `,
+
     examples: [
       [`Simple run`, `$ wesjet build`],
       [`clear cache before run`, `$ wesjet build --clearCache`],
@@ -36,12 +40,17 @@ export class WesjetBuild extends BaseCommand {
   executeSafe = () =>
     pipe(
       this.clearCacheIfNeeded(),
+
       T.chain(() => core.getConfig({ configPath: this.configPath })),
+
       T.tap((config) =>
         config.source.options.disableImportAliasWarning ? T.unit : T.fork(core.validateTsconfig),
       ),
+
       T.chain((config) => core.generateDotpkg({ config, verbose: this.verbose })),
+
       T.tap(core.logGenerateInfo),
-      OT.withSpan('wesjet/cli/commands/WesjetBuild:executeSafe'),
+
+      OT.withSpan('wesjet/cli/WesjetBuild:executeSafe'),
     )
 }

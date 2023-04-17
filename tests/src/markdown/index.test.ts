@@ -43,7 +43,7 @@ test('markdown builder pattern', async () => {
     },
   })
 
-  await core.runMain({ tracingServiceName: 'wesjet-test', verbose: false })(
+  await core.WesjetHook({ tracingServiceName: 'wesjet-test', verbose: false })(
     core.generateDotpkg({
       config: { source, esbuildHash: 'STATIC_HASH' },
       verbose: true,

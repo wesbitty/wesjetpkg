@@ -50,12 +50,12 @@ const schemaFromFixture = (fixtureName: string) => async () => {
     contentDirPath: NOT_USED_STR,
     documentTypes,
   })
-  const schema = await runMain(wesjetSource.provideSchema(NOT_USED_STR))
+  const schema = await WesjetHook(wesjetSource.provideSchema(NOT_USED_STR))
 
   return schema.result
 }
 
-const runMain = async <E, A>(eff: T.Effect<OT.HasTracer & HasClock & HasConsole, E, A>) => {
+const WesjetHook = async <E, A>(eff: T.Effect<OT.HasTracer & HasClock & HasConsole, E, A>) => {
   const logMessages: string[] = []
   const result = await pipe(eff, provideTestConsole(logMessages), provideDummyTracing, T.runPromise)
 

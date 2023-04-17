@@ -19,26 +19,37 @@ export class WesjetDev extends BaseCommand {
   static paths = [['dev']]
 
   static usage: Usage = {
-    description: `Same as "wesjet build" but with watch mode`,
-    details: `
-      TODO: Longer description 
+    description: `
+    Starts the application in development mode (hot-code reloading, error
+        reporting, etc.) 
+
+    Usage
+        $ wesjet dev 
+
+    Option
+     -h, --help         Displays this message
     `,
+
     examples: [
-      [`simple run`, `$0 dev`],
-      [`clear cache before run`, `$0 dev --clearCache`],
+      [`simple run`, `$ wesjet dev`],
+      [`clear cache before run`, `$ wesjet dev --clearCache`],
     ],
   }
 
   executeSafe = () =>
     pipe(
       S.fromEffect(this.clearCacheIfNeeded()),
+
       S.chain(() => core.getConfigWatch({ configPath: this.configPath })),
+
       S.tapSkipFirstRight(() =>
         T.log(`wesjet: change's detected, updating type definitions and data...`),
       ),
+
       S.tapRight((config) =>
         config.source.options.disableImportAliasWarning ? T.unit : T.fork(core.validateTsconfig),
       ),
+
       S.chainSwitchMapEitherRight((config) =>
         core.generateDotpkgStream({
           config,
@@ -46,7 +57,9 @@ export class WesjetDev extends BaseCommand {
           isDev: true,
         }),
       ),
+
       S.tap(E.fold((error) => T.log(errorToString(error)), core.logGenerateInfo)),
+
       S.runDrain,
     )
 }

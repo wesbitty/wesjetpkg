@@ -7,7 +7,7 @@
  *
  */
 
-import type { DocumentTypeDef, NestedTypeDef, SchemaDef } from './index.js'
+import type { DocumentTypeDef, NestedTypeDef, SchemaDef } from './WesjetSchema.js'
 
 export const validateSchema = (schema: SchemaDef): void => {
   Object.values(schema.documentTypeDefMap).forEach((def) => validateDocumentOrObjectDef({ def }))

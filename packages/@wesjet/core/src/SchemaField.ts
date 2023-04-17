@@ -7,7 +7,7 @@
  *
  */
 
-import type { NestedUnnamedTypeDef } from './index.js'
+import type { NestedUnnamedTypeDef } from './WesjetSchema.js'
 
 export type FieldDefType = FieldDef['type']
 

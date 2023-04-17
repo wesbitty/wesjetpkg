@@ -19,7 +19,7 @@ export class WesjetDefaultCmd extends BaseCommand {
   executeSafe = () =>
     pipe(
       T.succeedWith(() => console.log(this.cli.usage())),
-      OT.withSpan('wesjet/cli/commands/WesjetDefaultCmd:executeSafe', {
+      OT.withSpan('wesjet/cli/WesjetDefaultCmd:executeSafe', {
         attributes: { cwd: process.cwd() },
       }),
     )
