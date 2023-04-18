@@ -1,7 +1,7 @@
 {
   "name": "@wesjet/function.js",
   "description": "wesjet javascript library",
-  "version": "0.0.21",
+  "version": "0.0.22-automated.5",
   "license": "MIT",
   "homepage": "https://wesbitty.org/product/wesjet",
   "bugs": "https://github.com/wesbitty/wesjet/issues",
@@ -14,10 +14,6 @@
     "wesjet",
     "function.js",
     "javascript"
-  ],
-  "files": [
-    "dist",
-    "node.js"
   ],
   "type": "module",
   "exports": {
@@ -54,6 +50,10 @@
       ]
     }
   },
+  "files": [
+    "dist",
+    "node.js"
+  ],
   "scripts": {
     "tmp": "env"
   },

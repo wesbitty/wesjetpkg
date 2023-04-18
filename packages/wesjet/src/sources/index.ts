@@ -6,4 +6,6 @@
  *
  */
 
-module.exports = require('../dist/next/index.js')
+export * from './contentful'
+export { makeSourcePlugin } from './sanity'
+export * from './stackbit'

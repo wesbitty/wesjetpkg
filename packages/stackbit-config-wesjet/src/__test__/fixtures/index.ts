@@ -1,7 +1,7 @@
 import { provideJaegerTracing } from '@wesjet/function.js'
 import { pipe, provideConsole, T } from '@wesjet/function.js/effect'
-import type { DocumentType } from 'wesjet/dist/preset.js'
-import { makeSource } from 'wesjet/dist/preset.js'
+import type { DocumentType } from 'wesjet/dist/preset'
+import { makeSource } from 'wesjet/dist/preset'
 
 import * as azimuth from './azimuth-schema/index.js'
 import * as blog from './blog-schema/index.js'

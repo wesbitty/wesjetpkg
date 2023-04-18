@@ -5,4 +5,5 @@
  *
  */
 
-module.exports = require('./dist/client/index.js')
+export * from '../dist/next/hook/MakeMdx.js'
+export * from '../dist/next/hook/MakeReload.js'

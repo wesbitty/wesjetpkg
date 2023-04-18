@@ -16,7 +16,7 @@ export const run = async () => {
   const cli = new Cli({
     binaryLabel: `My Application`,
     binaryName: `${node} ${app}`,
-    binaryVersion: `0.0.21`,
+    binaryVersion: `0.0.22`,
   })
 
   cli.register(DefaultCommand)

@@ -5,4 +5,4 @@
  *
  */
 
-module.exports = require('./dist/client/index.js')
+export * from '@wesjet/function.js/node'

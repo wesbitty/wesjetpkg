@@ -10,9 +10,6 @@ import type { NextConfig } from 'next'
 
 import type { NextPluginOptions } from './validate/plugin.js'
 
-export * from './lib/mdx.js'
-export * from './lib/reload.js'
-
 export type { NextConfig }
 
 let devServerStarted = false
@@ -35,11 +32,11 @@ module.exports.createWesjetPlugin =
       // in order to hook into and block the `next build` and initial `next dev` run.
       redirects: async () => {
         // TODO move to post-install?
-        const { checkConstraints } = await import('./validate/check-constraints')
+        const { checkConstraints } = await import('./validate/check-constraints.js')
         checkConstraints()
 
         // NOTE since next.config.js doesn't support ESM yet, this "CJS -> ESM bridge" is needed
-        const { runWesjetBuild, runWesjetDev } = await import('./validate/plugin')
+        const { runWesjetBuild, runWesjetDev } = await import('./validate/plugin.js')
         if (isBuild) {
           await runWesjetBuild(pluginOptions)
         } else if (isNextDev && !devServerStarted) {

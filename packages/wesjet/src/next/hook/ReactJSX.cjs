@@ -5,4 +5,6 @@
  *
  */
 
-module.exports = require('./dist/client/index.js')
+const _jsx_runtime = require('react/jsx-runtime')
+
+module.exports.ReactJSX = _jsx_runtime

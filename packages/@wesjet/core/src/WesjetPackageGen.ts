@@ -1,8 +1,7 @@
 /**
  * Copyright (c) Wesbitty, Inc.
  *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
+ * This source code is licensed under the MIT license found in the LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -271,7 +270,7 @@ const makePackageJson = (schemaHash: string): string => {
     name: `${schemaHash}`,
     description: 'static directory',
     // get wesjet version and schema hash
-    version: `0.0.21-${schemaHash}`,
+    version: `0.0.22-${schemaHash}`,
     exports: {
       './static': {
         import: './static/index.mjs',

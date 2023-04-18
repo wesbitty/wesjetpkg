@@ -1,14 +1,15 @@
 {
   "name": "eslint-plugin-wesjet",
   "description": "wesjet eslint plugin for code scanning",
-  "version": "0.0.21",
+  "version": "0.0.22-automated.5",
   "license": "MIT",
   "keywords": [
     "eslint",
     "wesjet"
   ],
   "files": [
-    "dist",
+    "./dist",
+    "./package.json",
     "README.md"
   ],
   "author": "dimejiSR <Wesbitty Inc>",
@@ -20,7 +21,25 @@
     "directory": "packages/eslint-plugin-wesjet"
   },
   "main": "./dist/index.js",
-  "exports": "./dist/index.js",
+  "exports": {
+    "./package.json": {
+      "import": "./package.json"
+    },
+    ".": {
+      "import": "./dist/index.js"
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "packge.json": [
+        "./package.json"
+      ],
+      ".": [
+        "./dist"
+      ]
+    }
+  },
   "scripts": {
     "build": "swc lib -d dist",
     "lint": "npm-run-all \"lint:*\"",

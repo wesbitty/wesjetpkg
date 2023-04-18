@@ -1,13 +1,8 @@
 {
   "name": "wesjet",
   "description": "Wesjet is a JavaScript library to transform and validate content for building user interfaces.",
-  "version": "0.0.21",
+  "version": "0.0.22-automated.5",
   "license": "MIT",
-  "keywords": [
-    "wesjet"
-  ],
-  "bin": "./bin/install-cmd.cjs",
-  "type": "module",
   "engines": {
     "node": ">=14.18"
   },
@@ -18,22 +13,25 @@
     "url": "git+https://github.com/wesbitty/wesjet.git",
     "directory": "packages/wesjet"
   },
+  "keywords": [
+    "wesjet"
+  ],
   "files": [
     "bin",
-    "dist",
     "core.js",
     "core.d.ts",
-    "preset.js",
-    "preset.d.ts",
     "client.js",
     "client.d.ts",
+    "dist",
     "index.d.ts",
-    "next.d.ts",
-    "next.js",
+    "next",
+    "preset",
     "README.md",
     "LICENSE",
     "package.json"
   ],
+  "bin": "./bin/install-native.cjs",
+  "type": "module",
   "exports": {
     "./package.json": "./package.json",
     "./client": {
@@ -76,8 +74,8 @@
     }
   },
   "scripts": {
-    "postinstall": "node ./bin/install-cmd.cjs postinstall",
-    "prepack": "sed '/^import /d' dist/next/_jsx_.js > dist/next/_jsx_.cjs; cp src/next/lib/jsx-runtime.cjs dist/next/lib/jsx-runtime.cjs"
+    "postinstall": "node ./bin/install-native.cjs postinstall",
+    "build": "sed '/^import /d' dist/next/_jsx_.js > dist/next/_jsx_.cjs; cp src/next/hook/ReactJSX.cjs dist/next/hook/ReactJSX.cjs"
   },
   "peerDependencies": {
     "@stackbit/sdk": "^0.2.39",
@@ -96,9 +94,9 @@
     "@sanity/image-url": "^0.140.22",
     "@sanity/schema": "^2.10.0",
     "@stackbit/sdk": "^0.2.39",
-    "@wesjet/core": "^0.0.21",
-    "@wesjet/preset": "^0.0.21",
-    "@wesjet/function.js": "^0.0.21",
+    "@wesjet/core": "^0.0.22-automated.5",
+    "@wesjet/preset": "^0.0.22-automated.5",
+    "@wesjet/function.js": "^0.0.22-automated.5",
     "clipanion": "^3.2.0-rc.14",
     "contentful-management": "^7.22.4",
     "rxjs": "^7.1.0",
