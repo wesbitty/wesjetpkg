@@ -5,7 +5,7 @@
 'use strict'
 
 import { defineRule } from '../processors/rule'
-import * as path from 'path'
+import * as path from 'node:path'
 import * as fs from 'fs'
 import { getRootDirs } from '../processors/rootDir'
 
@@ -18,9 +18,8 @@ const pagesDirWarning = execOnce((pagesDirs) => {
   )
 })
 
-// Cache for fs.existsSync lookup.
-// Prevent multiple blocking IO requests that have already been calculated.
 const fsExistsSyncCache = {}
+const url = 'https://wesbitty.org/product/wesjet/messages'
 
 // Rule definition
 export = defineRule({
@@ -29,7 +28,7 @@ export = defineRule({
       description: 'Prevent usage of `<a>` elements to navigate to internal pages.',
       category: 'HTML',
       recommended: true,
-      url: 'https://wesbitty.org/product/wesjet/messages', // URL to the documentation page for this rule
+      url, // URL to the documentation page for this rule
     },
     type: 'problem', // 'problem', 'suggestion' or 'layout'
     schema: [
@@ -134,7 +133,7 @@ export = defineRule({
           if (pageUrl.test(normalizeURL(hrefPath))) {
             context.report({
               node,
-              message: `Do not use an \`<a>\` element to navigate to \`${hrefPath}\`. Use \`<Link />\` from \`next/link\` instead. See: https://wesbitty.org/product/wesjet`,
+              message: `Do not use an \`<a>\` element to navigate to \`${hrefPath}\`. Use \`<Link />\` from \`next/link\` instead. See: ${url}`,
             })
           }
         })

@@ -1,7 +1,7 @@
 {
   "name": "eslint-plugin-wesjet",
   "description": "wesjet eslint plugin for code scanning",
-  "version": "0.0.22-automated.5",
+  "version": "0.0.22-automated.8",
   "license": "MIT",
   "keywords": [
     "eslint",
@@ -41,7 +41,7 @@
     }
   },
   "scripts": {
-    "build": "swc lib -d dist",
+    "build": "swc src -d dist",
     "lint": "npm-run-all \"lint:*\"",
     "lint-eslint-doc": "npm-run-all \"update-gen-doc -- --check\"",
     "lint-ts": "eslint .",

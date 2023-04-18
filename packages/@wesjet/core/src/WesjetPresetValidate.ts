@@ -5,7 +5,7 @@
  *
  */
 
-import path from 'path'
+import path from 'node:path'
 
 import type { AbsolutePosixFilePath } from '@wesjet/function.js'
 import { filePathJoin } from '@wesjet/function.js'

@@ -68,8 +68,7 @@
     "swr": "^2.1.2",
     "ts-node": "^10.9.1",
     "ts-patch": "^2.1.0",
-    "typescript": "^4.9.4",
-    "wesjet": "^0.0.22-automated.5"
+    "typescript": "^4.9.4"
   },
   "resolutions": {
     "esbuild": "0.17.0",

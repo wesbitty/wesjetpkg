@@ -8,7 +8,7 @@
  */
 
 import { promises as fs } from 'fs'
-import * as path from 'path'
+import * as path from 'node:path'
 
 import type { ClientConstructor, SanityClient } from '@sanity/client'
 // NOTE sanity currently doesn't provide ESM exports, thus the require syntax is needed

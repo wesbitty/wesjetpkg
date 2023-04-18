@@ -8,37 +8,49 @@
 
 import type { NextConfig } from 'next'
 
-import { checkConstraints } from './validate/check-constraints.js'
+import { packageManagerVersion } from './validate/version.js'
 import { type NextPluginOptions, runWesjetBuild, runWesjetDev } from './validate/plugin.js'
-
-export type { NextConfig }
 
 let devServerStarted = false
 
 export const defaultPluginOptions: NextPluginOptions = {}
+export type { NextConfig }
 
+/**
+ * Next.js plugin for Wesjet with default options.
+ *
+ * If you want to provide custom plugin options, please use {@link createWesjetPlugin} instead.
+ *
+ * @example
+ * ```js
+ * // next.config.mjs
+ * import { wesjetConfig } from 'wesjet/next'
+ *
+ * export default wesjetConfig({
+ *   // Next.js config option
+ * })
+ * ```
+ */
 export const createWesjetPlugin =
   (pluginOptions: NextPluginOptions = defaultPluginOptions) =>
   (nextConfig: Partial<NextConfig> = {}): Partial<NextConfig> => {
-    // could be either `next dev` or just `next`
     const isNextDev =
       process.argv.includes('dev') ||
       process.argv.some((_) => _.endsWith('bin/next') || _.endsWith('bin\\next'))
+
     const isBuild = process.argv.includes('build')
 
     const { configPath } = pluginOptions
 
     return {
       ...nextConfig,
-      // Since Next.js doesn't provide some kind of real "plugin system" we're (ab)using the `redirects` option here
-      // in order to hook into and block the `next build` and initial `next dev` run.
       redirects: async () => {
         if (isBuild) {
-          checkConstraints()
+          packageManagerVersion()
           await runWesjetBuild({ configPath })
         } else if (isNextDev && !devServerStarted) {
           devServerStarted = true
-          // TODO also block here until first wesjet run is complete
+
           runWesjetDev({ configPath })
         }
 
@@ -55,8 +67,6 @@ export const createWesjetPlugin =
           ignored: ['**/node_modules/!(.wesjet)/**/*'],
         }
 
-        // NOTE workaround for https://github.com/vercel/next.js/issues/17806#issuecomment-913437792
-        // https://github.com/wesbitty/wesjet/issues/121
         config.module.rules.push({
           test: /\.m?js$/,
           type: 'javascript/auto',
@@ -74,4 +84,19 @@ export const createWesjetPlugin =
     }
   }
 
+/**
+ * Next.js plugin for Wesjet with default options.
+ *
+ * If you want to provide custom plugin options, please use {@link createWesjetPlugin} instead.
+ *
+ * @example
+ * ```js
+ * // next.config.mjs
+ * import { wesjetConfig } from 'wesjet/next'
+ *
+ * export default wesjetConfig({
+ *   // Next.js config option
+ * })
+ * ```
+ */
 export const wesjetConfig = createWesjetPlugin(defaultPluginOptions)

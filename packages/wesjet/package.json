@@ -1,7 +1,7 @@
 {
   "name": "wesjet",
   "description": "Wesjet is a JavaScript library to transform and validate content for building user interfaces.",
-  "version": "0.0.22-automated.5",
+  "version": "0.0.22-automated.8",
   "license": "MIT",
   "engines": {
     "node": ">=14.18"
@@ -30,6 +30,7 @@
     "LICENSE",
     "package.json"
   ],
+  "sideEffects": false,
   "bin": "./bin/install-native.cjs",
   "type": "module",
   "exports": {
@@ -40,15 +41,24 @@
     "./core": {
       "import": "./dist/core.js"
     },
-    "./function": {
-      "import": "./dist/function/index.js"
+    "./function.js": {
+      "import": "./dist/function.js/index.js"
+    },
+    "./function.js/node": {
+      "import": "./dist/function.js/node/index.js"
     },
     "./preset": {
-      "import": "./dist/preset.js"
+      "import": "./dist/preset/index.js"
+    },
+    "./preset/schema": {
+      "import": "./dist/preset/schema/index.js"
     },
     "./next": {
       "import": "./dist/next/index.js",
-      "require": "./dist/next/_jsx_.cjs"
+      "require": "./dist/next/index-cjs.cjs"
+    },
+    "./next/hook": {
+      "import": "./dist/next/hook/index.js"
     }
   },
   "typesVersions": {
@@ -62,20 +72,29 @@
       "core": [
         "./dist/core"
       ],
-      "function": [
-        "./dist/function"
+      "function.js": [
+        "./dist/function.js"
+      ],
+      "function.js/node": [
+        "./dist/function.js/node"
       ],
       "preset": [
         "./dist/preset"
       ],
+      "preset/schema": [
+        "./dist/preset/schema"
+      ],
       "next": [
         "./dist/next"
+      ],
+      "next/hook": [
+        "./dist/next/hook"
       ]
     }
   },
   "scripts": {
     "postinstall": "node ./bin/install-native.cjs postinstall",
-    "build": "sed '/^import /d' dist/next/_jsx_.js > dist/next/_jsx_.cjs; cp src/next/hook/ReactJSX.cjs dist/next/hook/ReactJSX.cjs"
+    "build": "sed '/^import /d' dist/next/index-cjs.js > dist/next/index-cjs.cjs; cp src/next/hook/ReactJSX.cjs dist/next/hook/ReactJSX.cjs"
   },
   "peerDependencies": {
     "@stackbit/sdk": "^0.2.39",
@@ -94,9 +113,9 @@
     "@sanity/image-url": "^0.140.22",
     "@sanity/schema": "^2.10.0",
     "@stackbit/sdk": "^0.2.39",
-    "@wesjet/core": "^0.0.22-automated.5",
-    "@wesjet/preset": "^0.0.22-automated.5",
-    "@wesjet/function.js": "^0.0.22-automated.5",
+    "@wesjet/core": "^0.0.22-automated.8",
+    "@wesjet/preset": "^0.0.22-automated.8",
+    "@wesjet/function.js": "^0.0.22-automated.8",
     "clipanion": "^3.2.0-rc.14",
     "contentful-management": "^7.22.4",
     "rxjs": "^7.1.0",

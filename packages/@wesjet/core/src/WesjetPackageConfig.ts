@@ -7,7 +7,7 @@
  *
  */
 
-import * as path from 'path'
+import * as path from 'node:path'
 
 import type { E } from '@wesjet/function.js/effect'
 import { Array, Chunk, O, OT, pipe, S, T } from '@wesjet/function.js/effect'

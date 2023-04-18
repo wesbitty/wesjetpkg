@@ -7,7 +7,7 @@
  *
  */
 
-import * as path from 'path'
+import * as path from 'node:path'
 
 import { Branded } from './effect/index.js'
 

@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { defineDocumentType, makeSource } from 'wesjet/dist/maker/maker'
+import { defineDocumentType, makeSource } from 'wesjet/dist/preset'
 
 const Post = defineDocumentType(() => ({
   name: 'Post',

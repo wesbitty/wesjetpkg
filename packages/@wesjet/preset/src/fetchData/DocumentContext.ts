@@ -7,7 +7,7 @@
  *
  */
 
-import * as path from 'path'
+import * as path from 'node:path'
 
 import type * as core from '@wesjet/core'
 import type { RelativePosixFilePath } from '@wesjet/function.js'

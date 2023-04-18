@@ -6,7 +6,7 @@
  *
  */
 
-import * as path from 'path'
+import * as path from 'node:path'
 
 import { errorToString } from '@wesjet/function.js'
 import { OT, pipe, T, Tagged } from '@wesjet/function.js/effect'

@@ -6,7 +6,7 @@
  *
  **/
 
-import * as path from 'path'
+import * as path from 'node:path'
 
 import type { E } from '@wesjet/function.js/effect'
 import { OT, pipe, T } from '@wesjet/function.js/effect'

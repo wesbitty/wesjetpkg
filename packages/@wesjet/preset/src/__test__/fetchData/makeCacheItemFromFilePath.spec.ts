@@ -1,7 +1,7 @@
-import path from 'path'
+import path from 'node:path'
 
 import { E } from '@wesjet/function.js/effect'
-import { fileURLToPath } from 'url'
+import { fileURLToPath } from 'node:url'
 import { expect, test } from 'vitest'
 
 // Given we're running the tests of the ./dist directory, we need to point the `__dirname` back to the `src` directory

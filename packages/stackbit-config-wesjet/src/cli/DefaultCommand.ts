@@ -7,7 +7,7 @@
  */
 
 import { promises as fs } from 'fs'
-import * as path from 'path'
+import * as path from 'node:path'
 
 import type { HasCwd } from '@wesjet/core'
 import { getConfig, provideCwd } from '@wesjet/core'

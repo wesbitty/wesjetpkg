@@ -8,7 +8,7 @@
   },
   "include": ["./src"],
   "references": [
-    { "path": "../@wesjet/function" },
+    { "path": "../@wesjet/function.js" },
     { "path": "../wesjet" },
     { "path": "../@wesjet/core" }
   ]

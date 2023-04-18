@@ -8,7 +8,7 @@
  *
  */
 
-import * as path from 'path'
+import * as path from 'node:path'
 
 import * as core from '@wesjet/core'
 import { OT, pipe, T } from '@wesjet/function.js/effect'

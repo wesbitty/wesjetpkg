@@ -1,10 +1,10 @@
 import * as fs from 'fs/promises'
-import path from 'path'
+import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 import { expect, test } from 'vitest'
 import * as core from 'wesjet/core'
-import { defineDocumentType, makeSource } from 'wesjet/dist/maker/maker'
+import { defineDocumentType, makeSource } from 'wesjet/dist/preset'
 
 test('empty content folder', async () => {
   const Post = defineDocumentType(() => ({

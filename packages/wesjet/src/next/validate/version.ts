@@ -7,15 +7,10 @@
 
 import { createRequire } from 'module'
 
-export const checkConstraints = () => {
-  checkNodeVersion()
-  checkWesjetVersionsMatch()
-}
+const MIN_NODE_VERSION_MAJOR = 14
+const MIN_NODE_VERSION_MINOR = 18
 
-export const MIN_NODE_VERSION_MAJOR = 14
-export const MIN_NODE_VERSION_MINOR = 18
-
-const checkNodeVersion = () => {
+const NodeVersion = () => {
   const [nodeVersionMajor, nodeVersionMinor] = process.versions.node
     .split('.')
     .map((_) => parseInt(_, 10)) as [number, number, number]
@@ -30,15 +25,17 @@ const checkNodeVersion = () => {
   }
 }
 
-const checkWesjetVersionsMatch = () => {
+const WesjetPackagesVersion = () => {
   const wesjetVersion = getPackageVersion('wesjet')
-  const wesjetEslintVersion = getPackageVersion('eslint-plugin-wesjet')
 
-  if (wesjetVersion !== wesjetEslintVersion) {
+  if (wesjetVersion) {
     throw new Error(
-      `\
-The versions of "wesjet" and "eslint-plugin-wesjet" need to be identical in your "package.json".
-currently used versions: wesjet: "${wesjetVersion}", eslint-plugin-wesjet: "${wesjetEslintVersion}"`,
+      `
+  The versions of wesjet packages need to be identical in your package.json.
+  
+  Latest Version 
+  wesjet: "${wesjetVersion}"
+  `,
     )
   }
 }
@@ -47,3 +44,8 @@ const require = createRequire(import.meta.url)
 
 const getPackageVersion = (packageName: string): string =>
   require(`${packageName}/package.json`).version
+
+export const packageManagerVersion = () => {
+  NodeVersion()
+  WesjetPackagesVersion()
+}

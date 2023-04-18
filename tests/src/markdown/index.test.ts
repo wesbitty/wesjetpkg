@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import * as fs from 'fs/promises'
-import path from 'path'
+import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 import rehypeStringify from 'rehype-stringify'
@@ -9,7 +9,7 @@ import remarkParse from 'remark-parse'
 import remark2rehype from 'remark-rehype'
 import { expect, test, vi } from 'vitest'
 import * as core from 'wesjet/core'
-import { defineDocumentType, makeSource } from 'wesjet/dist/maker/maker'
+import { defineDocumentType, makeSource } from 'wesjet/dist/preset'
 
 test('markdown builder pattern', async () => {
   const Post = defineDocumentType(() => ({
