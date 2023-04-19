@@ -1,5 +1,4 @@
 import { FC } from 'react'
-import React from 'react'
 
 export const Button: FC<{ title: string }> = ({ title }) => (
   <div

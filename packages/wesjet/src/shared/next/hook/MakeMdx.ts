@@ -5,7 +5,7 @@
  */
 
 import type { MDXComponents } from 'mdx/types'
-import React from 'react'
+import * as React from 'react'
 import ReactDOM from 'react-dom'
 
 // @ts-expect-error Needed to ensure that the component is initialized properly before rendering the component

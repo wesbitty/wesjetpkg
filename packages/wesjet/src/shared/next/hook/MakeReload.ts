@@ -8,17 +8,17 @@
 import { addMessageListener } from 'next/dist/client/dev/error-overlay/websocket.js'
 import { useRouter } from 'next/router.js'
 
-import React from 'react'
+import { useRef, useEffect } from 'react'
 
 export const MakeReload = () => {
   const router = useRouter()
 
-  const routePathRef = React.useRef<string | undefined>(router.asPath)
-  React.useEffect(() => {
+  const routePathRef = useRef<string | undefined>(router.asPath)
+  useEffect(() => {
     routePathRef.current = router.asPath
   }, [router.asPath])
 
-  React.useEffect(() => {
+  useEffect(() => {
     let lastBuiltHash: string | undefined
 
     addMessageListener((e: any) => {
