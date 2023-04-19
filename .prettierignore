@@ -2,7 +2,7 @@ node_modules
 target/
 **/.wesjet/*
 package-lock.json
-
+**/.next/*
 .direnv
 **/.nyc_output/*
 !tap-snapshots/dist/*

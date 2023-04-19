@@ -17,7 +17,7 @@
 <a href="#backers"><img src="https://opencollective.com/wesbitty/backers/badge.svg?style=for-the-badge&logo=Wesbitty&logoColor=ffffff&color=66BF3C" alt="Backers on Open Collective" /></a>
 </p>
 
-<img align="right" src="./docs/assets/release-it.svg?raw=true" height="280">
+<img align="right" src="./assets/docs.svg?raw=true" height="280">
 
 ## Features
 
