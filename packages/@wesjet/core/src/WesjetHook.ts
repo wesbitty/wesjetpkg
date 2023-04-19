@@ -16,9 +16,14 @@ import type { HasClock, HasConsole, OT } from '@wesjet/function.js/effect'
 import { Cause, pipe, pretty, provideConsole, T } from '@wesjet/function.js/effect'
 import { getWesjetVersion } from '@wesjet/function.js/node'
 
-export const WesjetHook =
-  ({ tracingServiceName, verbose }: { tracingServiceName: string; verbose: boolean }) =>
-  (eff: T.Effect<OT.HasTracer & HasClock & HasCwd & HasConsole, unknown, unknown>) =>
+export function WesjetHook({
+  tracingServiceName,
+  verbose,
+}: {
+  tracingServiceName: string
+  verbose: boolean
+}) {
+  return (eff: T.Effect<OT.HasTracer & HasClock & HasCwd & HasConsole, unknown, unknown>) =>
     pipe(
       T.gen(function* ($) {
         if (process.platform === 'win32') {
@@ -50,6 +55,7 @@ https://github.com/wesbitty/wesjet/issues`),
               yield* $(T.log(failOrCause.left))
             }
           }
+
           // otherwise for unmanaged errors or with `--verbose` flag provided, print the entire stack trace
           else {
             yield* $(T.log(pretty(result.cause)))
@@ -72,3 +78,4 @@ Wesjet version: ${wesjetVersion}
       provideConsole,
       T.runPromise,
     )
+}

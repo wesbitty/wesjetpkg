@@ -44,7 +44,7 @@ export namespace ArtifactsDir {
     T.map(({ wesjetVersion, cwd }) =>
       filePathJoin(
         getDirPath({ cwd }),
-        'cache' as RelativePosixFilePath,
+        'target' as RelativePosixFilePath,
         `v${wesjetVersion}` as RelativePosixFilePath,
       ),
     ),

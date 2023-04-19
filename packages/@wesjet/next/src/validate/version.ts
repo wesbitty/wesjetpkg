@@ -2,7 +2,6 @@
  * Copyright (c) Wesbitty, Inc.
  *
  * This source code is licensed under the MIT license found in the LICENSE file in the root directory of this source tree.
- *
  */
 
 import { createRequire } from 'module'
@@ -27,14 +26,16 @@ const NodeVersion = () => {
 
 const WesjetPackagesVersion = () => {
   const wesjetVersion = getPackageVersion('wesjet')
+  const wesjetNextVersion = getPackageVersion('@wesjet/next')
 
-  if (wesjetVersion) {
+  if (wesjetVersion !== wesjetNextVersion) {
     throw new Error(
       `
   The versions of wesjet packages need to be identical in your package.json.
   
   Latest Version 
   wesjet: "${wesjetVersion}"
+  @wesjet/next: "${wesjetNextVersion}"
   `,
     )
   }

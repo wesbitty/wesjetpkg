@@ -38,7 +38,7 @@ test('mdx-image-field ', async () => {
   )
 
   const allPosts = await fs
-    .readFile(path.join(generatedWesjetDirPath, 'generated', 'Post', '_index.json'), 'utf8')
+    .readFile(path.join(generatedWesjetDirPath, 'static', 'Post', '_index.json'), 'utf8')
     .then((json) => JSON.parse(json))
 
   expect(allPosts[0].coverImage).toMatchInlineSnapshot(`

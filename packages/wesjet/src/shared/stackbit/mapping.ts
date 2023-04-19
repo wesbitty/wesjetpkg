@@ -1,10 +1,7 @@
 /**
  * Copyright (c) Wesbitty, Inc.
  *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- *
+ * This source code is licensed under the MIT license found in the LICENSE file in the root directory of this source tree.
  */
 
 import type * as Stackbit from '@stackbit/sdk'
@@ -48,6 +45,8 @@ const stackbitFieldToField =
   (stackbitField: Stackbit.Field): SourceFiles.FieldDefWithName => {
     const commonFields = {
       ...pick(stackbitField, ['name', 'description', 'required']),
+      // TODO don't map Stackbit `default` to Contentlayer `default`
+      // See https://github.com/contentlayerdev/contentlayer/issues/120
       default: stackbitField.default as any,
     }
 
@@ -57,10 +56,7 @@ const stackbitFieldToField =
       case 'boolean':
       case 'number':
         type FieldDef = SourceFiles.BooleanFieldDef | SourceFiles.NumberFieldDef
-        return identity<WithName<FieldDef>>({
-          ...commonFields,
-          type: stackbitField.type,
-        })
+        return identity<WithName<FieldDef>>({ ...commonFields, type: stackbitField.type })
       case 'enum':
         return identity<WithName<SourceFiles.EnumFieldDef>>({
           ...commonFields,
@@ -68,10 +64,7 @@ const stackbitFieldToField =
           options: stackbitField.options.map(mapStackbitEnumOption),
         })
       case 'style':
-        return identity<WithName<SourceFiles.JSONFieldDef>>({
-          ...commonFields,
-          type: 'json',
-        })
+        return identity<WithName<SourceFiles.JSONFieldDef>>({ ...commonFields, type: 'json' })
       case 'list': {
         const of = stackbitListItemToListFieldDef(ctx)(stackbitField.items!)
         return isReadonlyArray(of)
@@ -81,11 +74,7 @@ const stackbitFieldToField =
               of,
               typeField: 'type',
             })
-          : identity<WithName<SourceFiles.ListFieldDef>>({
-              ...commonFields,
-              type: 'list',
-              of,
-            })
+          : identity<WithName<SourceFiles.ListFieldDef>>({ ...commonFields, type: 'list', of })
       }
       case 'reference': {
         const of = stackbitField.models.map((modelName) => ctx.documentTypeMap[modelName]!)
@@ -135,21 +124,12 @@ const stackbitFieldToField =
           type: 'markdown',
         })
       case 'json':
-        return identity<WithName<SourceFiles.JSONFieldDef>>({
-          ...commonFields,
-          type: 'json',
-        })
+        return identity<WithName<SourceFiles.JSONFieldDef>>({ ...commonFields, type: 'json' })
       case 'image':
-        return identity<WithName<SourceFiles.ImageFieldDef>>({
-          ...commonFields,
-          type: 'image',
-        })
+        return identity<WithName<SourceFiles.ImageFieldDef>>({ ...commonFields, type: 'image' })
       case 'datetime':
       case 'date':
-        return identity<WithName<SourceFiles.DateFieldDef>>({
-          ...commonFields,
-          type: 'date',
-        })
+        return identity<WithName<SourceFiles.DateFieldDef>>({ ...commonFields, type: 'date' })
       case 'string':
       case 'url':
       case 'text':
@@ -157,11 +137,9 @@ const stackbitFieldToField =
       case 'slug':
       case 'html':
       case 'file':
-        return identity<WithName<SourceFiles.StringFieldDef>>({
-          ...commonFields,
-          type: 'string',
-        })
+        return identity<WithName<SourceFiles.StringFieldDef>>({ ...commonFields, type: 'string' })
       case 'richText':
+      case 'cross-reference':
         notImplemented(`richText doesn't exist in the "files" content source`)
       default:
         casesHandled(stackbitField)
@@ -204,37 +182,26 @@ const stackbitListItemToListFieldDef =
       case 'object':
         return identity<SourceFiles.ListFieldDefItem.ItemNestedType>({
           type: 'nested',
-          def: () => ({
-            fields: stackbitListItem.fields.map(stackbitFieldToField(ctx)),
-          }),
+          def: () => ({ fields: stackbitListItem.fields.map(stackbitFieldToField(ctx)) }),
         })
       case 'date':
       case 'datetime':
-        return identity<SourceFiles.ListFieldDefItem.ItemDate>({
-          type: 'date',
-        })
+        return identity<SourceFiles.ListFieldDefItem.ItemDate>({ type: 'date' })
       case 'json':
-        return identity<SourceFiles.ListFieldDefItem.ItemJSON>({
-          type: 'json',
-        })
+        return identity<SourceFiles.ListFieldDefItem.ItemJSON>({ type: 'json' })
       case 'markdown':
-        return identity<SourceFiles.ListFieldDefItem.ItemMarkdown>({
-          type: 'markdown',
-        })
+        return identity<SourceFiles.ListFieldDefItem.ItemMarkdown>({ type: 'markdown' })
       case 'image':
-        return identity<SourceFiles.ListFieldDefItem.ItemImage>({
-          type: 'image',
-        })
+        return identity<SourceFiles.ListFieldDefItem.ItemImage>({ type: 'image' })
       case 'url':
       case 'text':
       case 'color':
       case 'slug':
       case 'html':
       case 'file':
-        return identity<SourceFiles.ListFieldDefItem.ItemString>({
-          type: 'string',
-        })
+        return identity<SourceFiles.ListFieldDefItem.ItemString>({ type: 'string' })
       case 'richText':
+      case 'cross-reference':
         notImplemented(`richText doesn't exist in the "files" content source`)
       default:
         casesHandled(stackbitListItem)

@@ -53,7 +53,6 @@ export const bundleMDX = ({
       const getCwd = () =>
         resolveCwd === 'contentDirPath' ? getCwdFromContentDirPath() : getRelativeCwd()
 
-      // TODO when fixed https://github.com/kentcdodds/mdx-bundler/pull/206
       if (process.env.NODE_ENV === undefined) {
         process.env.NODE_ENV = 'development'
       }

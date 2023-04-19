@@ -151,15 +151,15 @@ const writeFilesForCache = ({
       const withPrefix = (...path_: string[]) => filePathJoin(targetPath, ...path_)
 
       if (process.env['WESJET_PROCESS_ENV']) {
-        yield* $(fs.mkdirp(withPrefix('cache')))
+        yield* $(fs.mkdirp(withPrefix('target')))
         yield* $(
           T.collectAllPar([
             fs.writeFileJson({
-              filePath: withPrefix('cache', 'schema.json'),
+              filePath: withPrefix('target', 'schema.json'),
               content: schemaDef as any,
             }),
             fs.writeFileJson({
-              filePath: withPrefix('cache', 'data-cache.json'),
+              filePath: withPrefix('target', 'data-cache.json'),
               content: cache,
             }),
           ]),
@@ -266,11 +266,9 @@ const writeFilesForCache = ({
 
 const makePackageJson = (schemaHash: string): string => {
   const packageJson: PackageJson & { typesVersions: any } = {
-    // TODO: generating application schema hash
     name: `${schemaHash}`,
-    description: 'static directory',
-    // get wesjet version and schema hash
-    version: `0.0.22-${schemaHash}`,
+    description: 'static',
+    version: `0.0.25`,
     exports: {
       './static': {
         import: './static/index.mjs',
@@ -450,12 +448,3 @@ const leftPadWithUnderscoreIfStartsWithNumber = (str: string): string => {
   }
   return str
 }
-
-// const errorIfArtifactsDirIsDeleted = ({ artifactsDir }: { artifactsDir: string }) => {
-//   watch(artifactsDir, async (event) => {
-//     if (event === 'rename' && !(await fileOrDirExists(artifactsDir))) {
-//       console.error(`Seems like the target directory (${artifactsDir}) was deleted. Please restart the command.`)
-//       process.exit(1)
-//     }
-//   })
-// }

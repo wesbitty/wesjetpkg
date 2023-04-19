@@ -1,0 +1,55 @@
+{
+  "name": "@wesjet/next",
+  "version": "0.0.25",
+  "type": "module",
+  "main": "./dist/index-cjs.cjs",
+  "sideEffects": false,
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index-cjs.cjs"
+    },
+    "./hooks": {
+      "import": "./dist/hook/index.js",
+      "require": "./dist/hook/index.js"
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "packge.json": [
+        "./package.json"
+      ],
+      ".": [
+        "./dist"
+      ],
+      "hook": [
+        "./dist/hook"
+      ]
+    }
+  },
+  "files": [
+    "./dist/**/*.{cjs,js,ts,map}",
+    "./src",
+    "./package.json"
+  ],
+  "scripts": {
+    "prepack": "sed '/^import\\|^export/d' dist/index-cjs.js > dist/index-cjs.cjs; cp src/hook/ReactJSX.cjs dist/hook/ReactJSX.cjs"
+  },
+  "dependencies": {
+    "@wesjet/core": "^0.0.25",
+    "@wesjet/function.js": "^0.0.25"
+  },
+  "peerDependencies": {
+    "next": "^12 || ^13",
+    "react": "*",
+    "react-dom": "*"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.29",
+    "@types/react-dom": "^18.0.11",
+    "next": "^13.1.6",
+    "typescript": "^5.0.2"
+  }
+}

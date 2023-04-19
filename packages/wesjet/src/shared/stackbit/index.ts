@@ -1,19 +1,16 @@
 /**
  * Copyright (c) Wesbitty, Inc.
  *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- *
+ * This source code is licensed under the MIT license found in the LICENSE file in the root directory of this source tree.
  */
 
-import * as Stackbit from '@stackbit/sdk'
-import { validateAndNormalizeConfig } from '@stackbit/sdk/dist/config/config-loader.js'
 import type * as core from '@wesjet/core'
 import type * as SourceFiles from '@wesjet/preset'
 import { defineDocumentType, defineNestedType } from '@wesjet/preset'
 import type { PartialDeep } from '@wesjet/function.js'
 import { mergeDeep, not, partition, pick } from '@wesjet/function.js'
+import * as Stackbit from '@stackbit/sdk'
+import { validateAndNormalizeConfig } from '@stackbit/sdk/dist/config/config-loader.js'
 
 import type { SharedCtx } from './mapping.js'
 import {
@@ -45,12 +42,12 @@ export type WesjetOverrideNestedType = {
  * @example
  * ```ts
  * // wesjet.config.ts
- * import { makeSource } from 'wesjet/maker'
+ * import { makeSource } from 'wesjet/preset'
  * import { loadStackbitConfigAsDocumentTypes } from '@wesjet/stackbit'
  *
  * // Looks for `stackbit.yaml` in the current directory
  * export default loadStackbitConfigAsDocumentTypes().then((documentTypes) => {
- *   return makeSource({ contentDirPath: '[blog]', documentTypes })
+ *   return makeSource({ contentDirPath: 'content', documentTypes })
  * })
  * ```
  */
@@ -73,13 +70,13 @@ export const loadStackbitConfigAsDocumentTypes = <
  * @example
  * ```ts
  * // wesjet.config.ts
- * import { makeSource } from 'wesjet/maker'
- * import { stackbitConfigToDocumentTypes } from '@wesjet/contentful'
+ * import { makeSource } from 'wesjet/preset'
+ * import { stackbitConfigToDocumentTypes } from '@wesjet/stackbit'
  * import stackbitConfig from './stackbit.config.js'
  *
  * const documentTypes = stackbitConfigToDocumentTypes(stackbitConfig)
  *
- * export default makeSource({ contentDirPath: '[blog]', documentTypes })
+ * export default makeSource({ contentDirPath: 'content', documentTypes })
  * ```
  */
 export const stackbitConfigToDocumentTypes = <
@@ -90,7 +87,7 @@ export const stackbitConfigToDocumentTypes = <
 ): SourceFiles.DocumentType[] => {
   const validatedStackbitConfig = validateStackbitConfig(stackbitConfig)
 
-  // NOTE File-based content(blog) sources don't have image models
+  // NOTE File-based content sources don't have image models
   const models = validatedStackbitConfig.models.filter(not(isImageModel))
 
   const [documentLikeModels, objectModels] = partition(models, isDocumentLikeModel)

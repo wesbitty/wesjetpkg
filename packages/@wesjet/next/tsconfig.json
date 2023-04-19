@@ -1,17 +1,12 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../../tsconfig.json",
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
-    "allowJs": true,
     "module": "ES2020",
     "rootDir": "./src",
     "outDir": "./dist",
     "tsBuildInfoFile": "./dist/.tsbuildinfo.json"
   },
   "include": ["./src"],
-  "references": [
-    { "path": "../@wesjet/preset" },
-    { "path": "../@wesjet/function.js" },
-    { "path": "../@wesjet/core" }
-  ]
+  "references": [{ "path": "../function.js" }, { "path": "../core" }]
 }

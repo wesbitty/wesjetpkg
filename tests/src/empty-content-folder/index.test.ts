@@ -35,7 +35,7 @@ test('empty content folder', async () => {
   )
 
   const generatedIndexJsFile = await fs.readFile(
-    path.join(testDirPath, '.wesjet', 'generated', 'Post', '_index.mjs'),
+    path.join(testDirPath, '.wesjet', 'static', 'Post', '_index.mjs'),
     'utf8',
   )
 
@@ -49,7 +49,7 @@ test('empty content folder', async () => {
   `)
 
   const generatedIndexJsonFile = await fs.readFile(
-    path.join(testDirPath, '.wesjet', 'generated', 'Post', '_index.json'),
+    path.join(testDirPath, '.wesjet', 'static', 'Post', '_index.json'),
     'utf8',
   )
 

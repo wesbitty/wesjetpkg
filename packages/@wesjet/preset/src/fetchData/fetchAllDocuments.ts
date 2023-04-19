@@ -106,7 +106,7 @@ export const fetchAllDocuments = ({
       return { cacheItemsMap }
     }),
     provideDocumentTypeMapState,
-    OT.withSpan('wesjet/source-local/fetchData:fetchAllDocuments', {
+    OT.withSpan('@wesjet/preset-local/fetchData:fetchAllDocuments', {
       attributes: { contentDirPath },
     }),
   )
@@ -144,7 +144,7 @@ const getAllRelativeFilePaths = ({
       (error) => new fs.UnknownFSError({ error }),
     ),
     T.map((_) => _.map(relativePosixFilePath)),
-    OT.withSpan('wesjet/source-local/fetchData:getAllRelativeFilePaths'),
+    OT.withSpan('@wesjet/preset-local/fetchData:getAllRelativeFilePaths'),
   )
 }
 
