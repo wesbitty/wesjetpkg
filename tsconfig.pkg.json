@@ -6,7 +6,6 @@
     { "path": "./packages/@wesjet/core" },
     { "path": "./packages/@wesjet/preset" },
     { "path": "./packages/@wesjet/function.js" },
-    { "path": "./packages/@wesjet/next" },
     { "path": "./packages/wesjet" },
     { "path": "./packages/stackbit-config-wesjet" }
   ]
