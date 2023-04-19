@@ -2,14 +2,13 @@
  * Copyright (c) Wesbitty, Inc.
  *
  * This source code is licensed under the MIT license found in the LICENSE file in the root directory of this source tree.
- *
  */
 
 import type { MDXComponents } from 'mdx/types'
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-// @ts-expect-error
+// @ts-expect-error Needed to ensure that the component is initialized properly before rendering the component
 import { ReactJSX } from './ReactJSX'
 
 type MDXContentProps = {

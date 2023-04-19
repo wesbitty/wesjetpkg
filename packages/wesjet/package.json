@@ -107,7 +107,8 @@
   },
   "scripts": {
     "postinstall": "node ./bin/install-native.cjs postinstall",
-    "prepack": "sed '/^import\\|^export/d' dist/shared/next/index-cjs.js > dist/shared/next/index-cjs.cjs; cp src/shared/next/hook/ReactJSX.cjs dist/shared/next/hook/ReactJSX.cjs"
+    "prepack": "sed '/^import\\|^export/d' dist/shared/next/index-cjs.js > dist/shared/next/index-cjs.cjs; cp src/shared/next/hook/ReactJSX.cjs dist/shared/next/hook/ReactJSX.cjs",
+    "clean": "rimraf dist .wesjet"
   },
   "peerDependencies": {
     "@stackbit/sdk": "0.3.x",
@@ -125,20 +126,24 @@
     "@sanity/core": "^2.10.5",
     "@sanity/image-url": "^0.140.22",
     "@sanity/schema": "^2.10.0",
-    "@stackbit/sdk": "~0.3.25",
+    "@stackbit/sdk": "0.3.x",
     "@wesjet/core": "^0.0.30",
-    "@wesjet/preset": "^0.0.30",
     "@wesjet/function.js": "^0.0.30",
+    "@wesjet/preset": "^0.0.30",
     "clipanion": "^3.2.0-rc.14",
     "contentful-management": "^7.22.4",
+    "cross-fetch": "^3.1.5",
     "rxjs": "^7.1.0",
     "typanion": "^3.12.1"
   },
   "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.1",
     "@types/node": "^18.11.18",
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.10",
+    "jsonwebtoken": "^9.0.0",
     "next": "^13.1.2",
+    "typedoc": "^0.24.4",
     "typescript": "^5.0.2",
     "vite": "^4.2.1",
     "vitest": "0.29.7"

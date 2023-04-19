@@ -9,6 +9,7 @@
     "tsBuildInfoFile": "./dist/.tsbuildinfo.json"
   },
   "include": ["./src"],
+  "exclude": ["node_modules/**/*.ts"],
   "references": [
     { "path": "../@wesjet/preset" },
     { "path": "../@wesjet/function.js" },

@@ -45,6 +45,7 @@
     "lint": "npm-run-all \"lint:*\"",
     "lint-eslint-doc": "npm-run-all \"update-gen-doc -- --check\"",
     "lint-ts": "eslint .",
+    "clean": "rimraf dist",
     "test": "mocha tests --recursive",
     "update-gen-doc": "eslint-doc-generator"
   },

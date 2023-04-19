@@ -12,10 +12,11 @@ module.exports = {
   rules: {
     'simple-import-sort/imports': 'off',
     'simple-import-sort/exports': 'error',
+    '@typescript-eslint/ban-ts-comment': 'off',
     'import/no-duplicates': 'warn',
     'import/no-extraneous-dependencies': 'off',
-    'import/no-named-as-default': 'warn',
-    'import/no-named-as-default-member': 'warn',
+    'import/no-named-as-default': 'off',
+    'import/no-named-as-default-member': 'off',
     '@typescript-eslint/consistent-type-imports': 'error',
     '@typescript-eslint/no-namespace': 'off',
     '@typescript-eslint/ban-types': 'off',

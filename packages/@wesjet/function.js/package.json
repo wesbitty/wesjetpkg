@@ -55,7 +55,8 @@
     "node.js"
   ],
   "scripts": {
-    "tmp": "env"
+    "tmp": "env",
+    "clean": "rimraf ./dist/"
   },
   "peerDependenciesMeta": {
     "@effect-ts/core": {

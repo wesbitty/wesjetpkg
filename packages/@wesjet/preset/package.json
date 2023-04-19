@@ -35,6 +35,7 @@
     "./dist/!(__test__)/**/*.{js,ts,map}"
   ],
   "scripts": {
+    "clean": "rimraf ./dist/",
     "test": "TZ='GMT' FORCE_COLOR=1 vitest"
   },
   "dependencies": {

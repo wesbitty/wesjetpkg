@@ -19,6 +19,9 @@
   "files": [
     "dist"
   ],
+  "scripts": {
+    "clean": "rimraf ./dist/"
+  },
   "peerDependencies": {
     "esbuild": "^0.17.x",
     "markdown-wasm": "1.x"
