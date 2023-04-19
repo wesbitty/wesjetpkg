@@ -1,6 +1,6 @@
 {
   "name": "@wesjet/next",
-  "version": "0.0.26",
+  "version": "0.0.30",
   "type": "module",
   "main": "./dist/index-cjs.cjs",
   "sideEffects": false,
@@ -10,7 +10,7 @@
       "import": "./dist/index.js",
       "require": "./dist/index-cjs.cjs"
     },
-    "./hooks": {
+    "./hook": {
       "import": "./dist/hook/index.js",
       "require": "./dist/hook/index.js"
     }
@@ -38,8 +38,8 @@
     "prepack": "sed '/^import\\|^export/d' dist/index-cjs.js > dist/index-cjs.cjs; cp src/hook/ReactJSX.cjs dist/hook/ReactJSX.cjs"
   },
   "dependencies": {
-    "@wesjet/core": "^0.0.26",
-    "@wesjet/function.js": "^0.0.26"
+    "@wesjet/core": "^0.0.30",
+    "@wesjet/function.js": "^0.0.30"
   },
   "peerDependencies": {
     "next": "^12 || ^13",

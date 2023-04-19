@@ -11,6 +11,7 @@
   "include": ["./src"],
   "references": [
     { "path": "../@wesjet/preset" },
+    { "path": "../@wesjet/next" },
     { "path": "../@wesjet/function.js" },
     { "path": "../@wesjet/core" }
   ]

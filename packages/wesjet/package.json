@@ -1,7 +1,7 @@
 {
   "name": "wesjet",
   "description": "Wesjet is a JavaScript library to transform and validate content for building user interfaces.",
-  "version": "0.0.26",
+  "version": "0.0.30",
   "license": "MIT",
   "engines": {
     "node": ">=14.18"
@@ -41,6 +41,14 @@
     "./function.js/node": {
       "import": "./dist/function.js/node/index.js"
     },
+    "./next": {
+      "import": "./dist/shared/next/index.js",
+      "require": "./dist/shared/next/index-cjs.cjs"
+    },
+    "./next/hook": {
+      "import": "./dist/shared/next/hook/index.js",
+      "require": "./dist/shared/next/hook/index.js"
+    },
     "./preset": {
       "import": "./dist/preset/index.js"
     },
@@ -74,6 +82,12 @@
       "function.js/node": [
         "./dist/function.js/node"
       ],
+      "next": [
+        "./dist/shared/next"
+      ],
+      "next/hook": [
+        "./dist/shared/next/hook"
+      ],
       "preset": [
         "./dist/preset"
       ],
@@ -92,7 +106,8 @@
     }
   },
   "scripts": {
-    "postinstall": "node ./bin/install-native.cjs postinstall"
+    "postinstall": "node ./bin/install-native.cjs postinstall",
+    "prepack": "sed '/^import\\|^export/d' dist/shared/next/index-cjs.js > dist/shared/next/index-cjs.cjs; cp src/shared/next/hook/ReactJSX.cjs dist/shared/next/hook/ReactJSX.cjs"
   },
   "peerDependencies": {
     "@stackbit/sdk": "0.3.x",
@@ -111,9 +126,9 @@
     "@sanity/image-url": "^0.140.22",
     "@sanity/schema": "^2.10.0",
     "@stackbit/sdk": "~0.3.25",
-    "@wesjet/core": "^0.0.26",
-    "@wesjet/preset": "^0.0.26",
-    "@wesjet/function.js": "^0.0.26",
+    "@wesjet/core": "^0.0.30",
+    "@wesjet/preset": "^0.0.30",
+    "@wesjet/function.js": "^0.0.30",
     "clipanion": "^3.2.0-rc.14",
     "contentful-management": "^7.22.4",
     "rxjs": "^7.1.0",
