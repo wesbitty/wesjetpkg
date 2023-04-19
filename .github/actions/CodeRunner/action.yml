@@ -1,0 +1,22 @@
+name: 'CodeRunner'
+description: 'This action checks out the commit, sets up Node and installs dependencies using NPM in github repositories'
+author: 'dimejiSR <Wesbitty Inc>'
+branding:
+  icon: 'check'
+  color: 'blue'
+runs:
+  using: 'composite'
+  steps:
+    - name: Support longpaths (needed for Windows)
+      run: git config --global core.longpaths true
+      shell: bash
+    - uses: actions/checkout@v2
+      with:
+        submodules: true
+    - uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: npm
+    - name: Install dependencies via npm
+      run: npm install
+      shell: bash
