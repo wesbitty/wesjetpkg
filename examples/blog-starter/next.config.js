@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const { wesjetConfig } = require('next-config-wesjet')
+const { wesjetConfig } = require('@wesjet/next')
 
 module.exports = wesjetConfig({
   reactStrictMode: true,

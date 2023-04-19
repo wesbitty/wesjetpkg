@@ -12,11 +12,11 @@
     "@types/node": "18.15.11",
     "@types/react": "18.0.33",
     "@types/react-dom": "18.0.11",
-    "next-config-wesjet": "^0.0.25",
+    "@wesjet/next": "^0.0.26",
     "next": "13.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "typescript": "5.0.3",
-    "wesjet": "^0.0.25"
+    "wesjet": "^0.0.26"
   }
 }

@@ -1,10 +1,7 @@
 /**
  * Copyright (c) Wesbitty, Inc.
  *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- *
+ * This source code is licensed under the MIT license found in the LICENSE file in the root directory of this source tree.
  */
 
 import type * as core from '@wesjet/core'
@@ -15,11 +12,11 @@ import { fs } from '@wesjet/function.js/node'
 import micromatch from 'micromatch'
 
 import { FetchDataError } from '../errors/index.js'
-import type { DocumentContentType, FilePathPatternMap } from '../index'
-import type { ContentTypeMap } from '../types'
-import type { HasDocumentTypeMapState } from './DocumentTypeMap'
-import { DocumentTypeMapState } from './DocumentTypeMap'
-import type { RawContent } from './types'
+import type { DocumentContentType, FilePathPatternMap } from '../index.js'
+import type { ContentTypeMap } from '../types.js'
+import type { HasDocumentTypeMapState } from './DocumentTypeMap.js'
+import { DocumentTypeMapState } from './DocumentTypeMap.js'
+import type { RawContent } from './types.js'
 
 type ValidateDocumentDataError =
   | FetchDataError.CouldNotDetermineDocumentTypeError

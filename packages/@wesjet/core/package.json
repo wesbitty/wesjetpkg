@@ -1,7 +1,7 @@
 {
   "name": "@wesjet/core",
   "description": "wesjet package for users outside of the browser",
-  "version": "0.0.25",
+  "version": "0.0.26",
   "license": "MIT",
   "homepage": "https://wesbitty.org/product/wesjet",
   "bugs": "https://github.com/wesbitty/wesjet/issues",
@@ -32,7 +32,7 @@
     }
   },
   "dependencies": {
-    "@wesjet/function.js": "^0.0.25",
+    "@wesjet/function.js": "^0.0.26",
     "camel-case": "^4.1.2",
     "comment-json": "^4.2.3",
     "esbuild": "0.17.x",
