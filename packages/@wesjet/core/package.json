@@ -1,24 +1,24 @@
 {
   "name": "@wesjet/core",
   "description": "wesjet package for users outside of the browser",
-  "keywords": [
-    "wesjet"
-  ],
-  "version": "0.0.20",
+  "version": "0.0.30",
   "license": "MIT",
   "homepage": "https://wesbitty.org/product/wesjet",
   "bugs": "https://github.com/wesbitty/wesjet/issues",
-  "files": [
-    "dist"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wesbitty/wesjet.git",
+    "directory": "packages/@wesjet/core"
+  },
+  "keywords": [
+    "wesjet"
   ],
   "type": "module",
   "types": "./dist/index.d.ts",
   "exports": "./dist/index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/wesbitty/wesjet",
-    "directory": "packages/@wesjet/core"
-  },
+  "files": [
+    "dist"
+  ],
   "peerDependencies": {
     "esbuild": "^0.17.x",
     "markdown-wasm": "1.x"
@@ -32,7 +32,7 @@
     }
   },
   "dependencies": {
-    "@wesjet/function.js": "^0.0.20",
+    "@wesjet/function.js": "^0.0.30",
     "camel-case": "^4.1.2",
     "comment-json": "^4.2.3",
     "esbuild": "0.17.x",

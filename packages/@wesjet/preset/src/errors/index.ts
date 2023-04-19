@@ -412,7 +412,7 @@ Couldn't find a document for ${errorCount} singleton document types`
 
     renderHeadline: RenderHeadline = ({ errorCount }) => `\
 Encountered unexpected errors while processing of ${errorCount} documents. \
-This is possibly a bug in Contentlayer. Please open an issue.`
+This is possibly a bug in Wesjet. Please open an issue.`
 
     renderLine = () => `"${this.documentFilePath}": ${errorToString(this.error)}`
   }

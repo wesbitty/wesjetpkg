@@ -4,7 +4,6 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *
  */
 
 import type { AbsolutePosixFilePath, RelativePosixFilePath } from '@wesjet/function.js'
@@ -45,7 +44,7 @@ export namespace ArtifactsDir {
     T.map(({ wesjetVersion, cwd }) =>
       filePathJoin(
         getDirPath({ cwd }),
-        'cache' as RelativePosixFilePath,
+        'target' as RelativePosixFilePath,
         `v${wesjetVersion}` as RelativePosixFilePath,
       ),
     ),

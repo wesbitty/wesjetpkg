@@ -35,7 +35,7 @@ export type PluginOptions = {
 }
 
 /**
- * Please make sure to use the following Unified plugins for Contentlayer to work properly:
+ * Please make sure to use the following Unified plugins for Wesjet to work properly:
  *
  * @example
  * ```ts

@@ -28,6 +28,7 @@
     "prepare": "husky install",
     "pre-commit": "lint-staged",
     "build": "npm run clean && tsc -b tsconfig.pkg.json",
+    "postbuild": "npm run build --workspaces --if-present",
     "check-prettier": "prettier --check .",
     "check-eslint": "eslint . --ext .ts --max-warnings=0",
     "format-prettier": "prettier --write .",
@@ -63,10 +64,11 @@
     "prettier": "^2.8.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "rimraf": "^5.0.0",
     "swr": "^2.1.2",
     "ts-node": "^10.9.1",
     "ts-patch": "^2.1.0",
-    "typescript": "^4.9.4"
+    "typescript": "^5.0.2"
   },
   "resolutions": {
     "esbuild": "0.17.0",

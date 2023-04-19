@@ -4,7 +4,6 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *
  */
 
 import { errorToString } from '@wesjet/function.js'
@@ -80,7 +79,7 @@ export const markdownToHtml = ({
     }),
     T.catchAllDefect(T.fail),
     T.mapError((error) => new UnexpectedMarkdownError({ error })),
-    OT.withSpan('@wesjet/core/markdown:markdownToHtml'),
+    OT.withSpan('@wesjet/core/shared:markdownToHtml'),
   )
 
 export class UnexpectedMarkdownError extends Tagged('UnexpectedMarkdownError')<{

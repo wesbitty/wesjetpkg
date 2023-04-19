@@ -4,10 +4,9 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *
  */
 
-import * as path from 'path'
+import * as path from 'node:path'
 
 import { errorToString } from '@wesjet/function.js'
 import { OT, pipe, T, Tagged } from '@wesjet/function.js/effect'
@@ -54,7 +53,6 @@ export const bundleMDX = ({
       const getCwd = () =>
         resolveCwd === 'contentDirPath' ? getCwdFromContentDirPath() : getRelativeCwd()
 
-      // TODO when fixed https://github.com/kentcdodds/mdx-bundler/pull/206
       if (process.env.NODE_ENV === undefined) {
         process.env.NODE_ENV = 'development'
       }
@@ -87,7 +85,7 @@ export const bundleMDX = ({
     }),
     T.mapError((error) => new UnexpectedMDXError({ error })),
     T.tapError(() => OT.addAttribute('mdxString', mdxString)),
-    OT.withSpan('@wesjet/core/markdown:bundleMDX'),
+    OT.withSpan('@wesjet/core/shared:bundleMDX'),
   )
 
 export class UnexpectedMDXError extends Tagged('UnexpectedMDXError')<{ readonly error: unknown }> {

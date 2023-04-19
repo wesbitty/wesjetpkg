@@ -1,9 +1,7 @@
 /**
  * Copyright (c) Wesbitty, Inc.
  *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
+ * This source code is licensed under the MIT license found in the LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -68,7 +66,7 @@ export const generateDotpkg = ({
     S.runCollect,
     T.map(Chunk.unsafeHead),
     T.rightOrFail,
-    OT.withSpan('@wesjet/core/generation:generateDotpkg', {
+    OT.withSpan('@wesjet/core/WesjetPackageGen', {
       attributes: { verbose },
     }),
   )
@@ -153,15 +151,15 @@ const writeFilesForCache = ({
       const withPrefix = (...path_: string[]) => filePathJoin(targetPath, ...path_)
 
       if (process.env['WESJET_PROCESS_ENV']) {
-        yield* $(fs.mkdirp(withPrefix('cache')))
+        yield* $(fs.mkdirp(withPrefix('target')))
         yield* $(
           T.collectAllPar([
             fs.writeFileJson({
-              filePath: withPrefix('cache', 'schema.json'),
+              filePath: withPrefix('target', 'schema.json'),
               content: schemaDef as any,
             }),
             fs.writeFileJson({
-              filePath: withPrefix('cache', 'data-cache.json'),
+              filePath: withPrefix('target', 'data-cache.json'),
               content: cache,
             }),
           ]),
@@ -257,7 +255,7 @@ const writeFilesForCache = ({
         ]),
       )
     }),
-    OT.withSpan('@wesjet/core/generation/generate-dotpkg:writeFilesForCache', {
+    OT.withSpan('@wesjet/core/WesjetPackageGen:writeFilesForCache', {
       attributes: {
         targetPath,
         cacheKeys: Object.keys(cache.cacheItemsMap),
@@ -268,11 +266,9 @@ const writeFilesForCache = ({
 
 const makePackageJson = (schemaHash: string): string => {
   const packageJson: PackageJson & { typesVersions: any } = {
-    // TODO: generating application schema hash
     name: `${schemaHash}`,
-    description: 'This package is automatically compiled by wesjet during (production) build',
-    // Get Wesjet version and schema hash
-    version: `0.0.18-${schemaHash}`,
+    description: 'static',
+    version: `0.0.30`,
     exports: {
       './static': {
         import: './static/index.mjs',
@@ -398,8 +394,8 @@ const makeIndexMjs = ({
 
 export { isType } from 'wesjet/client'
 
-// NOTE During development wesjet imports from \`.mjs\` files to improve HMR speeds.
-// During (production) builds wesjet it imports from \`.json\` files to improve build performance.
+// NOTE: during (development), wesjet imports from \`.mjs\` files to improve HMR speeds.
+// during (production), wesjet imports from \`.json\` files to improve build performance.
 ${constImportsForAllDocuments}
 
 ${constExports}
@@ -452,12 +448,3 @@ const leftPadWithUnderscoreIfStartsWithNumber = (str: string): string => {
   }
   return str
 }
-
-// const errorIfArtifactsDirIsDeleted = ({ artifactsDir }: { artifactsDir: string }) => {
-//   watch(artifactsDir, async (event) => {
-//     if (event === 'rename' && !(await fileOrDirExists(artifactsDir))) {
-//       console.error(`Seems like the target directory (${artifactsDir}) was deleted. Please restart the command.`)
-//       process.exit(1)
-//     }
-//   })
-// }

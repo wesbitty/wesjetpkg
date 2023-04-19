@@ -1,12 +1,10 @@
 /**
  * Copyright (c) Wesbitty, Inc.
  *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- **/
+ * This source code is licensed under the MIT license found in the LICENSE file in the root directory of this source tree.
+ */
 
-import * as path from 'path'
+import * as path from 'node:path'
 
 import type { E } from '@wesjet/function.js/effect'
 import { OT, pipe, T } from '@wesjet/function.js/effect'
@@ -60,7 +58,7 @@ export namespace DataCache {
 
         return cache
       }),
-      OT.withSpan('@wesjet/core/cache:loadPreviousCacheFromDisk', {
+      OT.withSpan('@wesjet/core/WesjetCache:loadPreviousCacheFromDisk', {
         attributes: { schemaHash },
       }),
     )
@@ -89,7 +87,7 @@ export namespace DataCache {
         yield* $(fs.writeFileJson({ filePath, content: cache }))
       }),
       T.either,
-      OT.withSpan('@wesjet/core/cache:writeCacheToDisk', {
+      OT.withSpan('@wesjet/core/WesjetCache:writeCacheToDisk', {
         attributes: { schemaHash },
       }),
     )

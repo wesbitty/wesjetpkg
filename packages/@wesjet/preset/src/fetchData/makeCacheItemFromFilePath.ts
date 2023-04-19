@@ -137,7 +137,7 @@ export const makeCacheItemFromFilePath = ({
         warnings,
       )
     }),
-    OT.withSpan('wesjet/source-local/fetchData:makeCacheItemFromFilePath', {
+    OT.withSpan('@wesjet/preset-local/fetchData:makeCacheItemFromFilePath', {
       attributes: { relativeFilePath },
     }),
     T.mapError((error) => {
@@ -237,7 +237,7 @@ const processRawContent = ({
           )
       }
     }),
-    OT.withSpan('wesjet/source-local/fetchData:getRawContent'),
+    OT.withSpan('@wesjet/preset-local/fetchData:getRawContent'),
   )
 
 const getComputedValues = ({

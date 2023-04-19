@@ -8,16 +8,10 @@
     "outDir": "./dist",
     "tsBuildInfoFile": "./dist/.tsbuildinfo.json"
   },
-  "include": ["./src", "src/next"],
+  "include": ["./src"],
   "references": [
-    {
-      "path": "../@wesjet/preset"
-    },
-    {
-      "path": "../@wesjet/function"
-    },
-    {
-      "path": "../@wesjet/core"
-    }
+    { "path": "../@wesjet/preset" },
+    { "path": "../@wesjet/function.js" },
+    { "path": "../@wesjet/core" }
   ]
 }

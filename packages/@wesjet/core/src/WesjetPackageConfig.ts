@@ -1,13 +1,10 @@
 /**
  * Copyright (c) Wesbitty, Inc.
  *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- *
+ * This source code is licensed under the MIT license found in the LICENSE file in the root directory of this source tree.
  */
 
-import * as path from 'path'
+import * as path from 'node:path'
 
 import type { E } from '@wesjet/function.js/effect'
 import { Array, Chunk, O, OT, pipe, S, T } from '@wesjet/function.js/effect'
@@ -53,7 +50,7 @@ export const getConfig = ({
     S.runCollect,
     T.map(Chunk.unsafeHead),
     T.rightOrFail,
-    OT.withSpan('@wesjet/core/getConfig:getConfig', {
+    OT.withSpan('@wesjet/core/WesjetPackageConfig:WesjetPackageConfig', {
       attributes: { configPath },
     }),
   )
@@ -132,7 +129,7 @@ const resolveConfigPath = ({
 const makeTmpDirAndResolveEntryPoint = pipe(
   ArtifactsDir.mkdirCache,
   T.map((cacheDir) => ({
-    outfilePath: path.join(cacheDir, 'compiled-wesjet-config.mjs'),
+    outfilePath: path.join(cacheDir, 'posts.mjs'),
   })),
 )
 
@@ -167,14 +164,14 @@ const getConfigFromResult = ({
       // Deriving the exact outfilePath here since it's suffixed with a hash
       const outfilePath = pipe(
         Object.keys(result.metafile!.outputs),
-        // Will look like `path.join(cacheDir, 'compiled-wesjet-config-[SOME_HASH].mjs')
-        Array.find((_) => _.match(/compiled-wesjet-config-.+.mjs$/) !== null),
+        // Will look like `path.join(cacheDir, 'posts-[SOME_HASH].mjs')
+        Array.find((_) => _.match(/posts-.+.mjs$/) !== null),
         // Needs to be absolute path for ESM import to work
         O.map((_) => path.join(cwd, _)),
         O.getUnsafe,
       )
 
-      const esbuildHash = outfilePath.match(/compiled-wesjet-config-(.+).mjs$/)![1]!
+      const esbuildHash = outfilePath.match(/posts-(.+).mjs$/)![1]!
 
       // TODO make a simple OT call via `addAttributes`
       yield* $(OT.addAttribute('outfilePath', outfilePath))
@@ -203,7 +200,7 @@ const getConfigFromResult = ({
             () => importFresh(outfilePath),
             (error) => new ConfigReadError({ error, configPath }),
           ),
-          OT.withSpan('import-compiled-wesjet-config'),
+          OT.withSpan('import-posts'),
         ),
       )
 
@@ -231,7 +228,7 @@ const getConfigFromResult = ({
 
       return { source, esbuildHash }
     }),
-    OT.withSpan('@wesjet/core/getConfig:getConfigFromResult', {
+    OT.withSpan('@wesjet/core/WesjetPackageConfig:WesjetPackageConfigFromResult', {
       attributes: { configPath },
     }),
     T.either,

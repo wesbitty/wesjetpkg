@@ -1,12 +1,11 @@
 /**
  * Copyright (c) Wesbitty, Inc.
  *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
+ * This source code is licensed under the MIT license found in the LICENSE file in the root directory of this source tree.
  *
  */
 
-import path from 'path'
+import path from 'node:path'
 
 import type { AbsolutePosixFilePath } from '@wesjet/function.js'
 import { filePathJoin } from '@wesjet/function.js'
@@ -36,7 +35,7 @@ export const validateTsconfig = pipe(
 wesjet (Warning): Importing from \`wesjet\/static\` might not work.
 ${msg}
 
-For more information see https://www.wesbitty.org/product/wesjet
+For more information see https://wesbitty.org/product/wesjet
 To disable this warning you can set \`disableImportAliasWarning: true\` in your wesjet configuration preset.
 `)
 

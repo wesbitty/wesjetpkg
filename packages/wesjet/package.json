@@ -1,13 +1,8 @@
 {
   "name": "wesjet",
   "description": "Wesjet is a JavaScript library to transform and validate content for building user interfaces.",
-  "version": "0.0.20",
+  "version": "0.0.30",
   "license": "MIT",
-  "keywords": [
-    "wesjet"
-  ],
-  "bin": "./bin/install-cmd.cjs",
-  "type": "module",
   "engines": {
     "node": ">=14.18"
   },
@@ -18,22 +13,20 @@
     "url": "git+https://github.com/wesbitty/wesjet.git",
     "directory": "packages/wesjet"
   },
+  "keywords": [
+    "wesjet"
+  ],
   "files": [
-    "bin",
-    "dist",
-    "core.js",
-    "core.d.ts",
-    "preset.js",
-    "preset.d.ts",
-    "client.js",
-    "client.d.ts",
+    "./bin/install-native.cjs",
+    "./dist/**/*.{cjs,js,ts,map}",
+    "./dist/!(__test__)/**/*.{js,ts,map}",
     "index.d.ts",
-    "next.d.ts",
-    "next.js",
     "README.md",
     "LICENSE",
     "package.json"
   ],
+  "bin": "./bin/install-native.cjs",
+  "type": "module",
   "exports": {
     "./package.json": "./package.json",
     "./client": {
@@ -42,15 +35,34 @@
     "./core": {
       "import": "./dist/core.js"
     },
-    "./function": {
-      "import": "./dist/function/index.js"
+    "./function.js": {
+      "import": "./dist/function.js/index.js"
     },
-    "./preset": {
-      "import": "./dist/preset.js"
+    "./function.js/node": {
+      "import": "./dist/function.js/node/index.js"
     },
     "./next": {
-      "import": "./dist/next/index.js",
-      "require": "./dist/next/_jsx_.cjs"
+      "import": "./dist/shared/next/index.js",
+      "require": "./dist/shared/next/index-cjs.cjs"
+    },
+    "./next/hook": {
+      "import": "./dist/shared/next/hook/index.js",
+      "require": "./dist/shared/next/hook/index.js"
+    },
+    "./preset": {
+      "import": "./dist/preset/index.js"
+    },
+    "./preset/schema": {
+      "import": "./dist/preset/schema/index.js"
+    },
+    "./sanity": {
+      "import": "./dist/shared/sanity/index.js"
+    },
+    "./contentful": {
+      "import": "./dist/shared/contentful/index.js"
+    },
+    "./stackbit": {
+      "import": "./dist/shared/stackbit/index.js"
     }
   },
   "typesVersions": {
@@ -64,23 +76,41 @@
       "core": [
         "./dist/core"
       ],
-      "function": [
-        "./dist/function"
+      "function.js": [
+        "./dist/function.js"
+      ],
+      "function.js/node": [
+        "./dist/function.js/node"
+      ],
+      "next": [
+        "./dist/shared/next"
+      ],
+      "next/hook": [
+        "./dist/shared/next/hook"
       ],
       "preset": [
         "./dist/preset"
       ],
-      "next": [
-        "./dist/next"
+      "preset/schema": [
+        "./dist/preset/schema"
+      ],
+      "contentful": [
+        "./dist/shared/contentful"
+      ],
+      "stackbit": [
+        "./dist/shared/stackbit"
+      ],
+      "sanity": [
+        "./dist/shared/sanity"
       ]
     }
   },
   "scripts": {
-    "postinstall": "node ./bin/install-cmd.cjs postinstall",
-    "prepack": "sed '/^import /d' dist/next/_jsx_.js > dist/next/_jsx_.cjs; cp src/next/lib/jsx-runtime.cjs dist/next/lib/jsx-runtime.cjs"
+    "postinstall": "node ./bin/install-native.cjs postinstall",
+    "prepack": "sed '/^import\\|^export/d' dist/shared/next/index-cjs.js > dist/shared/next/index-cjs.cjs; cp src/shared/next/hook/ReactJSX.cjs dist/shared/next/hook/ReactJSX.cjs"
   },
   "peerDependencies": {
-    "@stackbit/sdk": "^0.2.39",
+    "@stackbit/sdk": "0.3.x",
     "next": "^12 || ^13",
     "react": "*",
     "react-dom": "*"
@@ -95,10 +125,10 @@
     "@sanity/core": "^2.10.5",
     "@sanity/image-url": "^0.140.22",
     "@sanity/schema": "^2.10.0",
-    "@stackbit/sdk": "^0.2.39",
-    "@wesjet/core": "^0.0.20",
-    "@wesjet/preset": "^0.0.20",
-    "@wesjet/function.js": "^0.0.20",
+    "@stackbit/sdk": "~0.3.25",
+    "@wesjet/core": "^0.0.30",
+    "@wesjet/preset": "^0.0.30",
+    "@wesjet/function.js": "^0.0.30",
     "clipanion": "^3.2.0-rc.14",
     "contentful-management": "^7.22.4",
     "rxjs": "^7.1.0",
@@ -109,8 +139,8 @@
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.10",
     "next": "^13.1.2",
-    "typescript": "^4.9.4",
-    "vite": "^3.1.0",
-    "vitest": "^0.23.1"
+    "typescript": "^5.0.2",
+    "vite": "^4.2.1",
+    "vitest": "0.29.7"
   }
 }

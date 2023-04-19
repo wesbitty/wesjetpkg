@@ -1,10 +1,10 @@
 import * as fs from 'fs/promises'
-import path from 'path'
+import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 import { expect, test } from 'vitest'
 import * as core from 'wesjet/core'
-import { defineDocumentType, makeSource } from 'wesjet/dist/maker/maker'
+import { defineDocumentType, makeSource } from 'wesjet/dist/preset'
 
 test('empty content folder', async () => {
   const Post = defineDocumentType(() => ({
@@ -35,7 +35,7 @@ test('empty content folder', async () => {
   )
 
   const generatedIndexJsFile = await fs.readFile(
-    path.join(testDirPath, '.wesjet', 'generated', 'Post', '_index.mjs'),
+    path.join(testDirPath, '.wesjet', 'static', 'Post', '_index.mjs'),
     'utf8',
   )
 
@@ -49,7 +49,7 @@ test('empty content folder', async () => {
   `)
 
   const generatedIndexJsonFile = await fs.readFile(
-    path.join(testDirPath, '.wesjet', 'generated', 'Post', '_index.json'),
+    path.join(testDirPath, '.wesjet', 'static', 'Post', '_index.json'),
     'utf8',
   )
 

@@ -4,7 +4,6 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- *
  */
 
 import * as core from '@wesjet/core'
@@ -58,7 +57,7 @@ export type Args = {
    *
    * @see {@link contentDirExcludeDefault} for default values
    *
-   * @default ['node_modules', '.git', '.yarn', '.cache', '.next', '.wesjet', 'package.json', 'tsconfig.json']
+   * @default ['node_modules', '.git', '.yarn', 'target', '.next', '.wesjet', 'package.json', 'tsconfig.json']
    *
    *
    * @example
@@ -147,7 +146,7 @@ export const contentDirExcludeDefault = [
   'node_modules',
   '.git',
   '.yarn',
-  '.cache',
+  'target',
   '.next',
   '.wesjet',
 ]

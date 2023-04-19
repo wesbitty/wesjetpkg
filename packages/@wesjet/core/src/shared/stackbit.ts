@@ -11,7 +11,7 @@ import type { GetFieldNamesForDefinitionGen } from '../CoreGenerator.js'
 
 type KnownFieldNames<DefName extends string> = GetFieldNamesForDefinitionGen<DefName>
 
-// TODO move this code into another package so contentlayer is Stackbit agnostic
+// TODO move this code into another package so wesjet is Stackbit agnostic
 // probably will require namespace/declaration merging
 export namespace StackbitExtension {
   export type Config = {

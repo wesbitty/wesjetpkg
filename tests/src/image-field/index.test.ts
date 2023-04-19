@@ -1,11 +1,11 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import * as fs from 'fs/promises'
-import path from 'path'
+import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 import { expect, test } from 'vitest'
 import * as core from 'wesjet/core'
-import { defineDocumentType, makeSource } from 'wesjet/dist/maker/maker'
+import { defineDocumentType, makeSource } from 'wesjet/dist/preset'
 
 test('mdx-image-field ', async () => {
   const Post = defineDocumentType(() => ({
@@ -38,7 +38,7 @@ test('mdx-image-field ', async () => {
   )
 
   const allPosts = await fs
-    .readFile(path.join(generatedWesjetDirPath, 'generated', 'Post', '_index.json'), 'utf8')
+    .readFile(path.join(generatedWesjetDirPath, 'static', 'Post', '_index.json'), 'utf8')
     .then((json) => JSON.parse(json))
 
   expect(allPosts[0].coverImage).toMatchInlineSnapshot(`
