@@ -33,7 +33,8 @@
     "check-eslint": "eslint . --ext .ts --max-warnings=0",
     "format-prettier": "prettier --write .",
     "eslint-fix": "eslint . --ext .ts --fix",
-    "clean": "rimraf packages/*/dist packages/@wesjet/*/dist packages/*/.wesjet"
+    "clean": "rimraf packages/*/dist packages/@wesjet/*/dist packages/*/.wesjet",
+    "test": "CI=true VITEST_SEGFAULT_RETRY=3 npm run test --workspaces --parallel"
   },
   "devDependencies": {
     "@babel/core": "^7.21.4",
