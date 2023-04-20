@@ -1,8 +1,8 @@
 {
   "name": "eslint-config-wesjet",
-  "version": "0.0.30.rc",
+  "version": "0.0.31",
   "license": "MIT",
-  "main": "index.js",
+  "main": "preset.js",
   "publishConfig": {
     "access": "public"
   },
@@ -11,6 +11,11 @@
     "type": "git",
     "url": "git+https://github.com/wesbitty/wesbitty.git"
   },
+  "files": [
+    "next.js",
+    "preset.js",
+    "package.json"
+  ],
   "keywords": [
     "eslint",
     "eslintplugin",
@@ -31,6 +36,8 @@
     "eslint": "^8.38.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-config-turbo": "^1.9.3",
+    "eslint-import-resolver-node": "^0.3.7",
+    "eslint-import-resolver-typescript": "^3.5.5",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "^2.8.7"
