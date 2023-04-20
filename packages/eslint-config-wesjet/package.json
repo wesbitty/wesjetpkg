@@ -1,14 +1,14 @@
 {
-  "name": "eslint-plugin-wesjet",
+  "name": "eslint-config-wesjet",
   "description": "wesjet eslint plugin for code scanning",
-  "version": "0.0.30-automated",
+  "version": "0.0.30",
   "license": "MIT",
   "keywords": [
     "eslint",
     "wesjet"
   ],
   "files": [
-    "lib"
+    "index.js"
   ],
   "author": "dimejiSR <Wesbitty Inc>",
   "homepage": "https://wesbitty.org/product/wesjet",
@@ -18,9 +18,10 @@
     "url": "git+https://github.com/wesbitty/wesjet.git",
     "directory": "packages/eslint-plugin-wesjet"
   },
-  "main": "./lib/index.js",
+  "main": "index.js",
   "scripts": {
     "build": "swc src -d lib",
+    "tsc": "tsc",
     "lint": "npm-run-all \"lint:*\"",
     "lint-eslint-doc": "npm-run-all \"update-gen-doc -- --check\"",
     "lint-ts": "eslint .",
@@ -29,6 +30,7 @@
     "update-gen-doc": "eslint-doc-generator"
   },
   "dependencies": {
+    "@rushstack/eslint-patch": "^1.2.0",
     "glob": "^10.0.0",
     "requireindex": "^1.2.0"
   },
@@ -40,13 +42,13 @@
     "eslint": "^8.34.0",
     "eslint-config-next": "latest",
     "eslint-config-prettier": "^8.6.0",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-config-turbo": "latest",
     "eslint-doc-generator": "^1.0.0",
     "eslint-plugin-eslint-plugin": "^5.0.0",
+    "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
     "mocha": "^10.0.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.8.4"

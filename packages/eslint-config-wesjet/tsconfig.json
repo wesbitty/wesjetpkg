@@ -1,8 +1,6 @@
 {
   "compilerOptions": {
     "composite": true,
-    "rootDir": "./src",
-    "outDir": "./lib",
     "module": "commonjs",
     "target": "es2019",
     "tsBuildInfoFile": "./lib/.tsbuildinfo.json"
