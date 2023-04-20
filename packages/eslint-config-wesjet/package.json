@@ -1,14 +1,17 @@
 {
   "name": "eslint-config-wesjet",
   "description": "wesjet eslint plugin for code scanning",
-  "version": "0.0.30",
+  "version": "0.0.30-rc",
   "license": "MIT",
+  "main": "index.js",
   "keywords": [
     "eslint",
     "wesjet"
   ],
   "files": [
-    "index.js"
+    "index.js",
+    "README.md",
+    "package.json"
   ],
   "author": "dimejiSR <Wesbitty Inc>",
   "homepage": "https://wesbitty.org/product/wesjet",
@@ -16,26 +19,10 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wesbitty/wesjet.git",
-    "directory": "packages/eslint-plugin-wesjet"
-  },
-  "main": "index.js",
-  "scripts": {
-    "build": "swc src -d lib",
-    "tsc": "tsc",
-    "lint": "npm-run-all \"lint:*\"",
-    "lint-eslint-doc": "npm-run-all \"update-gen-doc -- --check\"",
-    "lint-ts": "eslint .",
-    "clean": "rimraf lib",
-    "test": "mocha tests --recursive",
-    "update-gen-doc": "eslint-doc-generator"
+    "directory": "packages/eslint-config-wesjet"
   },
   "dependencies": {
     "@rushstack/eslint-patch": "^1.2.0",
-    "glob": "^10.0.0",
-    "requireindex": "^1.2.0"
-  },
-  "devDependencies": {
-    "@types/glob": "^8.1.0",
     "@types/prettier": "^2.7.2",
     "@typescript-eslint/eslint-plugin": "^5.51.0",
     "@typescript-eslint/parser": "^5.51.0",
@@ -43,14 +30,11 @@
     "eslint-config-next": "latest",
     "eslint-config-prettier": "^8.6.0",
     "eslint-config-turbo": "latest",
-    "eslint-doc-generator": "^1.0.0",
     "eslint-plugin-eslint-plugin": "^5.0.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
-    "mocha": "^10.0.0",
-    "npm-run-all": "^4.1.5",
     "prettier": "^2.8.4"
   }
 }

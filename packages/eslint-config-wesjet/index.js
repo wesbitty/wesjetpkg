@@ -5,28 +5,49 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-require('@rushstack/eslint-patch/modern-module-resolution')
-
 module.exports = {
-  rules: {
-    'no-html-link-for-pages': require('../src/rules/no-html-link-for-pages'),
-  },
   configs: {
     recommended: {
+      env: {
+        browser: true,
+        es2021: true,
+        node: true,
+      },
       // plugin configuration
       plugins: ['wesjet'],
-      extends: ['plugin:react-hooks/recommended', 'next', 'prettier', 'turbo'],
-      parserOptions: { tsconfigRootDir: __dirname },
+      extends: [
+        'plugin:react-hooks/recommended',
+        'plugin:@next/next/recommended',
+        'plugin:@typescript-eslint/recommended',
+        'prettier',
+        'turbo',
+      ],
+      parser: '@typescript-eslint/parser',
       // Rules
       rules: {
-        '@next/next/no-html-link-for-pages': 'off',
-        '@next/next/no-page-custom-font': 'off',
-        '@next/next/no-img-element': 'off',
         'react-hooks/rules-of-hooks': 'off',
         'react-hooks/exhaustive-deps': 'off',
         'react/jsx-key': 'off',
-        'turbo/no-undeclared-env-vars': 'off',
         'react/no-unescaped-entities': 'off',
+        'simple-import-sort/imports': 'off',
+        'simple-import-sort/exports': 'error',
+        'import/no-duplicates': 'warn',
+        'import/no-extraneous-dependencies': 'off',
+        'import/no-named-as-default': 'off',
+        'import/no-named-as-default-member': 'off',
+        '@typescript-eslint/ban-ts-comment': 'off',
+        '@typescript-eslint/consistent-type-imports': 'error',
+        '@typescript-eslint/no-namespace': 'off',
+        '@typescript-eslint/ban-types': 'off',
+        '@typescript-eslint/no-explicit-any': 'off',
+        '@typescript-eslint/no-empty-interface': 'off',
+        '@typescript-eslint/no-non-null-assertion': 'off',
+        '@typescript-eslint/no-var-requires': 'off',
+        '@typescript-eslint/explicit-module-boundary-types': 'off',
+        '@typescript-eslint/no-unused-vars': [
+          'warn',
+          { varsIgnorePattern: '^_', argsIgnorePattern: '^_' },
+        ],
       },
     },
     next: {
@@ -43,14 +64,12 @@ module.exports = {
           presets: [require.resolve('next/babel')],
         },
       },
-      overrides: [
-        {
-          files: ['**/__tests__/**/*'],
-          env: {
-            jest: true,
-          },
-        },
-      ],
+      rules: {
+        '@next/next/no-html-link-for-pages': 'off',
+        '@next/next/no-page-custom-font': 'off',
+        '@next/next/no-img-element': 'off',
+        'turbo/no-undeclared-env-vars': 'off',
+      },
     },
   },
 }

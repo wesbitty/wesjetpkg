@@ -1,4 +1,4 @@
-# eslint-plugin-wesjet
+# eslint-config-wesjet
 
 Wesjet Linting and Formatting plugin
 
@@ -10,36 +10,19 @@ You'll first need to install [ESLint](https://eslint.org/):
 npm i eslint --save-dev
 ```
 
-Next, install `eslint-plugin-wesjet`:
+Next, install `eslint-config-wesjet`:
 
 ```sh
-npm install eslint-plugin-wesjet --save-dev
+npm install eslint-config-wesjet --save-dev
 ```
 
 ## Usage
 
-Add `wesjet` to the plugins section of your `.eslintrc` configuration file. You can omit the `eslint-plugin-` prefix:
+- [Next.js](https://nextjs.org/) Usage
+  Add `wesjet/next` to the plugins section of your `.eslintrc` configuration file.
 
 ```json
 {
-  "plugins": ["wesjet"]
+  "extends": ["wesjet/next"]
 }
 ```
-
-Then configure the rules you want to use under the rules section.
-
-```json
-{
-  "rules": {
-    "wesjet/rule-name": 2
-  }
-}
-```
-
-## Rules
-
-<!-- begin auto-generated rules list -->
-
-TODO: Run eslint-doc-generator to generate the rules list.
-
-<!-- end auto-generated rules list -->
