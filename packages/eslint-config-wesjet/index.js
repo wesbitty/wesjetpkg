@@ -8,13 +8,13 @@
 module.exports = {
   configs: {
     recommended: {
+      // plugin configuration
+      plugins: ['wesjet'],
       env: {
         browser: true,
         es2021: true,
         node: true,
       },
-      // plugin configuration
-      plugins: ['wesjet'],
       extends: [
         'plugin:react-hooks/recommended',
         'plugin:@next/next/recommended',
@@ -22,7 +22,35 @@ module.exports = {
         'prettier',
         'turbo',
       ],
-      parser: '@typescript-eslint/parser',
+      overrides: [
+        {
+          files: ['**/*.ts?(x)'],
+          parser: '@typescript-eslint/parser',
+          parserOptions: {
+            sourceType: 'module',
+            ecmaFeatures: {
+              jsx: true,
+            },
+            warnOnUnsupportedTypeScriptVersion: true,
+          },
+        },
+      ],
+      settings: {
+        react: {
+          version: 'detect',
+        },
+        'import/parsers': {
+          [require.resolve('@typescript-eslint/parser')]: ['.ts', '.mts', '.cts', '.tsx', '.d.ts'],
+        },
+        'import/resolver': {
+          [require.resolve('eslint-import-resolver-node')]: {
+            extensions: ['.js', '.jsx', '.ts', '.tsx'],
+          },
+          [require.resolve('eslint-import-resolver-typescript')]: {
+            alwaysTryTypes: true,
+          },
+        },
+      },
       // Rules
       rules: {
         'react-hooks/rules-of-hooks': 'off',
@@ -55,13 +83,20 @@ module.exports = {
       extends: ['wesjet:recommended'],
       // env
       env: {
+        browser: true,
         node: true,
-        es6: true,
       },
       // Parser
       parserOptions: {
+        requireConfigFile: false,
+        sourceType: 'module',
+        allowImportExportEverywhere: true,
         babelOptions: {
-          presets: [require.resolve('next/babel')],
+          presets: ['next/babel'],
+          caller: {
+            // Eslint supports top level await when a parser for it is included. We enable the parser by default for Babel.
+            supportsTopLevelAwait: true,
+          },
         },
       },
       rules: {
