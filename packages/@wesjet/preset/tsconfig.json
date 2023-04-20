@@ -3,9 +3,16 @@
   "compilerOptions": {
     "module": "ES2020",
     "rootDir": "./src",
-    "outDir": "./dist",
-    "tsBuildInfoFile": "./dist/.tsbuildinfo.json"
+    "outDir": "./lib",
+    "tsBuildInfoFile": "./lib/.tsbuildinfo.json"
   },
   "include": ["./src"],
-  "references": [{ "path": "../function.js" }, { "path": "../core" }]
+  "references": [
+    {
+      "path": "../function.js"
+    },
+    {
+      "path": "../core"
+    }
+  ]
 }

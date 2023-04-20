@@ -6,14 +6,20 @@
     "jsx": "react-jsx",
     "module": "ES2020",
     "rootDir": "./src",
-    "outDir": "./dist",
-    "tsBuildInfoFile": "./dist/.tsbuildinfo.json"
+    "outDir": "./lib",
+    "tsBuildInfoFile": "./lib/.tsbuildinfo.json"
   },
   "include": ["./src"],
   "exclude": ["node_modules/**/*.ts"],
   "references": [
-    { "path": "../@wesjet/preset" },
-    { "path": "../@wesjet/function.js" },
-    { "path": "../@wesjet/core" }
+    {
+      "path": "../@wesjet/preset"
+    },
+    {
+      "path": "../@wesjet/function.js"
+    },
+    {
+      "path": "../@wesjet/core"
+    }
   ]
 }

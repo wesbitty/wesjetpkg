@@ -1,4 +1,4 @@
-import { defineDocumentType, defineNestedType } from 'wesjet/dist/preset'
+import { defineDocumentType, defineNestedType } from 'wesjet/lib/preset'
 
 import { Action } from '../nested/Action.js'
 import { FormField } from '../nested/FormField.js'

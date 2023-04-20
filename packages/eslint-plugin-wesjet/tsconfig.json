@@ -1,9 +1,12 @@
 {
   "compilerOptions": {
     "composite": true,
+    "rootDir": "./src",
+    "outDir": "./lib",
     "module": "commonjs",
-    "target": "es2019"
+    "target": "es2019",
+    "tsBuildInfoFile": "./lib/.tsbuildinfo.json"
   },
-  "include": ["src/**/*"],
+  "include": ["./src"],
   "exclude": ["node_modules"]
 }

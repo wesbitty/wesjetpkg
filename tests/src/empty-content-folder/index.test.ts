@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url'
 
 import { expect, test } from 'vitest'
 import * as core from 'wesjet/core'
-import { defineDocumentType, makeSource } from 'wesjet/dist/preset'
+import { defineDocumentType, makeSource } from 'wesjet/lib/preset'
 
 test('empty content folder', async () => {
   const Post = defineDocumentType(() => ({

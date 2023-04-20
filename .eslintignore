@@ -1,6 +1,8 @@
 node_modules
 target/
 **/.wesjet/*
+packages/*/lib
+packages/@wesjet/*/lib
 packages/create-wesjet-app/src/templates/*
 package-lock.json
 examples/*

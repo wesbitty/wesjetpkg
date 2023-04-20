@@ -16,16 +16,16 @@
   ],
   "bin": "./bin/install-cmd.cjs",
   "type": "module",
-  "exports": "./dist/lib/index.js",
-  "types": "./dist/lib/index.d.ts",
+  "exports": "./lib/lib/index.js",
+  "types": "./lib/lib/index.d.ts",
   "files": [
-    "dist",
-    "./dist/!(__test__)/**/*.{js,ts,map}",
+    "lib",
+    "./lib/!(__test__)/**/*.{js,ts,map}",
     "package.json"
   ],
   "scripts": {
     "#postinstall": "node ./bin/install-cmd.cjs postinstall",
-    "clean": "rimraf dist",
+    "clean": "rimraf lib",
     "test": "FORCE_COLOR=1 vitest"
   },
   "dependencies": {

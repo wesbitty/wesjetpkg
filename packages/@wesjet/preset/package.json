@@ -16,26 +16,26 @@
   "type": "module",
   "exports": {
     ".": {
-      "import": "./dist/index.js"
+      "import": "./lib/index.js"
     },
     "./schema/defs": {
-      "import": "./dist/schema/defs/index.js"
+      "import": "./lib/schema/defs/index.js"
     }
   },
-  "types": "./dist/index.d.ts",
+  "types": "./lib/index.d.ts",
   "typesVersions": {
     "*": {
       "schema": [
-        "./dist/schema"
+        "./lib/schema"
       ]
     }
   },
   "files": [
-    "dist",
-    "./dist/!(__test__)/**/*.{js,ts,map}"
+    "lib",
+    "./lib/!(__test__)/**/*.{js,ts,map}"
   ],
   "scripts": {
-    "clean": "rimraf ./dist/",
+    "clean": "rimraf ./lib/",
     "test": "TZ='GMT' FORCE_COLOR=1 vitest"
   },
   "dependencies": {

@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url'
 import remarkMdxImages from 'remark-mdx-images'
 import { expect, test } from 'vitest'
 import * as core from 'wesjet/core'
-import { defineDocumentType, makeSource } from 'wesjet/dist/preset'
+import { defineDocumentType, makeSource } from 'wesjet/lib/preset'
 
 test('mdx - resolveCwd - contentDirPath', async () => {
   const Post = defineDocumentType(() => ({

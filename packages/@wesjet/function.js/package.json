@@ -21,42 +21,42 @@
       "import": "./package.json"
     },
     ".": {
-      "import": "./dist/index.js"
+      "import": "./lib/index.js"
     },
     "./effect": {
-      "import": "./dist/effect/index.js"
+      "import": "./lib/effect/index.js"
     },
     "./effect/Tracing/Enable": {
-      "import": "./dist/effect/Tracing/Enable.js"
+      "import": "./lib/effect/Tracing/Enable.js"
     },
     "./node": {
-      "import": "./dist/node/index.js"
+      "import": "./lib/node/index.js"
     }
   },
-  "types": "./dist/index.d.ts",
+  "types": "./lib/index.d.ts",
   "typesVersions": {
     "*": {
       "package.json": [
         "./package.json"
       ],
       "effect": [
-        "./dist/effect"
+        "./lib/effect"
       ],
       "effect/Tracing/Enable": [
-        "./dist/effect/Tracing/Enable"
+        "./lib/effect/Tracing/Enable"
       ],
       "node": [
-        "./dist/node"
+        "./lib/node"
       ]
     }
   },
   "files": [
-    "dist",
+    "lib",
     "node.js"
   ],
   "scripts": {
     "tmp": "env",
-    "clean": "rimraf ./dist/"
+    "clean": "rimraf ./lib/"
   },
   "peerDependenciesMeta": {
     "@effect-ts/core": {

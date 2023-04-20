@@ -1,4 +1,4 @@
-import { defineNestedType } from 'wesjet/dist/preset'
+import { defineNestedType } from 'wesjet/lib/preset'
 
 export const Action = defineNestedType(() => ({
   name: 'Action',

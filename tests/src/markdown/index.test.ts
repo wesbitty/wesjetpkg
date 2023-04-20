@@ -9,7 +9,7 @@ import remarkParse from 'remark-parse'
 import remark2rehype from 'remark-rehype'
 import { expect, test, vi } from 'vitest'
 import * as core from 'wesjet/core'
-import { defineDocumentType, makeSource } from 'wesjet/dist/preset'
+import { defineDocumentType, makeSource } from 'wesjet/lib/preset'
 
 test('markdown builder pattern', async () => {
   const Post = defineDocumentType(() => ({

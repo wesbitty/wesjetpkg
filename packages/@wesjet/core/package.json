@@ -14,13 +14,13 @@
     "wesjet"
   ],
   "type": "module",
-  "types": "./dist/index.d.ts",
-  "exports": "./dist/index.js",
+  "types": "./lib/index.d.ts",
+  "exports": "./lib/index.js",
   "files": [
-    "dist"
+    "lib"
   ],
   "scripts": {
-    "clean": "rimraf ./dist/"
+    "clean": "rimraf ./lib/"
   },
   "peerDependencies": {
     "esbuild": "^0.17.x",

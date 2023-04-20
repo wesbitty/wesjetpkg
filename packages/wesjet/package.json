@@ -18,8 +18,8 @@
   ],
   "files": [
     "./bin/install-native.cjs",
-    "./dist/**/*.{cjs,js,ts,map}",
-    "./dist/!(__test__)/**/*.{js,ts,map}",
+    "./lib/**/*.{cjs,js,ts,map}",
+    "./lib/!(__test__)/**/*.{js,ts,map}",
     "index.d.ts",
     "README.md",
     "LICENSE",
@@ -30,39 +30,39 @@
   "exports": {
     "./package.json": "./package.json",
     "./client": {
-      "import": "./dist/client/index.js"
+      "import": "./lib/client/index.js"
     },
     "./core": {
-      "import": "./dist/core.js"
+      "import": "./lib/core.js"
     },
     "./function.js": {
-      "import": "./dist/function.js/index.js"
+      "import": "./lib/function.js/index.js"
     },
     "./function.js/node": {
-      "import": "./dist/function.js/node/index.js"
+      "import": "./lib/function.js/node/index.js"
     },
     "./next": {
-      "import": "./dist/shared/next/index.js",
-      "require": "./dist/shared/next/index-cjs.cjs"
+      "import": "./lib/shared/next/index.js",
+      "require": "./lib/shared/next/index-cjs.cjs"
     },
     "./next/hook": {
-      "import": "./dist/shared/next/hook/index.js",
-      "require": "./dist/shared/next/hook/index.js"
+      "import": "./lib/shared/next/hook/index.js",
+      "require": "./lib/shared/next/hook/index.js"
     },
     "./preset": {
-      "import": "./dist/preset/index.js"
+      "import": "./lib/preset/index.js"
     },
     "./preset/schema": {
-      "import": "./dist/preset/schema/index.js"
+      "import": "./lib/preset/schema/index.js"
     },
     "./sanity": {
-      "import": "./dist/shared/sanity/index.js"
+      "import": "./lib/shared/sanity/index.js"
     },
     "./contentful": {
-      "import": "./dist/shared/contentful/index.js"
+      "import": "./lib/shared/contentful/index.js"
     },
     "./stackbit": {
-      "import": "./dist/shared/stackbit/index.js"
+      "import": "./lib/shared/stackbit/index.js"
     }
   },
   "typesVersions": {
@@ -71,44 +71,44 @@
         "./package.json"
       ],
       "client": [
-        "./dist/client"
+        "./lib/client"
       ],
       "core": [
-        "./dist/core"
+        "./lib/core"
       ],
       "function.js": [
-        "./dist/function.js"
+        "./lib/function.js"
       ],
       "function.js/node": [
-        "./dist/function.js/node"
+        "./lib/function.js/node"
       ],
       "next": [
-        "./dist/shared/next"
+        "./lib/shared/next"
       ],
       "next/hook": [
-        "./dist/shared/next/hook"
+        "./lib/shared/next/hook"
       ],
       "preset": [
-        "./dist/preset"
+        "./lib/preset"
       ],
       "preset/schema": [
-        "./dist/preset/schema"
+        "./lib/preset/schema"
       ],
       "contentful": [
-        "./dist/shared/contentful"
+        "./lib/shared/contentful"
       ],
       "stackbit": [
-        "./dist/shared/stackbit"
+        "./lib/shared/stackbit"
       ],
       "sanity": [
-        "./dist/shared/sanity"
+        "./lib/shared/sanity"
       ]
     }
   },
   "scripts": {
     "postinstall": "node ./bin/install-native.cjs postinstall",
-    "prepack": "sed '/^import\\|^export/d' dist/shared/next/index-cjs.js > dist/shared/next/index-cjs.cjs; cp src/shared/next/hook/ReactJSX.cjs dist/shared/next/hook/ReactJSX.cjs",
-    "clean": "rimraf dist .wesjet"
+    "prepack": "sed '/^import\\|^export/d' lib/shared/next/index-cjs.js > lib/shared/next/index-cjs.cjs; cp src/shared/next/hook/ReactJSX.cjs lib/shared/next/hook/ReactJSX.cjs",
+    "clean": "rimraf lib .wesjet"
   },
   "peerDependencies": {
     "@stackbit/sdk": "0.3.x",

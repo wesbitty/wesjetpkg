@@ -1,16 +1,14 @@
 {
   "name": "eslint-plugin-wesjet",
   "description": "wesjet eslint plugin for code scanning",
-  "version": "0.0.30",
+  "version": "0.0.30-automated",
   "license": "MIT",
   "keywords": [
     "eslint",
     "wesjet"
   ],
   "files": [
-    "./dist",
-    "./package.json",
-    "README.md"
+    "lib"
   ],
   "author": "dimejiSR <Wesbitty Inc>",
   "homepage": "https://wesbitty.org/product/wesjet",
@@ -20,32 +18,13 @@
     "url": "git+https://github.com/wesbitty/wesjet.git",
     "directory": "packages/eslint-plugin-wesjet"
   },
-  "main": "./dist/index.js",
-  "exports": {
-    "./package.json": {
-      "import": "./package.json"
-    },
-    ".": {
-      "import": "./dist/index.js"
-    }
-  },
-  "types": "./dist/index.d.ts",
-  "typesVersions": {
-    "*": {
-      "packge.json": [
-        "./package.json"
-      ],
-      ".": [
-        "./dist"
-      ]
-    }
-  },
+  "main": "./lib/index.js",
   "scripts": {
-    "build": "swc src -d dist",
+    "build": "swc src -d lib",
     "lint": "npm-run-all \"lint:*\"",
     "lint-eslint-doc": "npm-run-all \"update-gen-doc -- --check\"",
     "lint-ts": "eslint .",
-    "clean": "rimraf dist",
+    "clean": "rimraf lib",
     "test": "mocha tests --recursive",
     "update-gen-doc": "eslint-doc-generator"
   },
@@ -55,11 +34,21 @@
   },
   "devDependencies": {
     "@types/glob": "^8.1.0",
-    "eslint": "^7.24.0",
+    "@types/prettier": "^2.7.2",
+    "@typescript-eslint/eslint-plugin": "^5.51.0",
+    "@typescript-eslint/parser": "^5.51.0",
+    "eslint": "^8.34.0",
+    "eslint-config-next": "latest",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-config-turbo": "latest",
     "eslint-doc-generator": "^1.0.0",
     "eslint-plugin-eslint-plugin": "^5.0.0",
     "eslint-plugin-node": "^11.1.0",
     "mocha": "^10.0.0",
-    "npm-run-all": "^4.1.5"
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.8.4"
   }
 }
