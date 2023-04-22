@@ -8,8 +8,8 @@
 
 import type { NextConfig } from 'next'
 
-import { packageManagerVersion } from './validate/version.js'
 import { type NextPluginOptions, runWesjetBuild, runWesjetDev } from './validate/plugin.js'
+import { packageManagerVersion } from './validate/version.js'
 
 let devServerStarted = false
 

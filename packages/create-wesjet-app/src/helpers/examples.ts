@@ -9,8 +9,8 @@
 
 /* eslint-disable import/no-extraneous-dependencies */
 import got from 'got'
-import tar from 'tar'
 import { Stream } from 'stream'
+import tar from 'tar'
 import { promisify } from 'util'
 
 const pipeline = promisify(Stream.pipeline)

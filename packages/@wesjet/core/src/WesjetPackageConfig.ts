@@ -11,6 +11,8 @@ import { Array, Chunk, O, OT, pipe, S, T } from '@wesjet/function.js/effect'
 import type { GetWesjetVersionError } from '@wesjet/function.js/node'
 import { fs } from '@wesjet/function.js/node'
 
+import { ArtifactsDir } from './index.js'
+import * as esbuild from './shared/esbuild.js'
 import type { HasCwd } from './WesjetCwd.js'
 import { getCwd } from './WesjetCwd.js'
 import type { EsbuildBinNotFoundError } from './WesjetPackageErrors.js'
@@ -19,9 +21,7 @@ import {
   ConfigReadError,
   NoConfigFoundError,
 } from './WesjetPackageErrors.js'
-import { ArtifactsDir } from './index.js'
 import type { SourcePlugin } from './WesjetPlugin.js'
-import * as esbuild from './shared/esbuild.js'
 
 type GetConfigError =
   | esbuild.EsbuildError

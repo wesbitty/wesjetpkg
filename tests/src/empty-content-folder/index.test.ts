@@ -1,7 +1,7 @@
-import * as fs from 'fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
+import * as fs from 'fs/promises'
 import { expect, test } from 'vitest'
 import * as core from 'wesjet/core'
 import { defineDocumentType, makeSource } from 'wesjet/lib/preset'

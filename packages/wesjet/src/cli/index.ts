@@ -8,12 +8,11 @@
 
 import '@wesjet/function.js/effect/Tracing/Enable'
 
-import process from 'process'
-
 import { provideDummyTracing } from '@wesjet/function.js'
 import { pipe, T } from '@wesjet/function.js/effect'
 import { getWesjetVersion } from '@wesjet/function.js/node'
 import { Builtins, Cli } from 'clipanion'
+import process from 'process'
 
 import { WesjetBuild } from './WesjetBuild.js'
 import { WesjetDefaultCmd } from './WesjetDefaultCmd.js'

@@ -6,7 +6,6 @@
  *
  */
 
-import { promises as fs } from 'fs'
 import * as path from 'node:path'
 
 import type { HasCwd } from '@wesjet/core'
@@ -15,6 +14,7 @@ import { provideJaegerTracing, recRemoveUndefinedValues } from '@wesjet/function
 import type { HasConsole } from '@wesjet/function.js/effect'
 import { OT, pipe, pretty, provideConsole, T } from '@wesjet/function.js/effect'
 import { Command, Option } from 'clipanion'
+import { promises as fs } from 'fs'
 import * as t from 'typanion'
 
 import type { Transform } from '../lib/index.js'

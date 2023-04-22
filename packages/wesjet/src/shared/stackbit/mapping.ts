@@ -5,9 +5,9 @@
  */
 
 import type * as Stackbit from '@stackbit/sdk'
-import * as SourceFiles from '@wesjet/preset'
 import { casesHandled, isReadonlyArray, notImplemented, pick } from '@wesjet/function.js'
 import { identity } from '@wesjet/function.js/effect'
+import * as SourceFiles from '@wesjet/preset'
 
 type DocumentTypeMap = Record<string, SourceFiles.DocumentType>
 type NestedTypeMap = Record<string, SourceFiles.NestedType>

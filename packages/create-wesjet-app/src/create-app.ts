@@ -14,6 +14,7 @@ import cpy from 'cpy'
 import fs from 'fs'
 import os from 'os'
 import path from 'path'
+
 import type { RepoInfo } from './helpers/examples'
 import {
   downloadAndExtractExample,
@@ -22,13 +23,13 @@ import {
   hasExample,
   hasRepo,
 } from './helpers/examples'
-import { makeDir } from './helpers/make-dir'
+import type { PackageManager } from './helpers/get-pkg-manager'
 import { tryGitInit } from './helpers/git'
 import { install } from './helpers/install'
 import { isFolderEmpty } from './helpers/is-folder-empty'
 import { getOnline } from './helpers/is-online'
 import { isWriteable } from './helpers/is-writeable'
-import type { PackageManager } from './helpers/get-pkg-manager'
+import { makeDir } from './helpers/make-dir'
 
 export class DownloadError extends Error {}
 

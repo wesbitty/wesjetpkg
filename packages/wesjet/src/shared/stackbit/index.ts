@@ -4,13 +4,13 @@
  * This source code is licensed under the MIT license found in the LICENSE file in the root directory of this source tree.
  */
 
-import type * as core from '@wesjet/core'
-import type * as SourceFiles from '@wesjet/preset'
-import { defineDocumentType, defineNestedType } from '@wesjet/preset'
-import type { PartialDeep } from '@wesjet/function.js'
-import { mergeDeep, not, partition, pick } from '@wesjet/function.js'
 import * as Stackbit from '@stackbit/sdk'
 import { validateAndNormalizeConfig } from '@stackbit/sdk/dist/config/config-loader.js'
+import type * as core from '@wesjet/core'
+import type { PartialDeep } from '@wesjet/function.js'
+import { mergeDeep, not, partition, pick } from '@wesjet/function.js'
+import type * as SourceFiles from '@wesjet/preset'
+import { defineDocumentType, defineNestedType } from '@wesjet/preset'
 
 import type { SharedCtx } from './mapping.js'
 import {

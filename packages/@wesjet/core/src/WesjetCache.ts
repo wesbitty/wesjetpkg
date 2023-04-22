@@ -12,8 +12,8 @@ import type { GetWesjetVersionError } from '@wesjet/function.js/node'
 import { fs } from '@wesjet/function.js/node'
 
 import { ArtifactsDir } from './ArtifactsDir.js'
-import type { HasCwd } from './WesjetCwd.js'
 import type { Document } from './types/data.js'
+import type { HasCwd } from './WesjetCwd.js'
 
 export namespace DataCache {
   export type Cache = {

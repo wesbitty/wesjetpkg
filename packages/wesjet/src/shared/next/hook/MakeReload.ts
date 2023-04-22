@@ -7,8 +7,7 @@
 
 import { addMessageListener } from 'next/dist/client/dev/error-overlay/websocket.js'
 import { useRouter } from 'next/router.js'
-
-import { useRef, useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 
 export const MakeReload = () => {
   const router = useRouter()

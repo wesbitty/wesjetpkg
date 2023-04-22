@@ -6,9 +6,9 @@
  *
  */
 
-import type { Document } from './types/data.js'
 import type { FieldDef, FieldDefType } from './SchemaField.js'
 import type { StackbitExtension } from './shared/stackbit.js'
+import type { Document } from './types/data.js'
 export * from './SchemaField.js'
 export * from './SchemaValidate.js'
 export * from './shared/stackbit.js'

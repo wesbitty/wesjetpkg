@@ -1,8 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import * as fs from 'fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
+import * as fs from 'fs/promises'
 import rehypeStringify from 'rehype-stringify'
 import remarkFrontmatter from 'remark-frontmatter'
 import remarkParse from 'remark-parse'
