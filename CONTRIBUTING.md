@@ -10,45 +10,31 @@ To develop locally:
 
 1. Install the [GitHub CLI](https://github.com/cli/cli#installation).
 1. Clone the Next.js repository (download only recent commits for faster clone):
-
 ```sh
 gh repo clone wesbitty/wesjet -- --depth=3000 --branch origin/changelog --single-branch
 ```
-
 1. Create a new branch:
-
 ```sh
 git checkout -b MY_BRANCH_NAME origin/changelog
 ```
-
 1. Installing Dependencies
-
 ```sh
 npm install
 ```
-
 1. Building
-
 You can build Wesjet, including all type definitions and packages, with:
-
 ```sh
 npm run build
 ```
-
 1. Start developing and watch for code changes:
-
 ```sh
 npm run dev
 ```
-
 1. Testing Codes
-
 Start testing code using npm run test which will run test on all packages.
-
 ```sh
 npm run test
 ```
-
 1. When your changes are finished, commit them to the branch:
    ```
    git add .
