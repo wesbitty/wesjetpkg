@@ -63,6 +63,12 @@ body:
         To report an App Router related issue, you can use these templates: [CodeSandbox](https://codesandbox.io/p/sandbox/github/wesbitty/wesjet/tree/automated/examples/reproduction-template-app-dir), [StackBlitz](https://stackblitz.com/fork/github/wesbitty/wesjet/tree/automated/examples/reproduction-template-app-dir) or [`npx create-wesjet-app -e reproduction-template-app-dir`](https://github.com/wesbitty/wesjet/tree/automated/examples/reproduction-template-app-dir)
     validations:
       required: true
+  - type: textarea
+    attributes:
+      label: To Reproduce
+      description: Steps to reproduce the behavior, please provide a clear description of how to reproduce the issue, based on the linked minimal reproduction. Screenshots can be provided in the issue body below. If using code blocks, make sure that [syntax highlighting is correct](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-and-highlighting-code-blocks#syntax-highlighting) and double check that the rendered preview is not broken.
+    validations:
+      required: true
   - type: dropdown
     id: browsers
     attributes:
