@@ -6,7 +6,7 @@ Choose the right checklist for the change(s) that you're making:
 
 ### Improving Documentation or adding/fixing Examples
 
-- The "examples guidelines" are followed from our contributing doc https://github.com/wesbitty/wesjet/tree/automated/CONTRIBUTING.md#adding-example
+- The "examples guidelines" are followed from our contributing doc https://github.com/wesbitty/wesjet/tree/automated/CONTRIBUTING.md#adding-examples
 - Make sure the linting passes by running `npm run build && npm run lint`. See https://github.com/wesbitty/wesjet/tree/automated/CONTRIBUTING.md#developing
 
 ### Fixing a bug
