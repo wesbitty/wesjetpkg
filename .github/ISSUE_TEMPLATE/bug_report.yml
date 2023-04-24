@@ -17,7 +17,7 @@ body:
         Feature requests should be opened as [discussions](https://github.com/wesbitty/wesjet/discussions/new?category=ideas). [Read more](https://github.com/Wesbitty/wesjet/blob/automated/contributing/core/adding-features.md).
   - type: checkboxes
     attributes:
-      label: Wesjet Automated release
+      label: Wesjet Latest release
       description: 'Please run `npm install wesjet@latest` to try the latest version of Wesjet that ships daily. It includes all features and fixes that have not been released to the stable version yet. Some issues may already be fixed in the automated version, so please verify that your issue reproduces before opening a new issue.'
       options:
         - label: I verified that the issue exists in the latest Wesjet release
@@ -38,7 +38,6 @@ body:
       description: What version of our software are you running?
       options:
         - 0.0.30 (Default)
-        - 0.0.31 (Under development)
     validations:
       required: true
   - type: dropdown
@@ -89,7 +88,7 @@ body:
     id: terms
     attributes:
       label: Code of Conduct
-      description: By submitting this issue, you agree to follow our [Code of Conduct](https://example.com)
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/wesbitty/wesjet/blob/automated/CODE_OF_CONDUCT.md)
       options:
         - label: I agree to follow this project's Code of Conduct
           required: true
