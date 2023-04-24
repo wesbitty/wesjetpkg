@@ -1,0 +1,18 @@
+name: 'Feature Request for an Update or Improvement'
+description: A request to update or improve Wesjet
+title: 'Feature: '
+labels:
+  - 'template: feature'
+body:
+  - type: textarea
+    attributes:
+      label: What is the improvement or update you wish to see?
+      description: 'Example: Improve Wesjet Monorepo built performance.'
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Is there any context that might help us understand?
+      description: A clear description of any added context that might help us understand.
+    validations:
+      required: true
