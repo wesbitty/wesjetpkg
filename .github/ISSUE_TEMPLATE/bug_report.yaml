@@ -1,22 +1,27 @@
 name: Bug Report
 description: File a bug report
 title: "[Bug]: "
-labels: ["bug", "issue"]
+labels: ["template: bug"]
 assignees:
-  - wesjet
+  - 
 body:
   - type: markdown
     attributes:
       value: |
         Thanks for taking the time to fill out this bug report!
-  - type: input
-    id: contact
+  - type: markdown
     attributes:
-      label: Contact Details
-      description: How can we get in touch with you if we need more info?
-      placeholder: ex. email@wesbitty.com
-    validations:
-      required: false
+      value: |
+        *Note:* If you leave out sections, the issue might be moved to the ["Help" section](https://github.com/wesbitty/wesjet/discussions/categories/help).
+        [examples](https://github.com/wesbitty/wesjet/tree/automated/examples) related issue should be reported using [this](https://github.com/wesbitty/wesjet/issues/new?assignees=&labels=type%3A+example%2Ctemplate%3A+bug&template=2.example_bug_report.yml) issue template instead.
+        Feature requests should be opened as [discussions](https://github.com/wesbitty/wesjet/discussions/new?category=ideas). [Read more](https://github.com/Wesbitty/wesjet/blob/automated/contributing/core/adding-features.md).
+  - type: checkboxes
+    attributes:
+      label: Wesjet Automated release
+      description: 'Please run `npm install wesjet@latest` to try the latest version of Wesjet that ships daily. It includes all features and fixes that have not been released to the stable version yet. Some issues may already be fixed in the automated version, so please verify that your issue reproduces before opening a new issue.'
+      options:
+        - label: I verified that the issue exists in the latest Next.js canary release
+          required: true
   - type: textarea
     id: what-happened
     attributes:
@@ -26,6 +31,20 @@ body:
       value: "A bug happened!"
     validations:
       required: true
+  - type: dropdown
+    attributes:
+      label: Which area(s) of Wesjet are affected? (leave empty if unsure)
+      multiple: true
+      options:
+        - 'CLI (create-wesjet-app)'
+        - 'ESLint (eslint-plugin-wesjet)'
+        - 'Static imports (wesjet/static)'
+        - 'Using Wesjet in Monorepo'
+        - 'Wesjet Next.js Configuration (wesjet/next)'
+        - 'Wesjet Configuration (wesjet.config.[ts/js])'
+        - 'Wesjet MakeReload (wesjet/next/hook)'
+        - 'Wesjet MakeMdx (wesjet/next/hook)'
+        - 'TypeScript Configuration (paths, include)'
   - type: dropdown
     id: version
     attributes:
