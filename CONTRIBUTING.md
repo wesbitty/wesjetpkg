@@ -15,6 +15,7 @@ Please read our [Code of Conduct](./CODE_OF_CONDUCT.md) and follow it in all you
 3. [Adding a new feature](#adding-a-new-feature)
    - [Why use a discussion?](#Why-use-a-discussion?)
    - [Examples](#examples)
+4. [Adding Examples](#adding-examples)
 
 - The development branch is `origin/changelog`.
 - All pull requests should be opened against `origin/changelog`.
@@ -108,3 +109,44 @@ The discussion's goal is to achieve the following:
 ### Examples
 
 The [Wesjet](https://github.com/wesbitty/wesjet) team uses RFCs (Request For Comment), which you can find in [this discussion category](https://github.com/wesbitty/wesjet/discussions/categories/rfc). Reading through these, you can get a better understanding of what is expected to be included in a good feature request.
+
+## Adding Examples
+
+When you add an example to the [examples](https://github.com/wesbitty/wesjet/tree/changelog/examples) directory, please follow these guidelines to ensure high-quality examples:
+
+- Make sure linting passes (you can run `npm run build && npm run lint` to verify and `npm run lint-fix` for automatic - Examples should not add custom ESLint configuration (we have specific templates for ESLint)
+- If API routes aren't used in an example, they should be omitted
+- If an example exists for a certain library and you would like to showcase a specific feature of that library, the existing example should be updated (instead of adding a new example)
+fixes)
+- TypeScript should be leveraged for new examples (no need for separate JavaScript and TypeScript examples, converting old JavaScript examples is preferred)
+- Package manager specific config should not be added (e.g. `resolutions` in `package.json`)
+- In `package.json` the version of `wesjet` should be `latest`
+
+Also, don’t forget to add a `README.md` file with the following format:
+
+- Replace `DIRECTORY_NAME` with the directory name you’re adding.
+- Fill in `Example Name` and `Description`.
+- Examples should be TypeScript first, if possible.
+- Omit the `name` and `version` fields from your `package.json`.
+- Ensure all your dependencies are up to date.
+- Ensure you’re using [`next/image`](https://nextjs.org/docs/api-reference/next/image).
+- To add additional installation instructions, please add them where appropriate.
+- To add additional notes, add `## Notes` section at the 
+
+````markdown
+# Example Name
+
+Description
+
+## How to use
+
+Execute [`create-wesjet-app`](https://github.com/wesbitty/wesjet/tree/changelog/packages/create-wesjet-app) with [npm](https://docs.npmjs.com/cli/init) Or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+
+```bash
+npx create-wesjet-app --example DIRECTORY_NAME DIRECTORY_NAME-app
+```
+
+```bash
+yarn create wesjet-app --example DIRECTORY_NAME DIRECTORY_NAME-app
+```
+````
