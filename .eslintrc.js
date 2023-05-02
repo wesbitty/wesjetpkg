@@ -6,6 +6,17 @@ module.exports = {
     es6: true,
     node: true,
   },
+  ignorePattern: [
+    '**/.wesjet/*',
+    'packages/*/lib',
+    'packages/@wesjet/*/lib',
+    'packages/create-wesjet-app/src/templates/*',
+    'examples/*',
+    '**/__test__/*',
+    '**/target/*',
+    '**/*.tsbuildinfo/*',
+    '**/nyc_output/*',
+  ],
   extends: 'plugin:wesjet/recommended',
   plugins: ['simple-import-sort', 'import'],
   rules: {
