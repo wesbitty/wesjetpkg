@@ -2,6 +2,7 @@
   "compilerOptions": {
     "composite": true,
     "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
     "incremental": true,
     "strict": true,
     "isolatedModules": true,
@@ -9,10 +10,8 @@
     "lib": ["ES2020", "DOM"],
     "moduleResolution": "node",
     "module": "CommonJS",
-    "sourceMap": true,
     "skipLibCheck": true,
     "declaration": true,
-    "declarationMap": true,
     "noUncheckedIndexedAccess": true,
     "noErrorTruncation": true,
     "resolveJsonModule": true,
