@@ -1,30 +1,44 @@
+import Head from 'next/head'
 import { format, parseISO } from 'date-fns'
-import { allPosts } from 'wesjet/static'
+import { allPosts, Post } from 'wesjet/static'
 import { MakeMdx } from 'wesjet/hooks'
+import styles from '~/styles/Home.module.css'
 
-export const generateStaticParams = async () =>
-  allPosts.map((post) => ({ slug: post._raw.flattenedPath }))
-
-export const generateMetadata = ({ params }) => {
-  const post = allPosts.find((post) => post._raw.flattenedPath === params.slug)
-  return { title: post.title }
+export async function getStaticPaths() {
+  const paths: string[] = allPosts.map((post) => post.url)
+  return {
+    paths,
+    fallback: false,
+  }
 }
 
-const PostLayout = ({ params }: { params: { slug: string } }) => {
-  const post = allPosts.find((post) => post._raw.flattenedPath === params.slug)
+export async function getStaticProps({ params }) {
+  const post: Post = allPosts.find((post) => post._raw.flattenedPath === params.slug)
+  return {
+    props: {
+      post,
+    },
+  }
+}
 
-  const Content = MakeMdx(post.body.code)
+const PostLayout = ({ post }: { post: Post }) => {
+  const PostContent = MakeMdx(post.body.code)
 
   return (
-    <article className="py-8 mx-auto max-w-xl">
-      <div className="mb-8 text-center">
-        <time dateTime={post.date} className="mb-1 text-xs text-gray-600">
-          {format(parseISO(post.date), 'LLLL d, yyyy')}
-        </time>
-        <h1>{post.title}</h1>
-      </div>
-      <Content />
-    </article>
+    <>
+      <Head>
+        <title>{post.title}</title>
+      </Head>
+      <article className={styles.main}>
+        <div className={styles.center}>
+          <time dateTime={post.date} className={styles.description}>
+            {format(parseISO(post.date), 'LLLL d, yyyy')}
+          </time>
+          <h1>{post.title}</h1>
+        </div>
+        <PostContent />
+      </article>
+    </>
   )
 }
 
