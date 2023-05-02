@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { format, parseISO } from 'date-fns'
 import { allPosts, Post } from 'wesjet/static'
 import { MakeMdx } from 'wesjet/hooks'
-import styles from '~/styles/Home.module.css'
+import styles from '~/styles/main.module.css'
 
 export async function getStaticPaths() {
   const paths: string[] = allPosts.map((post) => post.url)
@@ -29,15 +29,15 @@ const PostLayout = ({ post }: { post: Post }) => {
       <Head>
         <title>{post.title}</title>
       </Head>
-      <article className={styles.main}>
-        <div className={styles.center}>
+      <main className={styles.main}>
+        <div className={styles.container}>
+          <p>{post.title}</p>
           <time dateTime={post.date} className={styles.description}>
-            {format(parseISO(post.date), 'LLLL d, yyyy')}
+            {format(parseISO(post.date), 'MMMM d, yyyy')}
           </time>
-          <h1>{post.title}</h1>
+          <PostContent />
         </div>
-        <PostContent />
-      </article>
+      </main>
     </>
   )
 }
