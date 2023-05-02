@@ -268,7 +268,7 @@ const makePackageJson = (schemaHash: string): string => {
   const packageJson: PackageJson & { typesVersions: any } = {
     name: `${schemaHash}`,
     description: 'static',
-    version: `0.0.30`,
+    version: `0.0.34`,
     exports: {
       './static': {
         import: './static/index.mjs',

@@ -11,5 +11,5 @@ export {
   FunctionsFetchError,
   FunctionsHttpError,
   FunctionsRelayError,
-} from './types'
+} from './types.js'
 export * from './utils.js'

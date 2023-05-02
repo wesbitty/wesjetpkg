@@ -8,7 +8,7 @@ import type { MDXComponents } from 'mdx/types'
 import * as React from 'react'
 import ReactDOM from 'react-dom'
 
-import _jsx from './ReactJSX.cjs'
+import { _jsx_runtime } from './ReactJSX.cjs'
 
 type MDXContentProps = {
   [props: string]: unknown
@@ -19,7 +19,7 @@ const getMDXComponent = (
   code: string,
   globals: Record<string, unknown> = {},
 ): React.ComponentType<MDXContentProps> => {
-  const scope = { React, ReactDOM, _jsx, ...globals }
+  const scope = { React, ReactDOM, _jsx_runtime, ...globals }
   const fn = new Function(...Object.keys(scope), code)
   return fn(...Object.values(scope)).default
 }

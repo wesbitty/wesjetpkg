@@ -1,6 +1,6 @@
 {
   "name": "@wesjet/preset",
-  "version": "0.0.32",
+  "version": "0.0.34",
   "description": "wesjet package to preset layout's",
   "keywords": [
     "wesjet"
@@ -39,8 +39,8 @@
     "test": "TZ='GMT' FORCE_COLOR=1 vitest"
   },
   "dependencies": {
-    "@wesjet/core": "^0.0.32",
-    "@wesjet/function.js": "^0.0.32",
+    "@wesjet/core": "^0.0.34",
+    "@wesjet/function.js": "^0.0.34",
     "chokidar": "^3.5.3",
     "fast-glob": "^3.2.12",
     "gray-matter": "^4.0.3",

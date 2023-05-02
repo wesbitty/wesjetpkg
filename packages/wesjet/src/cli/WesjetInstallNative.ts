@@ -115,7 +115,7 @@ const addToplevelDotpkgToGitignore = () =>
         const newGitignoreContent = `\
 ${gitignoreContent}
 
-# wesjet cache / build output
+# Wesjet Local folder
 .wesjet
 `
 
