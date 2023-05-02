@@ -8,7 +8,7 @@ import type { MDXComponents } from 'mdx/types'
 import * as React from 'react'
 import ReactDOM from 'react-dom'
 
-import { _jsx } from './ReactJSX.cjs'
+import _jsx from './ReactJSX.cjs'
 
 type MDXContentProps = {
   [props: string]: unknown

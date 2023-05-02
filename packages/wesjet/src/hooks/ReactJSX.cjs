@@ -5,4 +5,5 @@
  *
  */
 
-export { jsx as _jsx } from 'react/jsx-runtime'
+import { jsx as _jsx } from 'react/jsx-runtime'
+export default _jsx

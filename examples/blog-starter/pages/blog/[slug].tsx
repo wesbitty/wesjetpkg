@@ -1,6 +1,6 @@
 import { format, parseISO } from 'date-fns'
 import { allPosts } from 'wesjet/static'
-import { MakeMdx } from 'wesjet/next/hook'
+import { MakeMdx } from 'wesjet/hooks'
 
 export const generateStaticParams = async () =>
   allPosts.map((post) => ({ slug: post._raw.flattenedPath }))
