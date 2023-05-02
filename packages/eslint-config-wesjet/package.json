@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-wesjet",
-  "version": "0.0.36",
+  "version": "0.0.37",
   "description": "Shareable custom eslint parser",
   "keywords": [
     "eslint",
