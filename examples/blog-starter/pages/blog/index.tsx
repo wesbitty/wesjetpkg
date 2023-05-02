@@ -1,36 +1,37 @@
 import Link from 'next/link'
 import { compareDesc, format, parseISO } from 'date-fns'
 import { allPosts, Post } from 'wesjet/static'
-
-export async function getStaticProps() {
-  const blog: Post[] = allPosts.sort((a, b) => {
-    return compareDesc(new Date(a.date), new Date(b.date))
-  })
-  return { props: { blog } }
-}
+import { MakeMdx } from 'wesjet/hooks'
+import styles from '../../styles/Home.module.css'
 
 function PostCard(post: Post) {
+  const PostContent = MakeMdx(post.body.code)
+
   return (
-    <div className="mb-8">
-      <h2 className="text-xl">
-        <Link href={post.url} className="text-blue-700 hover:text-blue-900" legacyBehavior>
+    <div className={styles.grid}>
+      <h2>
+        <Link href={post.url} legacyBehavior>
           {post.title}
         </Link>
       </h2>
-      <time dateTime={post.date} className="block text-xs text-gray-600 mb-2">
+      <time dateTime={post.date} className={styles.description}>
         {format(parseISO(post.date), 'LLLL d, yyyy')}
       </time>
-      <div className="text-sm" dangerouslySetInnerHTML={{ __html: post.body.code }} />
+      <div className={styles.center}>
+        <PostContent />
+      </div>
     </div>
   )
 }
 
-export default function Home({ blog }: { blog: Post[] }) {
-  return (
-    <div className="max-w-xl mx-auto py-8">
-      <h1 className="text-3xl font-bold mb-8 text-center">Wesjet Starter</h1>
+export default function BlogPage() {
+  const posts = allPosts.sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)))
 
-      {blog.map((post, idx) => (
+  return (
+    <div className={styles.main}>
+      <h1>Blog</h1>
+
+      {posts.map((post, idx) => (
         <PostCard key={idx} {...post} />
       ))}
     </div>
