@@ -87,7 +87,7 @@ export function downloadAndExtractExample(root: string, name: string): Promise<v
   }
 
   return pipeline(
-    got.stream('https://codeload.github.com/wesbitty/wesjet/tar.gz/automated'),
-    tar.extract({ cwd: root, strip: 3 }, [`wesjet-automated/examples/${name}`]),
+    got.stream('https://codeload.github.com/wesbitty/wesjet/tar.gz/ace'),
+    tar.extract({ cwd: root, strip: 3 }, [`wesjet-ace/examples/${name}`]),
   )
 }
