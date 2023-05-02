@@ -5,7 +5,12 @@ dist
 package-lock.json
 .next
 .direnv
-packages/**/lib
+
+CONTRIBUTING.md
+
+packages/*/lib
+packages/@wesjet/lib
+
 .tmp
 tmp
 result
