@@ -40,7 +40,7 @@ The Wesjet community can be found on [GitHub Discussions](https://github.com/wes
 
 To chat with other community members you can join the [Wesjet Discord](https://wesbitty.org/discord).
 
-Our [Code of Conduct](https://github.com/wesbitty/wesjet/blob/automated/CODE_OF_CONDUCT.md) applies to all Wesjet community channels.
+Our [Code of Conduct](https://github.com/wesbitty/wesjet/blob/ace/CODE_OF_CONDUCT.md) applies to all Wesjet community channels.
 
 ## Contributing
 

@@ -8,8 +8,7 @@ import type { MDXComponents } from 'mdx/types'
 import * as React from 'react'
 import ReactDOM from 'react-dom'
 
-// @ts-expect-error Needed to ensure that the component is initialized properly before rendering the component
-import { ReactJSX } from './ReactJSX'
+import { _jsx } from './ReactJSX.cjs'
 
 type MDXContentProps = {
   [props: string]: unknown
@@ -20,7 +19,7 @@ const getMDXComponent = (
   code: string,
   globals: Record<string, unknown> = {},
 ): React.ComponentType<MDXContentProps> => {
-  const scope = { React, ReactDOM, ReactJSX, ...globals }
+  const scope = { React, ReactDOM, _jsx, ...globals }
   const fn = new Function(...Object.keys(scope), code)
   return fn(...Object.values(scope)).default
 }

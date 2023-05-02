@@ -5,5 +5,5 @@
  *
  */
 
-export * from './MakeMdx.js'
-export * from './MakeReload.js'
+export { MakeMdx } from './MakeMdx.js'
+export { MakeReload } from './MakeReload.js'

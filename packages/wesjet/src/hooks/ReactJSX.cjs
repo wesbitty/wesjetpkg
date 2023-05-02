@@ -5,6 +5,4 @@
  *
  */
 
-const _jsx_runtime = require('react/jsx-runtime')
-
-module.exports.ReactJSX = _jsx_runtime
+export { jsx as _jsx } from 'react/jsx-runtime'
