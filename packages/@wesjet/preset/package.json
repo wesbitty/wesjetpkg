@@ -1,8 +1,10 @@
 {
   "name": "@wesjet/preset",
+  "version": "0.0.31",
   "description": "wesjet package to preset layout's",
-  "version": "0.0.30",
-  "license": "MIT",
+  "keywords": [
+    "wesjet"
+  ],
   "homepage": "https://wesbitty.org/product/wesjet",
   "bugs": "https://github.com/wesbitty/wesjet/issues",
   "repository": {
@@ -10,9 +12,7 @@
     "url": "git+https://github.com/wesbitty/wesjet.git",
     "directory": "packages/@wesjet/preset"
   },
-  "keywords": [
-    "wesjet"
-  ],
+  "license": "MIT",
   "type": "module",
   "exports": {
     ".": {
@@ -39,8 +39,8 @@
     "test": "TZ='GMT' FORCE_COLOR=1 vitest"
   },
   "dependencies": {
-    "@wesjet/core": "^0.0.30",
-    "@wesjet/function.js": "^0.0.30",
+    "@wesjet/core": "^0.0.31",
+    "@wesjet/function.js": "^0.0.31",
     "chokidar": "^3.5.3",
     "fast-glob": "^3.2.12",
     "gray-matter": "^4.0.3",

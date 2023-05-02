@@ -1,0 +1,70 @@
+{
+  "name": "eslint-config-wesjet",
+  "version": "0.0.36",
+  "description": "Shareable custom eslint parser",
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "parser"
+  ],
+  "homepage": "https://github.com/wesbitty/wesbitty/blob/ace/packages/eslint-plugin-wesjet#readme",
+  "bugs": {
+    "url": "https://github.com/wesbitty/wesbitty/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wesbitty/wesbitty.git"
+  },
+  "license": "MIT",
+  "author": "Wesbitty Inc",
+  "main": "./lib/index.js",
+  "files": [
+    "lib",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@rushstack/eslint-patch": "^1.1.3",
+    "array-includes": "^3.1.6",
+    "array.prototype.flatmap": "^1.3.1",
+    "array.prototype.tosorted": "^1.1.1",
+    "doctrine": "^2.1.0",
+    "estraverse": "^5.3.0",
+    "jsx-ast-utils": "^2.4.1 || ^3.0.0",
+    "minimatch": "^3.1.2",
+    "object.entries": "^1.1.6",
+    "object.fromentries": "^2.0.6",
+    "object.hasown": "^1.1.2",
+    "object.values": "^1.1.6",
+    "prop-types": "^15.8.1",
+    "resolve": "^2.0.0-next.4",
+    "semver": "^6.3.0",
+    "string.prototype.matchall": "^4.0.8"
+  },
+  "devDependencies": {
+    "@next/eslint-plugin-next": "^13.3.1",
+    "@types/prettier": "^2.7.2",
+    "@typescript-eslint/eslint-plugin": "^5.51.0",
+    "@typescript-eslint/parser": "^5.51.0",
+    "eslint": "^8.34.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "prettier": "^2.8.4"
+  },
+  "peerDependencies": {
+    "eslint": "^7.23.0 || ^8.0.0",
+    "typescript": ">=3.3.1"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

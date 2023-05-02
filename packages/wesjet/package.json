@@ -1,11 +1,10 @@
 {
   "name": "wesjet",
+  "version": "0.0.31",
   "description": "Wesjet is a JavaScript library to transform and validate content for building user interfaces.",
-  "version": "0.0.30",
-  "license": "MIT",
-  "engines": {
-    "node": ">=14.18"
-  },
+  "keywords": [
+    "wesjet"
+  ],
   "homepage": "https://wesbitty.org/product/wesjet",
   "bugs": "https://github.com/wesbitty/wesjet/issues",
   "repository": {
@@ -13,19 +12,7 @@
     "url": "git+https://github.com/wesbitty/wesjet.git",
     "directory": "packages/wesjet"
   },
-  "keywords": [
-    "wesjet"
-  ],
-  "files": [
-    "./bin/install-native.cjs",
-    "./lib/**/*.{cjs,js,ts,map}",
-    "./lib/!(__test__)/**/*.{js,ts,map}",
-    "index.d.ts",
-    "README.md",
-    "LICENSE",
-    "package.json"
-  ],
-  "bin": "./bin/install-native.cjs",
+  "license": "MIT",
   "type": "module",
   "exports": {
     "./package.json": "./package.json",
@@ -45,9 +32,9 @@
       "import": "./lib/shared/next/index.js",
       "require": "./lib/shared/next/index-cjs.cjs"
     },
-    "./next/hook": {
-      "import": "./lib/shared/next/hook/index.js",
-      "require": "./lib/shared/next/hook/index.js"
+    "./hooks": {
+      "import": "./lib/hooks/index.js",
+      "require": "./lib/hooks/index.js"
     },
     "./preset": {
       "import": "./lib/preset/index.js"
@@ -85,8 +72,8 @@
       "next": [
         "./lib/shared/next"
       ],
-      "next/hook": [
-        "./lib/shared/next/hook"
+      "hooks": [
+        "./lib/hooks"
       ],
       "preset": [
         "./lib/preset"
@@ -105,21 +92,24 @@
       ]
     }
   },
+  "bin": "./bin/install-native.cjs",
+  "files": [
+    "./bin/install-native.cjs",
+    "./lib/**/*.{cjs,js,ts,map}",
+    "./lib/!(__test__)/**/*.{js,ts,map}",
+    "index.d.ts",
+    "mdx.d.ts",
+    "mdx.js",
+    "README.md",
+    "reload.d.ts",
+    "reload.js",
+    "LICENSE",
+    "package.json"
+  ],
   "scripts": {
+    "clean": "rimraf lib .wesjet",
     "postinstall": "node ./bin/install-native.cjs postinstall",
-    "prepack": "sed '/^import\\|^export/d' lib/shared/next/index-cjs.js > lib/shared/next/index-cjs.cjs; cp src/shared/next/hook/ReactJSX.cjs lib/shared/next/hook/ReactJSX.cjs",
-    "clean": "rimraf lib .wesjet"
-  },
-  "peerDependencies": {
-    "@stackbit/sdk": "0.3.x",
-    "next": "^12 || ^13",
-    "react": "*",
-    "react-dom": "*"
-  },
-  "peerDependenciesMeta": {
-    "@stackbit/sdk": {
-      "optional": true
-    }
+    "prepack": "sed '/^import\\|^export/d' lib/shared/next/index-cjs.js > lib/shared/next/index-cjs.cjs; cp src/hooks/ReactJSX.cjs lib/hooks/ReactJSX.cjs"
   },
   "dependencies": {
     "@sanity/client": "^2.10.5",
@@ -127,9 +117,9 @@
     "@sanity/image-url": "^0.140.22",
     "@sanity/schema": "^2.10.0",
     "@stackbit/sdk": "0.3.x",
-    "@wesjet/core": "^0.0.30",
-    "@wesjet/function.js": "^0.0.30",
-    "@wesjet/preset": "^0.0.30",
+    "@wesjet/core": "^0.0.31",
+    "@wesjet/function.js": "^0.0.31",
+    "@wesjet/preset": "^0.0.31",
     "clipanion": "^3.2.0-rc.14",
     "contentful-management": "^7.22.4",
     "cross-fetch": "^3.1.5",
@@ -142,10 +132,24 @@
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.10",
     "jsonwebtoken": "^9.0.0",
-    "next": "^13.1.2",
+    "next": "^13.3.4",
     "typedoc": "^0.24.4",
-    "typescript": "^5.0.2",
+    "typescript": "^4.9.5",
     "vite": "^4.2.1",
     "vitest": "0.29.7"
+  },
+  "peerDependencies": {
+    "@stackbit/sdk": "0.3.x",
+    "next": "^12 || ^13",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "peerDependenciesMeta": {
+    "@stackbit/sdk": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": ">=14.18"
   }
 }

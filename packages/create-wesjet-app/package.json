@@ -1,17 +1,10 @@
 {
   "name": "create-wesjet-app",
+  "version": "0.0.31",
   "description": "user's guide to create a wesjet app",
-  "version": "0.0.30",
-  "license": "MIT",
   "keywords": [
     "wesjet"
   ],
-  "files": [
-    "lib"
-  ],
-  "bin": {
-    "create-wesjet-app": "./lib/index.js"
-  },
   "homepage": "https://wesbitty.org/product/wesjet",
   "bugs": "https://github.com/wesbitty/wesjet/issues",
   "repository": {
@@ -19,11 +12,18 @@
     "url": "https://github.com/wesbitty/wesjet.git",
     "directory": "packages/create-wesjet-app"
   },
+  "license": "MIT",
+  "bin": {
+    "create-wesjet-app": "./lib/index.js"
+  },
+  "files": [
+    "lib"
+  ],
   "scripts": {
-    "build-swc": "swc src/index.ts -d lib",
     "build": "ncc build ./src/index.ts -o ./lib/ --minify --no-cache --no-source-map-register",
-    "dev": "ncc build ./src/index.ts -w -o lib/",
-    "clean": "rimraf ./lib/"
+    "build-swc": "swc src/index.ts -d lib",
+    "clean": "rimraf ./lib/",
+    "dev": "ncc build ./src/index.ts -w -o lib/"
   },
   "devDependencies": {
     "@types/async-retry": "1.4.2",

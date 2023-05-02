@@ -1,16 +1,16 @@
 {
   "name": "@wesjet/swc",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "description": "Swc Binaries",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "keywords": [
     "swc",
     "binaries",
     "cargo",
     "wesjet-swc"
   ],
+  "license": "MIT",
   "author": "DimejiSR <Wesbitty Inc>",
-  "license": "MIT"
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
 }

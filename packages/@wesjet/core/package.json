@@ -1,8 +1,10 @@
 {
   "name": "@wesjet/core",
+  "version": "0.0.31",
   "description": "wesjet package for users outside of the browser",
-  "version": "0.0.30",
-  "license": "MIT",
+  "keywords": [
+    "wesjet"
+  ],
   "homepage": "https://wesbitty.org/product/wesjet",
   "bugs": "https://github.com/wesbitty/wesjet/issues",
   "repository": {
@@ -10,32 +12,18 @@
     "url": "git+https://github.com/wesbitty/wesjet.git",
     "directory": "packages/@wesjet/core"
   },
-  "keywords": [
-    "wesjet"
-  ],
+  "license": "MIT",
   "type": "module",
-  "types": "./lib/index.d.ts",
   "exports": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "files": [
     "lib"
   ],
   "scripts": {
     "clean": "rimraf ./lib/"
   },
-  "peerDependencies": {
-    "esbuild": "^0.17.x",
-    "markdown-wasm": "1.x"
-  },
-  "peerDependenciesMeta": {
-    "esbuild": {
-      "optional": true
-    },
-    "markdown-wasm": {
-      "optional": true
-    }
-  },
   "dependencies": {
-    "@wesjet/function.js": "^0.0.30",
+    "@wesjet/function.js": "^0.0.31",
     "camel-case": "^4.1.2",
     "comment-json": "^4.2.3",
     "esbuild": "0.17.x",
@@ -52,5 +40,17 @@
   "devDependencies": {
     "@types/source-map-support": "^0.5.6",
     "markdown-wasm": "^1.2.0"
+  },
+  "peerDependencies": {
+    "esbuild": "^0.17.x",
+    "markdown-wasm": "1.x"
+  },
+  "peerDependenciesMeta": {
+    "esbuild": {
+      "optional": true
+    },
+    "markdown-wasm": {
+      "optional": true
+    }
   }
 }

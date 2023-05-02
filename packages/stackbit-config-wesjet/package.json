@@ -1,8 +1,11 @@
 {
   "name": "stackbit-config-wesjet",
+  "version": "0.0.31",
   "description": "wesjet stackbit library",
-  "version": "0.0.30",
-  "license": "MIT",
+  "keywords": [
+    "stackbit",
+    "wesjet"
+  ],
   "homepage": "https://wesbitty.org/product/wesjet",
   "bugs": "https://github.com/wesbitty/wesjet/issues",
   "repository": {
@@ -10,14 +13,11 @@
     "url": "git+https://github.com/wesbitty/wesjet.git",
     "directory": "packages/stackbit-config-wesjet"
   },
-  "keywords": [
-    "stackbit",
-    "wesjet"
-  ],
-  "bin": "./bin/install-cmd.cjs",
+  "license": "MIT",
   "type": "module",
   "exports": "./lib/lib/index.js",
   "types": "./lib/lib/index.d.ts",
+  "bin": "./bin/install-cmd.cjs",
   "files": [
     "lib",
     "./lib/!(__test__)/**/*.{js,ts,map}",
@@ -30,8 +30,8 @@
   },
   "dependencies": {
     "@stackbit/sdk": "^0.3.13",
-    "@wesjet/core": "^0.0.30",
-    "@wesjet/function.js": "^0.0.30",
+    "@wesjet/core": "^0.0.31",
+    "@wesjet/function.js": "^0.0.31",
     "clipanion": "^3.2.0-rc.14",
     "typanion": "3.12.1",
     "yaml": "^1.10.2"
@@ -40,6 +40,6 @@
     "typescript": "^4.9.4",
     "vite": "^4.0.4",
     "vitest": "0.27.1",
-    "wesjet": "^0.0.30"
+    "wesjet": "^0.0.31"
   }
 }

@@ -1,15 +1,6 @@
 {
-  "license": "MIT",
   "version": "0.0.0",
   "private": true,
-  "engines": {
-    "node": "^12.22.0 || ^14.17.0 || >=16.0.0"
-  },
-  "workspaces": [
-    "packages/@wesjet/*",
-    "packages/*",
-    "tests"
-  ],
   "keywords": [
     "wesjet",
     "bundler",
@@ -18,23 +9,42 @@
     "transform",
     "validate"
   ],
-  "author": "Wesbitty, Inc",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wesbitty/wesjet.git"
+    "url": "https://github.com/wesbitty/wesjet.git"
   },
+  "license": "MIT",
+  "author": "Wesbitty, Inc",
+  "workspaces": [
+    "packages/@wesjet/*",
+    "packages/*",
+    "tests"
+  ],
   "scripts": {
     "postinstall": "ts-patch install -s",
     "prepare": "husky install",
     "pre-commit": "lint-staged",
-    "build": "npm run clean && tsc -b tsconfig.pkg.json",
+    "build": "npm run clean && tsc -b tsconfig.build.json",
     "postbuild": "npm run build --workspaces --if-present",
     "check-prettier": "prettier --check .",
     "check-eslint": "eslint . --ext .ts --max-warnings=0",
-    "format-prettier": "prettier --write .",
-    "eslint-fix": "eslint . --ext .ts --fix",
+    "prettier": "prettier --write .",
+    "lint": "eslint . --ext .ts --fix",
+    "lint:package": "sort-package-json",
     "clean": "bash -c 'rm -rf packages/*/lib packages/@wesjet/*/lib packages/*/.wesjet'",
     "test": "CI=true VITEST_SEGFAULT_RETRY=3 npm run test --workspaces --parallel"
+  },
+  "lint-staged": {
+    "package.json": [
+      "npm run lint:package"
+    ],
+    "*.{mts,cts,ts,tsx,yml,js,jsx,mjs,cjs,json,md,mdx,css}": [
+      "prettier --write"
+    ]
+  },
+  "resolutions": {
+    "esbuild": "0.17.0",
+    "rxjs": "^7.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.21.4",
@@ -56,11 +66,11 @@
     "cross-spawn": "^7.0.3",
     "eslint": "^8.32.0",
     "eslint-config-prettier": "^8.6.0",
+    "eslint-config-wesjet": "^0.0.36",
     "eslint-plugin-import": "^2.27.4",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-simple-import-sort": "^8.0.0",
-    "eslint-plugin-wesjet": "^0.0.34-rc.1",
     "genversion": "^3.1.1",
     "husky": "^8.0.3",
     "jest": "^29.5.0",
@@ -72,15 +82,15 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "rimraf": "^5.0.0",
+    "sort-package-json": "^2.4.1",
     "swr": "^2.1.2",
     "ts-jest": "^29.1.0",
     "ts-node": "^10.9.1",
     "ts-patch": "^2.1.0",
     "typedoc": "^0.24.4",
-    "typescript": "^5.0.2"
+    "typescript": "^4.9.5"
   },
-  "resolutions": {
-    "esbuild": "0.17.0",
-    "rxjs": "^7.1.0"
+  "engines": {
+    "node": "^12.22.0 || ^14.17.0 || >=16.0.0"
   }
 }

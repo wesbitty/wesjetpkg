@@ -1,8 +1,12 @@
 {
   "name": "@wesjet/function.js",
+  "version": "0.0.31",
   "description": "wesjet javascript library",
-  "version": "0.0.30",
-  "license": "MIT",
+  "keywords": [
+    "wesjet",
+    "function.js",
+    "javascript"
+  ],
   "homepage": "https://wesbitty.org/product/wesjet",
   "bugs": "https://github.com/wesbitty/wesjet/issues",
   "repository": {
@@ -10,11 +14,7 @@
     "url": "git+https://github.com/wesbitty/wesjet.git",
     "directory": "packages/@wesjet/function"
   },
-  "keywords": [
-    "wesjet",
-    "function.js",
-    "javascript"
-  ],
+  "license": "MIT",
   "type": "module",
   "exports": {
     "./package.json": {
@@ -55,19 +55,8 @@
     "node.js"
   ],
   "scripts": {
-    "tmp": "env",
-    "clean": "rimraf ./lib/"
-  },
-  "peerDependenciesMeta": {
-    "@effect-ts/core": {
-      "optional": true
-    },
-    "@effect-ts/otel": {
-      "optional": true
-    },
-    "@effect-ts/otel-node": {
-      "optional": true
-    }
+    "clean": "rimraf ./lib/",
+    "tmp": "env"
   },
   "dependencies": {
     "@effect-ts/core": "^0.60.2",
@@ -91,5 +80,16 @@
   },
   "devDependencies": {
     "@types/inflection": "^1.13.0"
+  },
+  "peerDependenciesMeta": {
+    "@effect-ts/core": {
+      "optional": true
+    },
+    "@effect-ts/otel": {
+      "optional": true
+    },
+    "@effect-ts/otel-node": {
+      "optional": true
+    }
   }
 }
