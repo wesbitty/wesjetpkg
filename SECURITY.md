@@ -1,10 +1,10 @@
 # Security Policy
 
-Wesjet practices responsible disclosure.
+[Wesjet] practices responsible disclosure.
 
 ## Reporting a Vulnerability
 
-We request that you contact us directly to report serious issues that might impact the security of sites using Wesjet.
+We request that you contact us directly to report serious issues that might impact the security of sites using [Wesjet].
 
 If you contact us regarding a serious issue:
 
@@ -20,5 +20,3 @@ The best way to report an issue is by contacting us via email at wesbitty@outloo
 ## Supported Versions
 
 Security updates are only released for the current version.
-
-

@@ -10,7 +10,7 @@
 </h2>
 
 <p align="center">
- <a href="https://www.npmjs.com/wesjet" title="latest"><img alt="latest" src="https://img.shields.io/npm/v/wesjet/latest?style=for-the-badge&logo=wesjet&logoColor=ffffff&color=66BF3C" /></a>
+ <a href="https://www.npmjs.com/wesjet" title="ace"><img alt="ace" src="https://img.shields.io/npm/v/wesjet/ace?style=for-the-badge&logo=wesjet&logoColor=ffffff&color=66BF3C" /></a>
  <a href="https://github.com/wesbitty/wesjet/blob/ace/README.md" title="ace"><img alt="ace" src="https://img.shields.io/github/license/wesbitty/wesjet?style=for-the-badge&logo=wesjet&logoColor=ffffff&color=66BF3C" /></a>
   <a href="https://github.com/wesbitty/wesbitty/discussions/3" title="ace"><img alt="ace" src="https://img.shields.io/badge/community-join-4BC424.svg?style=for-the-badge&logo=Wesbitty&logoColor=ffffff&color=66BF3C" /></a>
 <a href="#sponsors"><img src="https://opencollective.com/wesbitty/sponsors/badge.svg?style=for-the-badge&logo=Wesbitty&logoColor=ffffff&color=66BF3C" alt="Sponsors on Open Collective" /></a>
@@ -52,6 +52,6 @@ Are you using Wesjet? please add your page (and repo) to the end of the list via
 
 ## Security
 
-If you believe you have found a security vulnerability in Wesjet, we encourage you to responsibly disclose this and not open a public issue. We will investigate all legitimate reports. Email `security@wesbitty.org` to disclose any security vulnerabilities.
+If you believe you have found a security vulnerability in Wesjet, we encourage you to responsibly disclose this and not open a public issue. We will investigate all legitimate reports. Email `wesbitty@outlook.com` to disclose any security vulnerabilities.
 
-https://wesbitty.org/security
+Plesse see our [SECURITY.md](https://github.com/wesbitty/wesjet/blob/ace/SECURITY.md) to view the full security policy.
