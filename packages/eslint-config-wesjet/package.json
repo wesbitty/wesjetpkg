@@ -46,18 +46,18 @@
   "devDependencies": {
     "@next/eslint-plugin-next": "^13.3.1",
     "@types/prettier": "^2.7.2",
-    "@typescript-eslint/eslint-plugin": "^5.51.0",
-    "@typescript-eslint/parser": "^5.51.0",
-    "eslint": "^8.34.0",
-    "eslint-config-prettier": "^8.6.0",
-    "eslint-plugin-import": "^2.27.5",
+    "@typescript-eslint/eslint-plugin": "^5.47.0",
+    "@typescript-eslint/parser": "^5.47.0",
+    "eslint": "^8.32.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
-    "prettier": "^2.8.4"
+    "prettier": "^2.8.1"
   },
   "peerDependencies": {
-    "eslint": "^7.23.0 || ^8.0.0",
-    "typescript": ">=3.3.1"
+    "eslint": "^7.23.0 || ^8.32.0",
+    "typescript": ">=4.9.4"
   },
   "peerDependenciesMeta": {
     "typescript": {

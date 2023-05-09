@@ -11,8 +11,8 @@
   "bugs": "https://github.com/wesbitty/wesjet/issues",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wesbitty/wesjet.git",
-    "directory": "packages/@wesjet/function"
+    "url": "https://github.com/wesbitty/wesjet.git",
+    "directory": "packages/@wesjet/function.js"
   },
   "license": "MIT",
   "type": "module",
