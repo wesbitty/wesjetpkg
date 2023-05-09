@@ -7,17 +7,15 @@
     <h1 align="center">Wesjet</h1>
   </a>
 <p align="center">Transforms & Validates Content, build system optimized for JavaScript and TypeScript in application's pages</p>
-</p>
+</h2>
 
 <p align="center">
  <a href="https://www.npmjs.com/wesjet" title="latest"><img alt="latest" src="https://img.shields.io/npm/v/wesjet/latest?style=for-the-badge&logo=wesjet&logoColor=ffffff&color=66BF3C" /></a>
- <a href="https://github.com/wesbitty/wesjet/blob/master/README.md" title="latest"><img alt="latest" src="https://img.shields.io/github/license/wesbitty/wesjet?style=for-the-badge&logo=wesjet&logoColor=ffffff&color=66BF3C" /></a>
-  <a href="https://github.com/wesbitty/wesbitty/discussions/3" title="latest"><img alt="latest" src="https://img.shields.io/badge/community-join-4BC424.svg?style=for-the-badge&logo=Wesbitty&logoColor=ffffff&color=66BF3C" /></a>
+ <a href="https://github.com/wesbitty/wesjet/blob/ace/README.md" title="ace"><img alt="ace" src="https://img.shields.io/github/license/wesbitty/wesjet?style=for-the-badge&logo=wesjet&logoColor=ffffff&color=66BF3C" /></a>
+  <a href="https://github.com/wesbitty/wesbitty/discussions/3" title="ace"><img alt="ace" src="https://img.shields.io/badge/community-join-4BC424.svg?style=for-the-badge&logo=Wesbitty&logoColor=ffffff&color=66BF3C" /></a>
 <a href="#sponsors"><img src="https://opencollective.com/wesbitty/sponsors/badge.svg?style=for-the-badge&logo=Wesbitty&logoColor=ffffff&color=66BF3C" alt="Sponsors on Open Collective" /></a>
 <a href="#backers"><img src="https://opencollective.com/wesbitty/backers/badge.svg?style=for-the-badge&logo=Wesbitty&logoColor=ffffff&color=66BF3C" alt="Backers on Open Collective" /></a>
 </p>
-
-<img align="right" src="./assets/docs.svg?raw=true" height="280">
 
 ## Features
 
