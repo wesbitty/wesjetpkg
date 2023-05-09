@@ -27,19 +27,15 @@
     "postbuild": "npm run build --workspaces --if-present",
     "check-prettier": "prettier --check .",
     "check-eslint": "eslint . --ext .ts --max-warnings=0",
-    "prettier": "prettier --write .",
+    "format": "prettier --write .",
     "lint": "eslint . --ext .ts --fix",
     "lint:package": "sort-package-json",
     "clean": "bash -c 'rm -rf packages/*/lib packages/@wesjet/*/lib packages/*/.wesjet'",
     "test": "CI=true VITEST_SEGFAULT_RETRY=3 npm run test --workspaces --parallel"
   },
   "lint-staged": {
-    "package.json": [
-      "npm run lint:package"
-    ],
-    "*.{mts,cts,ts,tsx,yml,js,jsx,mjs,cjs,json,md,mdx,css}": [
-      "prettier --write"
-    ]
+    "package.json": "npm run lint:package",
+    "*.{mts,cts,ts,tsx,yml,js,jsx,mjs,cjs,json,md,mdx,css}": "npm run format"
   },
   "resolutions": {
     "esbuild": "0.17.0",
