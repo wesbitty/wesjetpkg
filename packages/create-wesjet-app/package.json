@@ -30,7 +30,7 @@
     "@types/ci-info": "^2.0.0",
     "@types/cross-spawn": "^6.0.0",
     "@types/glob": "^7.1.1",
-    "@types/node": "^17.0.25",
+    "@types/node": "^12.6.8",
     "@types/prompts": "^2.0.1",
     "@types/rimraf": "^3.0.0",
     "@types/tar": "^4.0.3",
