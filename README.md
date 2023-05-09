@@ -1,1 +1,1 @@
-packages/wesjet/README.md
+README.md
