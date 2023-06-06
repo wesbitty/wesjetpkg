@@ -135,7 +135,7 @@
     "next": "^13.3.4",
     "typedoc": "^0.24.4",
     "typescript": "^4.9.4",
-    "vite": "^4.2.1",
+    "vite": "^3.2.7",
     "vitest": "0.29.7"
   },
   "peerDependencies": {
